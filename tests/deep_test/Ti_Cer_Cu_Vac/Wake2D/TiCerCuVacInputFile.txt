@@ -1,0 +1,41 @@
+Machine:	LHCvvTitCuVac
+Relativistic Gamma:	10000
+Impedance Length in m:	1
+Number of layers:	4
+Layer 1 inner radius in mm:	18.4
+Layer 1 DC resistivity (Ohm.m):	5.e-7
+Layer 1 relaxation time for resistivity (ps):	0
+Layer 1 real part of dielectric constant:	1
+Layer 1 magnetic susceptibility:	0
+Layer 1 relaxation frequency of permeability (MHz):	Infinity
+Layer 1 thickness in mm:	0.001
+Layer 2 DC resistivity (Ohm.m):	1.e12
+Layer 2 relaxation time for resistivity (ps):	0
+Layer 2 real part of dielectric constant:	10
+Layer 2 magnetic susceptibility:	0
+Layer 2 relaxation frequency of permeability (MHz):	Infinity
+Layer 2 thickness in mm:	1
+Layer 3 DC resistivity (Ohm.m):	1.6667e-8
+Layer 3 relaxation time for resistivity (ps):	0
+Layer 3 real part of dielectric constant:	1
+Layer 3 magnetic susceptibility:	0
+Layer 3 relaxation frequency of permeability (MHz):	Infinity
+Layer 3 thickness in mm:	1
+Layer 4 DC resistivity (Ohm.m):	Infinity
+Layer 4 relaxation time for resistivity (ps):	0
+Layer 4 real part of dielectric constant:	1
+Layer 4 magnetic susceptibility:	0
+Layer 4 relaxation frequency of permeability (MHz):	Infinity
+Layer 4 thickness in mm:	Infinity
+start frequency exponent (10^) in Hz:	0
+stop  frequency exponent (10^) in Hz:	13
+Precision of the calculation (default 15):	35
+linear (1) or logarithmic (0) or both (2) frequency scan:	2
+sampling frequency exponent (10^) in Hz (for linear):	8
+Number of points per decade (for log):	20
+when both, fmin of the refinement (in THz):	5.5
+when both, fmax of the refinement (in THz):	7
+when both, number of points in the refinement:	100
+added frequencies [Hz]:	1e-3 1e-1
+Comments for the output files names:	_some_element
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>GUI PLOT PANEL</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#gui-plot-panel">GUI — Plot Panel</a>
+<ul>
+<li><a href="#what-the-plot-panel-does">What the Plot Panel does</a></li>
+<li><a href="#drag-drop">Drag &amp; drop</a></li>
+<li><a href="#overlay-control">Overlay control</a>
+<ul>
+<li><a href="#visibility">Visibility</a></li>
+<li><a href="#editable-labels">Editable labels</a></li>
+</ul></li>
+<li><a href="#plot-settings">Plot settings</a></li>
+<li><a href="#export">Export</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">GUI PLOT PANEL</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="gui-plot-panel">GUI — Plot Panel</h1>
+<p>The <strong>Plot</strong> tab provides an overlay plot of impedance curves with a control list on the right.</p>
+<hr />
+<h2 id="what-the-plot-panel-does">What the Plot Panel does</h2>
+<ul>
+<li>Accepts <strong>drag &amp; drop</strong> of impedances from the chambers tree.</li>
+<li>Overlays multiple curves on the same axes.</li>
+<li>Provides a list to toggle visibility and edit curve labels.</li>
+<li>Offers basic plot settings (axis labels and scales).</li>
+<li>Exports the plot to image.</li>
+</ul>
+<hr />
+<h2 id="drag-drop">Drag &amp; drop</h2>
+<p>Drop an impedance component (e.g. <code>ZLongRe</code>) or a base impedance (e.g. <code>ZLong</code>).</p>
+<p>Each dropped item becomes a <strong>PlotItem</strong> with:</p>
+<ul>
+<li>chamber name</li>
+<li>impedance base name</li>
+<li>component (Re / Im / Abs)</li>
+<li>data array and frequencies</li>
+<li>assigned color</li>
+<li>editable label</li>
+</ul>
+<hr />
+<h2 id="overlay-control">Overlay control</h2>
+<h3 id="visibility">Visibility</h3>
+<p>Each plotted item can be shown/hidden through its checkbox in the list.</p>
+<h3 id="editable-labels">Editable labels</h3>
+<p>Each list entry is editable: you can override the legend label without changing the underlying data.</p>
+<hr />
+<h2 id="plot-settings">Plot settings</h2>
+<p>Common settings include:</p>
+<ul>
+<li>plot title</li>
+<li>X/Y labels</li>
+<li>X/Y scale (log or linear)</li>
+</ul>
+<p><strong>Note:</strong> for log scale plotting, the panel uses absolute values and masks invalid points.</p>
+<hr />
+<h2 id="export">Export</h2>
+<p>From the <strong>File</strong> menu:</p>
+<ul>
+<li><strong>Save Plot…</strong> exports the current plot as an image file.</li>
+</ul>
+<p>Plots are also exported when saving a complete <strong>View</strong>.</p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+2025-12-15 12:31:47,637 - pytlwall_interface - INFO - setup_interface_logging:177 - Log file: /home/tatij/CERN/pytlwall/pytlwall-master/pytlwall_gui/log/pytlwall_gui_20251215_123147.log
+2025-12-15 12:31:47,637 - pytlwall_interface - INFO - setup_interface_logging:179 - pytlwall_interface logging initialized
+2025-12-15 12:32:06,090 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1354 - Starting impedance calculation for current chamber
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1360 - Chamber: Chamber 1, component: Chamber 1
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1366 - Selected impedances: ['ZLong', 'ZTrans', 'ZDipX', 'ZDipY', 'ZQuadX', 'ZQuadY']
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1380 - Frequency config: mode=range
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1388 - Frequency range: 0.0 - 12.0 Hz, step=2.0
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1403 - Beam: gamma=10000.0, test_beam_shift=0.01
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1411 - Chamber: shape=RECTANGULAR, radius=0.0184m, length=1.0m
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1435 - Layer 0: type=CW, thick=5e-07m, sigmaDC=1000000.0
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1455 - Boundary layer: type=CW, sigmaDC=1000000000.0
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1462 - Beta functions: betax=1.0, betay=1.0
+2025-12-15 12:32:06,091 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1465 - Creating TlWall and calculating impedances...
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1487 - get_impedance failed for ZLong: 'TlWall' object has no attribute 'get_impedance'
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1487 - get_impedance failed for ZTrans: 'TlWall' object has no attribute 'get_impedance'
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1487 - get_impedance failed for ZDipX: 'TlWall' object has no attribute 'get_impedance'
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1487 - get_impedance failed for ZDipY: 'TlWall' object has no attribute 'get_impedance'
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1487 - get_impedance failed for ZQuadX: 'TlWall' object has no attribute 'get_impedance'
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1487 - get_impedance failed for ZQuadY: 'TlWall' object has no attribute 'get_impedance'
+2025-12-15 12:32:06,091 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1492 - Using fallback: get_all_impedances()
+2025-12-15 12:32:06,093 - pytlwall_interface - ERROR - _calculate_impedances_for_current_chamber:1515 - Impedance calculation failed: 'Chamber' object has no attribute 'chamber'
+2025-12-15 12:32:06,094 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1516 - Traceback (most recent call last):
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall_gui/main_window.py", line 1493, in _calculate_impedances_for_current_chamber
+    imp = wall.get_all_impedances()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall/tlwall.py", line 1174, in get_all_impedances
+    'ZQuadY': self.ZQuadY,
+              ^^^^^^^^^^^
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall/tlwall.py", line 531, in ZQuadY
+    return (self._ZTrans * self.chamber.dety_yokoya_factor *
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall/chamber.py", line 530, in dety_yokoya_factor
+    print(f"DEBUG: pipe_hor={self.chamber.pipe_hor_m}, pipe_ver={self.chamber.pipe_ver_m}, q={self.chamber.yokoya_q}, idx={self.chamber.yokoya_q_idx}")
+                             ^^^^^^^^^^^^
+AttributeError: 'Chamber' object has no attribute 'chamber'
+

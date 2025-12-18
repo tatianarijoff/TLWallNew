@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>GUI DATA PANEL</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#gui-data-panel">GUI — Data Panel</a>
+<ul>
+<li><a href="#what-the-data-panel-does">What the Data Panel does</a></li>
+<li><a href="#drag-drop">Drag &amp; drop</a></li>
+<li><a href="#table-editing">Table editing</a>
+<ul>
+<li><a href="#title">Title</a></li>
+<li><a href="#column-naming">Column naming</a></li>
+<li><a href="#context-menu">Context menu</a></li>
+</ul></li>
+<li><a href="#export">Export</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">GUI DATA PANEL</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="gui-data-panel">GUI — Data Panel</h1>
+<p>The <strong>Data</strong> tab provides a table for collecting and exporting impedance results.</p>
+<hr />
+<h2 id="what-the-data-panel-does">What the Data Panel does</h2>
+<ul>
+<li>Accepts <strong>drag &amp; drop</strong> from the chambers impedance tree.</li>
+<li>Builds a table with:
+<ul>
+<li>a frequency column</li>
+<li>one or more impedance columns (Re / Im / Abs)</li>
+</ul></li>
+<li>Allows column and title customization.</li>
+<li>Exports the table to file.</li>
+</ul>
+<hr />
+<h2 id="drag-drop">Drag &amp; drop</h2>
+<p>You can drop either:</p>
+<ul>
+<li>a <strong>base impedance</strong> (e.g. <code>ZLong</code>) → typically adds <em>both</em> components (Re/Im)</li>
+<li>a <strong>single component</strong> (e.g. <code>ZLongRe</code>) → adds only that component</li>
+</ul>
+<p>The drop emits a request to the main window, which resolves the data arrays and updates the panel.</p>
+<hr />
+<h2 id="table-editing">Table editing</h2>
+<h3 id="title">Title</h3>
+<p>The title is editable (inline). By default it includes the current date.</p>
+<h3 id="column-naming">Column naming</h3>
+<ul>
+<li>Double-click a header to rename a column.</li>
+<li>A custom name is stored per column (without changing the underlying source).</li>
+</ul>
+<h3 id="context-menu">Context menu</h3>
+<p>The table provides a context menu for common operations (depending on selection), such as:</p>
+<ul>
+<li>removing selected columns</li>
+<li>exporting</li>
+<li>renaming (column or frequency column)</li>
+</ul>
+<p>(Exact items may evolve; see implementation for the current list.)</p>
+<hr />
+<h2 id="export">Export</h2>
+<p>From the <strong>File</strong> menu you can use <strong>Save Data…</strong> to export the current table.</p>
+<p>The saved file is also used when saving a complete <strong>View</strong>.</p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

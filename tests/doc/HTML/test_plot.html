@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>test plot</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#test_plot.py---plotting-utilities-tests">test_plot.py - Plotting Utilities Tests</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#test-classes">Test Classes</a>
+<ul>
+<li><a href="#testplot">TestPlot</a></li>
+</ul></li>
+<li><a href="#test-details">Test Details</a>
+<ul>
+<li><a href="#test_longitudinal_output">test_longitudinal_output</a></li>
+<li><a href="#test_transverse_output">test_transverse_output</a></li>
+</ul></li>
+<li><a href="#plotting-functions-tested">Plotting Functions Tested</a>
+<ul>
+<li><a href="#plot_z_vs_f_simple">plot_Z_vs_f_simple</a></li>
+<li><a href="#plot_list_z_vs_f">plot_list_Z_vs_f</a></li>
+</ul></li>
+<li><a href="#scale-options">Scale Options</a></li>
+<li><a href="#output-directory-structure">Output Directory Structure</a></li>
+<li><a href="#example-usage">Example Usage</a></li>
+<li><a href="#dependencies">Dependencies</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<h1 class="title">test plot</h1>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="test_plot.py---plotting-utilities-tests">test_plot.py - Plotting Utilities Tests</h1>
+<p><a href="../TESTING.html">← Back to Testing Documentation</a></p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>Tests for the <code>plot_util</code> module which provides plotting functions for impedance visualization.</p>
+<p><strong>Module tested</strong>: <code>pytlwall.plot_util</code></p>
+<p><strong>Run this test</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/test_plot.py <span class="at">-v</span></span></code></pre></div>
+<hr />
+<h2 id="test-classes">Test Classes</h2>
+<h3 id="testplot">TestPlot</h3>
+<p>Tests plotting functionality.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_longitudinal_output</code></td>
+<td>Tests longitudinal impedance plot (log-log scale)</td>
+</tr>
+<tr class="even">
+<td><code>test_transverse_output</code></td>
+<td>Tests transverse impedance plots (log-symlog scale)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="test-details">Test Details</h2>
+<h3 id="test_longitudinal_output">test_longitudinal_output</h3>
+<p>Creates a simple longitudinal impedance plot:</p>
+<ul>
+<li><strong>Configuration</strong>: <code>tests/input/one_layer.cfg</code></li>
+<li><strong>Output</strong>: <code>tests/output/one_layer/img/ZLong.png</code></li>
+<li><strong>Scale</strong>: log-log</li>
+<li><strong>Impedance type</strong>: “L” (Longitudinal)</li>
+</ul>
+<h3 id="test_transverse_output">test_transverse_output</h3>
+<p>Creates transverse impedance plots (real and imaginary parts):</p>
+<ul>
+<li><strong>Configuration</strong>: <code>tests/input/one_layer.cfg</code></li>
+<li><strong>Output</strong>:
+<ul>
+<li><code>tests/output/one_layer/img/ZTransReal.png</code></li>
+<li><code>tests/output/one_layer/img/ZTransImag.png</code></li>
+</ul></li>
+<li><strong>Scale</strong>: x=log, y=symlog</li>
+<li><strong>Components plotted</strong>:
+<ul>
+<li>Dipolar X</li>
+<li>Dipolar Y</li>
+<li>Quadrupolar X</li>
+<li>Quadrupolar Y</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="plotting-functions-tested">Plotting Functions Tested</h2>
+<h3 id="plot_z_vs_f_simple">plot_Z_vs_f_simple</h3>
+<p>Single impedance vs frequency plot:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plot_util.plot_Z_vs_f_simple(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    f,              <span class="co"># Frequency array</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    Z,              <span class="co"># Complex impedance array</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    imped_type,     <span class="co"># &quot;L&quot; or &quot;T&quot;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    title,          <span class="co"># Plot title</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    savedir,        <span class="co"># Output directory</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    savename,       <span class="co"># Output filename</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    xscale<span class="op">=</span><span class="st">&#39;log&#39;</span>,   <span class="co"># X-axis scale</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    yscale<span class="op">=</span><span class="st">&#39;log&#39;</span>    <span class="co"># Y-axis scale</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<h3 id="plot_list_z_vs_f">plot_list_Z_vs_f</h3>
+<p>Multiple impedances on same plot:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot_util.plot_list_Z_vs_f(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    f,              <span class="co"># Frequency array</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    list_Z,         <span class="co"># List of impedance arrays</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    list_label,     <span class="co"># List of labels</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    imped_type,     <span class="co"># &quot;L&quot; or &quot;T&quot;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    title,          <span class="co"># Plot title</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    savedir,        <span class="co"># Output directory</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    savename,       <span class="co"># Output filename</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    xscale,         <span class="co"># X-axis scale</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    yscale          <span class="co"># Y-axis scale (&#39;symlog&#39; for negative values)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<hr />
+<h2 id="scale-options">Scale Options</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Scale</th>
+<th>Description</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>'log'</code></td>
+<td>Logarithmic</td>
+<td>Positive values spanning decades</td>
+</tr>
+<tr class="even">
+<td><code>'linear'</code></td>
+<td>Linear</td>
+<td>Small range, comparison</td>
+</tr>
+<tr class="odd">
+<td><code>'symlog'</code></td>
+<td>Symmetric log</td>
+<td>Values crossing zero</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="output-directory-structure">Output Directory Structure</h2>
+<pre><code>tests/output/
+└── one_layer/
+    └── img/
+        ├── ZLong.png
+        ├── ZTransReal.png
+        └── ZTransImag.png</code></pre>
+<hr />
+<h2 id="example-usage">Example Usage</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall.plot_util <span class="im">as</span> plot</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load configuration and calculate</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> pytlwall.CfgIo(<span class="st">&#39;tests/input/one_layer.cfg&#39;</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> cfg.read_pytlwall()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>wall.calc_ZLong()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>wall.calc_ZTrans()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple longitudinal plot</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plot.plot_Z_vs_f_simple(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    wall.f, </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    wall.ZLong, </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;L&quot;</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Longitudinal Impedance&quot;</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;output/img/&#39;</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZLong.png&#39;</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    xscale<span class="op">=</span><span class="st">&#39;log&#39;</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    yscale<span class="op">=</span><span class="st">&#39;log&#39;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple transverse components</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>list_Z <span class="op">=</span> [wall.ZDipX.real, wall.ZDipY.real, </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>          wall.ZQuadX.real, wall.ZQuadY.real]</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>list_label <span class="op">=</span> [<span class="st">&#39;Dipolar X&#39;</span>, <span class="st">&#39;Dipolar Y&#39;</span>, </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>              <span class="st">&#39;Quadrupolar X&#39;</span>, <span class="st">&#39;Quadrupolar Y&#39;</span>]</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>plot.plot_list_Z_vs_f(</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    wall.f,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    list_Z,</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    list_label,</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;T&#39;</span>,</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Transverse Impedance (Real)&#39;</span>,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;output/img/&#39;</span>,</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZTrans_real.png&#39;</span>,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;log&#39;</span>,</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;symlog&#39;</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<hr />
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li><code>matplotlib</code> - Required for plotting</li>
+<li>Output directories are created automatically if they don’t exist</li>
+</ul>
+<hr />
+<p><a href="../TESTING.html">← Back to Testing Documentation</a></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

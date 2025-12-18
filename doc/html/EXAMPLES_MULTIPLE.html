@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>EXAMPLES MULTIPLE</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#examples_multiple.html">EXAMPLES_MULTIPLE.md</a>
+<ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#navigation">Navigation</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#input-files">Input Files</a>
+<ul>
+<li><a href="#aperture-type-file-apertype2.txt">1. Aperture Type File — <code>apertype2.txt</code></a></li>
+<li><a href="#geometry-and-optics-file-b_l_betax_betay.txt">2. Geometry and Optics File — <code>b_L_betax_betay.txt</code></a></li>
+<li><a href="#chamber-configuration-templates">3. Chamber Configuration Templates</a></li>
+</ul></li>
+<li><a href="#example-1-running-multiplechamber">Example 1: Running MultipleChamber</a></li>
+<li><a href="#example-2-directory-structure-of-the-output">Example 2: Directory Structure of the Output</a></li>
+<li><a href="#example-3-per-chamber-impedance-files">Example 3: Per-Chamber Impedance Files</a></li>
+<li><a href="#example-4-automatic-impedance-plots">Example 4: Automatic Impedance Plots</a></li>
+<li><a href="#example-5-total-impedance-summation">Example 5: Total Impedance Summation</a></li>
+<li><a href="#example-6-case-insensitive-mapping">Example 6: Case-Insensitive Mapping</a></li>
+<li><a href="#example-7-common-frequency-grid">Example 7: Common Frequency Grid</a></li>
+<li><a href="#notes-and-best-practices">Notes and Best Practices</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">EXAMPLES MULTIPLE</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="examples_multiple.md">EXAMPLES_MULTIPLE.md</h1>
+
+<p><strong>Multiple-Chamber Impedance Calculation Using Lattice Aperture and Geometry Files</strong></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> – tatiana.rijoff@gmail.com<br />
+</li>
+<li><strong>Carlo Zannini</strong> – carlo.zannini@cern.ch</li>
+</ul>
+<p><em>Copyright: CERN</em></p>
+<hr />
+<h2 id="navigation">Navigation</h2>
+<p><strong><a href="EXAMPLES.html">◀ Back to Examples</a></strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>beam</td>
+<td><a href="EXAMPLES_BEAM.html">EXAMPLES_BEAM.md</a></td>
+</tr>
+<tr class="even">
+<td>frequencies</td>
+<td><a href="EXAMPLES_FREQUENCIES.html">EXAMPLES_FREQUENCIES.md</a></td>
+</tr>
+<tr class="odd">
+<td>layer</td>
+<td><a href="EXAMPLES_LAYER.html">EXAMPLES_LAYER.md</a></td>
+</tr>
+<tr class="even">
+<td>chamber</td>
+<td><a href="EXAMPLES_CHAMBER.html">EXAMPLES_CHAMBER.md</a></td>
+</tr>
+<tr class="odd">
+<td>tlwall</td>
+<td><a href="EXAMPLES_TLWALL.html">EXAMPLES_TLWALL.md</a></td>
+</tr>
+<tr class="even">
+<td>logging</td>
+<td><a href="EXAMPLES_LOGGING.html">EXAMPLES_LOGGING.md</a></td>
+</tr>
+<tr class="odd">
+<td><strong>multiple</strong></td>
+<td><em>You are here</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#input-files">Input Files</a></li>
+<li><a href="#example-1-running-multiplechamber">Example 1: Running MultipleChamber</a></li>
+<li><a href="#example-2-directory-structure-of-the-output">Example 2: Directory Structure of the Output</a></li>
+<li><a href="#example-3-per-chamber-impedance-files">Example 3: Per-Chamber Impedance Files</a></li>
+<li><a href="#example-4-automatic-impedance-plots">Example 4: Automatic Impedance Plots</a></li>
+<li><a href="#example-5-total-impedance-summation">Example 5: Total Impedance Summation</a></li>
+<li><a href="#example-6-case-insensitive-mapping">Example 6: Case-Insensitive Mapping</a></li>
+<li><a href="#example-7-common-frequency-grid">Example 7: Common Frequency Grid</a></li>
+<li><a href="#notes-and-best-practices">Notes and Best Practices</a></li>
+</ul>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>The <code>MultipleChamber</code> class performs a <strong>fully automated impedance calculation</strong> for an accelerator lattice, using:</p>
+<ul>
+<li>a list of <strong>aperture types</strong> (<code>apertype2.txt</code>)</li>
+<li>a list of <strong>geometrical and optical parameters</strong> (<code>b_L_betax_betay.txt</code>)</li>
+<li>chamber <strong>configuration templates</strong> (<code>*.cfg</code>)</li>
+</ul>
+<p>For each lattice element:</p>
+<ol type="1">
+<li>The correct chamber geometry is selected<br />
+</li>
+<li>Element-specific parameters (radius, length, betax, betay) are applied<br />
+</li>
+<li>A <code>TlWall</code> object is instantiated<br />
+</li>
+<li>Longitudinal and transverse impedances are computed<br />
+</li>
+<li>Impedances are saved in a dedicated directory<br />
+</li>
+<li>Non-zero impedances are automatically plotted</li>
+</ol>
+<p>After processing all elements, the <strong>total impedance</strong> is computed and plotted.</p>
+<hr />
+<h2 id="input-files">Input Files</h2>
+<h3 id="aperture-type-file-apertype2.txt">1. Aperture Type File — <code>apertype2.txt</code></h3>
+<p>Each line corresponds to one lattice element:</p>
+<pre><code>Oblong
+Rectangular
+Oblong
+Round
+Diamond
+...</code></pre>
+<hr />
+<h3 id="geometry-and-optics-file-b_l_betax_betay.txt">2. Geometry and Optics File — <code>b_L_betax_betay.txt</code></h3>
+<p>Each line contains:</p>
+<pre><code>b   L   betax   betay</code></pre>
+<p>Example:</p>
+<pre><code>0.04   0.419   5.8405   4.425
+0.02   1.126   5.7071   4.2467
+...</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>b</strong></td>
+<td>Pipe radius / half-height</td>
+</tr>
+<tr class="even">
+<td><strong>L</strong></td>
+<td>Element length (m)</td>
+</tr>
+<tr class="odd">
+<td><strong>betax</strong></td>
+<td>Horizontal beta function</td>
+</tr>
+<tr class="even">
+<td><strong>betay</strong></td>
+<td>Vertical beta function</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="chamber-configuration-templates">3. Chamber Configuration Templates</h3>
+<p>The directory must include the <code>.cfg</code> files defining each chamber type:</p>
+<pre><code>Oblong.cfg
+Rectangular.cfg
+Round.cfg
+Diamond.cfg</code></pre>
+<p>Names are matched <strong>case-insensitively</strong>, both as dictionary keys and as filenames.</p>
+<hr />
+<h2 id="example-1-running-multiplechamber">Example 1: Running MultipleChamber</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> MultipleChamber</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mc <span class="op">=</span> MultipleChamber(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    apertype_file<span class="op">=</span><span class="st">&quot;apertype2.txt&quot;</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    geom_file<span class="op">=</span><span class="st">&quot;b_L_betax_betay.txt&quot;</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    input_dir<span class="op">=</span><span class="st">&quot;./examples/ex_multiple/&quot;</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    out_dir<span class="op">=</span><span class="st">&quot;output&quot;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>mc.run()</span></code></pre></div>
+<p>Key features:</p>
+<ul>
+<li>All files are read from <code>input_dir</code></li>
+<li>Configuration files are matched ignoring case</li>
+<li>Frequencies of the <em>first</em> element define the frequency grid for all others</li>
+<li>Automatically generates per-chamber directories</li>
+<li>Automatically generates plots for non-zero impedances</li>
+</ul>
+<hr />
+<h2 id="example-2-directory-structure-of-the-output">Example 2: Directory Structure of the Output</h2>
+<p>After running the example:</p>
+<pre><code>output/
+    chamber001/
+        impedance.xlsx
+        ZLong.png
+        ZTrans.png
+        ...
+    chamber002/
+        impedance.xlsx
+        ZLong.png
+        ZTrans.png
+        ...
+    ...
+    chamber211/
+        impedance.xlsx
+        ...
+    total/
+        total_impedance.xlsx
+        ZLong_tot.png
+        ZTrans_tot.png
+        ...</code></pre>
+<p>Notes:</p>
+<ul>
+<li>One directory per lattice element<br />
+</li>
+<li>Only non-zero impedances produce plots<br />
+</li>
+<li>The total directory contains summed impedances and their plots</li>
+</ul>
+<hr />
+<h2 id="example-3-per-chamber-impedance-files">Example 3: Per-Chamber Impedance Files</h2>
+<p>Each file <code>impedance.xlsx</code> contains:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>f [Hz]</td>
+<td>Frequency</td>
+</tr>
+<tr class="even">
+<td>ZLong real / imag</td>
+<td>Longitudinal impedance</td>
+</tr>
+<tr class="odd">
+<td>ZTrans real / imag</td>
+<td>Transverse impedance</td>
+</tr>
+<tr class="even">
+<td>ZDipX / ZDipY</td>
+<td>Dipolar components</td>
+</tr>
+<tr class="odd">
+<td>ZQuadX / ZQuadY</td>
+<td>Quadrupolar components</td>
+</tr>
+<tr class="even">
+<td>ZLongISC / ZTransISC</td>
+<td>Space-charge corrections</td>
+</tr>
+</tbody>
+</table>
+<p>All impedances are exported using <code>io_util.export_impedance</code>.</p>
+<hr />
+<h2 id="example-4-automatic-impedance-plots">Example 4: Automatic Impedance Plots</h2>
+<p>Plots are generated using:</p>
+<pre><code>plot_util.plot_Z_vs_f_simple()</code></pre>
+<p>Only impedances that are <strong>not identically zero or NaN</strong> are plotted.</p>
+<p>Example internal call:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plot_util.plot_Z_vs_f_simple(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    f<span class="op">=</span>freqs,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    Z<span class="op">=</span>Z,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    imped_type<span class="op">=</span><span class="st">&quot;L&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">&quot;Chamber 001 – ZLong&quot;</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    savedir<span class="op">=</span><span class="st">&quot;output/chamber001&quot;</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    savename<span class="op">=</span><span class="st">&quot;ZLong.png&quot;</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    xscale<span class="op">=</span><span class="st">&quot;log&quot;</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    yscale<span class="op">=</span><span class="st">&quot;log&quot;</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Plots are saved inside each chamber directory with filenames like:</p>
+<ul>
+<li><code>ZLong.png</code></li>
+<li><code>ZTrans.png</code></li>
+<li><code>ZDipX.png</code></li>
+<li>…</li>
+</ul>
+<hr />
+<h2 id="example-5-total-impedance-summation">Example 5: Total Impedance Summation</h2>
+<p>After processing all chambers:</p>
+<pre><code>Z_total[name] = Σ (Z_element[name])</code></pre>
+<p>Results are saved to:</p>
+<pre><code>output/total/total_impedance.xlsx</code></pre>
+<p>Plots generated:</p>
+<ul>
+<li><code>ZLong_tot.png</code></li>
+<li><code>ZTrans_tot.png</code></li>
+<li><code>ZDipX_tot.png</code></li>
+<li><code>ZQuadX_tot.png</code></li>
+<li>…</li>
+</ul>
+<hr />
+<h2 id="example-6-case-insensitive-mapping">Example 6: Case-Insensitive Mapping</h2>
+<p>Mapping used:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>DEFAULT_APERTYPE_TO_CFG <span class="op">=</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Oblong&quot;</span>: <span class="st">&quot;Oblong.cfg&quot;</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Rectangular&quot;</span>: <span class="st">&quot;Rectangular.cfg&quot;</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Round&quot;</span>: <span class="st">&quot;Round.cfg&quot;</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diamond&quot;</span>: <span class="st">&quot;Diamond.cfg&quot;</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Both:</p>
+<ul>
+<li>input strings (<code>oblong</code>, <code>OBLONG</code>, <code>ObLoNg</code>)</li>
+<li>filenames (<code>OBLONG.CFG</code>, <code>rectangular.cfg</code>)</li>
+</ul>
+<p>are matched ignoring case.</p>
+<p>This ensures robustness in large-scale workflows.</p>
+<hr />
+<h2 id="example-7-common-frequency-grid">Example 7: Common Frequency Grid</h2>
+<p>To guarantee element-by-element impedance summation:</p>
+<ul>
+<li>The frequency grid of the <strong>first</strong> processed element is stored</li>
+<li>The same <code>Frequencies</code> object is reused for all elements</li>
+<li>All impedance arrays have identical shapes</li>
+</ul>
+<p>This ensures:</p>
+<ul>
+<li>consistent longitudinal/transverse summation<br />
+</li>
+<li>no frequency mismatch<br />
+</li>
+<li>identical interpolation-free workflow</li>
+</ul>
+<hr />
+<h2 id="notes-and-best-practices">Notes and Best Practices</h2>
+<ul>
+<li><code>apertype2.txt</code> and <code>b_L_betax_betay.txt</code> must have the <strong>same number of lines</strong></li>
+<li>Chamber plots are only created for impedances containing meaningful data</li>
+<li><code>.cfg</code> files may define different frequencies, but only the first is used</li>
+<li>Use the <code>total/</code> directory for cross-checks and global validation</li>
+<li>Ensure <code>input_dir</code> contains all <code>.cfg</code> files required by the mapping</li>
+</ul>
+<hr />
+<p><strong><a href="EXAMPLES.html">◀ Back to Examples</a></strong></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

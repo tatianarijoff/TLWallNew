@@ -1,0 +1,96 @@
+2025-12-17 21:35:47 [INFO] ================================================================================
+2025-12-17 21:35:47 [INFO] PYTLWALL DEEP TEST: RoundChamber
+2025-12-17 21:35:47 [INFO] ================================================================================
+2025-12-17 21:35:47 [INFO] Timestamp: 2025-12-17 21:35:47
+2025-12-17 21:35:47 [INFO] Log file: tests/deep_test/RoundChamber/logs/deep_test_RoundChamber_20251217_213547.log
+2025-12-17 21:35:47 [INFO] 
+2025-12-17 21:35:47 [INFO] ================================================================================
+2025-12-17 21:35:47 [INFO] Running test: RoundChamber
+2025-12-17 21:35:47 [INFO] ================================================================================
+2025-12-17 21:35:47 [INFO] Configuration: tests/deep_test/RoundChamber/RoundChamberIWake2D.cfg
+2025-12-17 21:35:47 [INFO] Output directory: tests/deep_test/RoundChamber/output
+2025-12-17 21:35:47 [INFO] Image directory: tests/deep_test/RoundChamber/img
+2025-12-17 21:35:47 [INFO] Wake2D directory: tests/deep_test/RoundChamber/Wake2D
+2025-12-17 21:35:47 [INFO] 
+2025-12-17 21:35:47 [INFO] Loading configuration...
+2025-12-17 21:35:47 [INFO]   Boundary type: CW
+2025-12-17 21:35:47 [INFO]   Configuration loaded successfully
+2025-12-17 21:35:47 [INFO]   Chamber: CIRCULAR
+2025-12-17 21:35:47 [INFO]   Frequencies: 91 points
+2025-12-17 21:35:47 [INFO]   Frequency range: 1.00e+03 - 1.00e+13 Hz
+2025-12-17 21:35:47 [INFO] 
+2025-12-17 21:35:47 [INFO] Config file: RoundChamberIWake2D.cfg
+2025-12-17 21:35:47 [INFO]   Will compare with Wake2D: True
+2025-12-17 21:35:47 [INFO]   Will compare with OldTLWall: False
+2025-12-17 21:35:47 [INFO] 
+2025-12-17 21:35:47 [INFO] 
+  Impedance types to process: ['ZLongTotal', 'ZTransTotal', 'ZDipXTotal', 'ZDipYTotal', 'ZQuadXTotal', 'ZQuadYTotal']
+2025-12-17 21:35:47 [INFO] Computing and comparing impedances...
+2025-12-17 21:35:47 [INFO] 
+  Processing ZLongTotal (Total Longitudinal Impedance (ZLong + ISC))...
+2025-12-17 21:35:47 [INFO]     Saved output: ZLongTotal.txt
+2025-12-17 21:35:48 [INFO]     Saved plot: ZLongTotal.png
+2025-12-17 21:35:48 [INFO]     Wake2D reference: ZlongWLHC_1layers2.00mm_test_coll_round.dat
+2025-12-17 21:35:48 [INFO]   Saved Excel: NewTLWallvsWake2DLongTotal.xlsx
+2025-12-17 21:35:48 [INFO]     Saved plot: WakeVsNew_ZLongTotal.png
+2025-12-17 21:35:48 [INFO] 
+  Processing ZTransTotal (Total Transverse Impedance (ZTrans + ISC))...
+2025-12-17 21:35:48 [INFO]     Saved output: ZTransTotal.txt
+2025-12-17 21:35:49 [INFO]     Saved plot: ZTransTotal.png
+2025-12-17 21:35:49 [WARNING]     No Wake2D reference file found: ZtransW*.dat
+2025-12-17 21:35:49 [INFO] 
+  Processing ZDipXTotal (Total Horizontal Dipolar Impedance)...
+2025-12-17 21:35:49 [INFO]     Saved output: ZDipXTotal.txt
+2025-12-17 21:35:49 [INFO]     Saved plot: ZDipXTotal.png
+2025-12-17 21:35:49 [INFO]     Wake2D reference: ZxdipWLHC_1layers2.00mm_test_coll_round.dat
+2025-12-17 21:35:49 [INFO]   Saved Excel: NewTLWallvsWake2DDipXTotal.xlsx
+2025-12-17 21:35:50 [INFO]     Saved plot: WakeVsNew_ZDipXTotal.png
+2025-12-17 21:35:50 [INFO] 
+  Processing ZDipYTotal (Total Vertical Dipolar Impedance)...
+2025-12-17 21:35:50 [INFO]     Saved output: ZDipYTotal.txt
+2025-12-17 21:35:50 [INFO]     Saved plot: ZDipYTotal.png
+2025-12-17 21:35:50 [INFO]     Wake2D reference: ZydipWLHC_1layers2.00mm_test_coll_round.dat
+2025-12-17 21:35:50 [INFO]   Saved Excel: NewTLWallvsWake2DDipYTotal.xlsx
+2025-12-17 21:35:50 [INFO]     Saved plot: WakeVsNew_ZDipYTotal.png
+2025-12-17 21:35:50 [INFO] 
+  Processing ZQuadXTotal (Total Horizontal Quadrupolar Impedance)...
+2025-12-17 21:35:50 [INFO]     Saved output: ZQuadXTotal.txt
+2025-12-17 21:35:51 [INFO]     Saved plot: ZQuadXTotal.png
+2025-12-17 21:35:51 [INFO]     Wake2D reference: ZxquadWLHC_1layers2.00mm_test_coll_round.dat
+2025-12-17 21:35:51 [INFO]   Saved Excel: NewTLWallvsWake2DQuadXTotal.xlsx
+2025-12-17 21:35:51 [INFO]     Saved plot: WakeVsNew_ZQuadXTotal.png
+2025-12-17 21:35:51 [INFO] 
+  Processing ZQuadYTotal (Total Vertical Quadrupolar Impedance)...
+2025-12-17 21:35:51 [INFO]     Saved output: ZQuadYTotal.txt
+2025-12-17 21:35:52 [INFO]     Saved plot: ZQuadYTotal.png
+2025-12-17 21:35:52 [INFO]     Wake2D reference: ZyquadWLHC_1layers2.00mm_test_coll_round.dat
+2025-12-17 21:35:52 [INFO]   Saved Excel: NewTLWallvsWake2DQuadYTotal.xlsx
+2025-12-17 21:35:52 [INFO]     Saved plot: WakeVsNew_ZQuadYTotal.png
+2025-12-17 21:35:52 [INFO] 
+  Computing space charge impedances...
+2025-12-17 21:35:52 [INFO]     Processing ZLongDSC...
+2025-12-17 21:35:52 [INFO]       Saved: ZLongDSC.txt
+2025-12-17 21:35:52 [INFO]     Saved plot: ZLongDSC.png
+2025-12-17 21:35:52 [INFO]     Processing ZLongISC...
+2025-12-17 21:35:52 [INFO]       Saved: ZLongISC.txt
+2025-12-17 21:35:53 [INFO]     Saved plot: ZLongISC.png
+2025-12-17 21:35:53 [INFO]     Processing ZTransDSC...
+2025-12-17 21:35:53 [INFO]       Saved: ZTransDSC.txt
+2025-12-17 21:35:53 [INFO]     Saved plot: ZTransDSC.png
+2025-12-17 21:35:53 [INFO]     Processing ZTransISC...
+2025-12-17 21:35:53 [INFO]       Saved: ZTransISC.txt
+2025-12-17 21:35:53 [INFO]     Saved plot: ZTransISC.png
+2025-12-17 21:35:53 [INFO]     Processing ZDipDSC...
+2025-12-17 21:35:53 [INFO]       Saved: ZDipDSC.txt
+2025-12-17 21:35:54 [INFO]     Saved plot: ZDipDSC.png
+2025-12-17 21:35:54 [INFO]     Processing ZDipISC...
+2025-12-17 21:35:54 [INFO]       Saved: ZDipISC.txt
+2025-12-17 21:35:54 [INFO]     Saved plot: ZDipISC.png
+2025-12-17 21:35:54 [INFO] 
+✓ Test RoundChamber completed successfully
+2025-12-17 21:35:54 [INFO] 
+================================================================================
+2025-12-17 21:35:54 [INFO] TEST RoundChamber: PASSED ✓
+2025-12-17 21:35:54 [INFO] ================================================================================
+2025-12-17 21:35:54 [INFO] Log saved to: tests/deep_test/RoundChamber/logs/deep_test_RoundChamber_20251217_213547.log
+

@@ -1,0 +1,88 @@
+2025-12-17 09:42:46,100 - pytlwall_interface - INFO - setup_interface_logging:177 - Log file: /home/tatij/CERN/pytlwall/pytlwall-master/pytlwall_gui/log/pytlwall_gui_20251217_094246.log
+2025-12-17 09:42:46,100 - pytlwall_interface - INFO - setup_interface_logging:179 - pytlwall_interface logging initialized
+2025-12-17 09:42:46,101 - pytlwall_interface - DEBUG - cleanup_old_logs:242 - Cleaned up 1 old log file(s)
+2025-12-17 09:42:49,420 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1356 - Starting impedance calculation for current chamber
+2025-12-17 09:42:49,420 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1362 - Chamber: Chamber 1, component: Chamber 1
+2025-12-17 09:42:49,420 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1375 - Selected impedances: ['ZLong', 'ZTrans', 'ZDipX', 'ZDipY', 'ZQuadX', 'ZQuadY']
+2025-12-17 09:42:49,420 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1389 - Frequency config: mode=range
+2025-12-17 09:42:49,420 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1397 - Frequency range: 0.0 - 12.0 Hz, step=2.0
+2025-12-17 09:42:49,420 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1412 - Beam: gamma=10000.0, test_beam_shift=0.01
+2025-12-17 09:42:49,420 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1423 - Chamber: shape=CIRCULAR, radius=0.0184m, length=1.0m
+2025-12-17 09:42:49,420 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1447 - Layer 0: type=CW, thick=5e-07m, sigmaDC=1000000.0
+2025-12-17 09:42:49,420 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - Boundary layer: type=CW, sigmaDC=1000000000.0
+2025-12-17 09:42:49,420 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1474 - Beta functions: betax=1.0, betay=1.0
+2025-12-17 09:42:49,420 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1477 - Creating TlWall and calculating impedances...
+2025-12-17 09:42:49,421 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZLong: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:42:49,421 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZTrans: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:42:49,421 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZDipX: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:42:49,421 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZDipY: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:42:49,421 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZQuadX: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:42:49,421 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZQuadY: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:42:49,421 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1504 - Using fallback: get_all_impedances()
+2025-12-17 09:42:49,423 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZLong (fallback): shape=(1080,)
+2025-12-17 09:42:49,423 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZTrans (fallback): shape=(1080,)
+2025-12-17 09:42:49,423 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZDipX (fallback): shape=(1080,)
+2025-12-17 09:42:49,423 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZDipY (fallback): shape=(1080,)
+2025-12-17 09:42:49,423 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZQuadX (fallback): shape=(1080,)
+2025-12-17 09:42:49,423 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZQuadY (fallback): shape=(1080,)
+2025-12-17 09:42:49,424 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1523 - Successfully calculated 6 impedance(s) for Chamber 1
+2025-12-17 09:43:10,799 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1356 - Starting impedance calculation for current chamber
+2025-12-17 09:43:10,799 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1362 - Chamber: Chamber 1, component: Chamber 1
+2025-12-17 09:43:10,799 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1375 - Selected impedances: ['ZLong', 'ZTrans', 'ZDipX', 'ZDipY', 'ZQuadX', 'ZQuadY']
+2025-12-17 09:43:10,799 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1389 - Frequency config: mode=range
+2025-12-17 09:43:10,799 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1397 - Frequency range: 0.0 - 12.0 Hz, step=2.0
+2025-12-17 09:43:10,799 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1412 - Beam: gamma=10000.0, test_beam_shift=0.01
+2025-12-17 09:43:10,799 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1423 - Chamber: shape=RECTANGULAR, radius=0.0184m, length=1.0m
+2025-12-17 09:43:10,799 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1447 - Layer 0: type=CW, thick=5e-07m, sigmaDC=1000000.0
+2025-12-17 09:43:10,799 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - Boundary layer: type=CW, sigmaDC=1000000000.0
+2025-12-17 09:43:10,799 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1474 - Beta functions: betax=1.0, betay=1.0
+2025-12-17 09:43:10,799 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1477 - Creating TlWall and calculating impedances...
+2025-12-17 09:43:10,800 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZLong: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:10,800 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZTrans: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:10,800 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZDipX: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:10,800 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZDipY: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:10,800 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZQuadX: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:10,800 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZQuadY: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:10,800 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1504 - Using fallback: get_all_impedances()
+2025-12-17 09:43:10,807 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZLong (fallback): shape=(1080,)
+2025-12-17 09:43:10,807 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZTrans (fallback): shape=(1080,)
+2025-12-17 09:43:10,807 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZDipX (fallback): shape=(1080,)
+2025-12-17 09:43:10,807 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZDipY (fallback): shape=(1080,)
+2025-12-17 09:43:10,807 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZQuadX (fallback): shape=(1080,)
+2025-12-17 09:43:10,807 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZQuadY (fallback): shape=(1080,)
+2025-12-17 09:43:10,807 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1523 - Successfully calculated 6 impedance(s) for Chamber 1
+2025-12-17 09:43:29,721 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1356 - Starting impedance calculation for current chamber
+2025-12-17 09:43:29,721 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1362 - Chamber: Chamber 1, component: Chamber 1
+2025-12-17 09:43:29,725 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1369 - Removed 2 stale column(s) for chamber 'Chamber 1' from DataPanel
+2025-12-17 09:43:29,725 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1375 - Selected impedances: ['ZLong', 'ZTrans', 'ZDipX', 'ZDipY', 'ZQuadX', 'ZQuadY']
+2025-12-17 09:43:29,725 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1389 - Frequency config: mode=range
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1397 - Frequency range: 0.0 - 12.0 Hz, step=2.0
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1412 - Beam: gamma=10000.0, test_beam_shift=0.01
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1423 - Chamber: shape=RECTANGULAR, radius=0.0184m, length=1.0m
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1447 - Layer 0: type=CW, thick=5e-07m, sigmaDC=1000000.0
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - Boundary layer: type=V, sigmaDC=1000000000.0
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1474 - Beta functions: betax=1.0, betay=1.0
+2025-12-17 09:43:29,726 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1477 - Creating TlWall and calculating impedances...
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZLong: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZTrans: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZDipX: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZDipY: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZQuadX: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1499 - get_impedance failed for ZQuadY: 'TlWall' object has no attribute 'get_impedance'
+2025-12-17 09:43:29,726 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1504 - Using fallback: get_all_impedances()
+2025-12-17 09:43:29,737 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZLong (fallback): shape=(1080,)
+2025-12-17 09:43:29,737 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZTrans (fallback): shape=(1080,)
+2025-12-17 09:43:29,737 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZDipX (fallback): shape=(1080,)
+2025-12-17 09:43:29,737 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZDipY (fallback): shape=(1080,)
+2025-12-17 09:43:29,737 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZQuadX (fallback): shape=(1080,)
+2025-12-17 09:43:29,737 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1512 - Calculated ZQuadY (fallback): shape=(1080,)
+2025-12-17 09:43:29,737 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1523 - Successfully calculated 6 impedance(s) for Chamber 1
+2025-12-17 09:43:43,680 - pytlwall_interface - INFO - _on_load_accelerator:1553 - Starting Load Accelerator
+2025-12-17 09:44:00,479 - pytlwall_interface - INFO - _on_load_accelerator:1615 - MultipleChamber loaded 211 elements
+2025-12-17 09:44:00,479 - pytlwall_interface - INFO - _on_load_accelerator:1653 - Cleared all existing chambers
+2025-12-17 09:44:00,558 - pytlwall_interface - INFO - _on_load_accelerator:1708 - Loaded 211 chamber(s) from accelerator data.
+2025-12-17 09:44:57,157 - pytlwall_interface - INFO - _create_total_chamber_from_complex:1921 - Created Total chamber with summed impedances (at top)
+2025-12-17 09:44:57,157 - pytlwall_interface - INFO - _on_calculate_accelerator:1859 - Calculation complete: 211 successful
+
+Results saved to:
+/home/tatij/CERN/pytlwall/pytlwall-master/tests/multiple/Output

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>API REFERENCE BEAM</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#beam-module-api-reference">beam Module API Reference</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#import">Import</a></li>
+<li><a href="#beam-class">Beam Class</a>
+<ul>
+<li><a href="#class-definition">Class Definition</a></li>
+<li><a href="#constructor">Constructor</a></li>
+</ul></li>
+<li><a href="#attributes">Attributes</a>
+<ul>
+<li><a href="#betarel"><code>betarel</code></a></li>
+<li><a href="#gammarel"><code>gammarel</code></a></li>
+<li><a href="#ekin_mev"><code>Ekin_MeV</code></a></li>
+<li><a href="#p_mev_c"><code>p_MeV_c</code></a></li>
+<li><a href="#e_tot_mev"><code>E_tot_MeV</code></a></li>
+<li><a href="#test_beam_shift"><code>test_beam_shift</code></a></li>
+<li><a href="#mass_mev_c2"><code>mass_MeV_c2</code></a></li>
+</ul></li>
+<li><a href="#methods">Methods</a>
+<ul>
+<li><a href="#property-setters">Property Setters</a></li>
+<li><a href="#repr__-__str__"><code>__repr__()</code> / <code>__str__()</code></a></li>
+</ul></li>
+<li><a href="#constants">Constants</a>
+<ul>
+<li><a href="#m_proton_mev"><code>M_PROTON_MEV</code></a></li>
+</ul></li>
+<li><a href="#exceptions">Exceptions</a>
+<ul>
+<li><a href="#beamvalidationerror"><code>BeamValidationError</code></a></li>
+</ul></li>
+<li><a href="#usage-examples">Usage Examples</a>
+<ul>
+<li><a href="#example-1-lhc-proton-beam-at-7-tev">Example 1: LHC Proton Beam at 7 TeV</a></li>
+<li><a href="#example-2-converting-between-representations">Example 2: Converting Between Representations</a></li>
+<li><a href="#example-3-electron-beam">Example 3: Electron Beam</a></li>
+<li><a href="#example-4-low-energy-vs-high-energy">Example 4: Low Energy vs High Energy</a></li>
+<li><a href="#example-5-integration-with-tlwall">Example 5: Integration with TlWall</a></li>
+</ul></li>
+<li><a href="#notes-and-conventions">Notes and Conventions</a>
+<ul>
+<li><a href="#relativistic-relations">Relativistic Relations</a></li>
+<li><a href="#typical-beam-parameters">Typical Beam Parameters</a></li>
+<li><a href="#ultra-relativistic-limit">Ultra-Relativistic Limit</a></li>
+<li><a href="#parameter-priority">Parameter Priority</a></li>
+</ul></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">API REFERENCE BEAM</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="beam-module-api-reference">beam Module API Reference</h1>
+<h2 id="overview">Overview</h2>
+<p>The <code>beam</code> module provides the <code>Beam</code> class for handling relativistic particle beam parameters in accelerator physics calculations.</p>
+<p>The <code>Beam</code> class represents a particle beam, managing relativistic parameters such as the Lorentz factor (γ), relativistic beta (β), kinetic energy, and momentum. It provides automatic conversions between different representations of beam energy and velocity while maintaining internal consistency.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#import">Import</a></li>
+<li><a href="#beam-class">Beam Class</a></li>
+<li><a href="#attributes">Attributes</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#constants">Constants</a></li>
+<li><a href="#exceptions">Exceptions</a></li>
+<li><a href="#usage-examples">Usage Examples</a></li>
+<li><a href="#notes-and-conventions">Notes and Conventions</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+<hr />
+<h2 id="import">Import</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Beam</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.beam <span class="im">import</span> Beam, BeamValidationError, M_PROTON_MEV</span></code></pre></div>
+<hr />
+<h2 id="beam-class">Beam Class</h2>
+<h3 id="class-definition">Class Definition</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Beam:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Relativistic particle beam representation.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    This class encapsulates the kinematic properties of a relativistic</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    particle beam, automatically maintaining consistency between different</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    representations (beta, gamma, kinetic energy, momentum).</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<h3 id="constructor">Constructor</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Beam(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    Ekin_MeV<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    p_MeV_c<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    betarel<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    gammarel<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    test_beam_shift<span class="op">=</span><span class="fl">0.001</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    mass_MeV_c2<span class="op">=</span><span class="fl">938.272</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<h4 id="parameters">Parameters</h4>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 15%" />
+<col style="width: 23%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Ekin_MeV</code></td>
+<td><code>float</code></td>
+<td><code>inf</code></td>
+<td>Kinetic energy in MeV</td>
+</tr>
+<tr class="even">
+<td><code>p_MeV_c</code></td>
+<td><code>float</code></td>
+<td><code>inf</code></td>
+<td>Momentum in MeV/c</td>
+</tr>
+<tr class="odd">
+<td><code>betarel</code></td>
+<td><code>float</code></td>
+<td><code>1.0</code></td>
+<td>Relativistic beta (β = v/c)</td>
+</tr>
+<tr class="even">
+<td><code>gammarel</code></td>
+<td><code>float</code></td>
+<td><code>inf</code></td>
+<td>Lorentz gamma factor (γ)</td>
+</tr>
+<tr class="odd">
+<td><code>test_beam_shift</code></td>
+<td><code>float</code></td>
+<td><code>0.001</code></td>
+<td>Test beam distance offset in meters</td>
+</tr>
+<tr class="even">
+<td><code>mass_MeV_c2</code></td>
+<td><code>float</code></td>
+<td><code>M_PROTON_MEV</code></td>
+<td>Particle rest mass energy in MeV/c²</td>
+</tr>
+</tbody>
+</table>
+<h4 id="priority-order">Priority Order</h4>
+<p>When multiple parameters are provided, the priority is:</p>
+<ol type="1">
+<li><code>Ekin_MeV</code> (highest priority)</li>
+<li><code>p_MeV_c</code></li>
+<li><code>betarel</code></li>
+<li><code>gammarel</code> (lowest priority)</li>
+</ol>
+<p>If no parameters are provided, defaults to ultra-relativistic limit (β = 1).</p>
+<h4 id="raises">Raises</h4>
+<ul>
+<li><code>BeamValidationError</code>: If mass is invalid (≤ 0) or kinematic parameters are out of valid range</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.beam <span class="im">import</span> Beam</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create beam from gamma (LHC 7 TeV protons)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>beam1 <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create beam from kinetic energy</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>beam2 <span class="op">=</span> Beam(Ekin_MeV<span class="op">=</span><span class="fl">7e6</span>)  <span class="co"># 7 TeV</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create beam from beta</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>beam3 <span class="op">=</span> Beam(betarel<span class="op">=</span><span class="fl">0.999999991</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create beam from momentum</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>beam4 <span class="op">=</span> Beam(p_MeV_c<span class="op">=</span><span class="dv">7000000</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ultra-relativistic (default)</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>beam5 <span class="op">=</span> Beam()  <span class="co"># β = 1, γ = inf</span></span></code></pre></div>
+<hr />
+<h2 id="attributes">Attributes</h2>
+<h3 id="betarel"><code>betarel</code></h3>
+<p><strong>Type:</strong> <code>float</code> (read/write)</p>
+<p><strong>Description:</strong> Relativistic beta factor (β = v/c).</p>
+<p><strong>Range:</strong> 0 &lt; β ≤ 1</p>
+<p><strong>Notes:</strong> Setting this property automatically updates <code>gammarel</code>, <code>Ekin_MeV</code>, and <code>p_MeV_c</code>.</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">2.0</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Beta: </span><span class="sc">{</span>beam<span class="sc">.</span>betarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)  <span class="co"># Output: Beta: 0.866025</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify beta</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>beam.betarel <span class="op">=</span> <span class="fl">0.9</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;New gamma: </span><span class="sc">{</span>beam<span class="sc">.</span>gammarel<span class="sc">:.4f}</span><span class="ss">&quot;</span>)  <span class="co"># Automatically updated</span></span></code></pre></div>
+<hr />
+<h3 id="gammarel"><code>gammarel</code></h3>
+<p><strong>Type:</strong> <code>float</code> (read/write)</p>
+<p><strong>Description:</strong> Lorentz gamma factor (γ).</p>
+<p><strong>Range:</strong> γ ≥ 1 (1 for rest, inf for ultra-relativistic)</p>
+<p><strong>Definition:</strong> γ = 1/√(1-β²)</p>
+<p><strong>Notes:</strong> Setting this property automatically updates <code>betarel</code>, <code>Ekin_MeV</code>, and <code>p_MeV_c</code>.</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Gamma: </span><span class="sc">{</span>beam<span class="sc">.</span>gammarel<span class="sc">:.2f}</span><span class="ss">&quot;</span>)  <span class="co"># Output: Gamma: 7460.52</span></span></code></pre></div>
+<hr />
+<h3 id="ekin_mev"><code>Ekin_MeV</code></h3>
+<p><strong>Type:</strong> <code>float</code> (read/write)</p>
+<p><strong>Description:</strong> Kinetic energy in MeV.</p>
+<p><strong>Formula:</strong> E_kin = (γ - 1) × m × c²</p>
+<p><strong>Notes:</strong> Setting this property automatically updates <code>betarel</code>, <code>gammarel</code>, and <code>p_MeV_c</code>.</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">2.0</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Kinetic energy: </span><span class="sc">{</span>beam<span class="sc">.</span>Ekin_MeV<span class="sc">:.2f}</span><span class="ss"> MeV&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="p_mev_c"><code>p_MeV_c</code></h3>
+<p><strong>Type:</strong> <code>float</code> (read/write)</p>
+<p><strong>Description:</strong> Momentum in MeV/c.</p>
+<p><strong>Formula:</strong> p = γ × m × β × c</p>
+<p><strong>Notes:</strong> Setting this property automatically updates <code>betarel</code>, <code>gammarel</code>, and <code>Ekin_MeV</code>.</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(p_MeV_c<span class="op">=</span><span class="dv">7000000</span>)  <span class="co"># 7 TeV/c momentum</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Momentum: </span><span class="sc">{</span>beam<span class="sc">.</span>p_MeV_c<span class="sc">:.0f}</span><span class="ss"> MeV/c&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="e_tot_mev"><code>E_tot_MeV</code></h3>
+<p><strong>Type:</strong> <code>float</code> (read-only)</p>
+<p><strong>Description:</strong> Total energy in MeV.</p>
+<p><strong>Formula:</strong> E_tot = γ × m × c² = E_kin + m × c²</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">2.0</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Total energy: </span><span class="sc">{</span>beam<span class="sc">.</span>E_tot_MeV<span class="sc">:.2f}</span><span class="ss"> MeV&quot;</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Verification: </span><span class="sc">{</span>beam<span class="sc">.</span>Ekin_MeV <span class="op">+</span> beam<span class="sc">.</span>mass_MeV_c2<span class="sc">:.2f}</span><span class="ss"> MeV&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="test_beam_shift"><code>test_beam_shift</code></h3>
+<p><strong>Type:</strong> <code>float</code> (read/write)</p>
+<p><strong>Description:</strong> Test beam distance offset in meters for impedance calculations.</p>
+<p><strong>Default:</strong> 0.001 m (1 mm)</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>beam.test_beam_shift <span class="op">=</span> <span class="fl">0.002</span>  <span class="co"># 2 mm offset</span></span></code></pre></div>
+<hr />
+<h3 id="mass_mev_c2"><code>mass_MeV_c2</code></h3>
+<p><strong>Type:</strong> <code>float</code> (read-only)</p>
+<p><strong>Description:</strong> Particle rest mass energy in MeV/c².</p>
+<p><strong>Default:</strong> Proton mass (938.272 MeV/c²)</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">2.0</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Proton mass: </span><span class="sc">{</span>beam<span class="sc">.</span>mass_MeV_c2<span class="sc">:.3f}</span><span class="ss"> MeV/c²&quot;</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Electron beam</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>electron_beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="dv">1000</span>, mass_MeV_c2<span class="op">=</span><span class="fl">0.511</span>)</span></code></pre></div>
+<hr />
+<h2 id="methods">Methods</h2>
+<h3 id="property-setters">Property Setters</h3>
+<p>Each kinematic property (<code>betarel</code>, <code>gammarel</code>, <code>Ekin_MeV</code>, <code>p_MeV_c</code>) has a setter that: 1. Validates the input value 2. Updates the internal state 3. Automatically recalculates all dependent quantities</p>
+<p><strong>Validation Behavior:</strong> - Invalid values raise <code>BeamValidationError</code> - All kinematic parameters remain consistent after any change</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(betarel<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Initial: β=</span><span class="sc">{</span>beam<span class="sc">.</span>betarel<span class="sc">:.4f}</span><span class="ss">, γ=</span><span class="sc">{</span>beam<span class="sc">.</span>gammarel<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>beam.gammarel <span class="op">=</span> <span class="fl">5.0</span>  <span class="co"># Change gamma</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;After:   β=</span><span class="sc">{</span>beam<span class="sc">.</span>betarel<span class="sc">:.6f}</span><span class="ss">, γ=</span><span class="sc">{</span>beam<span class="sc">.</span>gammarel<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># β is automatically recalculated</span></span></code></pre></div>
+<hr />
+<h3 id="repr__-__str__"><code>__repr__()</code> / <code>__str__()</code></h3>
+<p>String representations of the Beam object.</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">repr</span>(beam))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: Beam(β=0.999999991, γ=7460.52, E_kin=7.00e+06 MeV)</span></span></code></pre></div>
+<hr />
+<h2 id="constants">Constants</h2>
+<h3 id="m_proton_mev"><code>M_PROTON_MEV</code></h3>
+<p><strong>Type:</strong> <code>float</code></p>
+<p><strong>Value:</strong> 938.27208816 MeV/c² (CODATA 2018)</p>
+<p><strong>Description:</strong> Proton rest mass energy equivalent.</p>
+<p><strong>Usage:</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.beam <span class="im">import</span> M_PROTON_MEV</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Proton mass: </span><span class="sc">{</span>M_PROTON_MEV<span class="sc">:.6f}</span><span class="ss"> MeV/c²&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="exceptions">Exceptions</h2>
+<h3 id="beamvalidationerror"><code>BeamValidationError</code></h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BeamValidationError(<span class="pp">ValueError</span>):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Exception raised for invalid beam parameter values.&quot;&quot;&quot;</span></span></code></pre></div>
+<p><strong>Raised when:</strong> - <code>betarel</code> ≤ 0 or &gt; 1 - <code>gammarel</code> &lt; 1 - <code>Ekin_MeV</code> &lt; 0 - <code>p_MeV_c</code> &lt; 0 - <code>mass_MeV_c2</code> ≤ 0</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.beam <span class="im">import</span> Beam, BeamValidationError</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    beam <span class="op">=</span> Beam(betarel<span class="op">=</span><span class="fl">1.5</span>)  <span class="co"># Invalid: β &gt; 1</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> BeamValidationError <span class="im">as</span> e:</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="example-1-lhc-proton-beam-at-7-tev">Example 1: LHC Proton Beam at 7 TeV</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.beam <span class="im">import</span> Beam</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create beam from kinetic energy</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>lhc_beam <span class="op">=</span> Beam(Ekin_MeV<span class="op">=</span><span class="fl">7e6</span>)  <span class="co"># 7 TeV</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;LHC 7 TeV Proton Beam:&quot;</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma: </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>gammarel<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Beta:  </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>betarel<span class="sc">:.10f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Kinetic Energy: </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>Ekin_MeV<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> TeV&quot;</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Momentum: </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>p_MeV_c<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> TeV/c&quot;</span>)</span></code></pre></div>
+<h3 id="example-2-converting-between-representations">Example 2: Converting Between Representations</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.beam <span class="im">import</span> Beam</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with beta</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(betarel<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;From β=0.9:&quot;</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  γ = </span><span class="sc">{</span>beam<span class="sc">.</span>gammarel<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  E_kin = </span><span class="sc">{</span>beam<span class="sc">.</span>Ekin_MeV<span class="sc">:.2f}</span><span class="ss"> MeV&quot;</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  p = </span><span class="sc">{</span>beam<span class="sc">.</span>p_MeV_c<span class="sc">:.2f}</span><span class="ss"> MeV/c&quot;</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Change to different gamma</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>beam.gammarel <span class="op">=</span> <span class="fl">10.0</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">After setting γ=10:&quot;</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  β = </span><span class="sc">{</span>beam<span class="sc">.</span>betarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  E_kin = </span><span class="sc">{</span>beam<span class="sc">.</span>Ekin_MeV<span class="sc">:.2f}</span><span class="ss"> MeV&quot;</span>)</span></code></pre></div>
+<h3 id="example-3-electron-beam">Example 3: Electron Beam</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.beam <span class="im">import</span> Beam</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Electron at 100 GeV</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>electron <span class="op">=</span> Beam(</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    Ekin_MeV<span class="op">=</span><span class="dv">100000</span>,  <span class="co"># 100 GeV</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    mass_MeV_c2<span class="op">=</span><span class="fl">0.511</span>  <span class="co"># Electron mass</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;100 GeV Electron:&quot;</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma: </span><span class="sc">{</span>electron<span class="sc">.</span>gammarel<span class="sc">:.0f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Beta:  </span><span class="sc">{</span>electron<span class="sc">.</span>betarel<span class="sc">:.12f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h3 id="example-4-low-energy-vs-high-energy">Example 4: Low Energy vs High Energy</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.beam <span class="im">import</span> Beam</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Low energy (non-relativistic)</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>low_energy <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">1.1</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Low energy (γ=1.1):&quot;</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  β = </span><span class="sc">{</span>low_energy<span class="sc">.</span>betarel<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  v/c = </span><span class="sc">{</span>low_energy<span class="sc">.</span>betarel<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%&quot;</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># High energy (ultra-relativistic)</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>high_energy <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="dv">7460</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">High energy (γ=7460):&quot;</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  β = </span><span class="sc">{</span>high_energy<span class="sc">.</span>betarel<span class="sc">:.10f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  1 - β = </span><span class="sc">{</span><span class="dv">1</span><span class="op">-</span>high_energy<span class="sc">.</span>betarel<span class="sc">:.2e}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h3 id="example-5-integration-with-tlwall">Example 5: Integration with TlWall</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Beam, Frequencies, Layer, Chamber, TlWall</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define LHC beam</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create chamber with layers</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>, chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>copper <span class="op">=</span> Layer(thick_m<span class="op">=</span><span class="fl">0.001</span>, sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, freq_Hz<span class="op">=</span>freqs.freq)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>chamber.layers <span class="op">=</span> [copper]</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate impedance</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> TlWall(chamber<span class="op">=</span>chamber, beam<span class="op">=</span>beam, frequencies<span class="op">=</span>freqs)</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.calc_ZLong()</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Calculated for beam with β=</span><span class="sc">{</span>beam<span class="sc">.</span>betarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="notes-and-conventions">Notes and Conventions</h2>
+<h3 id="relativistic-relations">Relativistic Relations</h3>
+<p>The <code>Beam</code> class uses these fundamental relations:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Relation</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lorentz factor</td>
+<td>γ = 1/√(1-β²)</td>
+</tr>
+<tr class="even">
+<td>Beta factor</td>
+<td>β = √(1-1/γ²)</td>
+</tr>
+<tr class="odd">
+<td>Kinetic energy</td>
+<td>E_kin = (γ-1)·m·c²</td>
+</tr>
+<tr class="even">
+<td>Total energy</td>
+<td>E_tot = γ·m·c²</td>
+</tr>
+<tr class="odd">
+<td>Momentum</td>
+<td>p = γ·m·β·c</td>
+</tr>
+<tr class="even">
+<td>Energy-momentum</td>
+<td>E_tot² = (pc)² + (mc²)²</td>
+</tr>
+</tbody>
+</table>
+<h3 id="typical-beam-parameters">Typical Beam Parameters</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Accelerator</th>
+<th>Particle</th>
+<th>Energy</th>
+<th>γ</th>
+<th>β</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>LHC</td>
+<td>Proton</td>
+<td>7 TeV</td>
+<td>7460.52</td>
+<td>0.999999991</td>
+</tr>
+<tr class="even">
+<td>SPS</td>
+<td>Proton</td>
+<td>450 GeV</td>
+<td>479.6</td>
+<td>0.999998</td>
+</tr>
+<tr class="odd">
+<td>Tevatron</td>
+<td>Proton</td>
+<td>980 GeV</td>
+<td>1044.6</td>
+<td>0.999999543</td>
+</tr>
+<tr class="even">
+<td>LEP</td>
+<td>Electron</td>
+<td>100 GeV</td>
+<td>195695</td>
+<td>0.999999999987</td>
+</tr>
+<tr class="odd">
+<td>RHIC</td>
+<td>Au ion</td>
+<td>100 GeV/u</td>
+<td>107.4</td>
+<td>0.99996</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ultra-relativistic-limit">Ultra-Relativistic Limit</h3>
+<p>When no parameters are specified, the beam defaults to the ultra-relativistic limit: - β = 1.0 - γ = ∞ - E_kin = ∞ - p = ∞</p>
+<p>This is useful for quick calculations where the exact beam energy is not critical.</p>
+<h3 id="parameter-priority">Parameter Priority</h3>
+<p>The constructor priority ensures that if you specify multiple parameters, the most physically meaningful one takes precedence:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ekin_MeV takes priority - other parameters ignored</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(Ekin_MeV<span class="op">=</span><span class="dv">1000</span>, gammarel<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Result: gammarel will be calculated from Ekin_MeV, not 100</span></span></code></pre></div>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="API_REFERENCE_FREQUENCIES.html">frequencies Module</a> - Frequency range definition</li>
+<li><a href="API_REFERENCE_LAYER.html">layer Module</a> - Material layer properties</li>
+<li><a href="API_REFERENCE_CHAMBER.html">chamber Module</a> - Chamber geometry definitions</li>
+<li><a href="API_REFERENCE_TLWALL.html">tlwall Module</a> - Main impedance calculator</li>
+<li><a href="API_REFERENCE.html">Main API Reference</a> - Complete API documentation</li>
+</ul>
+<hr />
+<p><em>Last updated: December 2025</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

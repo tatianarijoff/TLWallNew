@@ -1,0 +1,3 @@
+2025-12-17 12:12:42,897 - pytlwall_interface - INFO - setup_interface_logging:177 - Log file: /home/tatij/CERN/pytlwall/pytlwall-master/pytlwall_gui/log/pytlwall_gui_20251217_121242.log
+2025-12-17 12:12:42,897 - pytlwall_interface - INFO - setup_interface_logging:179 - pytlwall_interface logging initialized
+2025-12-17 12:12:42,898 - pytlwall_interface - DEBUG - cleanup_old_logs:242 - Cleaned up 1 old log file(s)

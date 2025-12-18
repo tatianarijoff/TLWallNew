@@ -1,0 +1,16 @@
+ISC COMPARISON SUMMARY
+================================================================================
+
+Which version (with or without ISC) matches Wake2D better?
+
+Impedance        | With ISC Score  | Without ISC Score  | Better Match   
+--------------------------------------------------------------------------------
+Longitudinal     |            2.70 |               2.69 | WITHOUT ISC    
+Dipolar X        |           57.32 |              57.32 | WITH ISC       
+Dipolar Y        |           57.32 |              57.32 | WITH ISC       
+Quadrupolar X    |      1660735.69 |               2.69 | WITHOUT ISC    
+Quadrupolar Y    |      1660735.69 |               2.69 | WITHOUT ISC    
+
+
+Score = median absolute percentage difference (Real + Imag) / 2
+Lower score = better match with Wake2D

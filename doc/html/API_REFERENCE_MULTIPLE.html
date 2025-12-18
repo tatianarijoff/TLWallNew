@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>API REFERENCE MULTIPLE</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#api_reference_multiple.html">📄 <strong>API_REFERENCE_MULTIPLE.md</strong></a>
+<ul>
+<li><a href="#constructor">Constructor</a>
+<ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#default-mapping">Default Mapping</a></li>
+</ul></li>
+<li><a href="#attributes">Attributes</a>
+<ul>
+<li><a href="#input_dir-path"><code>input_dir : Path</code></a></li>
+<li><a href="#out_dir-path"><code>out_dir : Path</code></a></li>
+<li><a href="#apertype_file-path"><code>apertype_file : Path</code></a></li>
+<li><a href="#geom_file-path"><code>geom_file : Path</code></a></li>
+<li><a href="#apertype_to_cfg-dictstr-str"><code>apertype_to_cfg : Dict[str, str]</code></a></li>
+<li><a href="#apertypes-liststr"><code>apertypes : List[str]</code></a></li>
+<li><a href="#b_list-l_list-betax_list-betay_list"><code>b_list, L_list, betax_list, betay_list</code></a></li>
+<li><a href="#freq_obj_ref-optionalfrequencies"><code>_freq_obj_ref : Optional[Frequencies]</code></a></li>
+</ul></li>
+<li><a href="#methods">Methods</a>
+<ul>
+<li><a href="#run"><code>run()</code></a></li>
+<li><a href="#load_input_data"><code>_load_input_data()</code></a></li>
+<li><a href="#get_cfg_path_for_apertypeapertype"><code>_get_cfg_path_for_apertype(apertype)</code></a></li>
+<li><a href="#get_cfg_handlerapertype"><code>_get_cfg_handler(apertype)</code></a></li>
+<li><a href="#build_wall_for_element..."><code>_build_wall_for_element(...)</code></a></li>
+<li><a href="#save_element_impedance..."><code>_save_element_impedance(...)</code></a></li>
+<li><a href="#save_total_impedance..."><code>_save_total_impedance(...)</code></a></li>
+</ul></li>
+<li><a href="#file-formats">File Formats</a>
+<ul>
+<li><a href="#aperture-type-file-apertype2.txt">Aperture Type File (<code>apertype2.txt</code>)</a></li>
+<li><a href="#geometry-file-b_l_betax_betay.txt">Geometry File (<code>b_L_betax_betay.txt</code>)</a></li>
+</ul></li>
+<li><a href="#directory-structure">Directory Structure</a></li>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#basic-usage">Basic Usage</a></li>
+<li><a href="#custom-mapping">Custom Mapping</a></li>
+<li><a href="#inspecting-data-after-run">Inspecting Data After Run</a></li>
+</ul></li>
+<li><a href="#notes">Notes</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">API REFERENCE MULTIPLE</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="api_reference_multiple.md">📄 <strong>API_REFERENCE_MULTIPLE.md</strong></h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># MultipleChamber API Reference</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>The <span class="in">`multiple_chamber`</span> module provides the <span class="in">`MultipleChamber`</span> class to perform **lattice-level impedance calculations** using the PyTLWall transmission line model. It:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>reads aperture types and geometry/optics from text files  </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>maps each aperture type to a chamber configuration (<span class="in">`*.cfg`</span>)  </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>builds a <span class="in">`TlWall`</span> instance per element  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>computes longitudinal and transverse impedances  </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>exports per-element and total impedance data  </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>generates plots for all non-trivial impedances.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Table of Contents</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">MultipleChamber Class</span><span class="co">](#multiplechamber-class)</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Constructor</span><span class="co">](#constructor)</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Attributes</span><span class="co">](#attributes)</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Methods</span><span class="co">](#methods)</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">File Formats</span><span class="co">](#file-formats)</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Directory Structure</span><span class="co">](#directory-structure)</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Examples</span><span class="co">](#examples)</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Notes</span><span class="co">](#notes)</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">## MultipleChamber Class</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MultipleChamber:</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co">    Multiple-chamber impedance calculator for accelerator lattices.</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<p>Coordinates the entire multi-element impedance workflow.</p>
+<hr />
+<h2 id="constructor">Constructor</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>MultipleChamber(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    apertype_file: <span class="bu">str</span> <span class="op">|</span> Path,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    geom_file: <span class="bu">str</span> <span class="op">|</span> Path,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    input_dir: <span class="bu">str</span> <span class="op">|</span> Path <span class="op">=</span> <span class="st">&quot;.&quot;</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    out_dir: <span class="bu">str</span> <span class="op">|</span> Path <span class="op">=</span> <span class="st">&quot;output&quot;</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    apertype_to_cfg: Optional[Dict[<span class="bu">str</span>, <span class="bu">str</span>]] <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<h3 id="parameters">Parameters</h3>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>apertype_file</code></td>
+<td>str/Path</td>
+<td>—</td>
+<td>Aperture type list file; resolved inside <code>input_dir</code> if relative.</td>
+</tr>
+<tr class="even">
+<td><code>geom_file</code></td>
+<td>str/Path</td>
+<td>—</td>
+<td>Geometry/optics list file; resolved inside <code>input_dir</code> if relative.</td>
+</tr>
+<tr class="odd">
+<td><code>input_dir</code></td>
+<td>str/Path</td>
+<td><code>"."</code></td>
+<td>Directory containing all input files including <code>.cfg</code>.</td>
+</tr>
+<tr class="even">
+<td><code>out_dir</code></td>
+<td>str/Path</td>
+<td><code>"output"</code></td>
+<td>Base directory for generated outputs.</td>
+</tr>
+<tr class="odd">
+<td><code>apertype_to_cfg</code></td>
+<td>dict/None</td>
+<td>None</td>
+<td>Optional map aperture→cfg (case-insensitive).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="default-mapping">Default Mapping</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Oblong&quot;</span>: <span class="st">&quot;Oblong.cfg&quot;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Rectangular&quot;</span>: <span class="st">&quot;Rectangular.cfg&quot;</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Round&quot;</span>: <span class="st">&quot;Round.cfg&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Diamond&quot;</span>: <span class="st">&quot;Diamond.cfg&quot;</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Matching is case-insensitive for both keys and filenames.</p>
+<hr />
+<h2 id="attributes">Attributes</h2>
+<h3 id="input_dir-path"><code>input_dir : Path</code></h3>
+<p>Absolute path of the directory containing input files.</p>
+<h3 id="out_dir-path"><code>out_dir : Path</code></h3>
+<p>Absolute output directory for all results.</p>
+<h3 id="apertype_file-path"><code>apertype_file : Path</code></h3>
+<p>Resolved path to the aperture list file.</p>
+<h3 id="geom_file-path"><code>geom_file : Path</code></h3>
+<p>Resolved path to the geometry list file.</p>
+<h3 id="apertype_to_cfg-dictstr-str"><code>apertype_to_cfg : Dict[str, str]</code></h3>
+<p>Mapping of aperture types to <code>.cfg</code> templates (lowercased internally).</p>
+<h3 id="apertypes-liststr"><code>apertypes : List[str]</code></h3>
+<p>Aperture type string for each lattice element.</p>
+<h3 id="b_list-l_list-betax_list-betay_list"><code>b_list, L_list, betax_list, betay_list</code></h3>
+<p>Lists of geometry/optics values read from <code>geom_file</code>.</p>
+<h3 id="freq_obj_ref-optionalfrequencies"><code>_freq_obj_ref : Optional[Frequencies]</code></h3>
+<p>Internal reference to the <strong>shared</strong> frequency grid (taken from first element).</p>
+<hr />
+<h2 id="methods">Methods</h2>
+<h3 id="run"><code>run()</code></h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Execute the multi-chamber impedance calculation.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<p>Performs the complete workflow:</p>
+<ol type="1">
+<li>Loads aperture, geometry, optics</li>
+<li>Builds <code>TlWall</code> objects for all elements</li>
+<li>Computes all impedances</li>
+<li>Saves per-element impedance data (Excel)</li>
+<li>Generates plots for non-zero impedances</li>
+<li>Sums impedances and writes total results.</li>
+</ol>
+<hr />
+<h3 id="load_input_data"><code>_load_input_data()</code></h3>
+<p>Loads and validates:</p>
+<ul>
+<li><code>apertypes</code></li>
+<li><code>b_list</code></li>
+<li><code>L_list</code></li>
+<li><code>betax_list</code></li>
+<li><code>betay_list</code></li>
+</ul>
+<p>Ensures identical list lengths.</p>
+<hr />
+<h3 id="get_cfg_path_for_apertypeapertype"><code>_get_cfg_path_for_apertype(apertype)</code></h3>
+<p>Resolves aperture type → appropriate <code>.cfg</code> file:</p>
+<ul>
+<li>normalizes to lowercase</li>
+<li>looks up in the mapping</li>
+<li>searches in <code>input_dir</code> case-insensitively</li>
+</ul>
+<p>Raises <code>KeyError</code> or <code>FileNotFoundError</code> on mismatch.</p>
+<hr />
+<h3 id="get_cfg_handlerapertype"><code>_get_cfg_handler(apertype)</code></h3>
+<p>Creates or retrieves a cached <code>CfgIo</code> instance for the given aperture type.</p>
+<hr />
+<h3 id="build_wall_for_element..."><code>_build_wall_for_element(...)</code></h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _build_wall_for_element(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    apertype, b, L, betax, betay,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    freq_override: Optional[Frequencies] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>) <span class="op">-&gt;</span> TlWall:</span></code></pre></div>
+<p>Builds a <code>TlWall</code> instance for one element:</p>
+<ul>
+<li>reads chamber/beam/frequencies from <code>.cfg</code></li>
+<li>overrides geometry (<code>b</code>, <code>L</code>) and optics (<code>betax</code>, <code>betay</code>)</li>
+<li>uses <code>freq_override</code> if provided (enforced common frequency grid)</li>
+</ul>
+<p>Raises <code>RuntimeError</code> if configuration is incomplete.</p>
+<hr />
+<h3 id="save_element_impedance..."><code>_save_element_impedance(...)</code></h3>
+<p>Writes per-element results:</p>
+<ul>
+<li>directory: <code>out_dir/chamberXXX/</code></li>
+<li>file: <code>impedance.xlsx</code></li>
+<li>generates plots for non-trivial impedances using <code>plot_util.plot_Z_vs_f_simple()</code>.</li>
+</ul>
+<p>Plot naming scheme:</p>
+<ul>
+<li><code>ZLong.png</code></li>
+<li><code>ZTrans.png</code></li>
+<li><code>ZDipX.png</code>, <code>ZDipY.png</code></li>
+<li><code>ZQuadX.png</code>, <code>ZQuadY.png</code></li>
+<li>etc.</li>
+</ul>
+<hr />
+<h3 id="save_total_impedance..."><code>_save_total_impedance(...)</code></h3>
+<p>Creates <code>out_dir/total/</code> and writes:</p>
+<ul>
+<li><code>total_impedance.xlsx</code></li>
+<li><code>&lt;name&gt;_tot.png</code> plots for all summed impedances.</li>
+</ul>
+<hr />
+<h2 id="file-formats">File Formats</h2>
+<h3 id="aperture-type-file-apertype2.txt">Aperture Type File (<code>apertype2.txt</code>)</h3>
+<pre><code>Oblong
+Rectangular
+Round
+Diamond
+...</code></pre>
+<p>One line per lattice element.</p>
+<hr />
+<h3 id="geometry-file-b_l_betax_betay.txt">Geometry File (<code>b_L_betax_betay.txt</code>)</h3>
+<p>Format:</p>
+<pre><code>b     L       betax    betay
+0.04  0.419   5.8405   4.425
+0.02  1.126   5.7071   4.2467
+...</code></pre>
+<p>Number of rows must match the aperture file.</p>
+<hr />
+<h2 id="directory-structure">Directory Structure</h2>
+<p>Output after running:</p>
+<pre><code>output/
+    chamber001/
+        impedance.xlsx
+        ZLong.png
+        ZTrans.png
+        ...
+    chamber002/
+        impedance.xlsx
+        ...
+    ...
+    total/
+        total_impedance.xlsx
+        ZLong_tot.png
+        ZTrans_tot.png
+        ...</code></pre>
+<hr />
+<h2 id="examples">Examples</h2>
+<h3 id="basic-usage">Basic Usage</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> MultipleChamber</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>mc <span class="op">=</span> MultipleChamber(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    apertype_file<span class="op">=</span><span class="st">&quot;apertype2.txt&quot;</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    geom_file<span class="op">=</span><span class="st">&quot;b_L_betax_betay.txt&quot;</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    input_dir<span class="op">=</span><span class="st">&quot;./examples/ex_multiple/&quot;</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    out_dir<span class="op">=</span><span class="st">&quot;output&quot;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>mc.run()</span></code></pre></div>
+<hr />
+<h3 id="custom-mapping">Custom Mapping</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>custom_map <span class="op">=</span> {</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Oblong&quot;</span>: <span class="st">&quot;oblong_custom.cfg&quot;</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Rectangular&quot;</span>: <span class="st">&quot;RECTANGULAR.CFG&quot;</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>mc <span class="op">=</span> MultipleChamber(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;apertype2.txt&quot;</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;b_L_betax_betay.txt&quot;</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    input_dir<span class="op">=</span><span class="st">&quot;examples/ex_multiple/&quot;</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    out_dir<span class="op">=</span><span class="st">&quot;output_custom&quot;</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    apertype_to_cfg<span class="op">=</span>custom_map</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>mc.run()</span></code></pre></div>
+<hr />
+<h3 id="inspecting-data-after-run">Inspecting Data After Run</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(mc.apertypes))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mc.apertypes[:<span class="dv">5</span>])</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mc.b_list[:<span class="dv">5</span>])</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mc.L_list[:<span class="dv">5</span>])</span></code></pre></div>
+<hr />
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Aperture and geometry files must have identical lengths.</li>
+<li>Only non-zero/non-NaN impedances produce plots.</li>
+<li>The frequency grid is taken from the first element and reused for all.</li>
+<li>The <code>total/</code> directory contains the summed impedances for full-lattice analysis.</li>
+</ul>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+2025-12-18 12:13:01,039 - pytlwall_interface - INFO - setup_interface_logging:177 - Log file: /home/tatij/CERN/pytlwall/pytlwall-master/pytlwall_gui/log/pytlwall_gui_20251218_121301.log
+2025-12-18 12:13:01,039 - pytlwall_interface - INFO - setup_interface_logging:179 - pytlwall_interface logging initialized
+2025-12-18 12:13:01,040 - pytlwall_interface - DEBUG - cleanup_old_logs:242 - Cleaned up 1 old log file(s)
+2025-12-18 12:13:08,112 - pytlwall_interface - INFO - _on_load_accelerator:1634 - Starting Load Accelerator
+2025-12-18 12:13:17,817 - pytlwall_interface - INFO - _on_load_accelerator:1696 - MultipleChamber loaded 211 elements
+2025-12-18 12:13:17,817 - pytlwall_interface - INFO - _on_load_accelerator:1734 - Cleared all existing chambers
+2025-12-18 12:13:17,895 - pytlwall_interface - INFO - _on_load_accelerator:1789 - Loaded 211 chamber(s) from accelerator data.
+2025-12-18 12:13:30,581 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber1: Oblong
+2025-12-18 12:13:30,634 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber2: Rectangular
+2025-12-18 12:13:30,699 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber3: Oblong
+2025-12-18 12:13:30,741 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber4: Round
+2025-12-18 12:13:30,778 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber5: Rectangular
+2025-12-18 12:13:30,814 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber6: Round
+2025-12-18 12:13:30,850 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber7: Diamond
+2025-12-18 12:13:30,886 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber8: Round
+2025-12-18 12:13:30,923 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber9: Diamond
+2025-12-18 12:13:30,961 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber10: Round
+2025-12-18 12:13:31,000 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber11: Diamond
+2025-12-18 12:13:31,035 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber12: Round
+2025-12-18 12:13:31,073 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber13: Rectangular
+2025-12-18 12:13:31,119 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber14: Round
+2025-12-18 12:13:31,157 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber15: Round
+2025-12-18 12:13:31,197 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber16: Round
+2025-12-18 12:13:31,232 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber17: Round
+2025-12-18 12:13:31,267 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber18: Round
+2025-12-18 12:13:31,305 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber19: Rectangular
+2025-12-18 12:13:31,340 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber20: Round
+2025-12-18 12:13:31,378 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber21: Diamond
+2025-12-18 12:13:31,414 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber22: Round
+2025-12-18 12:13:31,450 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber23: Diamond
+2025-12-18 12:13:31,486 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber24: Round
+2025-12-18 12:13:31,523 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber25: Diamond
+2025-12-18 12:13:31,558 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber26: Round
+2025-12-18 12:13:31,600 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber27: Rectangular
+2025-12-18 12:13:31,638 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber28: Rectangular
+2025-12-18 12:13:31,678 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber29: Round
+2025-12-18 12:13:31,716 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber30: Round
+2025-12-18 12:13:31,753 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber31: Round
+2025-12-18 12:13:31,793 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber32: Round
+2025-12-18 12:13:31,834 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber33: Round
+2025-12-18 12:13:31,872 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber34: Round
+2025-12-18 12:13:31,908 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber35: Round
+2025-12-18 12:13:31,947 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber36: Round
+2025-12-18 12:13:31,983 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber37: Rectangular
+2025-12-18 12:13:32,017 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber38: Round
+2025-12-18 12:13:32,053 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber39: Diamond
+2025-12-18 12:13:32,088 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber40: Round
+2025-12-18 12:13:32,122 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber41: Diamond
+2025-12-18 12:13:32,157 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber42: Round
+2025-12-18 12:13:32,198 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber43: Rectangular
+2025-12-18 12:13:32,234 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber44: Rectangular
+2025-12-18 12:13:32,274 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber45: Round
+2025-12-18 12:13:32,312 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber46: Round
+2025-12-18 12:13:32,349 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber47: Round
+2025-12-18 12:13:32,385 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber48: Rectangular
+2025-12-18 12:13:32,420 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber49: Round
+2025-12-18 12:13:32,454 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber50: Diamond
+2025-12-18 12:13:32,489 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber51: Round
+2025-12-18 12:13:32,526 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber52: Diamond
+2025-12-18 12:13:32,563 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber53: Round
+2025-12-18 12:13:32,598 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber54: Rectangular
+2025-12-18 12:13:32,633 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber55: Rectangular
+2025-12-18 12:13:32,667 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber56: Round
+2025-12-18 12:13:32,701 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber57: Round
+2025-12-18 12:13:32,738 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber58: Round
+2025-12-18 12:13:32,774 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber59: Rectangular
+2025-12-18 12:13:32,811 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber60: Round
+2025-12-18 12:13:32,847 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber61: Diamond
+2025-12-18 12:13:32,881 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber62: Round
+2025-12-18 12:13:32,916 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber63: Diamond
+2025-12-18 12:13:32,949 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber64: Round
+2025-12-18 12:13:32,984 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber65: Rectangular
+2025-12-18 12:13:33,023 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber66: Rectangular
+2025-12-18 12:13:33,057 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber67: Round
+2025-12-18 12:13:33,094 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber68: Round
+2025-12-18 12:13:33,131 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber69: Round
+2025-12-18 12:13:33,167 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber70: Rectangular
+2025-12-18 12:13:33,201 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber71: Round
+2025-12-18 12:13:33,238 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber72: Diamond
+2025-12-18 12:13:33,272 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber73: Round
+2025-12-18 12:13:33,309 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber74: Diamond
+2025-12-18 12:13:33,346 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber75: Round
+2025-12-18 12:13:33,380 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber76: Diamond
+2025-12-18 12:13:33,415 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber77: Round
+2025-12-18 12:13:33,451 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber78: Rectangular
+2025-12-18 12:13:33,487 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber79: Rectangular
+2025-12-18 12:13:33,524 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber80: Round
+2025-12-18 12:13:33,562 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber81: Round
+2025-12-18 12:13:33,600 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber82: Round
+2025-12-18 12:13:33,636 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber83: Round
+2025-12-18 12:13:33,672 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber84: Rectangular
+2025-12-18 12:13:33,707 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber85: Round
+2025-12-18 12:13:33,745 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber86: Diamond
+2025-12-18 12:13:33,782 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber87: Round
+2025-12-18 12:13:33,817 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber88: Diamond
+2025-12-18 12:13:33,852 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber89: Round
+2025-12-18 12:13:33,891 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber90: Diamond
+2025-12-18 12:13:33,929 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber91: Round
+2025-12-18 12:13:33,966 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber92: Rectangular
+2025-12-18 12:13:34,003 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber93: Rectangular
+2025-12-18 12:13:34,039 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber94: Round
+2025-12-18 12:13:34,074 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber95: Round
+2025-12-18 12:13:34,113 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber96: Round
+2025-12-18 12:13:34,147 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber97: Round
+2025-12-18 12:13:34,182 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber98: Round
+2025-12-18 12:13:34,218 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber99: Round
+2025-12-18 12:13:34,263 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber100: Round
+2025-12-18 12:13:34,297 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber101: Round
+2025-12-18 12:13:34,332 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber102: Round
+2025-12-18 12:13:34,368 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber103: Rectangular
+2025-12-18 12:13:34,406 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber104: Round
+2025-12-18 12:13:34,440 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber105: Diamond
+2025-12-18 12:13:34,477 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber106: Round
+2025-12-18 12:13:34,513 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber107: Diamond
+2025-12-18 12:13:34,546 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber108: Round
+2025-12-18 12:13:34,580 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber109: Diamond
+2025-12-18 12:13:34,614 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber110: Round
+2025-12-18 12:13:34,650 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber111: Rectangular
+2025-12-18 12:13:34,685 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber112: Rectangular
+2025-12-18 12:13:34,719 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber113: Round
+2025-12-18 12:13:34,757 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber114: Round
+2025-12-18 12:13:34,791 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber115: Round
+2025-12-18 12:13:34,828 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber116: Round
+2025-12-18 12:13:34,866 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber117: Rectangular
+2025-12-18 12:13:34,901 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber118: Round
+2025-12-18 12:13:34,934 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber119: Diamond
+2025-12-18 12:13:34,967 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber120: Round
+2025-12-18 12:13:35,001 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber121: Diamond
+2025-12-18 12:13:35,035 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber122: Round
+2025-12-18 12:13:35,069 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber123: Diamond
+2025-12-18 12:13:35,106 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber124: Round
+2025-12-18 12:13:35,141 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber125: Rectangular
+2025-12-18 12:13:35,180 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber126: Rectangular
+2025-12-18 12:13:35,214 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber127: Round
+2025-12-18 12:13:35,247 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber128: Round
+2025-12-18 12:13:35,281 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber129: Round
+2025-12-18 12:13:35,317 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber130: Rectangular
+2025-12-18 12:13:35,351 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber131: Round
+2025-12-18 12:13:35,385 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber132: Diamond
+2025-12-18 12:13:35,418 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber133: Round
+2025-12-18 12:13:35,456 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber134: Diamond
+2025-12-18 12:13:35,490 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber135: Round
+2025-12-18 12:13:35,529 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber136: Rectangular
+2025-12-18 12:13:35,565 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber137: Rectangular
+2025-12-18 12:13:35,599 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber138: Round
+2025-12-18 12:13:35,632 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber139: Round
+2025-12-18 12:13:35,666 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber140: Round
+2025-12-18 12:13:35,700 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber141: Round
+2025-12-18 12:13:35,735 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber142: Rectangular
+2025-12-18 12:13:35,768 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber143: Round
+2025-12-18 12:13:35,805 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber144: Diamond
+2025-12-18 12:13:35,839 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber145: Round
+2025-12-18 12:13:35,876 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber146: Diamond
+2025-12-18 12:13:35,912 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber147: Round
+2025-12-18 12:13:35,949 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber148: Diamond
+2025-12-18 12:13:35,982 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber149: Round
+2025-12-18 12:13:36,017 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber150: Rectangular
+2025-12-18 12:13:36,052 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber151: Rectangular
+2025-12-18 12:13:36,089 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber152: Round
+2025-12-18 12:13:36,123 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber153: Round
+2025-12-18 12:13:36,161 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber154: Round
+2025-12-18 12:13:36,198 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber155: Round
+2025-12-18 12:13:36,234 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber156: Rectangular
+2025-12-18 12:13:36,268 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber157: Round
+2025-12-18 12:13:36,301 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber158: Diamond
+2025-12-18 12:13:36,335 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber159: Round
+2025-12-18 12:13:36,372 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber160: Diamond
+2025-12-18 12:13:36,406 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber161: Round
+2025-12-18 12:13:36,443 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber162: Diamond
+2025-12-18 12:13:36,480 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber163: Round
+2025-12-18 12:13:36,519 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber164: Rectangular
+2025-12-18 12:13:36,554 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber165: Rectangular
+2025-12-18 12:13:36,591 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber166: Round
+2025-12-18 12:13:36,625 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber167: Round
+2025-12-18 12:13:36,661 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber168: Round
+2025-12-18 12:13:36,699 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber169: Rectangular
+2025-12-18 12:13:36,733 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber170: Round
+2025-12-18 12:13:36,767 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber171: Diamond
+2025-12-18 12:13:36,801 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber172: Round
+2025-12-18 12:13:36,835 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber173: Diamond
+2025-12-18 12:13:36,932 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber174: Round
+2025-12-18 12:13:36,967 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber175: Rectangular
+2025-12-18 12:13:37,003 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber176: Rectangular
+2025-12-18 12:13:37,037 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber177: Diamond
+2025-12-18 12:13:37,074 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber178: Oblong
+2025-12-18 12:13:37,110 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber179: Rectangular
+2025-12-18 12:13:37,147 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber180: Round
+2025-12-18 12:13:37,180 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber181: Diamond
+2025-12-18 12:13:37,215 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber182: Round
+2025-12-18 12:13:37,248 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber183: Diamond
+2025-12-18 12:13:37,282 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber184: Round
+2025-12-18 12:13:37,316 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber185: Diamond
+2025-12-18 12:13:37,350 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber186: Round
+2025-12-18 12:13:37,388 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber187: Rectangular
+2025-12-18 12:13:37,432 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber188: Rectangular
+2025-12-18 12:13:37,466 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber189: Diamond
+2025-12-18 12:13:37,502 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber190: Rectangular
+2025-12-18 12:13:37,538 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber191: Rectangular
+2025-12-18 12:13:37,575 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber192: Round
+2025-12-18 12:13:37,612 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber193: Diamond
+2025-12-18 12:13:37,649 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber194: Round
+2025-12-18 12:13:37,683 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber195: Diamond
+2025-12-18 12:13:37,716 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber196: Round
+2025-12-18 12:13:37,752 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber197: Rectangular
+2025-12-18 12:13:37,791 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber198: Rectangular
+2025-12-18 12:13:37,825 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber199: Round
+2025-12-18 12:13:37,862 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber200: Round
+2025-12-18 12:13:37,903 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber201: Round
+2025-12-18 12:13:37,942 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber202: Rectangular
+2025-12-18 12:13:37,980 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber203: Round
+2025-12-18 12:13:38,017 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber204: Diamond
+2025-12-18 12:13:38,051 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber205: Round
+2025-12-18 12:13:38,086 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber206: Diamond
+2025-12-18 12:13:38,120 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber207: Round
+2025-12-18 12:13:38,157 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber208: Diamond
+2025-12-18 12:13:38,191 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber209: Round
+2025-12-18 12:13:38,230 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber210: Rectangular
+2025-12-18 12:13:38,264 - pytlwall_interface - DEBUG - _on_calculate_accelerator:1898 - Updated impedance_results for Chamber211: Round
+2025-12-18 12:13:38,352 - pytlwall_interface - INFO - _create_total_chamber_from_complex:2009 - Created Total chamber with summed impedances (at top)
+2025-12-18 12:13:38,352 - pytlwall_interface - INFO - _on_calculate_accelerator:1947 - Calculation complete: 211 successful
+
+Results saved to:
+/home/tatij/CERN/pytlwall/pytlwall-master/tests/multiple/output
+2025-12-18 12:13:47,336 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:630 - Drop to plot: chamber='Total', impedance='ZTransTotalRe'
+2025-12-18 12:13:47,336 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:636 -   Checking: ch.id='Total', ch_label='Total'
+2025-12-18 12:13:47,336 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:650 - Found chamber: Total
+2025-12-18 12:13:47,336 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:673 - Available keys: ['ZLongRe', 'ZLongIm', 'ZTransRe', 'ZTransIm', 'ZDipXRe', 'ZDipXIm', 'ZDipYRe', 'ZDipYIm', 'ZQuadXRe', 'ZQuadXIm', 'ZQuadYRe', 'ZQuadYIm', 'ZLongSurfRe', 'ZLongSurfIm', 'ZTransSurfRe', 'ZTransSurfIm', 'ZLongDSCRe', 'ZLongDSCIm', 'ZLongISCRe', 'ZLongISCIm', 'ZTransDSCRe', 'ZTransDSCIm', 'ZTransISCRe', 'ZTransISCIm', 'ZDipDSCRe', 'ZDipDSCIm', 'ZDipISCRe', 'ZDipISCIm', 'ZQuadDSCRe', 'ZQuadDSCIm', 'ZQuadISCRe', 'ZQuadISCIm', 'ZLongTotalRe', 'ZLongTotalIm', 'ZTransTotalRe', 'ZTransTotalIm', 'ZDipXTotalRe', 'ZDipXTotalIm', 'ZDipYTotalRe', 'ZDipYTotalIm', 'ZQuadXTotalRe', 'ZQuadXTotalIm', 'ZQuadYTotalRe', 'ZQuadYTotalIm']
+2025-12-18 12:13:49,390 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:630 - Drop to plot: chamber='Total', impedance='ZTransTotalIm'
+2025-12-18 12:13:49,390 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:636 -   Checking: ch.id='Total', ch_label='Total'
+2025-12-18 12:13:49,390 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:650 - Found chamber: Total
+2025-12-18 12:13:49,390 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:673 - Available keys: ['ZLongRe', 'ZLongIm', 'ZTransRe', 'ZTransIm', 'ZDipXRe', 'ZDipXIm', 'ZDipYRe', 'ZDipYIm', 'ZQuadXRe', 'ZQuadXIm', 'ZQuadYRe', 'ZQuadYIm', 'ZLongSurfRe', 'ZLongSurfIm', 'ZTransSurfRe', 'ZTransSurfIm', 'ZLongDSCRe', 'ZLongDSCIm', 'ZLongISCRe', 'ZLongISCIm', 'ZTransDSCRe', 'ZTransDSCIm', 'ZTransISCRe', 'ZTransISCIm', 'ZDipDSCRe', 'ZDipDSCIm', 'ZDipISCRe', 'ZDipISCIm', 'ZQuadDSCRe', 'ZQuadDSCIm', 'ZQuadISCRe', 'ZQuadISCIm', 'ZLongTotalRe', 'ZLongTotalIm', 'ZTransTotalRe', 'ZTransTotalIm', 'ZDipXTotalRe', 'ZDipXTotalIm', 'ZDipYTotalRe', 'ZDipYTotalIm', 'ZQuadXTotalRe', 'ZQuadXTotalIm', 'ZQuadYTotalRe', 'ZQuadYTotalIm']
+2025-12-18 12:13:54,014 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:630 - Drop to plot: chamber='Chamber1', impedance='ZLongISC'
+2025-12-18 12:13:54,014 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:636 -   Checking: ch.id='Total', ch_label='Total'
+2025-12-18 12:13:54,014 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:636 -   Checking: ch.id='Chamber1: Oblong', ch_label='Chamber1'
+2025-12-18 12:13:54,014 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:650 - Found chamber: Chamber1: Oblong
+2025-12-18 12:13:54,014 - pytlwall_interface - DEBUG - _on_impedance_dropped_to_plot:673 - Available keys: ['ZLongRe', 'ZLongIm', 'ZTransRe', 'ZTransIm', 'ZDipXRe', 'ZDipXIm', 'ZDipYRe', 'ZDipYIm', 'ZQuadXRe', 'ZQuadXIm', 'ZQuadYRe', 'ZQuadYIm', 'ZLongSurfRe', 'ZLongSurfIm', 'ZTransSurfRe', 'ZTransSurfIm', 'ZLongDSCRe', 'ZLongDSCIm', 'ZLongISCRe', 'ZLongISCIm', 'ZTransDSCRe', 'ZTransDSCIm', 'ZTransISCRe', 'ZTransISCIm', 'ZDipDSCRe', 'ZDipDSCIm', 'ZDipISCRe', 'ZDipISCIm', 'ZQuadDSCRe', 'ZQuadDSCIm', 'ZQuadISCRe', 'ZQuadISCIm', 'ZLongTotalRe', 'ZLongTotalIm', 'ZTransTotalRe', 'ZTransTotalIm', 'ZDipXTotalRe', 'ZDipXTotalIm', 'ZDipYTotalRe', 'ZDipYTotalIm', 'ZQuadXTotalRe', 'ZQuadXTotalIm', 'ZQuadYTotalRe', 'ZQuadYTotalIm']

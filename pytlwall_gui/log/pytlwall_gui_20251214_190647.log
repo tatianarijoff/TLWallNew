@@ -1,0 +1,53 @@
+2025-12-14 19:06:47,935 - pytlwall_interface - INFO - setup_interface_logging:177 - Log file: /home/tatij/CERN/pytlwall/pytlwall-master/pytlwall_gui/log/pytlwall_gui_20251214_190647.log
+2025-12-14 19:06:47,935 - pytlwall_interface - INFO - setup_interface_logging:179 - pytlwall_interface logging initialized
+2025-12-14 19:07:19,499 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1334 - Starting impedance calculation for current chamber
+2025-12-14 19:07:19,500 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1340 - Chamber: Chamber 2, component: Chamber 1
+2025-12-14 19:07:19,500 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1346 - Selected impedances: ['ZLong', 'ZTrans', 'ZDipX', 'ZDipY', 'ZQuadX', 'ZQuadY', 'ZLongDSC', 'ZLongISC', 'ZTransDSC', 'ZTransISC', 'ZDipDSC', 'ZDipISC']
+2025-12-14 19:07:19,500 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1360 - Frequency config: mode=range
+2025-12-14 19:07:19,500 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1368 - Frequency range: 0.0 - 12.0 Hz, step=2.0
+2025-12-14 19:07:19,500 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1383 - Beam: gamma=10000.0, test_beam_shift=0.01
+2025-12-14 19:07:19,500 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1391 - Chamber: shape=CIRCULAR, radius=0.0184m, length=1.0m
+2025-12-14 19:07:19,500 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1415 - Layer 0: type=CW, thick=5e-05m, sigmaDC=1820000000.0
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1415 - Layer 1: type=PEC, thick=0.001m, sigmaDC=1670000.0
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1435 - Boundary layer: type=PEC, sigmaDC=1000000000.0
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1442 - Beta functions: betax=1.0, betay=1.0
+2025-12-14 19:07:19,501 - pytlwall_interface - INFO - _calculate_impedances_for_current_chamber:1445 - Creating TlWall and calculating impedances...
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZLong: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZTrans: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZDipX: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZDipY: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZQuadX: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZQuadY: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZLongDSC: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZLongISC: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZTransDSC: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZTransISC: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZDipDSC: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1467 - get_impedance failed for ZDipISC: 'TlWall' object has no attribute 'get_impedance'
+2025-12-14 19:07:19,501 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1472 - Using fallback: get_all_impedances()
+2025-12-14 19:07:19,517 - pytlwall_interface - ERROR - _calculate_impedances_for_current_chamber:1495 - Impedance calculation failed: Failed to calculate transverse impedance: cannot access local variable 'kprop' where it is not associated with a value
+2025-12-14 19:07:19,519 - pytlwall_interface - DEBUG - _calculate_impedances_for_current_chamber:1496 - Traceback (most recent call last):
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall/tlwall.py", line 380, in calc_ZTrans
+    KZeffin = self._calc_KZeffin()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall/tlwall.py", line 1124, in _calc_KZeffin
+    cmath.tan(k * layer.thick_m) for k in kprop
+                                          ^^^^^
+UnboundLocalError: cannot access local variable 'kprop' where it is not associated with a value
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall_gui/main_window.py", line 1473, in _calculate_impedances_for_current_chamber
+    imp = wall.get_all_impedances()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall/tlwall.py", line 1170, in get_all_impedances
+    'ZTrans': self.ZTrans,
+              ^^^^^^^^^^^
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall/tlwall.py", line 435, in ZTrans
+    self._ZTrans = self.calc_ZTrans()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall/tlwall.py", line 420, in calc_ZTrans
+    raise TlWallCalculationError(
+pytlwall.tlwall.TlWallCalculationError: Failed to calculate transverse impedance: cannot access local variable 'kprop' where it is not associated with a value
+

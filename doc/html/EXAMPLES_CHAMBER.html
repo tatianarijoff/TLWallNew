@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>EXAMPLES CHAMBER</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#chamber-module-examples">chamber Module Examples</a>
+<ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#navigation">Navigation</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#example-1-circular-chamber">Example 1: Circular Chamber</a></li>
+<li><a href="#example-2-elliptical-chamber">Example 2: Elliptical Chamber</a></li>
+<li><a href="#example-3-rectangular-chamber">Example 3: Rectangular Chamber</a></li>
+<li><a href="#example-4-geometry-comparison">Example 4: Geometry Comparison</a></li>
+<li><a href="#example-5-lhc-chamber-examples">Example 5: LHC Chamber Examples</a></li>
+<li><a href="#example-6-yokoya-factor-dependency">Example 6: Yokoya Factor Dependency</a></li>
+<li><a href="#example-7-dynamic-modification">Example 7: Dynamic Modification</a></li>
+<li><a href="#example-8-error-handling">Example 8: Error Handling</a></li>
+<li><a href="#shape-reference">Shape Reference</a>
+<ul>
+<li><a href="#supported-shapes">Supported Shapes</a></li>
+<li><a href="#dimension-parameters">Dimension Parameters</a></li>
+<li><a href="#yokoya-parameters">Yokoya Parameters</a></li>
+<li><a href="#yokoya-factor-formulas">Yokoya Factor Formulas</a></li>
+</ul></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">EXAMPLES CHAMBER</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="chamber-module-examples">chamber Module Examples</h1>
+
+<p><strong>Vacuum Chamber Geometries and Yokoya Factors</strong></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> - tatiana.rijoff@gmail.com</li>
+<li><strong>Carlo Zannini</strong> - carlo.zannini@cern.ch</li>
+</ul>
+<p><em>Copyright: CERN</em></p>
+<hr />
+<h2 id="navigation">Navigation</h2>
+<p><strong><a href="EXAMPLES.html">◀ Back to Examples</a></strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>beam</td>
+<td><a href="EXAMPLES_BEAM.html">EXAMPLES_BEAM.md</a></td>
+</tr>
+<tr class="even">
+<td>frequencies</td>
+<td><a href="EXAMPLES_FREQUENCIES.html">EXAMPLES_FREQUENCIES.md</a></td>
+</tr>
+<tr class="odd">
+<td>layer</td>
+<td><a href="EXAMPLES_LAYER.html">EXAMPLES_LAYER.md</a></td>
+</tr>
+<tr class="even">
+<td><strong>chamber</strong></td>
+<td><em>You are here</em></td>
+</tr>
+<tr class="odd">
+<td>tlwall</td>
+<td><a href="EXAMPLES_TLWALL.html">EXAMPLES_TLWALL.md</a></td>
+</tr>
+<tr class="even">
+<td>logging</td>
+<td><a href="EXAMPLES_LOGGING.html">EXAMPLES_LOGGING.md</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#example-1-circular-chamber">Example 1: Circular Chamber</a></li>
+<li><a href="#example-2-elliptical-chamber">Example 2: Elliptical Chamber</a></li>
+<li><a href="#example-3-rectangular-chamber">Example 3: Rectangular Chamber</a></li>
+<li><a href="#example-4-geometry-comparison">Example 4: Geometry Comparison</a></li>
+<li><a href="#example-5-lhc-chamber-examples">Example 5: LHC Chamber Examples</a></li>
+<li><a href="#example-6-yokoya-factor-dependency">Example 6: Yokoya Factor Dependency</a></li>
+<li><a href="#example-7-dynamic-modification">Example 7: Dynamic Modification</a></li>
+<li><a href="#example-8-error-handling">Example 8: Error Handling</a></li>
+<li><a href="#shape-reference">Shape Reference</a></li>
+</ul>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>The <code>Chamber</code> class defines vacuum chamber geometries and automatically calculates Yokoya correction factors for non-circular cross-sections.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Circular chamber</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>,        <span class="co"># Radius</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Elliptical chamber</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    pipe_hor_m<span class="op">=</span><span class="fl">0.030</span>,        <span class="co"># Horizontal half-aperture</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    pipe_ver_m<span class="op">=</span><span class="fl">0.020</span>,        <span class="co"># Vertical half-aperture</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;ELLIPTICAL&#39;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<hr />
+<h2 id="example-1-circular-chamber">Example 1: Circular Chamber</h2>
+<p>Most common geometry for beam pipes.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Circular chamber (LHC-like)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>,        <span class="co"># 22 mm radius</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    pipe_len_m<span class="op">=</span><span class="fl">1.0</span>,          <span class="co"># 1 meter length</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    betax<span class="op">=</span><span class="fl">100.0</span>,             <span class="co"># Beta functions (m)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    betay<span class="op">=</span><span class="fl">100.0</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    component_name<span class="op">=</span><span class="st">&#39;arc_dipole&#39;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(chamber.summary())</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Key properties:&quot;</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Radius:          </span><span class="sc">{</span>chamber<span class="sc">.</span>pipe_rad_m<span class="op">*</span><span class="dv">1000</span><span class="sc">:.1f}</span><span class="ss"> mm&quot;</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Yokoya q:        </span><span class="sc">{</span>chamber<span class="sc">.</span>yokoya_q<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Long factor:     </span><span class="sc">{</span>chamber<span class="sc">.</span>long_yokoya_factor<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Driv_x factor:   </span><span class="sc">{</span>chamber<span class="sc">.</span>drivx_yokoya_factor<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Driv_y factor:   </span><span class="sc">{</span>chamber<span class="sc">.</span>drivy_yokoya_factor<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Notes:</strong> - Circular symmetry: horizontal = vertical = radius - Yokoya q = 0 for circular chambers - All Yokoya factors = 1.0 (no geometric correction) - Simplest geometry for impedance calculations</p>
+<hr />
+<h2 id="example-2-elliptical-chamber">Example 2: Elliptical Chamber</h2>
+<p>Common in modern accelerators with flat chambers.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Elliptical chamber with different apertures</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    pipe_hor_m<span class="op">=</span><span class="fl">0.030</span>,        <span class="co"># 30 mm horizontal half-aperture</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    pipe_ver_m<span class="op">=</span><span class="fl">0.020</span>,        <span class="co"># 20 mm vertical half-aperture</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    pipe_len_m<span class="op">=</span><span class="fl">1.0</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;ELLIPTICAL&#39;</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    betax<span class="op">=</span><span class="fl">50.0</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    betay<span class="op">=</span><span class="fl">25.0</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    component_name<span class="op">=</span><span class="st">&#39;elliptical_section&#39;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(chamber.summary())</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze aspect ratio</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>aspect_ratio <span class="op">=</span> chamber.pipe_hor_m <span class="op">/</span> chamber.pipe_ver_m</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Aspect ratio analysis:&quot;</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Aspect ratio (h/v): </span><span class="sc">{</span>aspect_ratio<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Yokoya q:           </span><span class="sc">{</span>chamber<span class="sc">.</span>yokoya_q<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Yokoya corrections:&quot;</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Longitudinal:       </span><span class="sc">{</span>chamber<span class="sc">.</span>long_yokoya_factor<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Horizontal driving: </span><span class="sc">{</span>chamber<span class="sc">.</span>drivx_yokoya_factor<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Vertical driving:   </span><span class="sc">{</span>chamber<span class="sc">.</span>drivy_yokoya_factor<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Use cases:</strong> - Flat chambers in modern colliders - Accommodates beam separation - Reduces vertical aperture where βy is small</p>
+<hr />
+<h2 id="example-3-rectangular-chamber">Example 3: Rectangular Chamber</h2>
+<p>For special applications like kickers and septa.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Rectangular chamber</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    pipe_hor_m<span class="op">=</span><span class="fl">0.040</span>,        <span class="co"># 40 mm horizontal half-width</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    pipe_ver_m<span class="op">=</span><span class="fl">0.015</span>,        <span class="co"># 15 mm vertical half-height</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    pipe_len_m<span class="op">=</span><span class="fl">1.0</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;RECTANGULAR&#39;</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    betax<span class="op">=</span><span class="fl">30.0</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    betay<span class="op">=</span><span class="fl">10.0</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    component_name<span class="op">=</span><span class="st">&#39;kicker_chamber&#39;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(chamber.summary())</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Geometric properties:&quot;</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Full width:   </span><span class="sc">{</span>chamber<span class="sc">.</span>pipe_hor_m<span class="op">*</span><span class="dv">2</span><span class="op">*</span><span class="dv">1000</span><span class="sc">:.1f}</span><span class="ss"> mm&quot;</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Full height:  </span><span class="sc">{</span>chamber<span class="sc">.</span>pipe_ver_m<span class="op">*</span><span class="dv">2</span><span class="op">*</span><span class="dv">1000</span><span class="sc">:.1f}</span><span class="ss"> mm&quot;</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Yokoya q:     </span><span class="sc">{</span>chamber<span class="sc">.</span>yokoya_q<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Get all Yokoya factors</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>factors <span class="op">=</span> chamber.get_yokoya_factors()</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">All Yokoya factors:&quot;</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> factors.items():</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  </span><span class="sc">{</span>key<span class="sc">:15s}</span><span class="ss">: </span><span class="sc">{</span>value<span class="sc">:8.4f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Use cases:</strong> - Kickers and septa - Special insertion devices - Strong geometric effects on impedance</p>
+<hr />
+<h2 id="example-4-geometry-comparison">Example 4: Geometry Comparison</h2>
+<p>Comparing different chamber shapes with similar dimensions.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>avg_dim <span class="op">=</span> <span class="fl">0.025</span>  <span class="co"># 25 mm average aperture</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>chambers <span class="op">=</span> {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Circular&#39;</span>: pytlwall.Chamber(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        pipe_rad_m<span class="op">=</span>avg_dim,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Elliptical (mild)&#39;</span>: pytlwall.Chamber(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        pipe_hor_m<span class="op">=</span>avg_dim <span class="op">*</span> <span class="fl">1.2</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        pipe_ver_m<span class="op">=</span>avg_dim <span class="op">*</span> <span class="fl">0.8</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        chamber_shape<span class="op">=</span><span class="st">&#39;ELLIPTICAL&#39;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Elliptical (flat)&#39;</span>: pytlwall.Chamber(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        pipe_hor_m<span class="op">=</span>avg_dim <span class="op">*</span> <span class="fl">2.0</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        pipe_ver_m<span class="op">=</span>avg_dim <span class="op">*</span> <span class="fl">0.5</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        chamber_shape<span class="op">=</span><span class="st">&#39;ELLIPTICAL&#39;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Rectangular&#39;</span>: pytlwall.Chamber(</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        pipe_hor_m<span class="op">=</span>avg_dim <span class="op">*</span> <span class="fl">1.5</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        pipe_ver_m<span class="op">=</span>avg_dim <span class="op">*</span> <span class="fl">0.67</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        chamber_shape<span class="op">=</span><span class="st">&#39;RECTANGULAR&#39;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Chamber comparison (avg aperture = </span><span class="sc">{</span>avg_dim<span class="op">*</span><span class="dv">1000</span><span class="sc">:.1f}</span><span class="ss"> mm):&quot;</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="sc">{</span><span class="st">&#39;Geometry&#39;</span><span class="sc">:&lt;20}</span><span class="ss"> </span><span class="sc">{</span><span class="st">&#39;q param&#39;</span><span class="sc">:&gt;10}</span><span class="ss"> </span><span class="sc">{</span><span class="st">&#39;Long&#39;</span><span class="sc">:&gt;10}</span><span class="ss"> </span><span class="sc">{</span><span class="st">&#39;Driv_x&#39;</span><span class="sc">:&gt;10}</span><span class="ss"> </span><span class="sc">{</span><span class="st">&#39;Driv_y&#39;</span><span class="sc">:&gt;10}</span><span class="ss">&quot;</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;-&quot;</span> <span class="op">*</span> <span class="dv">65</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, chamber <span class="kw">in</span> chambers.items():</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>name<span class="sc">:&lt;20}</span><span class="ss"> </span><span class="sc">{</span>chamber<span class="sc">.</span>yokoya_q<span class="sc">:&gt;10.4f}</span><span class="ss"> &quot;</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f&quot;</span><span class="sc">{</span>chamber<span class="sc">.</span>long_yokoya_factor<span class="sc">:&gt;10.4f}</span><span class="ss"> &quot;</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f&quot;</span><span class="sc">{</span>chamber<span class="sc">.</span>drivx_yokoya_factor<span class="sc">:&gt;10.4f}</span><span class="ss"> &quot;</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f&quot;</span><span class="sc">{</span>chamber<span class="sc">.</span>drivy_yokoya_factor<span class="sc">:&gt;10.4f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Observations:</strong> - Yokoya q increases with aspect ratio (flatness) - Circular chamber (q=0) has no geometric corrections - Flat chambers have strongest corrections - Rectangular differs from elliptical</p>
+<hr />
+<h2 id="example-5-lhc-chamber-examples">Example 5: LHC Chamber Examples</h2>
+<p>Realistic LHC chamber configurations.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># LHC Arc dipole</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>arc_dipole <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>,        <span class="co"># 44 mm diameter beam screen</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    pipe_len_m<span class="op">=</span><span class="fl">14.3</span>,         <span class="co"># Dipole length</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    betax<span class="op">=</span><span class="fl">180.0</span>,             <span class="co"># Typical arc optics</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    betay<span class="op">=</span><span class="fl">180.0</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    component_name<span class="op">=</span><span class="st">&#39;MB_dipole&#39;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># LHC Interaction region</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>ir_triplet <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    pipe_rad_m<span class="op">=</span><span class="fl">0.021</span>,        <span class="co"># 42 mm diameter</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    pipe_len_m<span class="op">=</span><span class="fl">4.0</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    betax<span class="op">=</span><span class="fl">0.55</span>,              <span class="co"># IP beta* = 55 cm</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    betay<span class="op">=</span><span class="fl">0.55</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    component_name<span class="op">=</span><span class="st">&#39;IP1_triplet&#39;</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># LHC Injection kicker</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>injection <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    pipe_rad_m<span class="op">=</span><span class="fl">0.025</span>,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    pipe_len_m<span class="op">=</span><span class="fl">1.0</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    betax<span class="op">=</span><span class="fl">70.0</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    betay<span class="op">=</span><span class="fl">70.0</span>,</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    component_name<span class="op">=</span><span class="st">&#39;MKI_kicker&#39;</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>lhc_chambers <span class="op">=</span> {</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Arc Dipole&#39;</span>:  arc_dipole,</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;IR Triplet&#39;</span>:  ir_triplet,</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;Injection&#39;</span>:   injection</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;LHC chamber configurations:</span><span class="ch">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, chamber <span class="kw">in</span> lhc_chambers.items():</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">:&quot;</span>)</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  Shape:    </span><span class="sc">{</span>chamber<span class="sc">.</span>chamber_shape<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  Radius:   </span><span class="sc">{</span>chamber<span class="sc">.</span>pipe_rad_m<span class="op">*</span><span class="dv">1000</span><span class="sc">:.1f}</span><span class="ss"> mm&quot;</span>)</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  Length:   </span><span class="sc">{</span>chamber<span class="sc">.</span>pipe_len_m<span class="sc">:.1f}</span><span class="ss"> m&quot;</span>)</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  βx/βy:    </span><span class="sc">{</span>chamber<span class="sc">.</span>betax<span class="sc">:.1f}</span><span class="ss">/</span><span class="sc">{</span>chamber<span class="sc">.</span>betay<span class="sc">:.1f}</span><span class="ss"> m&quot;</span>)</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code></pre></div>
+<hr />
+<h2 id="example-6-yokoya-factor-dependency">Example 6: Yokoya Factor Dependency</h2>
+<p>Yokoya factors vs aspect ratio.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Test range of aspect ratios</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>aspect_ratios <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">1.5</span>, <span class="fl">2.0</span>, <span class="fl">2.5</span>, <span class="fl">3.0</span>, <span class="fl">4.0</span>, <span class="fl">5.0</span>]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>base_aperture <span class="op">=</span> <span class="fl">0.020</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Elliptical chamber - Yokoya factors vs aspect ratio:&quot;</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="sc">{</span><span class="st">&#39;AR&#39;</span><span class="sc">:&gt;6}</span><span class="ss"> </span><span class="sc">{</span><span class="st">&#39;q&#39;</span><span class="sc">:&gt;10}</span><span class="ss"> </span><span class="sc">{</span><span class="st">&#39;Long&#39;</span><span class="sc">:&gt;10}</span><span class="ss"> </span><span class="sc">{</span><span class="st">&#39;Driv_x&#39;</span><span class="sc">:&gt;10}</span><span class="ss"> </span><span class="sc">{</span><span class="st">&#39;Driv_y&#39;</span><span class="sc">:&gt;10}</span><span class="ss">&quot;</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;-&quot;</span> <span class="op">*</span> <span class="dv">50</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ar <span class="kw">in</span> aspect_ratios:</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    chamber <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        pipe_hor_m<span class="op">=</span>base_aperture <span class="op">*</span> ar,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        pipe_ver_m<span class="op">=</span>base_aperture,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        chamber_shape<span class="op">=</span><span class="st">&#39;ELLIPTICAL&#39;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>ar<span class="sc">:&gt;6.1f}</span><span class="ss"> </span><span class="sc">{</span>chamber<span class="sc">.</span>yokoya_q<span class="sc">:&gt;10.4f}</span><span class="ss"> &quot;</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f&quot;</span><span class="sc">{</span>chamber<span class="sc">.</span>long_yokoya_factor<span class="sc">:&gt;10.4f}</span><span class="ss"> &quot;</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f&quot;</span><span class="sc">{</span>chamber<span class="sc">.</span>drivx_yokoya_factor<span class="sc">:&gt;10.4f}</span><span class="ss"> &quot;</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f&quot;</span><span class="sc">{</span>chamber<span class="sc">.</span>drivy_yokoya_factor<span class="sc">:&gt;10.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Key observations:&quot;</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  - q increases monotonically with aspect ratio&quot;</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  - Long factor decreases (impedance reduction)&quot;</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  - Driv_x increases, Driv_y decreases&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="example-7-dynamic-modification">Example 7: Dynamic Modification</h2>
+<p>Modifying chamber parameters during design optimization.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial design</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    pipe_rad_m<span class="op">=</span><span class="fl">0.025</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    component_name<span class="op">=</span><span class="st">&#39;initial_design&#39;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Initial design:&quot;</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Shape:   </span><span class="sc">{</span>chamber<span class="sc">.</span>chamber_shape<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Radius:  </span><span class="sc">{</span>chamber<span class="sc">.</span>pipe_rad_m<span class="op">*</span><span class="dv">1000</span><span class="sc">:.1f}</span><span class="ss"> mm&quot;</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Yokoya q: </span><span class="sc">{</span>chamber<span class="sc">.</span>yokoya_q<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Modify to elliptical</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Modifying to elliptical chamber...&quot;</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>chamber.chamber_shape <span class="op">=</span> <span class="st">&#39;ELLIPTICAL&#39;</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>chamber.pipe_hor_m <span class="op">=</span> <span class="fl">0.035</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>chamber.pipe_ver_m <span class="op">=</span> <span class="fl">0.020</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>chamber.component_name <span class="op">=</span> <span class="st">&#39;optimized_design&#39;</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Updated design:&quot;</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Shape:      </span><span class="sc">{</span>chamber<span class="sc">.</span>chamber_shape<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Horizontal: </span><span class="sc">{</span>chamber<span class="sc">.</span>pipe_hor_m<span class="op">*</span><span class="dv">1000</span><span class="sc">:.1f}</span><span class="ss"> mm&quot;</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Vertical:   </span><span class="sc">{</span>chamber<span class="sc">.</span>pipe_ver_m<span class="op">*</span><span class="dv">1000</span><span class="sc">:.1f}</span><span class="ss"> mm&quot;</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Yokoya q:   </span><span class="sc">{</span>chamber<span class="sc">.</span>yokoya_q<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Long factor: </span><span class="sc">{</span>chamber<span class="sc">.</span>long_yokoya_factor<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Use cases:</strong> - Design optimization studies - Parameter scans - Sensitivity analysis</p>
+<hr />
+<h2 id="example-8-error-handling">Example 8: Error Handling</h2>
+<p>Validation and error handling.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Test 1: Invalid chamber shape</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Test 1: Invalid chamber shape&quot;</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    chamber <span class="op">=</span> pytlwall.Chamber(chamber_shape<span class="op">=</span><span class="st">&#39;INVALID&#39;</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pytlwall.chamber.ChamberShapeError <span class="im">as</span> e:</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  ✓ Error caught: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Test 2: Negative dimension</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Test 2: Negative dimension&quot;</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    chamber <span class="op">=</span> pytlwall.Chamber(pipe_rad_m<span class="op">=-</span><span class="fl">0.025</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pytlwall.chamber.ChamberDimensionError <span class="im">as</span> e:</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  ✓ Error caught: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Test 3: Zero dimension</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Test 3: Zero dimension&quot;</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    chamber <span class="op">=</span> pytlwall.Chamber(pipe_rad_m<span class="op">=</span><span class="fl">0.0</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pytlwall.chamber.ChamberDimensionError <span class="im">as</span> e:</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  ✓ Error caught: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Test 4: Invalid beta function</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Test 4: Invalid beta function&quot;</span>)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    chamber <span class="op">=</span> pytlwall.Chamber(betax<span class="op">=-</span><span class="fl">10.0</span>)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pytlwall.chamber.ChamberDimensionError <span class="im">as</span> e:</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  ✓ Error caught: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Test 5: Valid chamber</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Test 5: Valid chamber creation&quot;</span>)</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    chamber <span class="op">=</span> pytlwall.Chamber(</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        pipe_rad_m<span class="op">=</span><span class="fl">0.025</span>,</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>,</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        betax<span class="op">=</span><span class="fl">100.0</span>,</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        betay<span class="op">=</span><span class="fl">50.0</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  ✓ Chamber created: </span><span class="sc">{</span>chamber<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  ✗ Unexpected error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="shape-reference">Shape Reference</h2>
+<h3 id="supported-shapes">Supported Shapes</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Shape</th>
+<th>Aliases</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>CIRCULAR</code></td>
+<td><code>ROUND</code>, <code>CIRC</code></td>
+<td>Circular cross-section</td>
+</tr>
+<tr class="even">
+<td><code>ELLIPTICAL</code></td>
+<td><code>ELLIPTIC</code></td>
+<td>Elliptical cross-section</td>
+</tr>
+<tr class="odd">
+<td><code>RECTANGULAR</code></td>
+<td><code>RECT</code>, <code>RECTANGLE</code></td>
+<td>Rectangular cross-section</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dimension-parameters">Dimension Parameters</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Shape</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Circular</td>
+<td><code>pipe_rad_m</code> (radius)</td>
+</tr>
+<tr class="even">
+<td>Elliptical</td>
+<td><code>pipe_hor_m</code>, <code>pipe_ver_m</code> (half-apertures)</td>
+</tr>
+<tr class="odd">
+<td>Rectangular</td>
+<td><code>pipe_hor_m</code>, <code>pipe_ver_m</code> (half-widths)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="yokoya-parameters">Yokoya Parameters</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>yokoya_q</code></td>
+<td>Asymmetry parameter (0 for circular)</td>
+</tr>
+<tr class="even">
+<td><code>long_yokoya_factor</code></td>
+<td>Longitudinal impedance correction</td>
+</tr>
+<tr class="odd">
+<td><code>drivx_yokoya_factor</code></td>
+<td>Horizontal driving impedance correction</td>
+</tr>
+<tr class="even">
+<td><code>drivy_yokoya_factor</code></td>
+<td>Vertical driving impedance correction</td>
+</tr>
+<tr class="odd">
+<td><code>detx_yokoya_factor</code></td>
+<td>Horizontal detuning correction</td>
+</tr>
+<tr class="even">
+<td><code>dety_yokoya_factor</code></td>
+<td>Vertical detuning correction</td>
+</tr>
+</tbody>
+</table>
+<h3 id="yokoya-factor-formulas">Yokoya Factor Formulas</h3>
+<p>For elliptical chambers with aspect ratio q = (h-v)/(h+v):</p>
+<p><span class="math display">\[F_{long} = 1 - 0.4 q^2\]</span></p>
+<p><span class="math display">\[F_{driv,x} = 1 + 0.5 q\]</span></p>
+<p><span class="math display">\[F_{driv,y} = 1 - 0.5 q\]</span></p>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="API_REFERENCE_CHAMBER.html">API Reference - Chamber</a> - Complete API documentation</li>
+<li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes Reference</a> - Detailed shape information</li>
+<li><a href="EXAMPLES.html">Examples Main Page</a> - All module examples</li>
+</ul>
+<hr />
+<p><strong><a href="EXAMPLES.html">◀ Back to Examples</a></strong> | <strong><a href="EXAMPLES_LAYER.html">◀ Previous: layer</a></strong> | <strong><a href="EXAMPLES_TLWALL.html">Next: tlwall ▶</a></strong></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

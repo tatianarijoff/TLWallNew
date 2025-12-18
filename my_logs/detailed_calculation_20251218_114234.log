@@ -1,0 +1,4 @@
+2025-12-18 11:42:34 [DEBUG] Debug message - only visible at verbosity >= 3
+2025-12-18 11:42:34 [INFO] Info message - visible at verbosity >= 2
+2025-12-18 11:42:34 [WARNING] Warning message - visible at verbosity >= 1
+2025-12-18 11:42:34 [ERROR] Error message - always visible

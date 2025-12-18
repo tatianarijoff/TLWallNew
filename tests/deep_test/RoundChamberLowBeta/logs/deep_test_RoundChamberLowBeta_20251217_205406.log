@@ -1,0 +1,83 @@
+2025-12-17 20:54:06 [INFO] ================================================================================
+2025-12-17 20:54:06 [INFO] PYTLWALL DEEP TEST: RoundChamberLowBeta
+2025-12-17 20:54:06 [INFO] ================================================================================
+2025-12-17 20:54:06 [INFO] Timestamp: 2025-12-17 20:54:06
+2025-12-17 20:54:06 [INFO] Log file: tests/deep_test/RoundChamberLowBeta/logs/deep_test_RoundChamberLowBeta_20251217_205406.log
+2025-12-17 20:54:06 [INFO] 
+2025-12-17 20:54:06 [INFO] ================================================================================
+2025-12-17 20:54:06 [INFO] Running test: RoundChamberLowBeta
+2025-12-17 20:54:06 [INFO] ================================================================================
+2025-12-17 20:54:06 [INFO] Configuration: tests/deep_test/RoundChamberLowBeta/RoundChamberLowBetaWake2D.cfg
+2025-12-17 20:54:06 [INFO] Output directory: tests/deep_test/RoundChamberLowBeta/output
+2025-12-17 20:54:06 [INFO] Image directory: tests/deep_test/RoundChamberLowBeta/img
+2025-12-17 20:54:06 [INFO] Wake2D directory: tests/deep_test/RoundChamberLowBeta/Wake2D
+2025-12-17 20:54:06 [INFO] 
+2025-12-17 20:54:06 [INFO] Loading configuration...
+2025-12-17 20:54:06 [INFO]   Boundary type: CW
+2025-12-17 20:54:06 [INFO]   Configuration loaded successfully
+2025-12-17 20:54:06 [INFO]   Chamber: CIRCULAR
+2025-12-17 20:54:06 [INFO]   Frequencies: 91 points
+2025-12-17 20:54:06 [INFO]   Frequency range: 1.00e+03 - 1.00e+13 Hz
+2025-12-17 20:54:06 [INFO] 
+2025-12-17 20:54:06 [INFO] Config file: RoundChamberLowBetaWake2D.cfg
+2025-12-17 20:54:06 [INFO]   Will compare with Wake2D: True
+2025-12-17 20:54:06 [INFO]   Will compare with OldTLWall: False
+2025-12-17 20:54:06 [INFO] 
+2025-12-17 20:54:06 [INFO] Computing and comparing impedances...
+2025-12-17 20:54:06 [INFO] 
+  Processing ZLongTotal (Total Longitudinal Impedance (ZLong + ISC))...
+2025-12-17 20:54:06 [INFO]     Saved output: ZLongTotal.txt
+2025-12-17 20:54:06 [ERROR] 
+✗ Test RoundChamberLowBeta failed with error:
+2025-12-17 20:54:06 [ERROR]   OverflowError: cannot convert float infinity to integer
+2025-12-17 20:54:06 [ERROR]   Traceback:
+Traceback (most recent call last):
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/tests/run_tests_deep.py", line 779, in run_single_test
+    create_single_plot(single_plot_path, wall.f, Z_tlwall, imp_type, logger)
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/tests/run_tests_deep.py", line 597, in create_single_plot
+    plt.tight_layout()
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/pyplot.py", line 2844, in tight_layout
+    gcf().tight_layout(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/figure.py", line 3640, in tight_layout
+    engine.execute(self)
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/layout_engine.py", line 188, in execute
+    kwargs = get_tight_layout_figure(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/_tight_layout.py", line 266, in get_tight_layout_figure
+    kwargs = _auto_adjust_subplotpars(fig, renderer,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/_tight_layout.py", line 82, in _auto_adjust_subplotpars
+    bb += [martist._get_tightbbox_for_layout_only(ax, renderer)]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/artist.py", line 1402, in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/axes/_base.py", line 4554, in get_tightbbox
+    ba = martist._get_tightbbox_for_layout_only(axis, renderer)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/artist.py", line 1402, in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/axis.py", line 1351, in get_tightbbox
+    ticks_to_draw = self._update_ticks()
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/axis.py", line 1282, in _update_ticks
+    major_labels = self.major.formatter.format_ticks(major_locs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/ticker.py", line 217, in format_ticks
+    return [self(value, i) for i, value in enumerate(values)]
+            ^^^^^^^^^^^^^^
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/ticker.py", line 1097, in __call__
+    is_x_decade = _is_close_to_int(fx)
+                  ^^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/miniforge3/lib/python3.12/site-packages/matplotlib/ticker.py", line 2327, in _is_close_to_int
+    return math.isclose(x, round(x))
+                           ^^^^^^^^
+OverflowError: cannot convert float infinity to integer
+
+2025-12-17 20:54:06 [INFO] 
+================================================================================
+2025-12-17 20:54:06 [INFO] TEST RoundChamberLowBeta: FAILED ✗
+2025-12-17 20:54:06 [INFO] ================================================================================
+2025-12-17 20:54:06 [INFO] Log saved to: tests/deep_test/RoundChamberLowBeta/logs/deep_test_RoundChamberLowBeta_20251217_205406.log
+

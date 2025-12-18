@@ -1,0 +1,37 @@
+2025-12-17 22:36:47 [INFO] ================================================================================
+2025-12-17 22:36:47 [INFO] PYTLWALL DEEP TEST: NewCV
+2025-12-17 22:36:47 [INFO] ================================================================================
+2025-12-17 22:36:47 [INFO] Timestamp: 2025-12-17 22:36:47
+2025-12-17 22:36:47 [INFO] Log file: tests/deep_test/NewCV/logs/deep_test_NewCV_20251217_223647.log
+2025-12-17 22:36:47 [INFO] 
+2025-12-17 22:36:47 [INFO] ================================================================================
+2025-12-17 22:36:47 [INFO] Running test: NewCV
+2025-12-17 22:36:47 [INFO] ================================================================================
+2025-12-17 22:36:47 [INFO] Configuration: tests/deep_test/NewCV/NewCVWake2D.cfg
+2025-12-17 22:36:47 [INFO] Output directory: tests/deep_test/NewCV/output
+2025-12-17 22:36:47 [INFO] Image directory: tests/deep_test/NewCV/img
+2025-12-17 22:36:47 [INFO] Wake2D directory: tests/deep_test/NewCV/Wake2D
+2025-12-17 22:36:47 [INFO] 
+2025-12-17 22:36:47 [INFO] Loading configuration...
+2025-12-17 22:36:47 [INFO]   Boundary type: CW
+2025-12-17 22:36:47 [ERROR] 
+✗ Test NewCV failed with error:
+2025-12-17 22:36:47 [ERROR]   ConfigurationError: Frequency file not found: ZlongWLHC_2layers24.25mm_some_element.dat/Wake2D
+2025-12-17 22:36:47 [ERROR]   Traceback:
+Traceback (most recent call last):
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/tests/run_tests_deep.py", line 983, in run_single_test
+    wall = cfg.read_pytlwall()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall/cfg_io.py", line 840, in read_pytlwall
+    freq = self.read_freq()
+           ^^^^^^^^^^^^^^^^
+  File "/home/tatij/CERN/pytlwall/pytlwall-master/pytlwall/cfg_io.py", line 484, in read_freq
+    raise ConfigurationError(f"Frequency file not found: {filename}")
+pytlwall.cfg_io.ConfigurationError: Frequency file not found: ZlongWLHC_2layers24.25mm_some_element.dat/Wake2D
+
+2025-12-17 22:36:47 [INFO] 
+================================================================================
+2025-12-17 22:36:47 [INFO] TEST NewCV: FAILED ✗
+2025-12-17 22:36:47 [INFO] ================================================================================
+2025-12-17 22:36:47 [INFO] Log saved to: tests/deep_test/NewCV/logs/deep_test_NewCV_20251217_223647.log
+

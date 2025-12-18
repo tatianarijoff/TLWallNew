@@ -1,0 +1,155 @@
+2025-12-18 10:28:22 [INFO] ================================================================================
+2025-12-18 10:28:22 [INFO] PYTLWALL DEEP TEST: Ti_Cer_Cu_Vac
+2025-12-18 10:28:22 [INFO] ================================================================================
+2025-12-18 10:28:22 [INFO] Timestamp: 2025-12-18 10:28:22
+2025-12-18 10:28:22 [INFO] Log file: tests/deep_test/Ti_Cer_Cu_Vac/logs/deep_test_Ti_Cer_Cu_Vac_20251218_102822.log
+2025-12-18 10:28:22 [INFO] 
+2025-12-18 10:28:22 [INFO] ================================================================================
+2025-12-18 10:28:22 [INFO] Running test: Ti_Cer_Cu_Vac
+2025-12-18 10:28:22 [INFO] ================================================================================
+2025-12-18 10:28:22 [INFO] Configuration: tests/deep_test/Ti_Cer_Cu_Vac/Ti_Cer_Cu_VacWake2D.cfg
+2025-12-18 10:28:22 [INFO] Output directory: tests/deep_test/Ti_Cer_Cu_Vac/output
+2025-12-18 10:28:22 [INFO] Image directory: tests/deep_test/Ti_Cer_Cu_Vac/img
+2025-12-18 10:28:22 [INFO] Wake2D directory: tests/deep_test/Ti_Cer_Cu_Vac/Wake2D
+2025-12-18 10:28:22 [INFO] 
+2025-12-18 10:28:22 [INFO] Loading configuration...
+2025-12-18 10:28:22 [INFO]   Boundary type: CW
+2025-12-18 10:28:22 [INFO]   Configuration loaded successfully
+2025-12-18 10:28:22 [INFO]   Chamber: CIRCULAR
+2025-12-18 10:28:22 [INFO]   Frequencies: 364 points
+2025-12-18 10:28:22 [INFO]   Frequency range: 1.00e-03 - 1.00e+13 Hz
+2025-12-18 10:28:22 [INFO] 
+2025-12-18 10:28:22 [INFO] Config file: Ti_Cer_Cu_VacWake2D.cfg
+2025-12-18 10:28:22 [INFO]   Will compare with Wake2D: True
+2025-12-18 10:28:22 [INFO]   Will compare with OldTLWall: False
+2025-12-18 10:28:22 [INFO] 
+2025-12-18 10:28:22 [INFO] 
+  Impedance types to process: ['ZLongTotal', 'ZLong', 'ZTransTotal', 'ZTrans', 'ZDipXTotal', 'ZDipX', 'ZDipYTotal', 'ZDipY', 'ZQuadXTotal', 'ZQuadX', 'ZQuadYTotal', 'ZQuadY']
+2025-12-18 10:28:22 [INFO] Computing and comparing impedances...
+2025-12-18 10:28:22 [INFO] 
+  Processing ZLongTotal (Longitudinal (with ISC))...
+2025-12-18 10:28:22 [INFO]     Saved output: ZLongTotal.txt
+2025-12-18 10:28:23 [INFO]     Saved plot: ZLongTotal.png
+2025-12-18 10:28:23 [INFO]     Wake2D reference: ZlongWLHCvvTitCuVac_4layers18.40mm_some_element.dat
+2025-12-18 10:28:23 [INFO]   Saved Excel: NewTLWallvsWake2DLongTotal.xlsx
+2025-12-18 10:28:23 [INFO]     Saved plot: WakeVsNew_ZLongTotal.png
+2025-12-18 10:28:23 [INFO] 
+  Processing ZLong (Longitudinal (no ISC))...
+2025-12-18 10:28:23 [INFO]     Saved output: ZLong.txt
+2025-12-18 10:28:24 [INFO]     Saved plot: ZLong.png
+2025-12-18 10:28:24 [INFO]     Wake2D reference: ZlongWLHCvvTitCuVac_4layers18.40mm_some_element.dat
+2025-12-18 10:28:24 [INFO]   Saved Excel: NewTLWallvsWake2DLong.xlsx
+2025-12-18 10:28:24 [INFO]     Saved plot: WakeVsNew_ZLong.png
+2025-12-18 10:28:24 [INFO] 
+  Processing ZTransTotal (Transverse (with ISC))...
+2025-12-18 10:28:24 [INFO]     Saved output: ZTransTotal.txt
+2025-12-18 10:28:25 [INFO]     Saved plot: ZTransTotal.png
+2025-12-18 10:28:25 [WARNING]     No Wake2D reference file found: ZtransW*.dat
+2025-12-18 10:28:25 [INFO] 
+  Processing ZTrans (Transverse (no ISC))...
+2025-12-18 10:28:25 [INFO]     Saved output: ZTrans.txt
+2025-12-18 10:28:25 [INFO]     Saved plot: ZTrans.png
+2025-12-18 10:28:25 [WARNING]     No Wake2D reference file found: ZtransW*.dat
+2025-12-18 10:28:25 [INFO] 
+  Processing ZDipXTotal (Dipolar X (with ISC))...
+2025-12-18 10:28:25 [INFO]     Saved output: ZDipXTotal.txt
+2025-12-18 10:28:26 [INFO]     Saved plot: ZDipXTotal.png
+2025-12-18 10:28:26 [INFO]     Wake2D reference: ZxdipWLHCvvTitCuVac_4layers18.40mm_some_element.dat
+2025-12-18 10:28:26 [INFO]   Saved Excel: NewTLWallvsWake2DDipXTotal.xlsx
+2025-12-18 10:28:26 [INFO]     Saved plot: WakeVsNew_ZDipXTotal.png
+2025-12-18 10:28:26 [INFO] 
+  Processing ZDipX (Dipolar X (no ISC))...
+2025-12-18 10:28:26 [INFO]     Saved output: ZDipX.txt
+2025-12-18 10:28:27 [INFO]     Saved plot: ZDipX.png
+2025-12-18 10:28:27 [INFO]     Wake2D reference: ZxdipWLHCvvTitCuVac_4layers18.40mm_some_element.dat
+2025-12-18 10:28:27 [INFO]   Saved Excel: NewTLWallvsWake2DDipX.xlsx
+2025-12-18 10:28:28 [INFO]     Saved plot: WakeVsNew_ZDipX.png
+2025-12-18 10:28:28 [INFO] 
+  Processing ZDipYTotal (Dipolar Y (with ISC))...
+2025-12-18 10:28:28 [INFO]     Saved output: ZDipYTotal.txt
+2025-12-18 10:28:28 [INFO]     Saved plot: ZDipYTotal.png
+2025-12-18 10:28:28 [INFO]     Wake2D reference: ZydipWLHCvvTitCuVac_4layers18.40mm_some_element.dat
+2025-12-18 10:28:28 [INFO]   Saved Excel: NewTLWallvsWake2DDipYTotal.xlsx
+2025-12-18 10:28:29 [INFO]     Saved plot: WakeVsNew_ZDipYTotal.png
+2025-12-18 10:28:29 [INFO] 
+  Processing ZDipY (Dipolar Y (no ISC))...
+2025-12-18 10:28:29 [INFO]     Saved output: ZDipY.txt
+2025-12-18 10:28:29 [INFO]     Saved plot: ZDipY.png
+2025-12-18 10:28:29 [INFO]     Wake2D reference: ZydipWLHCvvTitCuVac_4layers18.40mm_some_element.dat
+2025-12-18 10:28:29 [INFO]   Saved Excel: NewTLWallvsWake2DDipY.xlsx
+2025-12-18 10:28:30 [INFO]     Saved plot: WakeVsNew_ZDipY.png
+2025-12-18 10:28:30 [INFO] 
+  Processing ZQuadXTotal (Quadrupolar X (with ISC))...
+2025-12-18 10:28:30 [INFO]     Saved output: ZQuadXTotal.txt
+2025-12-18 10:28:30 [INFO]     Saved plot: ZQuadXTotal.png
+2025-12-18 10:28:30 [INFO]     Wake2D reference: ZxquadWLHCvvTitCuVac_4layers18.40mm_some_element.dat
+2025-12-18 10:28:30 [INFO]   Saved Excel: NewTLWallvsWake2DQuadXTotal.xlsx
+2025-12-18 10:28:31 [INFO]     Saved plot: WakeVsNew_ZQuadXTotal.png
+2025-12-18 10:28:31 [INFO] 
+  Processing ZQuadX (Quadrupolar X (no ISC))...
+2025-12-18 10:28:31 [INFO]     Saved output: ZQuadX.txt
+2025-12-18 10:28:31 [INFO]     Saved plot: ZQuadX.png
+2025-12-18 10:28:31 [INFO]     Wake2D reference: ZxquadWLHCvvTitCuVac_4layers18.40mm_some_element.dat
+2025-12-18 10:28:31 [INFO]   Saved Excel: NewTLWallvsWake2DQuadX.xlsx
+2025-12-18 10:28:31 [INFO]     Saved plot: WakeVsNew_ZQuadX.png
+2025-12-18 10:28:31 [INFO] 
+  Processing ZQuadYTotal (Quadrupolar Y (with ISC))...
+2025-12-18 10:28:31 [INFO]     Saved output: ZQuadYTotal.txt
+2025-12-18 10:28:32 [INFO]     Saved plot: ZQuadYTotal.png
+2025-12-18 10:28:32 [INFO]     Wake2D reference: ZyquadWLHCvvTitCuVac_4layers18.40mm_some_element.dat
+2025-12-18 10:28:32 [INFO]   Saved Excel: NewTLWallvsWake2DQuadYTotal.xlsx
+2025-12-18 10:28:32 [INFO]     Saved plot: WakeVsNew_ZQuadYTotal.png
+2025-12-18 10:28:32 [INFO] 
+  Processing ZQuadY (Quadrupolar Y (no ISC))...
+2025-12-18 10:28:32 [INFO]     Saved output: ZQuadY.txt
+2025-12-18 10:28:33 [INFO]     Saved plot: ZQuadY.png
+2025-12-18 10:28:33 [INFO]     Wake2D reference: ZyquadWLHCvvTitCuVac_4layers18.40mm_some_element.dat
+2025-12-18 10:28:33 [INFO]   Saved Excel: NewTLWallvsWake2DQuadY.xlsx
+2025-12-18 10:28:33 [INFO]     Saved plot: WakeVsNew_ZQuadY.png
+2025-12-18 10:28:33 [INFO] 
+  Computing space charge impedances...
+2025-12-18 10:28:33 [INFO]     Processing ZLongDSC...
+2025-12-18 10:28:33 [INFO]       Saved: ZLongDSC.txt
+2025-12-18 10:28:33 [INFO]     Saved plot: ZLongDSC.png
+2025-12-18 10:28:33 [INFO]     Processing ZLongISC...
+2025-12-18 10:28:33 [INFO]       Saved: ZLongISC.txt
+2025-12-18 10:28:34 [INFO]     Saved plot: ZLongISC.png
+2025-12-18 10:28:34 [INFO]     Processing ZTransDSC...
+2025-12-18 10:28:34 [INFO]       Saved: ZTransDSC.txt
+2025-12-18 10:28:34 [INFO]     Saved plot: ZTransDSC.png
+2025-12-18 10:28:34 [INFO]     Processing ZTransISC...
+2025-12-18 10:28:34 [INFO]       Saved: ZTransISC.txt
+2025-12-18 10:28:35 [INFO]     Saved plot: ZTransISC.png
+2025-12-18 10:28:35 [INFO]     Processing ZDipDSC...
+2025-12-18 10:28:35 [INFO]       Saved: ZDipDSC.txt
+2025-12-18 10:28:35 [INFO]     Saved plot: ZDipDSC.png
+2025-12-18 10:28:35 [INFO]     Processing ZDipISC...
+2025-12-18 10:28:35 [INFO]       Saved: ZDipISC.txt
+2025-12-18 10:28:36 [INFO]     Saved plot: ZDipISC.png
+2025-12-18 10:28:36 [INFO] 
+✓ Test Ti_Cer_Cu_Vac completed successfully
+2025-12-18 10:28:36 [INFO] 
+================================================================================
+2025-12-18 10:28:36 [INFO] ISC COMPARISON SUMMARY: Which version matches Wake2D better?
+2025-12-18 10:28:36 [INFO] ================================================================================
+2025-12-18 10:28:36 [INFO] 
+2025-12-18 10:28:36 [INFO] Impedance        | With ISC             | Without ISC          | Better Match   
+2025-12-18 10:28:36 [INFO]                  |    Real%    Imag% |    Real%    Imag% |                
+2025-12-18 10:28:36 [INFO] --------------------------------------------------------------------------------
+2025-12-18 10:28:36 [INFO] Longitudinal     |     51.1    100.1 |     51.1    100.1 | WITH ISC       
+2025-12-18 10:28:36 [INFO] Dipolar X        |      6.5      4.3 |      6.5      4.3 | WITHOUT ISC    
+2025-12-18 10:28:36 [INFO] Dipolar Y        |      6.5      4.3 |      6.5      4.3 | WITHOUT ISC    
+2025-12-18 10:28:36 [INFO] Quadrupolar X    |     51.1 5129574.7 |     51.1    100.1 | WITHOUT ISC    
+2025-12-18 10:28:36 [INFO] Quadrupolar Y    |     51.1 5129574.7 |     51.1    100.1 | WITHOUT ISC    
+2025-12-18 10:28:36 [INFO] --------------------------------------------------------------------------------
+2025-12-18 10:28:36 [INFO] 
+2025-12-18 10:28:36 [INFO] NOTE: Lower percentage difference = better match with Wake2D
+2025-12-18 10:28:36 [INFO]       Values show median |diff %| across all frequencies
+2025-12-18 10:28:36 [INFO] 
+  Summary saved to: ISC_comparison_summary.txt
+2025-12-18 10:28:36 [INFO] 
+================================================================================
+2025-12-18 10:28:36 [INFO] TEST Ti_Cer_Cu_Vac: PASSED ✓
+2025-12-18 10:28:36 [INFO] ================================================================================
+2025-12-18 10:28:36 [INFO] Log saved to: tests/deep_test/Ti_Cer_Cu_Vac/logs/deep_test_Ti_Cer_Cu_Vac_20251218_102822.log
+

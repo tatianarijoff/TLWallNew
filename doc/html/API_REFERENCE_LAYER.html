@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>API REFERENCE LAYER</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#layer-module-api-reference">layer Module API Reference</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#import">Import</a></li>
+<li><a href="#layer-class">Layer Class</a>
+<ul>
+<li><a href="#class-definition">Class Definition</a></li>
+<li><a href="#constructor">Constructor</a></li>
+</ul></li>
+<li><a href="#basic-properties">Basic Properties</a>
+<ul>
+<li><a href="#layer_type"><code>layer_type</code></a></li>
+<li><a href="#thick_m"><code>thick_m</code></a></li>
+<li><a href="#sigmadc"><code>sigmaDC</code></a></li>
+<li><a href="#epsr"><code>epsr</code></a></li>
+<li><a href="#rq"><code>RQ</code></a></li>
+<li><a href="#freq_hz"><code>freq_Hz</code></a></li>
+</ul></li>
+<li><a href="#calculated-properties">Calculated Properties</a>
+<ul>
+<li><a href="#sigmaac"><code>sigmaAC</code></a></li>
+<li><a href="#delta"><code>delta</code></a></li>
+<li><a href="#rs"><code>RS</code></a></li>
+<li><a href="#kz"><code>KZ</code></a></li>
+<li><a href="#eps"><code>eps</code></a></li>
+<li><a href="#mu"><code>mu</code></a></li>
+<li><a href="#mur"><code>mur</code></a></li>
+<li><a href="#sigmapm"><code>sigmaPM</code></a></li>
+<li><a href="#deltam"><code>deltaM</code></a></li>
+<li><a href="#kprop"><code>kprop</code></a></li>
+</ul></li>
+<li><a href="#methods">Methods</a>
+<ul>
+<li><a href="#set_surf_impednewfreq_hz-newkz"><code>set_surf_imped(newfreq_Hz, newKZ)</code></a></li>
+</ul></li>
+<li><a href="#material-constants">Material Constants</a>
+<ul>
+<li><a href="#typical-conductivity-values">Typical Conductivity Values</a></li>
+<li><a href="#skin-depth-at-1-mhz">Skin Depth at 1 MHz</a></li>
+</ul></li>
+<li><a href="#usage-examples">Usage Examples</a>
+<ul>
+<li><a href="#example-1-copper-vacuum-chamber">Example 1: Copper Vacuum Chamber</a></li>
+<li><a href="#example-2-roughness-effect">Example 2: Roughness Effect</a></li>
+<li><a href="#example-3-multilayer-preparation">Example 3: Multilayer Preparation</a></li>
+<li><a href="#example-4-custom-surface-impedance">Example 4: Custom Surface Impedance</a></li>
+</ul></li>
+<li><a href="#notes-and-conventions">Notes and Conventions</a>
+<ul>
+<li><a href="#frequency-dependence">Frequency Dependence</a></li>
+<li><a href="#roughness-model">Roughness Model</a></li>
+<li><a href="#coordinate-system">Coordinate System</a></li>
+<li><a href="#physical-constants">Physical Constants</a></li>
+</ul></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">API REFERENCE LAYER</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="layer-module-api-reference">layer Module API Reference</h1>
+<h2 id="overview">Overview</h2>
+<p>The <code>layer</code> module provides the <code>Layer</code> class for defining material layers with electromagnetic properties in vacuum chambers.</p>
+<p>The <code>Layer</code> class represents a material layer with frequency-dependent electrical and magnetic properties. It calculates skin depth, surface impedance, and other parameters essential for impedance calculations in particle accelerators.</p>
+<p>Layers can represent: - Conductive materials (copper, stainless steel, aluminum) - Vacuum boundaries - Perfect electrical conductors (PEC) - Dielectric materials</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#import">Import</a></li>
+<li><a href="#layer-class">Layer Class</a></li>
+<li><a href="#basic-properties">Basic Properties</a></li>
+<li><a href="#calculated-properties">Calculated Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#material-constants">Material Constants</a></li>
+<li><a href="#usage-examples">Usage Examples</a></li>
+<li><a href="#notes-and-conventions">Notes and Conventions</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+<hr />
+<h2 id="import">Import</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Layer</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.layer <span class="im">import</span> Layer, LayerValidationError</span></code></pre></div>
+<hr />
+<h2 id="layer-class">Layer Class</h2>
+<h3 id="class-definition">Class Definition</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Layer:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Represents a material layer in a vacuum chamber with</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    frequency-dependent electromagnetic properties.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<h3 id="constructor">Constructor</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Layer(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    layer_type<span class="op">=</span><span class="st">&#39;CW&#39;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    thick_m<span class="op">=</span><span class="fl">0.01</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    muinf_Hz<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    epsr<span class="op">=</span><span class="fl">1.0</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    sigmaDC<span class="op">=</span><span class="fl">1e6</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    k_Hz<span class="op">=</span>inf,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    tau<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    RQ<span class="op">=</span><span class="fl">0.0</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    freq_Hz<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    boundary<span class="op">=</span><span class="va">False</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<h4 id="parameters">Parameters</h4>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 15%" />
+<col style="width: 23%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>layer_type</code></td>
+<td><code>str</code></td>
+<td><code>'CW'</code></td>
+<td>Layer type: ‘CW’ (conductor), ‘V’ (vacuum), ‘PEC’ (perfect conductor)</td>
+</tr>
+<tr class="even">
+<td><code>thick_m</code></td>
+<td><code>float</code></td>
+<td><code>0.01</code></td>
+<td>Layer thickness in meters (must be positive)</td>
+</tr>
+<tr class="odd">
+<td><code>muinf_Hz</code></td>
+<td><code>float</code></td>
+<td><code>0.0</code></td>
+<td>Magnetic permeability parameter</td>
+</tr>
+<tr class="even">
+<td><code>epsr</code></td>
+<td><code>float</code></td>
+<td><code>1.0</code></td>
+<td>Relative permittivity (dielectric constant, must be positive)</td>
+</tr>
+<tr class="odd">
+<td><code>sigmaDC</code></td>
+<td><code>float</code></td>
+<td><code>1e6</code></td>
+<td>DC electrical conductivity in S/m (must be non-negative)</td>
+</tr>
+<tr class="even">
+<td><code>k_Hz</code></td>
+<td><code>float</code></td>
+<td><code>inf</code></td>
+<td>Relaxation frequency for permeability in Hz</td>
+</tr>
+<tr class="odd">
+<td><code>tau</code></td>
+<td><code>float</code></td>
+<td><code>0.0</code></td>
+<td>Relaxation time for permittivity in seconds</td>
+</tr>
+<tr class="even">
+<td><code>RQ</code></td>
+<td><code>float</code></td>
+<td><code>0.0</code></td>
+<td>Surface roughness parameter in meters</td>
+</tr>
+<tr class="odd">
+<td><code>freq_Hz</code></td>
+<td><code>array-like</code></td>
+<td><code>None</code></td>
+<td>Frequency array in Hz for calculations</td>
+</tr>
+<tr class="even">
+<td><code>boundary</code></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>If True, creates vacuum boundary layer</td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples">Examples</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Layer</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Copper layer</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>copper <span class="op">=</span> Layer(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    layer_type<span class="op">=</span><span class="st">&#39;CW&#39;</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    thick_m<span class="op">=</span><span class="fl">0.001</span>,  <span class="co"># 1 mm</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>,  <span class="co"># Copper conductivity</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    freq_Hz<span class="op">=</span>np.logspace(<span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">100</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Stainless steel with roughness</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>steel <span class="op">=</span> Layer(</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    thick_m<span class="op">=</span><span class="fl">0.002</span>,  <span class="co"># 2 mm</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    sigmaDC<span class="op">=</span><span class="fl">1.45e6</span>,  <span class="co"># SS conductivity</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    RQ<span class="op">=</span><span class="fl">1e-6</span>,  <span class="co"># 1 micron roughness</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    freq_Hz<span class="op">=</span>np.logspace(<span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">100</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Vacuum boundary</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>vacuum <span class="op">=</span> Layer(boundary<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Perfect conductor</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>pec <span class="op">=</span> Layer(layer_type<span class="op">=</span><span class="st">&#39;PEC&#39;</span>)</span></code></pre></div>
+<hr />
+<h2 id="basic-properties">Basic Properties</h2>
+<h3 id="layer_type"><code>layer_type</code></h3>
+<p><strong>Type:</strong> <code>str</code></p>
+<p><strong>Description:</strong> Layer type identifier.</p>
+<p><strong>Valid values:</strong> - <code>'CW'</code>: Conductor (default) - <code>'V'</code>: Vacuum - <code>'PEC'</code>: Perfect electrical conductor</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(layer_type<span class="op">=</span><span class="st">&#39;CW&#39;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(layer.layer_type)  <span class="co"># Output: &#39;CW&#39;</span></span></code></pre></div>
+<hr />
+<h3 id="thick_m"><code>thick_m</code></h3>
+<p><strong>Type:</strong> <code>float</code></p>
+<p><strong>Description:</strong> Layer thickness in meters.</p>
+<p><strong>Validation:</strong> Must be positive (&gt; 0).</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(thick_m<span class="op">=</span><span class="fl">0.001</span>)  <span class="co"># 1 mm</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Thickness: </span><span class="sc">{</span>layer<span class="sc">.</span>thick_m<span class="op">*</span><span class="dv">1000</span><span class="sc">}</span><span class="ss"> mm&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="sigmadc"><code>sigmaDC</code></h3>
+<p><strong>Type:</strong> <code>float</code></p>
+<p><strong>Description:</strong> DC electrical conductivity in S/m (Siemens per meter).</p>
+<p><strong>Validation:</strong> Must be non-negative (≥ 0).</p>
+<p><strong>Typical values:</strong> - Copper: 5.96×10⁷ S/m - Aluminum: 3.77×10⁷ S/m - Stainless Steel: 1.45×10⁶ S/m - Insulator: 0 S/m</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>copper <span class="op">=</span> Layer(sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Copper conductivity: </span><span class="sc">{</span>copper<span class="sc">.</span>sigmaDC<span class="sc">:.2e}</span><span class="ss"> S/m&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="epsr"><code>epsr</code></h3>
+<p><strong>Type:</strong> <code>float</code></p>
+<p><strong>Description:</strong> Relative permittivity (dielectric constant).</p>
+<p><strong>Validation:</strong> Must be positive (&gt; 0).</p>
+<p><strong>Typical values:</strong> - Vacuum/Air: 1.0 - Teflon: ~2.1 - Alumina: ~9.0</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(epsr<span class="op">=</span><span class="fl">1.0</span>)  <span class="co"># Vacuum</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Relative permittivity: </span><span class="sc">{</span>layer<span class="sc">.</span>epsr<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="rq"><code>RQ</code></h3>
+<p><strong>Type:</strong> <code>float</code></p>
+<p><strong>Description:</strong> Surface roughness parameter in meters.</p>
+<p><strong>Validation:</strong> Must be non-negative (≥ 0).</p>
+<p><strong>Notes:</strong> - RQ = 0: Perfectly smooth surface - RQ &gt; 0: Rough surface (increases resistance at high frequencies) - Typical values: 0.1 μm to 10 μm</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rough <span class="op">=</span> Layer(RQ<span class="op">=</span><span class="fl">1e-6</span>)  <span class="co"># 1 micron roughness</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>smooth <span class="op">=</span> Layer(RQ<span class="op">=</span><span class="fl">0.0</span>)  <span class="co"># Smooth surface</span></span></code></pre></div>
+<hr />
+<h3 id="freq_hz"><code>freq_Hz</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code></p>
+<p><strong>Description:</strong> Frequency array in Hz for property calculations.</p>
+<p><strong>Validation:</strong> All frequencies must be positive.</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> np.logspace(<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">100</span>)  <span class="co"># 1 MHz to 1 GHz</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(freq_Hz<span class="op">=</span>freq)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Number of frequencies: </span><span class="sc">{</span><span class="bu">len</span>(layer.freq_Hz)<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="calculated-properties">Calculated Properties</h2>
+<p>All calculated properties are computed on-demand and returned as numpy arrays with length matching <code>freq_Hz</code>.</p>
+<h3 id="sigmaac"><code>sigmaAC</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Description:</strong> Frequency-dependent AC conductivity.</p>
+<p><strong>Formula:</strong> σ_AC = σ_DC_R / (1 + j·2π·τ·f)</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, freq_Hz<span class="op">=</span>np.logspace(<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">10</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sigmaAC <span class="op">=</span> layer.sigmaAC</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;AC conductivity at first freq: </span><span class="sc">{</span><span class="bu">abs</span>(sigmaAC[<span class="dv">0</span>])<span class="sc">:.2e}</span><span class="ss"> S/m&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="delta"><code>delta</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Description:</strong> Skin depth in meters.</p>
+<p><strong>Formula:</strong> δ = √[2 / (2πfμσ_AC + j·με(2πf)²)]</p>
+<p><strong>Notes:</strong> - Penetration depth of electromagnetic fields - Decreases with frequency: δ ∝ 1/√f - Real part gives effective penetration depth</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>copper <span class="op">=</span> Layer(sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, freq_Hz<span class="op">=</span>np.array([<span class="fl">1e6</span>]))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>delta <span class="op">=</span> <span class="bu">abs</span>(copper.delta[<span class="dv">0</span>])</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Skin depth at 1 MHz: </span><span class="sc">{</span>delta<span class="op">*</span><span class="fl">1e6</span><span class="sc">:.1f}</span><span class="ss"> μm&quot;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected: ~66 μm for copper</span></span></code></pre></div>
+<hr />
+<h3 id="rs"><code>RS</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code> (real)</p>
+<p><strong>Description:</strong> Surface resistance in Ohms, including roughness effects.</p>
+<p><strong>Formula:</strong> Rs = √(μπf/σ_DC) · [1 + (2/π)·arctan(0.7·μ·2πf·σ_DC·RQ²)]</p>
+<p><strong>Notes:</strong> - Increases with frequency: Rs ∝ √f - Roughness term (Hammerstad model) increases resistance - Important for cavity Q-factor and beam-induced heating</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, RQ<span class="op">=</span><span class="dv">0</span>, freq_Hz<span class="op">=</span>np.array([<span class="fl">1e9</span>]))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>RS <span class="op">=</span> layer.RS[<span class="dv">0</span>].real</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Surface resistance at 1 GHz: </span><span class="sc">{</span>RS<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="kz"><code>KZ</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Description:</strong> Surface impedance.</p>
+<p><strong>Formula (default):</strong> KZ = (1 + j) / (σ_PM · δ_M)</p>
+<p><strong>Notes:</strong> - Complex quantity: resistance + reactance - Can be set directly or calculated - Use <code>set_surf_imped()</code> to interpolate measured data</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, freq_Hz<span class="op">=</span>np.logspace(<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">10</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>KZ <span class="op">=</span> layer.KZ</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Surface impedance: </span><span class="sc">{</span>KZ[<span class="dv">0</span>]<span class="sc">:.3e}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="eps"><code>eps</code></h3>
+<p><strong>Type:</strong> <code>float</code></p>
+<p><strong>Description:</strong> Absolute permittivity in F/m.</p>
+<p><strong>Formula:</strong> ε = ε₀ · εᵣ</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(epsr<span class="op">=</span><span class="fl">2.0</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Absolute permittivity: </span><span class="sc">{</span>layer<span class="sc">.</span>eps<span class="sc">:.3e}</span><span class="ss"> F/m&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="mu"><code>mu</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Description:</strong> Absolute permeability in H/m (frequency-dependent).</p>
+<p><strong>Formula:</strong> μ = μ₀ · μᵣ</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(freq_Hz<span class="op">=</span>np.logspace(<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">10</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> layer.mu</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Permeability at first freq: </span><span class="sc">{</span><span class="bu">abs</span>(mu[<span class="dv">0</span>])<span class="sc">:.3e}</span><span class="ss"> H/m&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="mur"><code>mur</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Description:</strong> Relative permeability (frequency-dependent).</p>
+<p><strong>Formula:</strong> μᵣ = 1 + μ_inf / (1 + j·f/k)</p>
+<hr />
+<h3 id="sigmapm"><code>sigmaPM</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code> (real)</p>
+<p><strong>Description:</strong> Effective conductivity magnitude in S/m.</p>
+<p><strong>Formula:</strong> σ_PM = √[(2πfε)² + |σ_AC|²]</p>
+<hr />
+<h3 id="deltam"><code>deltaM</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Description:</strong> Modified skin depth in meters.</p>
+<p><strong>Formula:</strong> δ_M = √[2 / (2πfμσ_AC - j·με(2πf)²)]</p>
+<hr />
+<h3 id="kprop"><code>kprop</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Description:</strong> Propagation constant in 1/m.</p>
+<p><strong>Formula:</strong> k = (1 - j) / δ</p>
+<hr />
+<h2 id="methods">Methods</h2>
+<h3 id="set_surf_impednewfreq_hz-newkz"><code>set_surf_imped(newfreq_Hz, newKZ)</code></h3>
+<p>Set surface impedance with interpolation to layer frequencies.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 20%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>newfreq_Hz</code></td>
+<td><code>array-like</code></td>
+<td>Frequency array for impedance data (Hz)</td>
+</tr>
+<tr class="even">
+<td><code>newKZ</code></td>
+<td><code>array-like</code></td>
+<td>Complex surface impedance at those frequencies</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> None (modifies object in place)</p>
+<p><strong>Raises:</strong> <code>LayerValidationError</code> if data is invalid</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(freq_Hz<span class="op">=</span>np.logspace(<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">100</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set impedance from measurements at specific frequencies</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>measured_freq <span class="op">=</span> np.array([<span class="fl">1e6</span>, <span class="fl">1e8</span>, <span class="fl">1e9</span>])</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>measured_KZ <span class="op">=</span> np.array([<span class="fl">1e-3</span><span class="op">+</span><span class="ot">1e-3j</span>, <span class="fl">5e-3</span><span class="op">+</span><span class="ot">5e-3j</span>, <span class="fl">1e-2</span><span class="op">+</span><span class="ot">1e-2j</span>])</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>layer.set_surf_imped(measured_freq, measured_KZ)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Now layer.KZ is interpolated to all 100 frequencies</span></span></code></pre></div>
+<hr />
+<h2 id="material-constants">Material Constants</h2>
+<h3 id="typical-conductivity-values">Typical Conductivity Values</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Material</th>
+<th>Conductivity (S/m)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Silver</td>
+<td>6.30×10⁷</td>
+<td>Best conductor</td>
+</tr>
+<tr class="even">
+<td>Copper</td>
+<td>5.96×10⁷</td>
+<td>Standard for RF</td>
+</tr>
+<tr class="odd">
+<td>Gold</td>
+<td>4.52×10⁷</td>
+<td>Corrosion resistant</td>
+</tr>
+<tr class="even">
+<td>Aluminum</td>
+<td>3.77×10⁷</td>
+<td>Lightweight</td>
+</tr>
+<tr class="odd">
+<td>Brass</td>
+<td>1.57×10⁷</td>
+<td>Cu-Zn alloy</td>
+</tr>
+<tr class="even">
+<td>Stainless Steel 304</td>
+<td>1.45×10⁶</td>
+<td>Common vacuum chamber</td>
+</tr>
+<tr class="odd">
+<td>Stainless Steel 316L</td>
+<td>1.35×10⁶</td>
+<td>Low carbon variant</td>
+</tr>
+</tbody>
+</table>
+<h3 id="skin-depth-at-1-mhz">Skin Depth at 1 MHz</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Material</th>
+<th>Skin Depth</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Copper</td>
+<td>~66 μm</td>
+</tr>
+<tr class="even">
+<td>Aluminum</td>
+<td>~84 μm</td>
+</tr>
+<tr class="odd">
+<td>Stainless Steel</td>
+<td>~830 μm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Formula:</strong> δ = √(2/(ωμσ)) = √(1/(πfμσ))</p>
+<hr />
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="example-1-copper-vacuum-chamber">Example 1: Copper Vacuum Chamber</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Layer</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define frequency range</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> np.logspace(<span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">100</span>)  <span class="co"># 1 kHz to 1 GHz</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create copper layer</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>copper <span class="op">=</span> Layer(</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    thick_m<span class="op">=</span><span class="fl">0.001</span>,  <span class="co"># 1 mm wall thickness</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    freq_Hz<span class="op">=</span>freq</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate skin depth at different frequencies</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> f <span class="kw">in</span> [<span class="fl">1e6</span>, <span class="fl">1e7</span>, <span class="fl">1e8</span>, <span class="fl">1e9</span>]:</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(freq <span class="op">-</span> f))</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    delta <span class="op">=</span> <span class="bu">abs</span>(copper.delta[idx])</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Skin depth at </span><span class="sc">{</span>f<span class="op">/</span><span class="fl">1e6</span><span class="sc">}</span><span class="ss"> MHz: </span><span class="sc">{</span>delta<span class="op">*</span><span class="fl">1e6</span><span class="sc">:.1f}</span><span class="ss"> μm&quot;</span>)</span></code></pre></div>
+<h3 id="example-2-roughness-effect">Example 2: Roughness Effect</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> np.logspace(<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">50</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Smooth surface</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>smooth <span class="op">=</span> Layer(sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, RQ<span class="op">=</span><span class="fl">0.0</span>, freq_Hz<span class="op">=</span>freq)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Rough surface (1 micron RMS roughness)</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>rough <span class="op">=</span> Layer(sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, RQ<span class="op">=</span><span class="fl">1e-6</span>, freq_Hz<span class="op">=</span>freq)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare surface resistance at 1 GHz</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>  <span class="co"># Last frequency point</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Smooth: </span><span class="sc">{</span>smooth<span class="sc">.</span>RS[idx]<span class="sc">.</span>real<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Rough:  </span><span class="sc">{</span>rough<span class="sc">.</span>RS[idx]<span class="sc">.</span>real<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Increase: </span><span class="sc">{</span>(rough.RS[idx]<span class="op">/</span>smooth.RS[idx] <span class="op">-</span> <span class="dv">1</span>)<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%&quot;</span>)</span></code></pre></div>
+<h3 id="example-3-multilayer-preparation">Example 3: Multilayer Preparation</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare layers for multilayer impedance calculation</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> np.logspace(<span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">100</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># All layers must share the same frequency array</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>layers <span class="op">=</span> [</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    Layer(thick_m<span class="op">=</span><span class="fl">50e-6</span>, sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, freq_Hz<span class="op">=</span>freq),  <span class="co"># Cu coating</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    Layer(thick_m<span class="op">=</span><span class="fl">2e-3</span>, sigmaDC<span class="op">=</span><span class="fl">1.45e6</span>, freq_Hz<span class="op">=</span>freq),   <span class="co"># SS substrate</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    Layer(boundary<span class="op">=</span><span class="va">True</span>)  <span class="co"># Vacuum boundary</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Created </span><span class="sc">{</span><span class="bu">len</span>(layers)<span class="sc">}</span><span class="ss">-layer structure&quot;</span>)</span></code></pre></div>
+<h3 id="example-4-custom-surface-impedance">Example 4: Custom Surface Impedance</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create layer</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> np.logspace(<span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">100</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, freq_Hz<span class="op">=</span>freq)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1: Use calculated impedance (default)</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>KZ_calc <span class="op">=</span> layer.KZ</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2: Set from measurements</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>measured_freq <span class="op">=</span> np.array([<span class="fl">1e6</span>, <span class="fl">1e7</span>, <span class="fl">1e8</span>, <span class="fl">1e9</span>])</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>measured_KZ <span class="op">=</span> np.array([<span class="fl">1e-3</span><span class="op">+</span><span class="ot">1e-3j</span>, <span class="fl">3e-3</span><span class="op">+</span><span class="ot">3e-3j</span>, <span class="fl">8e-3</span><span class="op">+</span><span class="ot">8e-3j</span>, <span class="fl">1.5e-2</span><span class="op">+</span><span class="ot">1.5e-2j</span>])</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>layer.set_surf_imped(measured_freq, measured_KZ)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Now layer.KZ uses interpolated measured data</span></span></code></pre></div>
+<hr />
+<h2 id="notes-and-conventions">Notes and Conventions</h2>
+<h3 id="frequency-dependence">Frequency Dependence</h3>
+<p>Most properties vary with frequency: - <strong>Skin depth:</strong> δ ∝ 1/√f (decreases) - <strong>Surface resistance:</strong> Rs ∝ √f (increases)<br />
+- <strong>AC conductivity:</strong> Complex, frequency-dependent - <strong>Permeability:</strong> Can be frequency-dependent (if μ_inf ≠ 0)</p>
+<h3 id="roughness-model">Roughness Model</h3>
+<p>Uses Hammerstad roughness correction: - Increases surface resistance - Effect more pronounced at high frequencies - RQ typically 0.1-10 μm for machined surfaces</p>
+<h3 id="coordinate-system">Coordinate System</h3>
+<ul>
+<li>Thickness measured perpendicular to surface</li>
+<li>Surface normal assumed in z-direction</li>
+<li>Layering from inner (beam) to outer (vacuum)</li>
+</ul>
+<h3 id="physical-constants">Physical Constants</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Constant</th>
+<th>Symbol</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Permeability of vacuum</td>
+<td>μ₀</td>
+<td>4π×10⁻⁷ H/m</td>
+</tr>
+<tr class="even">
+<td>Permittivity of vacuum</td>
+<td>ε₀</td>
+<td>8.854×10⁻¹² F/m</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="API_REFERENCE_BEAM.html">beam Module</a> - Beam parameters affecting impedance</li>
+<li><a href="API_REFERENCE_FREQUENCIES.html">frequencies Module</a> - Frequency array management</li>
+<li><a href="API_REFERENCE_CHAMBER.html">chamber Module</a> - Chamber geometry</li>
+<li><a href="API_REFERENCE.html">Main API Reference</a> - Complete API documentation</li>
+</ul>
+<hr />
+<p><em>Last updated: December 2025</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

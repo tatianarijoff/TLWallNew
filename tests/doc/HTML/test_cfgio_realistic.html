@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>test cfgio realistic</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#test_cfgio_realistic.py---cfgio-realistic-tests">test_cfgio_realistic.py - CfgIo Realistic Tests</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#test-configuration-files">Test Configuration Files</a></li>
+<li><a href="#test-classes">Test Classes</a>
+<ul>
+<li><a href="#testcfgiorealistic">TestCfgIoRealistic</a></li>
+</ul></li>
+<li><a href="#configuration-variations-tested">Configuration Variations Tested</a>
+<ul>
+<li><a href="#ini-delimiters">INI Delimiters</a></li>
+<li><a href="#chamber-shape-aliases">Chamber Shape Aliases</a></li>
+<li><a href="#boundary-layer-types">Boundary Layer Types</a></li>
+<li><a href="#frequency-sources">Frequency Sources</a></li>
+</ul></li>
+<li><a href="#example-usage">Example Usage</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<h1 class="title">test cfgio realistic</h1>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="test_cfgio_realistic.py---cfgio-realistic-tests">test_cfgio_realistic.py - CfgIo Realistic Tests</h1>
+<p><a href="../TESTING.html">← Back to Testing Documentation</a></p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>Tests for the <code>CfgIo</code> class using actual .cfg configuration files from the <code>tests/input/</code> directory.</p>
+<p><strong>Module tested</strong>: <code>pytlwall.cfg_io</code></p>
+<p><strong>Run this test</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/test_cfgio_realistic.py <span class="at">-v</span></span></code></pre></div>
+<hr />
+<h2 id="test-configuration-files">Test Configuration Files</h2>
+<p>The tests use these files from <code>tests/input/</code>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>one_layer.cfg</code></td>
+<td>Single layer elliptical chamber</td>
+</tr>
+<tr class="even">
+<td><code>test001.cfg</code></td>
+<td>Basic test configuration</td>
+</tr>
+<tr class="odd">
+<td><code>two_layers.cfg</code></td>
+<td>Multi-layer structure</td>
+</tr>
+<tr class="even">
+<td><code>rectangular_chamber.cfg</code></td>
+<td>RECTANGULAR chamber</td>
+</tr>
+<tr class="odd">
+<td><code>test_round.cfg</code></td>
+<td>CIRCULAR with <code>:</code> delimiters</td>
+</tr>
+<tr class="even">
+<td><code>test_rect.cfg</code></td>
+<td>RECTANGULAR with CW boundary</td>
+</tr>
+<tr class="odd">
+<td><code>freq_input.txt</code></td>
+<td>Plain frequency data (not .cfg)</td>
+</tr>
+<tr class="even">
+<td><code>freq_input2.txt</code></td>
+<td>Plain frequency data (not .cfg)</td>
+</tr>
+<tr class="odd">
+<td><code>freq_input3.dat</code></td>
+<td>Plain frequency data (not .cfg)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="test-classes">Test Classes</h2>
+<h3 id="testcfgiorealistic">TestCfgIoRealistic</h3>
+<p>Tests CfgIo with realistic .cfg files.</p>
+<h4 id="one_layer.cfg-tests">one_layer.cfg Tests</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_onelayer_chamber_base_info</code></td>
+<td>Tests [base_info]: name, dimensions, beta, shape</td>
+</tr>
+<tr class="even">
+<td><code>test_onelayer_layers_and_boundary</code></td>
+<td>Tests layer properties: type, thick_m, σ, ε, RQ</td>
+</tr>
+<tr class="odd">
+<td><code>test_frequency_info_onelayer</code></td>
+<td>Tests [frequency_info]: fmin, fmax, fstep</td>
+</tr>
+<tr class="even">
+<td><code>test_beam_info_onelayer</code></td>
+<td>Tests [beam_info]: test_beam_shift, gammarel</td>
+</tr>
+<tr class="odd">
+<td><code>test_pytlwall_one_layer_global</code></td>
+<td>Tests full TlWall creation</td>
+</tr>
+<tr class="even">
+<td><code>test_pytlwall_one_layer_calculate</code></td>
+<td>Tests impedance calculation (new pattern)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="test001.cfg-tests">test001.cfg Tests</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_pytlwall_test001_cfg</code></td>
+<td>Tests TlWall creation, frequency sorting, beam/chamber validation</td>
+</tr>
+</tbody>
+</table>
+<h4 id="two_layers.cfg-tests">two_layers.cfg Tests</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_two_layers_chamber</code></td>
+<td>Tests multi-layer parsing (≥2 layers + boundary)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="rectangular_chamber.cfg-tests">rectangular_chamber.cfg Tests</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_rectangular_chamber_shape</code></td>
+<td>Tests RECTANGULAR shape and pipe_hor_m/pipe_ver_m</td>
+</tr>
+</tbody>
+</table>
+<h4 id="test_round.cfg-tests-delimiter">test_round.cfg Tests (<code>:</code> delimiter)</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_round_chamber_with_colon_delimiter</code></td>
+<td>Tests INI parsing with <code>:</code> delimiter</td>
+</tr>
+<tr class="even">
+<td><code>test_round_beam_with_colon_delimiter</code></td>
+<td>Tests beam parsing with <code>:</code> delimiter</td>
+</tr>
+</tbody>
+</table>
+<h4 id="test_rect.cfg-tests-cw-boundary">test_rect.cfg Tests (CW boundary)</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_rect_chamber_with_cw_boundary</code></td>
+<td>Tests CW (conductive wall) as boundary type</td>
+</tr>
+</tbody>
+</table>
+<h4 id="frequency-file-error-tests">Frequency File Error Tests</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_frequency_from_freq_input_txt_raises</code></td>
+<td>Verifies error for plain .txt file</td>
+</tr>
+<tr class="even">
+<td><code>test_frequency_from_freq_input2_txt_raises</code></td>
+<td>Verifies error for plain .txt file</td>
+</tr>
+<tr class="odd">
+<td><code>test_frequency_from_freq_input3_dat_raises</code></td>
+<td>Verifies error for plain .dat file</td>
+</tr>
+</tbody>
+</table>
+<h4 id="frequency-file-section-tests">Frequency File Section Tests</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_frequency_file_section</code></td>
+<td>Tests [frequency_file] section with external file</td>
+</tr>
+</tbody>
+</table>
+<h4 id="edge-case-tests">Edge Case Tests</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_missing_config_file</code></td>
+<td>Verifies ConfigurationError</td>
+</tr>
+<tr class="even">
+<td><code>test_missing_section</code></td>
+<td>Tests None return for missing sections</td>
+</tr>
+<tr class="odd">
+<td><code>test_thick_M_uppercase_support</code></td>
+<td>Tests thick_M (uppercase M) compatibility</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="configuration-variations-tested">Configuration Variations Tested</h2>
+<h3 id="ini-delimiters">INI Delimiters</h3>
+<p>Both <code>=</code> and <code>:</code> delimiters are supported:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using &#39;=&#39; (standard)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_radius_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.022</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using &#39;:&#39; (also valid)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_radius_m : 0.022</span></span></code></pre></div>
+<h3 id="chamber-shape-aliases">Chamber Shape Aliases</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All equivalent:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> CIRCULAR</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> ROUND</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> ELLIPTICAL</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> ELLIPTIC</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> RECTANGULAR</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> RECT</span></span></code></pre></div>
+<h3 id="boundary-layer-types">Boundary Layer Types</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perfect conductor</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[boundary]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">type </span><span class="ot">=</span><span class="st"> PEC</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Conductive wall (used as outermost layer)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[boundary]</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="dt">type </span><span class="ot">=</span><span class="st"> CW</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="dt">sigmaDC </span><span class="ot">=</span><span class="st"> </span><span class="fl">1e6</span></span></code></pre></div>
+<h3 id="frequency-sources">Frequency Sources</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1: Exponent range</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[frequency_info]</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dt">fmin </span><span class="ot">=</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dt">fmax </span><span class="ot">=</span><span class="st"> </span><span class="dv">9</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">fstep </span><span class="ot">=</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2: External file</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">[frequency_file]</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="dt">filename </span><span class="ot">=</span><span class="st"> path/to/frequencies.txt</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="dt">separator </span><span class="ot">=</span><span class="st"> whitespace</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="dt">freq_col </span><span class="ot">=</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="dt">skip_rows </span><span class="ot">=</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<hr />
+<h2 id="example-usage">Example Usage</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.cfg_io <span class="im">import</span> CfgIo</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load realistic config</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo(<span class="st">&#39;tests/input/one_layer.cfg&#39;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create TlWall</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> cfg.read_pytlwall()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify components</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Chamber: </span><span class="sc">{</span>wall<span class="sc">.</span>chamber<span class="sc">.</span>component_name<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Shape: </span><span class="sc">{</span>wall<span class="sc">.</span>chamber<span class="sc">.</span>chamber_shape<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Layers: </span><span class="sc">{</span><span class="bu">len</span>(wall.chamber.layers)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Beam γ: </span><span class="sc">{</span>wall<span class="sc">.</span>beam<span class="sc">.</span>gammarel<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate impedance</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.ZLong</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;ZLong calculated: </span><span class="sc">{</span><span class="bu">len</span>(ZLong)<span class="sc">}</span><span class="ss"> points&quot;</span>)</span></code></pre></div>
+<hr />
+<p><a href="../TESTING.html">← Back to Testing Documentation</a></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

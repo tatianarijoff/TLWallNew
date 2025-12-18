@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>CHAMBER SHAPES REFERENCE</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#chamber-shapes-reference">Chamber Shapes Reference</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#valid-chamber-shapes">Valid Chamber Shapes</a>
+<ul>
+<li><a href="#circular">1. CIRCULAR</a></li>
+<li><a href="#elliptical">2. ELLIPTICAL</a></li>
+<li><a href="#rectangular">3. RECTANGULAR</a></li>
+</ul></li>
+<li><a href="#shape-aliases">Shape Aliases</a>
+<ul>
+<li><a href="#alias-mapping-table">Alias Mapping Table</a></li>
+<li><a href="#normalization-rules">Normalization Rules</a></li>
+</ul></li>
+<li><a href="#configuration-examples">Configuration Examples</a>
+<ul>
+<li><a href="#circular-chamber">CIRCULAR Chamber</a></li>
+<li><a href="#elliptical-chamber">ELLIPTICAL Chamber</a></li>
+<li><a href="#rectangular-chamber">RECTANGULAR Chamber</a></li>
+</ul></li>
+<li><a href="#shape-specific-parameters">Shape-Specific Parameters</a>
+<ul>
+<li><a href="#parameter-requirements-by-shape">Parameter Requirements by Shape</a></li>
+<li><a href="#parameter-precedence">Parameter Precedence</a></li>
+<li><a href="#common-parameters-all-shapes">Common Parameters (All Shapes)</a></li>
+</ul></li>
+<li><a href="#yokoya-factors-by-shape">Yokoya Factors by Shape</a>
+<ul>
+<li><a href="#asymmetry-parameter">Asymmetry Parameter</a></li>
+<li><a href="#longitudinal-factors">Longitudinal Factors</a></li>
+<li><a href="#transverse-factors">Transverse Factors</a></li>
+</ul></li>
+<li><a href="#validation-and-error-handling">Validation and Error Handling</a>
+<ul>
+<li><a href="#valid-shape-check">Valid Shape Check</a></li>
+<li><a href="#error-messages">Error Messages</a></li>
+</ul></li>
+<li><a href="#migration-guide">Migration Guide</a>
+<ul>
+<li><a href="#updating-old-configuration-files">Updating Old Configuration Files</a></li>
+</ul></li>
+<li><a href="#faq">FAQ</a>
+<ul>
+<li><a href="#q-are-shape-names-case-sensitive">Q: Are shape names case-sensitive?</a></li>
+<li><a href="#q-can-i-mix-official-names-and-aliases">Q: Can I mix official names and aliases?</a></li>
+<li><a href="#q-what-happens-if-i-misspell-a-shape-name">Q: What happens if I misspell a shape name?</a></li>
+<li><a href="#q-do-aliases-affect-calculations">Q: Do aliases affect calculations?</a></li>
+<li><a href="#q-can-i-add-custom-shapes">Q: Can I add custom shapes?</a></li>
+<li><a href="#q-how-do-i-check-which-shape-is-being-used">Q: How do I check which shape is being used?</a></li>
+<li><a href="#q-what-if-i-dont-know-the-correct-parameters">Q: What if I don’t know the correct parameters?</a></li>
+</ul></li>
+<li><a href="#quick-reference">Quick Reference</a>
+<ul>
+<li><a href="#supported-shapes-summary">Supported Shapes Summary</a></li>
+<li><a href="#python-api-quick-reference">Python API Quick Reference</a></li>
+</ul></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">CHAMBER SHAPES REFERENCE</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="chamber-shapes-reference">Chamber Shapes Reference</h1>
+<h2 id="overview">Overview</h2>
+<p>This document describes the supported chamber shapes in pytlwall and their aliases for configuration files.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#valid-chamber-shapes">Valid Chamber Shapes</a></li>
+<li><a href="#shape-aliases">Shape Aliases</a></li>
+<li><a href="#configuration-examples">Configuration Examples</a></li>
+<li><a href="#shape-specific-parameters">Shape-Specific Parameters</a></li>
+<li><a href="#yokoya-factors-by-shape">Yokoya Factors by Shape</a></li>
+<li><a href="#validation-and-error-handling">Validation and Error Handling</a></li>
+<li><a href="#migration-guide">Migration Guide</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ol>
+<hr />
+<h2 id="valid-chamber-shapes">Valid Chamber Shapes</h2>
+<p>pytlwall supports three fundamental chamber geometries:</p>
+<h3 id="circular">1. CIRCULAR</h3>
+<p>Cylindrical vacuum chamber with circular cross-section.</p>
+<p><strong>Properties:</strong> - Single radius defines the geometry - Simplest geometry for calculations - Most common in accelerators - Azimuthally symmetric - Yokoya factors = 1.0 (no correction needed)</p>
+<p><strong>Required Parameters:</strong> - <code>pipe_radius_m</code> or <code>pipe_rad_m</code></p>
+<p><strong>Use Cases:</strong> - Most beam pipes in straight sections - Simple cylindrical chambers - Circular collimators</p>
+<hr />
+<h3 id="elliptical">2. ELLIPTICAL</h3>
+<p>Elliptical cross-section chamber.</p>
+<p><strong>Properties:</strong> - Two semi-axes (horizontal and vertical) - Common in flat beam scenarios - Different Yokoya factors than circular - Asymmetric impedance (different horizontal/vertical)</p>
+<p><strong>Required Parameters:</strong> - <code>pipe_hor_m</code> (horizontal semi-axis) - <code>pipe_ver_m</code> (vertical semi-axis)</p>
+<p><strong>Use Cases:</strong> - Flat beam chambers - Insertion regions - Elliptical vacuum chambers</p>
+<hr />
+<h3 id="rectangular">3. RECTANGULAR</h3>
+<p>Rectangular cross-section chamber.</p>
+<p><strong>Properties:</strong> - Four flat walls - Highest impedance per unit size - Complex field patterns - Distinct Yokoya factors</p>
+<p><strong>Required Parameters:</strong> - <code>pipe_hor_m</code> (half-width) - <code>pipe_ver_m</code> (half-height)</p>
+<p><strong>Use Cases:</strong> - Kicker magnets - Some septum chambers - Rectangular collimators - Special insertion devices</p>
+<hr />
+<h2 id="shape-aliases">Shape Aliases</h2>
+<p>For convenience and backward compatibility, the following aliases are supported:</p>
+<h3 id="alias-mapping-table">Alias Mapping Table</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Official Name</th>
+<th>Aliases</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CIRCULAR</td>
+<td>ROUND</td>
+<td>✅ Supported</td>
+</tr>
+<tr class="even">
+<td>ELLIPTICAL</td>
+<td>ELLIPTIC</td>
+<td>✅ Supported</td>
+</tr>
+<tr class="odd">
+<td>RECTANGULAR</td>
+<td>RECT, RECTANGLE</td>
+<td>✅ Supported</td>
+</tr>
+</tbody>
+</table>
+<h3 id="normalization-rules">Normalization Rules</h3>
+<ol type="1">
+<li>All shape names are <strong>case-sensitive</strong> in config files (use UPPERCASE)</li>
+<li>Aliases are automatically normalized to official names</li>
+<li>Unknown shapes raise <code>ChamberShapeError</code></li>
+</ol>
+<p><strong>Normalization Examples:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Input: &#39;ROUND&#39; → Normalized: &#39;CIRCULAR&#39;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Input: &#39;ELLIPTIC&#39; → Normalized: &#39;ELLIPTICAL&#39;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Input: &#39;RECT&#39; → Normalized: &#39;RECTANGULAR&#39;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Input: &#39;RECTANGLE&#39; → Normalized: &#39;RECTANGULAR&#39;</span></span></code></pre></div>
+<hr />
+<h2 id="configuration-examples">Configuration Examples</h2>
+<h3 id="circular-chamber">CIRCULAR Chamber</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[base_info]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> CIRCULAR</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_radius_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.022</span></span></code></pre></div>
+<p><strong>Equivalent configurations:</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using alias</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> ROUND</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_radius_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.022</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative parameter name</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> CIRCULAR</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_rad_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.022</span></span></code></pre></div>
+<hr />
+<h3 id="elliptical-chamber">ELLIPTICAL Chamber</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[base_info]</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> ELLIPTICAL</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_hor_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.030</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_ver_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.020</span></span></code></pre></div>
+<p><strong>Using alias:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> ELLIPTIC</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_hor_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.030</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_ver_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.020</span></span></code></pre></div>
+<hr />
+<h3 id="rectangular-chamber">RECTANGULAR Chamber</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[base_info]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> RECTANGULAR</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_hor_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.040</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_ver_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.025</span></span></code></pre></div>
+<p><strong>Using aliases:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Short alias</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> RECT</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_hor_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.040</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_ver_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.025</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Full word alias</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> RECTANGLE</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_hor_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.040</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_ver_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.025</span></span></code></pre></div>
+<hr />
+<h2 id="shape-specific-parameters">Shape-Specific Parameters</h2>
+<h3 id="parameter-requirements-by-shape">Parameter Requirements by Shape</h3>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 42%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Shape</th>
+<th>Required Parameters</th>
+<th>Optional Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CIRCULAR</td>
+<td><code>pipe_radius_m</code> or <code>pipe_rad_m</code></td>
+<td><code>pipe_hor_m</code>, <code>pipe_ver_m</code> (ignored)</td>
+</tr>
+<tr class="even">
+<td>ELLIPTICAL</td>
+<td><code>pipe_hor_m</code>, <code>pipe_ver_m</code></td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td>RECTANGULAR</td>
+<td><code>pipe_hor_m</code>, <code>pipe_ver_m</code></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="parameter-precedence">Parameter Precedence</h3>
+<p>For CIRCULAR chambers: 1. <code>pipe_radius_m</code> (if specified) 2. <code>pipe_rad_m</code> (if specified) 3. <code>pipe_ver_m</code> (fallback)</p>
+<h3 id="common-parameters-all-shapes">Common Parameters (All Shapes)</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pipe_len_m</code></td>
+<td>Chamber length in meters</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td><code>betax</code></td>
+<td>Horizontal beta function (m)</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td><code>betay</code></td>
+<td>Vertical beta function (m)</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td><code>component_name</code></td>
+<td>Chamber identifier</td>
+<td>‘el’</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="yokoya-factors-by-shape">Yokoya Factors by Shape</h2>
+<p>Yokoya factors correct impedance calculations for non-circular geometries.</p>
+<h3 id="asymmetry-parameter">Asymmetry Parameter</h3>
+<p>The Yokoya asymmetry parameter q is defined as:</p>
+<pre><code>q = |h - v| / (h + v)</code></pre>
+<p>where h = horizontal half-aperture, v = vertical half-aperture.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Shape</th>
+<th>q Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CIRCULAR</td>
+<td>0 (symmetric)</td>
+</tr>
+<tr class="even">
+<td>ELLIPTICAL</td>
+<td>0 &lt; q &lt; 1</td>
+</tr>
+<tr class="odd">
+<td>RECTANGULAR</td>
+<td>0 &lt; q &lt; 1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="longitudinal-factors">Longitudinal Factors</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Shape</th>
+<th>Factor</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CIRCULAR</td>
+<td>1.0</td>
+<td>No correction</td>
+</tr>
+<tr class="even">
+<td>ELLIPTICAL</td>
+<td>Interpolated</td>
+<td>Based on q, from table</td>
+</tr>
+<tr class="odd">
+<td>RECTANGULAR</td>
+<td>Interpolated</td>
+<td>Based on q, from table</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transverse-factors">Transverse Factors</h3>
+<h4 id="dipolar-driving-factors">Dipolar (Driving) Factors</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Shape</th>
+<th>Horizontal (drivx)</th>
+<th>Vertical (drivy)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CIRCULAR</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>ELLIPTICAL</td>
+<td>π²b/(2a) ≈ 1.0</td>
+<td>π²a/(2b) ≈ 1.0</td>
+</tr>
+<tr class="odd">
+<td>RECTANGULAR</td>
+<td>From table</td>
+<td>From table</td>
+</tr>
+</tbody>
+</table>
+<h4 id="quadrupolar-detuning-factors">Quadrupolar (Detuning) Factors</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Shape</th>
+<th>Horizontal (detx)</th>
+<th>Vertical (dety)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CIRCULAR</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td>ELLIPTICAL</td>
+<td>From table</td>
+<td>From table</td>
+</tr>
+<tr class="odd">
+<td>RECTANGULAR</td>
+<td>From table</td>
+<td>From table</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> Exact Yokoya factors are calculated automatically by the <code>Chamber</code> class based on geometry parameters using interpolation from stored tables.</p>
+<hr />
+<h2 id="validation-and-error-handling">Validation and Error Handling</h2>
+<h3 id="valid-shape-check">Valid Shape Check</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Chamber</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.chamber <span class="im">import</span> ChamberShapeError</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Valid shapes</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>chamber1 <span class="op">=</span> Chamber(chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>, pipe_rad_m<span class="op">=</span><span class="fl">0.02</span>)  <span class="co"># ✅</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>chamber2 <span class="op">=</span> Chamber(chamber_shape<span class="op">=</span><span class="st">&#39;ROUND&#39;</span>, pipe_rad_m<span class="op">=</span><span class="fl">0.02</span>)     <span class="co"># ✅ (alias)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>chamber3 <span class="op">=</span> Chamber(chamber_shape<span class="op">=</span><span class="st">&#39;ELLIPTICAL&#39;</span>, </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                   pipe_hor_m<span class="op">=</span><span class="fl">0.03</span>, pipe_ver_m<span class="op">=</span><span class="fl">0.02</span>)           <span class="co"># ✅</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Invalid shape</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    chamber <span class="op">=</span> Chamber(chamber_shape<span class="op">=</span><span class="st">&#39;HEXAGONAL&#39;</span>, pipe_rad_m<span class="op">=</span><span class="fl">0.02</span>)  <span class="co"># ❌</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> ChamberShapeError <span class="im">as</span> e:</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Output: Error: Unknown chamber shape &#39;HEXAGONAL&#39;. </span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#         Must be one of: &#39;CIRCULAR&#39;, &#39;ELLIPTICAL&#39;, &#39;RECTANGULAR&#39;</span></span></code></pre></div>
+<h3 id="error-messages">Error Messages</h3>
+<p><strong>Unknown shape:</strong></p>
+<pre><code>ChamberShapeError: Unknown chamber shape &#39;HEXAGONAL&#39;. 
+Must be one of: &#39;CIRCULAR&#39;, &#39;ELLIPTICAL&#39;, &#39;RECTANGULAR&#39;</code></pre>
+<p><strong>Note:</strong> Error messages show official names, not aliases.</p>
+<hr />
+<h2 id="migration-guide">Migration Guide</h2>
+<h3 id="updating-old-configuration-files">Updating Old Configuration Files</h3>
+<p>If you have old configuration files using aliases:</p>
+<p><strong>ROUND → CIRCULAR:</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode diff"><code class="sourceCode diff"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>[base_info]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">- chamber_shape = ROUND</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="va">+ chamber_shape = CIRCULAR</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  pipe_radius_m = 0.022</span></code></pre></div>
+<p><strong>ELLIPTIC → ELLIPTICAL:</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode diff"><code class="sourceCode diff"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>[base_info]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="st">- chamber_shape = ELLIPTIC</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="va">+ chamber_shape = ELLIPTICAL</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  pipe_hor_m = 0.030</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  pipe_ver_m = 0.020</span></code></pre></div>
+<p><strong>RECT → RECTANGULAR:</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode diff"><code class="sourceCode diff"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>[base_info]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="st">- chamber_shape = RECT</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="va">+ chamber_shape = RECTANGULAR</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  pipe_hor_m = 0.040</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  pipe_ver_m = 0.025</span></code></pre></div>
+<p><strong>Note:</strong> No changes are required if using aliases — they work automatically!</p>
+<hr />
+<h2 id="faq">FAQ</h2>
+<h3 id="q-are-shape-names-case-sensitive">Q: Are shape names case-sensitive?</h3>
+<p><strong>A:</strong> Yes. Use uppercase: <code>CIRCULAR</code>, not <code>circular</code> or <code>Circular</code>.</p>
+<h3 id="q-can-i-mix-official-names-and-aliases">Q: Can I mix official names and aliases?</h3>
+<p><strong>A:</strong> Yes. Aliases are normalized automatically before any calculations.</p>
+<h3 id="q-what-happens-if-i-misspell-a-shape-name">Q: What happens if I misspell a shape name?</h3>
+<p><strong>A:</strong> You’ll get a <code>ChamberShapeError</code> listing valid shapes.</p>
+<h3 id="q-do-aliases-affect-calculations">Q: Do aliases affect calculations?</h3>
+<p><strong>A:</strong> No. Aliases are normalized before any calculations.</p>
+<h3 id="q-can-i-add-custom-shapes">Q: Can I add custom shapes?</h3>
+<p><strong>A:</strong> Not through config files. Custom shapes require code modifications.</p>
+<h3 id="q-how-do-i-check-which-shape-is-being-used">Q: How do I check which shape is being used?</h3>
+<p><strong>A:</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(chamber_shape<span class="op">=</span><span class="st">&#39;ROUND&#39;</span>, pipe_rad_m<span class="op">=</span><span class="fl">0.02</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(chamber.chamber_shape)  <span class="co"># Output: CIRCULAR</span></span></code></pre></div>
+<h3 id="q-what-if-i-dont-know-the-correct-parameters">Q: What if I don’t know the correct parameters?</h3>
+<p><strong>A:</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check required parameters</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Chamber</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># For circular - only radius needed</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>c1 <span class="op">=</span> Chamber(pipe_rad_m<span class="op">=</span><span class="fl">0.02</span>, chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For elliptical/rectangular - both hor and ver needed</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>c2 <span class="op">=</span> Chamber(pipe_hor_m<span class="op">=</span><span class="fl">0.03</span>, pipe_ver_m<span class="op">=</span><span class="fl">0.02</span>, chamber_shape<span class="op">=</span><span class="st">&#39;ELLIPTICAL&#39;</span>)</span></code></pre></div>
+<hr />
+<h2 id="quick-reference">Quick Reference</h2>
+<h3 id="supported-shapes-summary">Supported Shapes Summary</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Official Name</th>
+<th>Aliases</th>
+<th>Parameters</th>
+<th>Symmetry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CIRCULAR</td>
+<td>ROUND</td>
+<td>radius</td>
+<td>Full</td>
+</tr>
+<tr class="even">
+<td>ELLIPTICAL</td>
+<td>ELLIPTIC</td>
+<td>hor, ver</td>
+<td>2-fold</td>
+</tr>
+<tr class="odd">
+<td>RECTANGULAR</td>
+<td>RECT, RECTANGLE</td>
+<td>hor, ver</td>
+<td>4-fold</td>
+</tr>
+</tbody>
+</table>
+<h3 id="python-api-quick-reference">Python API Quick Reference</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Chamber</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Circular</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Elliptical</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    pipe_hor_m<span class="op">=</span><span class="fl">0.030</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    pipe_ver_m<span class="op">=</span><span class="fl">0.020</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;ELLIPTICAL&#39;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Rectangular</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    pipe_hor_m<span class="op">=</span><span class="fl">0.040</span>,</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    pipe_ver_m<span class="op">=</span><span class="fl">0.025</span>,</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;RECTANGULAR&#39;</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Get Yokoya factors</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>factors <span class="op">=</span> chamber.get_yokoya_factors()</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;q = </span><span class="sc">{</span>factors[<span class="st">&#39;q&#39;</span>]<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;longitudinal = </span><span class="sc">{</span>factors[<span class="st">&#39;longitudinal&#39;</span>]<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="API_REFERENCE_CHAMBER.html">Chamber API Reference</a></li>
+<li><a href="API_REFERENCE_CFGIO.html">CfgIo API Reference</a></li>
+<li><a href="API_REFERENCE.html">Main API Reference</a></li>
+</ul>
+<hr />
+<p><em>Last Updated: December 2025</em> <em>Version: 2.0</em> <em>Copyright: CERN</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

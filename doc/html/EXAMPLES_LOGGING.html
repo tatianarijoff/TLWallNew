@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>EXAMPLES LOGGING</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#logging-module-examples">logging Module Examples</a>
+<ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#navigation">Navigation</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#example-1-quick-setup">Example 1: Quick Setup</a></li>
+<li><a href="#example-2-detailed-configuration">Example 2: Detailed Configuration</a></li>
+<li><a href="#example-3-section-headers">Example 3: Section Headers</a></li>
+<li><a href="#example-4-file-only-logging">Example 4: File-Only Logging</a></li>
+<li><a href="#example-5-multiple-loggers">Example 5: Multiple Loggers</a></li>
+<li><a href="#example-6-complete-workflow">Example 6: Complete Workflow</a></li>
+<li><a href="#configuration-reference">Configuration Reference</a>
+<ul>
+<li><a href="#logconfig-parameters">LogConfig Parameters</a></li>
+<li><a href="#verbosity-levels">Verbosity Levels</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#log-file-format">Log File Format</a></li>
+</ul></li>
+<li><a href="#integration-with-pytlwall">Integration with PyTlWall</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">EXAMPLES LOGGING</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="logging-module-examples">logging Module Examples</h1>
+
+<p><strong>Centralized Logging System</strong></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> - tatiana.rijoff@gmail.com</li>
+<li><strong>Carlo Zannini</strong> - carlo.zannini@cern.ch</li>
+</ul>
+<p><em>Copyright: CERN</em></p>
+<hr />
+<h2 id="navigation">Navigation</h2>
+<p><strong><a href="EXAMPLES.html">◀ Back to Examples</a></strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>beam</td>
+<td><a href="EXAMPLES_BEAM.html">EXAMPLES_BEAM.md</a></td>
+</tr>
+<tr class="even">
+<td>frequencies</td>
+<td><a href="EXAMPLES_FREQUENCIES.html">EXAMPLES_FREQUENCIES.md</a></td>
+</tr>
+<tr class="odd">
+<td>layer</td>
+<td><a href="EXAMPLES_LAYER.html">EXAMPLES_LAYER.md</a></td>
+</tr>
+<tr class="even">
+<td>chamber</td>
+<td><a href="EXAMPLES_CHAMBER.html">EXAMPLES_CHAMBER.md</a></td>
+</tr>
+<tr class="odd">
+<td>tlwall</td>
+<td><a href="EXAMPLES_TLWALL.html">EXAMPLES_TLWALL.md</a></td>
+</tr>
+<tr class="even">
+<td><strong>logging</strong></td>
+<td><em>You are here</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#example-1-quick-setup">Example 1: Quick Setup</a></li>
+<li><a href="#example-2-detailed-configuration">Example 2: Detailed Configuration</a></li>
+<li><a href="#example-3-section-headers">Example 3: Section Headers</a></li>
+<li><a href="#example-4-file-only-logging">Example 4: File-Only Logging</a></li>
+<li><a href="#example-5-multiple-loggers">Example 5: Multiple Loggers</a></li>
+<li><a href="#example-6-complete-workflow">Example 6: Complete Workflow</a></li>
+<li><a href="#configuration-reference">Configuration Reference</a></li>
+</ul>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>The <code>logging_util</code> module provides centralized logging for PyTlWall calculations. It supports:</p>
+<ul>
+<li>Console and file logging</li>
+<li>Configurable verbosity levels</li>
+<li>Section headers for organized output</li>
+<li>Timestamped log files</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> logging_util</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick setup</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>log_path, logger <span class="op">=</span> logging_util.quick_setup(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    log_dir<span class="op">=</span><span class="st">&quot;./logs/&quot;</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    log_basename<span class="op">=</span><span class="st">&quot;calculation&quot;</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Starting calculation...&quot;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>logger.warning(<span class="st">&quot;This is a warning&quot;</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>logger.error(<span class="st">&quot;This is an error&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="example-1-quick-setup">Example 1: Quick Setup</h2>
+<p>Simplest way to start logging.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> logging_util</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick setup - returns log path and logger</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>log_path, logger <span class="op">=</span> logging_util.quick_setup(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    log_dir<span class="op">=</span><span class="st">&quot;./my_logs/&quot;</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    log_basename<span class="op">=</span><span class="st">&quot;my_calculation&quot;</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Starting calculation...&quot;</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Processing data...&quot;</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>logger.warning(<span class="st">&quot;This is a warning message&quot;</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Calculation completed successfully&quot;</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Log saved to: </span><span class="sc">{</span>log_path<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Output (console):</strong></p>
+<pre><code>INFO     Starting calculation...
+INFO     Processing data...
+WARNING  This is a warning message
+INFO     Calculation completed successfully
+
+Log saved to: ./my_logs/my_calculation_20251207_143022.log</code></pre>
+<hr />
+<h2 id="example-2-detailed-configuration">Example 2: Detailed Configuration</h2>
+<p>Full control over logging configuration.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> logging_util</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create custom configuration</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> logging_util.LogConfig(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    log_dir<span class="op">=</span><span class="st">&quot;./my_logs/&quot;</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    log_basename<span class="op">=</span><span class="st">&quot;detailed_calculation&quot;</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">3</span>,          <span class="co"># DEBUG level</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    add_timestamp<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    console_output<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup logging</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>log_path <span class="op">=</span> logging_util.setup_logging(config)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> logging_util.get_logger(<span class="va">__name__</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Different log levels</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>logger.debug(<span class="st">&quot;Debug message - only visible at verbosity &gt;= 3&quot;</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Info message - visible at verbosity &gt;= 2&quot;</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>logger.warning(<span class="st">&quot;Warning message - visible at verbosity &gt;= 1&quot;</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>logger.error(<span class="st">&quot;Error message - always visible&quot;</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Log saved to: </span><span class="sc">{</span>log_path<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Verbosity levels:</strong> - <code>0</code>: ERROR only - <code>1</code>: ERROR + WARNING - <code>2</code>: ERROR + WARNING + INFO - <code>3</code>: ERROR + WARNING + INFO + DEBUG</p>
+<hr />
+<h2 id="example-3-section-headers">Example 3: Section Headers</h2>
+<p>Organize logs with visual section headers.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> logging_util</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>log_path, logger <span class="op">=</span> logging_util.quick_setup(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    log_dir<span class="op">=</span><span class="st">&quot;./my_logs/&quot;</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    log_basename<span class="op">=</span><span class="st">&quot;organized_calculation&quot;</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Main header (wide, = characters)</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;STARTING IMPEDANCE CALCULATION&quot;</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Sub-section (narrower, - characters)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;Configuration&quot;</span>, char<span class="op">=</span><span class="st">&quot;-&quot;</span>, width<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Chamber radius: 50 mm&quot;</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Number of layers: 3&quot;</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Frequency range: 1e3 - 1e9 Hz&quot;</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;Computation&quot;</span>, char<span class="op">=</span><span class="st">&quot;-&quot;</span>, width<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Computing longitudinal impedance...&quot;</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Computing transverse impedance...&quot;</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;Results&quot;</span>, char<span class="op">=</span><span class="st">&quot;-&quot;</span>, width<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Maximum ZLong: 1.23e-3 Ohm&quot;</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Maximum ZTrans: 4.56e-2 Ohm/m&quot;</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;CALCULATION COMPLETED SUCCESSFULLY&quot;</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Log saved to: </span><span class="sc">{</span>log_path<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>================================================================================
+                    STARTING IMPEDANCE CALCULATION
+================================================================================
+------------------------------------------------------------
+                       Configuration
+------------------------------------------------------------
+INFO     Chamber radius: 50 mm
+INFO     Number of layers: 3
+INFO     Frequency range: 1e3 - 1e9 Hz
+------------------------------------------------------------
+                        Computation
+------------------------------------------------------------
+INFO     Computing longitudinal impedance...
+INFO     Computing transverse impedance...
+------------------------------------------------------------
+                          Results
+------------------------------------------------------------
+INFO     Maximum ZLong: 1.23e-3 Ohm
+INFO     Maximum ZTrans: 4.56e-2 Ohm/m
+================================================================================
+               CALCULATION COMPLETED SUCCESSFULLY
+================================================================================</code></pre>
+<hr />
+<h2 id="example-4-file-only-logging">Example 4: File-Only Logging</h2>
+<p>Log to file without console output.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> logging_util</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> logging_util.LogConfig(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    log_dir<span class="op">=</span><span class="st">&quot;./my_logs/&quot;</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    log_basename<span class="op">=</span><span class="st">&quot;silent_calculation&quot;</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    console_output<span class="op">=</span><span class="va">False</span>,  <span class="co"># No console output</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>log_path <span class="op">=</span> logging_util.setup_logging(config)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> logging_util.get_logger(<span class="va">__name__</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># These messages only go to the file</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;This message appears only in the log file&quot;</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;No console clutter!&quot;</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Perfect for batch processing&quot;</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Log saved to: </span><span class="sc">{</span>log_path<span class="sc">}</span><span class="ss"> (no console output was produced)&quot;</span>)</span></code></pre></div>
+<p><strong>Use cases:</strong> - Batch processing - Background jobs - When console output would be too verbose</p>
+<hr />
+<h2 id="example-5-multiple-loggers">Example 5: Multiple Loggers</h2>
+<p>Using different loggers for different modules.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> logging_util</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>log_path, _ <span class="op">=</span> logging_util.quick_setup(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    log_dir<span class="op">=</span><span class="st">&quot;./my_logs/&quot;</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    log_basename<span class="op">=</span><span class="st">&quot;multi_logger&quot;</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Get different loggers for different modules</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>logger_main <span class="op">=</span> logging_util.get_logger(<span class="st">&quot;main&quot;</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>logger_calc <span class="op">=</span> logging_util.get_logger(<span class="st">&quot;calculation&quot;</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>logger_io <span class="op">=</span> logging_util.get_logger(<span class="st">&quot;io&quot;</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>logger_main.info(<span class="st">&quot;Main program started&quot;</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>logger_calc.info(<span class="st">&quot;Starting calculation module&quot;</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>logger_io.info(<span class="st">&quot;Reading input file&quot;</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>logger_calc.info(<span class="st">&quot;Calculation completed&quot;</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>logger_io.info(<span class="st">&quot;Writing output file&quot;</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>logger_main.info(<span class="st">&quot;Main program completed&quot;</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Log saved to: </span><span class="sc">{</span>log_path<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Output (in log file):</strong></p>
+<pre><code>2025-12-07 14:30:22 - main - INFO - Main program started
+2025-12-07 14:30:22 - calculation - INFO - Starting calculation module
+2025-12-07 14:30:22 - io - INFO - Reading input file
+2025-12-07 14:30:22 - calculation - INFO - Calculation completed
+2025-12-07 14:30:22 - io - INFO - Writing output file
+2025-12-07 14:30:22 - main - INFO - Main program completed</code></pre>
+<hr />
+<h2 id="example-6-complete-workflow">Example 6: Complete Workflow</h2>
+<p>Complete PyTlWall workflow with logging.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> logging_util</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup logging for the entire workflow</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> logging_util.LogConfig(</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    log_dir<span class="op">=</span><span class="st">&quot;./my_logs/&quot;</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    log_basename<span class="op">=</span><span class="st">&quot;pytlwall_workflow&quot;</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    add_timestamp<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>log_path <span class="op">=</span> logging_util.setup_logging(config)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> logging_util.get_logger(<span class="st">&quot;pytlwall_workflow&quot;</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Start workflow</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;PYTLWALL IMPEDANCE CALCULATION&quot;</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f&quot;Timestamp: </span><span class="sc">{</span>datetime<span class="sc">.</span>now()<span class="sc">.</span>strftime(<span class="st">&#39;%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S&#39;</span>)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f&quot;Log file: </span><span class="sc">{</span>log_path<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Phase 1: Configuration</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;Phase 1: Configuration&quot;</span>, char<span class="op">=</span><span class="st">&quot;-&quot;</span>, width<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Reading configuration file: config.cfg&quot;</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Validating parameters...&quot;</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Configuration loaded successfully&quot;</span>)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Phase 2: Geometry setup</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;Phase 2: Geometry Setup&quot;</span>, char<span class="op">=</span><span class="st">&quot;-&quot;</span>, width<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Building wall structure...&quot;</span>)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;  - Number of layers: 3&quot;</span>)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;  - Chamber type: circular&quot;</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;  - Radius: 50.0 mm&quot;</span>)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Geometry setup completed&quot;</span>)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Phase 3: Frequency setup</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;Phase 3: Frequency Setup&quot;</span>, char<span class="op">=</span><span class="st">&quot;-&quot;</span>, width<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Frequency range: 1.0e+03 to 1.0e+09 Hz&quot;</span>)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Number of points: 1000&quot;</span>)</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Scale: logarithmic&quot;</span>)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Phase 4: Computation</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;Phase 4: Impedance Computation&quot;</span>, char<span class="op">=</span><span class="st">&quot;-&quot;</span>, width<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Computing longitudinal impedance...&quot;</span>)</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;  - Progress: 100%&quot;</span>)</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Computing transverse impedance...&quot;</span>)</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;  - Progress: 100%&quot;</span>)</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Computation completed successfully&quot;</span>)</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Phase 5: Output</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;Phase 5: Output Generation&quot;</span>, char<span class="op">=</span><span class="st">&quot;-&quot;</span>, width<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Saving Excel output: results.xlsx&quot;</span>)</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Generating plots:&quot;</span>)</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;  - Longitudinal impedance: ZLong.png&quot;</span>)</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;  - Transverse impedance: ZTrans.png&quot;</span>)</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Output generation completed&quot;</span>)</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary</span></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;WORKFLOW COMPLETED SUCCESSFULLY&quot;</span>)</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f&quot;Total execution time: 12.34 seconds&quot;</span>)</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f&quot;Full log saved to: </span><span class="sc">{</span>log_path<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">Workflow completed. See log file: </span><span class="sc">{</span>log_path<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="configuration-reference">Configuration Reference</h2>
+<h3 id="logconfig-parameters">LogConfig Parameters</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>log_dir</code></td>
+<td>str</td>
+<td><code>"./logs/"</code></td>
+<td>Directory for log files</td>
+</tr>
+<tr class="even">
+<td><code>log_basename</code></td>
+<td>str</td>
+<td><code>"pytlwall"</code></td>
+<td>Base name for log file</td>
+</tr>
+<tr class="odd">
+<td><code>verbosity</code></td>
+<td>int</td>
+<td><code>2</code></td>
+<td>Verbosity level (0-3)</td>
+</tr>
+<tr class="even">
+<td><code>add_timestamp</code></td>
+<td>bool</td>
+<td><code>True</code></td>
+<td>Add timestamp to filename</td>
+</tr>
+<tr class="odd">
+<td><code>console_output</code></td>
+<td>bool</td>
+<td><code>True</code></td>
+<td>Enable console output</td>
+</tr>
+</tbody>
+</table>
+<h3 id="verbosity-levels">Verbosity Levels</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Logging Level</th>
+<th>Messages Shown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>ERROR</td>
+<td>Errors only</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>WARNING</td>
+<td>Errors + Warnings</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>INFO</td>
+<td>Errors + Warnings + Info</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>DEBUG</td>
+<td>All messages</td>
+</tr>
+</tbody>
+</table>
+<h3 id="functions">Functions</h3>
+<table>
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>quick_setup(...)</code></td>
+<td>Quick setup, returns (log_path, logger)</td>
+</tr>
+<tr class="even">
+<td><code>setup_logging(config)</code></td>
+<td>Full setup with LogConfig</td>
+</tr>
+<tr class="odd">
+<td><code>get_logger(name)</code></td>
+<td>Get a named logger</td>
+</tr>
+<tr class="even">
+<td><code>log_section_header(logger, title, char, width)</code></td>
+<td>Print section header</td>
+</tr>
+</tbody>
+</table>
+<h3 id="log-file-format">Log File Format</h3>
+<p>Default format:</p>
+<pre><code>2025-12-07 14:30:22 - module_name - INFO - Message text</code></pre>
+<p>Components: - Timestamp (ISO format) - Logger name - Log level - Message</p>
+<hr />
+<h2 id="integration-with-pytlwall">Integration with PyTlWall</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> logging_util</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup logging</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>log_path, logger <span class="op">=</span> logging_util.quick_setup(</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    log_dir<span class="op">=</span><span class="st">&quot;./logs/&quot;</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    log_basename<span class="op">=</span><span class="st">&quot;impedance_calc&quot;</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;IMPEDANCE CALCULATION&quot;</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup components</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Setting up beam parameters...&quot;</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> pytlwall.Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f&quot;  Beam gamma: </span><span class="sc">{</span>beam<span class="sc">.</span>gammarel<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Setting up chamber...&quot;</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> pytlwall.Chamber(pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>, chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f&quot;  Chamber radius: </span><span class="sc">{</span>chamber<span class="sc">.</span>pipe_rad_m<span class="op">*</span><span class="dv">1000</span><span class="sc">}</span><span class="ss"> mm&quot;</span>)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Setting up frequencies...&quot;</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> pytlwall.Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f&quot;  Frequency points: </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Setting up layers...&quot;</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>copper <span class="op">=</span> pytlwall.Layer(thick_m<span class="op">=</span><span class="fl">0.001</span>, sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, freq_Hz<span class="op">=</span>freqs.freq)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>chamber.layers <span class="op">=</span> [copper]</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">&quot;Calculating impedances...&quot;</span>)</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> pytlwall.TlWall(chamber<span class="op">=</span>chamber, beam<span class="op">=</span>beam, frequencies<span class="op">=</span>freqs)</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.ZLong</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>ZTrans <span class="op">=</span> wall.ZTrans</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f&quot;  Max |ZLong|: </span><span class="sc">{</span><span class="bu">abs</span>(ZLong)<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="ss">f&quot;  Max |ZTrans|: </span><span class="sc">{</span><span class="bu">abs</span>(ZTrans)<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.3e}</span><span class="ss"> Ω/m&quot;</span>)</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>logging_util.log_section_header(logger, <span class="st">&quot;CALCULATION COMPLETED&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="LOGGING_README.html">API Reference - Logging</a> - Complete API documentation</li>
+<li><a href="EXAMPLES.html">Examples Main Page</a> - All module examples</li>
+</ul>
+<hr />
+<p><strong><a href="EXAMPLES.html">◀ Back to Examples</a></strong> | <strong><a href="EXAMPLES_TLWALL.html">◀ Previous: tlwall</a></strong></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

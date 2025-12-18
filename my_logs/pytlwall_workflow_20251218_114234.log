@@ -1,0 +1,52 @@
+2025-12-18 11:42:34 [INFO] ================================================================================
+2025-12-18 11:42:34 [INFO] PYTLWALL IMPEDANCE CALCULATION WORKFLOW
+2025-12-18 11:42:34 [INFO] ================================================================================
+2025-12-18 11:42:34 [INFO] Timestamp: 2025-12-18 11:42:34
+2025-12-18 11:42:34 [INFO] Log file: my_logs/pytlwall_workflow_20251218_114234.log
+2025-12-18 11:42:34 [INFO] 
+2025-12-18 11:42:34 [INFO] ------------------------------------------------------------
+2025-12-18 11:42:34 [INFO] Phase 1: Configuration
+2025-12-18 11:42:34 [INFO] ------------------------------------------------------------
+2025-12-18 11:42:34 [INFO] Reading configuration file: config.cfg
+2025-12-18 11:42:34 [INFO] Validating parameters...
+2025-12-18 11:42:34 [INFO] Configuration loaded successfully
+2025-12-18 11:42:34 [INFO] 
+2025-12-18 11:42:34 [INFO] ------------------------------------------------------------
+2025-12-18 11:42:34 [INFO] Phase 2: Geometry Setup
+2025-12-18 11:42:34 [INFO] ------------------------------------------------------------
+2025-12-18 11:42:34 [INFO] Building wall structure...
+2025-12-18 11:42:34 [INFO]   - Number of layers: 3
+2025-12-18 11:42:34 [INFO]   - Chamber type: circular
+2025-12-18 11:42:34 [INFO]   - Radius: 50.0 mm
+2025-12-18 11:42:34 [INFO] Geometry setup completed
+2025-12-18 11:42:34 [INFO] 
+2025-12-18 11:42:34 [INFO] ------------------------------------------------------------
+2025-12-18 11:42:34 [INFO] Phase 3: Frequency Setup
+2025-12-18 11:42:34 [INFO] ------------------------------------------------------------
+2025-12-18 11:42:34 [INFO] Frequency range: 1.0e+03 to 1.0e+09 Hz
+2025-12-18 11:42:34 [INFO] Number of points: 1000
+2025-12-18 11:42:34 [INFO] Scale: logarithmic
+2025-12-18 11:42:34 [INFO] 
+2025-12-18 11:42:34 [INFO] ------------------------------------------------------------
+2025-12-18 11:42:34 [INFO] Phase 4: Impedance Computation
+2025-12-18 11:42:34 [INFO] ------------------------------------------------------------
+2025-12-18 11:42:34 [INFO] Computing longitudinal impedance...
+2025-12-18 11:42:34 [INFO]   - Progress: 100%
+2025-12-18 11:42:34 [INFO] Computing transverse impedance...
+2025-12-18 11:42:34 [INFO]   - Progress: 100%
+2025-12-18 11:42:34 [INFO] Computation completed successfully
+2025-12-18 11:42:34 [INFO] 
+2025-12-18 11:42:34 [INFO] ------------------------------------------------------------
+2025-12-18 11:42:34 [INFO] Phase 5: Output Generation
+2025-12-18 11:42:34 [INFO] ------------------------------------------------------------
+2025-12-18 11:42:34 [INFO] Saving Excel output: results.xlsx
+2025-12-18 11:42:34 [INFO] Generating plots:
+2025-12-18 11:42:34 [INFO]   - Longitudinal impedance plot: ZLong.png
+2025-12-18 11:42:34 [INFO]   - Transverse impedance plot: ZTrans.png
+2025-12-18 11:42:34 [INFO] Output generation completed
+2025-12-18 11:42:34 [INFO] 
+2025-12-18 11:42:34 [INFO] ================================================================================
+2025-12-18 11:42:34 [INFO] WORKFLOW COMPLETED SUCCESSFULLY
+2025-12-18 11:42:34 [INFO] ================================================================================
+2025-12-18 11:42:34 [INFO] Total execution time: 12.34 seconds
+2025-12-18 11:42:34 [INFO] Full log saved to: my_logs/pytlwall_workflow_20251218_114234.log

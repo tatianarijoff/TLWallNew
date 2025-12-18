@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>test io util</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#test_io_util.py---io-utilities-tests">test_io_util.py - I/O Utilities Tests</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#test-classes">Test Classes</a>
+<ul>
+<li><a href="#testreadfrequencytxt">TestReadFrequencyTxt</a></li>
+<li><a href="#testreadsurfaceimpedancetxt">TestReadSurfaceImpedanceTxt</a></li>
+<li><a href="#testreadimpedancefile">TestReadImpedanceFile</a></li>
+<li><a href="#testloadgeometryfunctions">TestLoadGeometryFunctions</a></li>
+<li><a href="#testprintimpedanceoutput">TestPrintImpedanceOutput</a></li>
+<li><a href="#testconveniencefunctions">TestConvenienceFunctions</a></li>
+<li><a href="#testvalidation">TestValidation</a></li>
+<li><a href="#testfallbackbehavior">TestFallbackBehavior</a></li>
+</ul></li>
+<li><a href="#supported-file-formats">Supported File Formats</a>
+<ul>
+<li><a href="#input-formats">Input Formats</a></li>
+<li><a href="#output-formats">Output Formats</a></li>
+</ul></li>
+<li><a href="#standard-labels">Standard Labels</a></li>
+<li><a href="#dependency-fallbacks">Dependency Fallbacks</a></li>
+<li><a href="#example-usage">Example Usage</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<h1 class="title">test io util</h1>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="test_io_util.py---io-utilities-tests">test_io_util.py - I/O Utilities Tests</h1>
+<p><a href="../TESTING.html">← Back to Testing Documentation</a></p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>Tests for the unified <code>io_util</code> module which provides input/output functions for reading frequency files, impedance data, geometry configurations, and exporting impedance results.</p>
+<p><strong>Module tested</strong>: <code>pytlwall.io_util</code></p>
+<p><strong>Run this test</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/test_io_util.py <span class="at">-v</span></span></code></pre></div>
+<hr />
+<h2 id="test-classes">Test Classes</h2>
+<h3 id="testreadfrequencytxt">TestReadFrequencyTxt</h3>
+<p>Tests frequency file reading.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_read_simple_frequency_file</code></td>
+<td>Tests basic frequency file (one column)</td>
+</tr>
+<tr class="even">
+<td><code>test_read_frequency_with_header</code></td>
+<td>Tests skipping header rows</td>
+</tr>
+<tr class="odd">
+<td><code>test_read_frequency_specific_column</code></td>
+<td>Tests reading from specific column</td>
+</tr>
+<tr class="even">
+<td><code>test_read_frequency_with_unit_conversion</code></td>
+<td>Tests Hz/kHz/MHz/GHz/THz conversion</td>
+</tr>
+<tr class="odd">
+<td><code>test_read_frequency_with_comma_separator</code></td>
+<td>Tests CSV format</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testreadsurfaceimpedancetxt">TestReadSurfaceImpedanceTxt</h3>
+<p>Tests surface impedance file reading.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_read_surface_impedance</code></td>
+<td>Tests 3-column format (freq, Re, Im)</td>
+</tr>
+<tr class="even">
+<td><code>test_read_surface_impedance_with_header</code></td>
+<td>Tests header row skipping</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testreadimpedancefile">TestReadImpedanceFile</h3>
+<p>Tests generic impedance file reading.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_read_impedance_file_default</code></td>
+<td>Tests default column indices</td>
+</tr>
+<tr class="even">
+<td><code>test_read_impedance_file_with_header</code></td>
+<td>Tests header handling</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testloadgeometryfunctions">TestLoadGeometryFunctions</h3>
+<p>Tests geometry loading functions.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_load_apertype</code></td>
+<td>Tests aperture type string loading</td>
+</tr>
+<tr class="even">
+<td><code>test_load_b_L</code></td>
+<td>Tests (radius, length) loading</td>
+</tr>
+<tr class="odd">
+<td><code>test_load_b_L_betax_betay</code></td>
+<td>Tests (radius, length, βx, βy) loading</td>
+</tr>
+<tr class="even">
+<td><code>test_load_x_y_L_betax_betay</code></td>
+<td>Tests (hor, ver, length, βx, βy) loading</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testprintimpedanceoutput">TestPrintImpedanceOutput</h3>
+<p>Tests impedance export functionality.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_print_single_impedance_csv</code></td>
+<td>Tests CSV export</td>
+</tr>
+<tr class="even">
+<td><code>test_print_single_impedance_txt</code></td>
+<td>Tests TXT export</td>
+</tr>
+<tr class="odd">
+<td><code>test_print_single_impedance_dat</code></td>
+<td>Tests DAT export</td>
+</tr>
+<tr class="even">
+<td><code>test_print_multiple_impedances</code></td>
+<td>Tests multi-impedance export</td>
+</tr>
+<tr class="odd">
+<td><code>test_print_with_standard_labels</code></td>
+<td>Tests standard label mapping</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testconveniencefunctions">TestConvenienceFunctions</h3>
+<p>Tests convenience wrapper functions.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_print_single_impedance_wrapper</code></td>
+<td>Tests print_single_impedance()</td>
+</tr>
+<tr class="even">
+<td><code>test_export_impedance</code></td>
+<td>Tests export_impedance() alternative interface</td>
+</tr>
+<tr class="odd">
+<td><code>test_get_standard_label</code></td>
+<td>Tests label mapping (ZLong → “Longitudinal Impedance”)</td>
+</tr>
+<tr class="even">
+<td><code>test_list_supported_formats</code></td>
+<td>Tests format list retrieval</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testvalidation">TestValidation</h3>
+<p>Tests input validation.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_empty_freqs_raises</code></td>
+<td>Verifies ValueError for empty freqs</td>
+</tr>
+<tr class="even">
+<td><code>test_empty_imped_dict_raises</code></td>
+<td>Verifies ValueError for empty dict</td>
+</tr>
+<tr class="odd">
+<td><code>test_length_mismatch_raises</code></td>
+<td>Verifies ValueError for mismatched lengths</td>
+</tr>
+<tr class="even">
+<td><code>test_unsupported_extension_raises</code></td>
+<td>Verifies ValueError for .xyz extension</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testfallbackbehavior">TestFallbackBehavior</h3>
+<p>Tests fallback when dependencies missing.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_xlsx_fallback_to_txt</code></td>
+<td>Tests xlsx → txt fallback without openpyxl</td>
+</tr>
+<tr class="even">
+<td><code>test_pandas_available_flag</code></td>
+<td>Tests PANDAS_AVAILABLE flag exists</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="supported-file-formats">Supported File Formats</h2>
+<h3 id="input-formats">Input Formats</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Format</th>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.txt</code></td>
+<td><code>read_frequency_txt()</code></td>
+<td>Plain text frequency files</td>
+</tr>
+<tr class="even">
+<td><code>.dat</code></td>
+<td><code>read_frequency_txt()</code></td>
+<td>Data files (same as .txt)</td>
+</tr>
+<tr class="odd">
+<td><code>.csv</code></td>
+<td><code>read_frequency_txt()</code></td>
+<td>Comma-separated values</td>
+</tr>
+<tr class="even">
+<td>Surface Z</td>
+<td><code>read_surface_impedance_txt()</code></td>
+<td>3-column (f, Re, Im)</td>
+</tr>
+<tr class="odd">
+<td>Impedance</td>
+<td><code>read_impedance_file()</code></td>
+<td>Generic impedance files</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-formats">Output Formats</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Extension</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>.xlsx</code></td>
+<td>Excel format (requires openpyxl)</td>
+</tr>
+<tr class="even">
+<td><code>.csv</code></td>
+<td>Comma-separated values</td>
+</tr>
+<tr class="odd">
+<td><code>.tsv</code></td>
+<td>Tab-separated values</td>
+</tr>
+<tr class="even">
+<td><code>.txt</code></td>
+<td>Plain text (tab-separated)</td>
+</tr>
+<tr class="odd">
+<td><code>.dat</code></td>
+<td>Data file (tab-separated)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="standard-labels">Standard Labels</h2>
+<p>The module provides standard labels for common impedance types:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>STANDARD_LABELS <span class="op">=</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZLong&#39;</span>: <span class="st">&#39;Longitudinal Impedance&#39;</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZTrans&#39;</span>: <span class="st">&#39;Transverse Impedance&#39;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZDipX&#39;</span>: <span class="st">&#39;Dipolar X Impedance&#39;</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZDipY&#39;</span>: <span class="st">&#39;Dipolar Y Impedance&#39;</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZQuadX&#39;</span>: <span class="st">&#39;Quadrupolar X Impedance&#39;</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZQuadY&#39;</span>: <span class="st">&#39;Quadrupolar Y Impedance&#39;</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZLongSurf&#39;</span>: <span class="st">&#39;Longitudinal Surface Impedance&#39;</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZTransSurf&#39;</span>: <span class="st">&#39;Transverse Surface Impedance&#39;</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZLongDSC&#39;</span>: <span class="st">&#39;Longitudinal Direct Space Charge&#39;</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZLongISC&#39;</span>: <span class="st">&#39;Longitudinal Indirect Space Charge&#39;</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZTransDSC&#39;</span>: <span class="st">&#39;Transverse Direct Space Charge&#39;</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZTransISC&#39;</span>: <span class="st">&#39;Transverse Indirect Space Charge&#39;</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<hr />
+<h2 id="dependency-fallbacks">Dependency Fallbacks</h2>
+<p>The module handles missing dependencies gracefully:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Dependency</th>
+<th>Fallback Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pandas</td>
+<td>Use numpy-based file writing to .txt</td>
+</tr>
+<tr class="even">
+<td>openpyxl</td>
+<td>Fall back to .txt from .xlsx</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="example-usage">Example Usage</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> io_util</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read frequencies</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> io_util.read_frequency_txt(<span class="st">&#39;freq.txt&#39;</span>, skipped_rows<span class="op">=</span><span class="dv">1</span>, unit<span class="op">=</span><span class="st">&#39;MHz&#39;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read impedance data</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>f, Z <span class="op">=</span> io_util.read_impedance_file(<span class="st">&#39;impedance.dat&#39;</span>, skipped_rows<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Export results</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>io_util.print_impedance_output(</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    freqs<span class="op">=</span>f,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    imped_dict<span class="op">=</span>{<span class="st">&#39;ZLong&#39;</span>: Z_long, <span class="st">&#39;ZDipX&#39;</span>: Z_dipx},</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    savedir<span class="op">=</span><span class="st">&#39;output/&#39;</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    savename<span class="op">=</span><span class="st">&#39;results.xlsx&#39;</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    use_standard_labels<span class="op">=</span><span class="va">True</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Get supported formats</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>formats <span class="op">=</span> io_util.list_supported_formats()  <span class="co"># [&#39;.csv&#39;, &#39;.dat&#39;, &#39;.tsv&#39;, &#39;.txt&#39;, &#39;.xlsx&#39;]</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Get label for key</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>label <span class="op">=</span> io_util.get_standard_label(<span class="st">&#39;ZLong&#39;</span>)  <span class="co"># &#39;Longitudinal Impedance&#39;</span></span></code></pre></div>
+<hr />
+<p><a href="../TESTING.html">← Back to Testing Documentation</a></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

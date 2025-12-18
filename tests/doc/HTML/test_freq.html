@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>test freq</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#test_freq.py---frequencies-class-tests">test_freq.py - Frequencies Class Tests</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#test-classes">Test Classes</a>
+<ul>
+<li><a href="#testfrequenciesgeneration">TestFrequenciesGeneration</a></li>
+<li><a href="#testfrequenciesexplicitlist">TestFrequenciesExplicitList</a></li>
+<li><a href="#testfrequenciesvalidation">TestFrequenciesValidation</a></li>
+<li><a href="#testfrequenciesproperties">TestFrequenciesProperties</a></li>
+<li><a href="#testfrequenciesedgecases">TestFrequenciesEdgeCases</a></li>
+<li><a href="#testfrequenciesmethods">TestFrequenciesMethods</a></li>
+<li><a href="#testfrequenciesarrayproperties">TestFrequenciesArrayProperties</a></li>
+<li><a href="#testfrequenciesnumericalstability">TestFrequenciesNumericalStability</a></li>
+<li><a href="#testfrequenciescomparison">TestFrequenciesComparison</a></li>
+<li><a href="#testfrequenciesintegration">TestFrequenciesIntegration</a></li>
+</ul></li>
+<li><a href="#frequency-generation-algorithm">Frequency Generation Algorithm</a></li>
+<li><a href="#example-usage">Example Usage</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<h1 class="title">test freq</h1>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="test_freq.py---frequencies-class-tests">test_freq.py - Frequencies Class Tests</h1>
+<p><a href="../TESTING.html">← Back to Testing Documentation</a></p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>Tests for the <code>Frequencies</code> class which generates logarithmically-spaced frequency arrays for impedance calculations.</p>
+<p><strong>Module tested</strong>: <code>pytlwall.frequencies</code></p>
+<p><strong>Run this test</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/test_freq.py <span class="at">-v</span></span></code></pre></div>
+<hr />
+<h2 id="test-classes">Test Classes</h2>
+<h3 id="testfrequenciesgeneration">TestFrequenciesGeneration</h3>
+<p>Tests frequency array generation from exponents.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_default_generation</code></td>
+<td>Verifies defaults: fmin=0, fmax=8, fstep=2</td>
+</tr>
+<tr class="even">
+<td><code>test_custom_exponents</code></td>
+<td>Tests custom fmin, fmax, fstep</td>
+</tr>
+<tr class="odd">
+<td><code>test_frequency_coverage</code></td>
+<td>Verifies range from 10^fmin to 10^fmax</td>
+</tr>
+<tr class="even">
+<td><code>test_step_resolution</code></td>
+<td>Tests that larger fstep produces more points</td>
+</tr>
+<tr class="odd">
+<td><code>test_logarithmic_spacing</code></td>
+<td>Verifies roughly constant ratio between points</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testfrequenciesexplicitlist">TestFrequenciesExplicitList</h3>
+<p>Tests frequency creation from explicit list.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_explicit_list</code></td>
+<td>Tests freq_list parameter</td>
+</tr>
+<tr class="even">
+<td><code>test_unsorted_list_gets_sorted</code></td>
+<td>Verifies automatic sorting</td>
+</tr>
+<tr class="odd">
+<td><code>test_single_frequency</code></td>
+<td>Tests single frequency point</td>
+</tr>
+<tr class="even">
+<td><code>test_empty_list_uses_defaults</code></td>
+<td>Tests fallback to exponent generation</td>
+</tr>
+<tr class="odd">
+<td><code>test_explicit_list_ignores_exponents</code></td>
+<td>Verifies freq_list takes priority</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testfrequenciesvalidation">TestFrequenciesValidation</h3>
+<p>Tests error handling.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_negative_frequencies_rejected</code></td>
+<td>Verifies ValueError for f&lt;0</td>
+</tr>
+<tr class="even">
+<td><code>test_zero_frequency_rejected</code></td>
+<td>Verifies ValueError for f=0</td>
+</tr>
+<tr class="odd">
+<td><code>test_invalid_fmin_raises_error</code></td>
+<td>Tests type validation</td>
+</tr>
+<tr class="even">
+<td><code>test_invalid_fmax_raises_error</code></td>
+<td>Tests type validation</td>
+</tr>
+<tr class="odd">
+<td><code>test_invalid_fstep_raises_error</code></td>
+<td>Tests type validation</td>
+</tr>
+<tr class="even">
+<td><code>test_fmin_greater_than_fmax_warning</code></td>
+<td>Tests UserWarning for inverted range</td>
+</tr>
+<tr class="odd">
+<td><code>test_negative_fstep_warning</code></td>
+<td>Tests UserWarning for negative step</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testfrequenciesproperties">TestFrequenciesProperties</h3>
+<p>Tests property getters and setters.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_freq_is_readonly</code></td>
+<td>Verifies freq cannot be set directly</td>
+</tr>
+<tr class="even">
+<td><code>test_fmin_setter</code></td>
+<td>Tests fmin setter</td>
+</tr>
+<tr class="odd">
+<td><code>test_fmax_setter</code></td>
+<td>Tests fmax setter</td>
+</tr>
+<tr class="even">
+<td><code>test_fstep_setter</code></td>
+<td>Tests fstep setter</td>
+</tr>
+<tr class="odd">
+<td><code>test_update_from_exponents</code></td>
+<td>Tests update_from_exponents() method</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testfrequenciesedgecases">TestFrequenciesEdgeCases</h3>
+<p>Tests special values.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_very_small_range</code></td>
+<td>Tests fmin≈fmax (single decade)</td>
+</tr>
+<tr class="even">
+<td><code>test_very_large_range</code></td>
+<td>Tests 0 to 15 decades</td>
+</tr>
+<tr class="odd">
+<td><code>test_fractional_exponents</code></td>
+<td>Tests non-integer exponents</td>
+</tr>
+<tr class="even">
+<td><code>test_large_step</code></td>
+<td>Tests dense array generation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testfrequenciesmethods">TestFrequenciesMethods</h3>
+<p>Tests utility methods.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_len</code></td>
+<td>Tests <code>__len__</code> returns array length</td>
+</tr>
+<tr class="even">
+<td><code>test_repr</code></td>
+<td>Tests <code>__repr__</code> contains key info</td>
+</tr>
+<tr class="odd">
+<td><code>test_repr_explicit_list</code></td>
+<td>Tests repr for explicit list mode</td>
+</tr>
+<tr class="even">
+<td><code>test_str</code></td>
+<td>Tests <code>__str__</code> is readable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testfrequenciesarrayproperties">TestFrequenciesArrayProperties</h3>
+<p>Tests array characteristics.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_all_positive</code></td>
+<td>Verifies all frequencies &gt; 0</td>
+</tr>
+<tr class="even">
+<td><code>test_strictly_increasing</code></td>
+<td>Verifies sorted ascending order</td>
+</tr>
+<tr class="odd">
+<td><code>test_no_duplicates</code></td>
+<td>Verifies unique values</td>
+</tr>
+<tr class="even">
+<td><code>test_finite_values</code></td>
+<td>Verifies no inf or NaN</td>
+</tr>
+<tr class="odd">
+<td><code>test_reasonable_values</code></td>
+<td>Tests 0.1 Hz to 100 GHz range</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testfrequenciesnumericalstability">TestFrequenciesNumericalStability</h3>
+<p>Tests numerical precision.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_round_trip_exponents</code></td>
+<td>Tests same params give same result</td>
+</tr>
+<tr class="even">
+<td><code>test_precision_maintained</code></td>
+<td>Tests significant figures maintained</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testfrequenciescomparison">TestFrequenciesComparison</h3>
+<p>Tests different configurations.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_different_steps_same_range</code></td>
+<td>Tests coverage with different steps</td>
+</tr>
+<tr class="even">
+<td><code>test_points_per_decade_consistent</code></td>
+<td>Tests reasonable point density</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testfrequenciesintegration">TestFrequenciesIntegration</h3>
+<p>Tests realistic use cases.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_lhc_range</code></td>
+<td>Tests 1 Hz to 10 GHz (LHC typical)</td>
+</tr>
+<tr class="even">
+<td><code>test_resonance_frequencies</code></td>
+<td>Tests specific cavity resonances</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="frequency-generation-algorithm">Frequency Generation Algorithm</h2>
+<p>The <code>Frequencies</code> class generates points using:</p>
+<pre><code>fmin, fmax: exponents (powers of 10)
+fstep: points per decade
+
+Frequencies span from 10^fmin to 10^fmax Hz
+with approximately fstep points per decade.
+
+Note: Larger fstep → MORE points (counterintuitive naming)</code></pre>
+<hr />
+<h2 id="example-usage">Example Usage</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Frequencies</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Default: 1 Hz to 100 MHz with medium density</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> Frequencies()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Generated </span><span class="sc">{</span><span class="bu">len</span>(freq)<span class="sc">}</span><span class="ss"> frequencies&quot;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Range: </span><span class="sc">{</span>freq<span class="sc">.</span>freq[<span class="dv">0</span>]<span class="sc">:.1e}</span><span class="ss"> to </span><span class="sc">{</span>freq<span class="sc">.</span>freq[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.1e}</span><span class="ss"> Hz&quot;</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># High resolution for narrow band</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>freq_hr <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">6</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;High-res: </span><span class="sc">{</span><span class="bu">len</span>(freq_hr)<span class="sc">}</span><span class="ss"> points, 1 MHz to 1 GHz&quot;</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Explicit resonance frequencies</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>resonances <span class="op">=</span> Frequencies(freq_list<span class="op">=</span>[<span class="fl">400.79e6</span>, <span class="fl">800e6</span>, <span class="fl">1200e6</span>])</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Resonances: </span><span class="sc">{</span>resonances<span class="sc">.</span>freq<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<p><a href="../TESTING.html">← Back to Testing Documentation</a></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

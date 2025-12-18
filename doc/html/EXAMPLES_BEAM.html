@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>EXAMPLES BEAM</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#beam-module-examples">beam Module Examples</a>
+<ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#navigation">Navigation</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#example-1-lhc-proton-beam">Example 1: LHC Proton Beam</a></li>
+<li><a href="#example-2-electron-beam">Example 2: Electron Beam</a></li>
+<li><a href="#example-3-medical-proton-therapy">Example 3: Medical Proton Therapy</a></li>
+<li><a href="#example-4-parameter-conversion">Example 4: Parameter Conversion</a></li>
+<li><a href="#example-5-error-handling">Example 5: Error Handling</a></li>
+<li><a href="#example-6-heavy-ion-beam">Example 6: Heavy Ion Beam</a></li>
+<li><a href="#example-7-particle-comparison">Example 7: Particle Comparison</a></li>
+<li><a href="#parameter-reference">Parameter Reference</a>
+<ul>
+<li><a href="#input-parameters">Input Parameters</a></li>
+<li><a href="#computed-properties">Computed Properties</a></li>
+<li><a href="#relativistic-relations">Relativistic Relations</a></li>
+</ul></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">EXAMPLES BEAM</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="beam-module-examples">beam Module Examples</h1>
+
+<p><strong>Particle Beam Parameters with Relativistic Calculations</strong></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> - tatiana.rijoff@gmail.com</li>
+<li><strong>Carlo Zannini</strong> - carlo.zannini@cern.ch</li>
+</ul>
+<p><em>Copyright: CERN</em></p>
+<hr />
+<h2 id="navigation">Navigation</h2>
+<p><strong><a href="EXAMPLES.html">◀ Back to Examples</a></strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>beam</strong></td>
+<td><em>You are here</em></td>
+</tr>
+<tr class="even">
+<td>frequencies</td>
+<td><a href="EXAMPLES_FREQUENCIES.html">EXAMPLES_FREQUENCIES.md</a></td>
+</tr>
+<tr class="odd">
+<td>layer</td>
+<td><a href="EXAMPLES_LAYER.html">EXAMPLES_LAYER.md</a></td>
+</tr>
+<tr class="even">
+<td>chamber</td>
+<td><a href="EXAMPLES_CHAMBER.html">EXAMPLES_CHAMBER.md</a></td>
+</tr>
+<tr class="odd">
+<td>tlwall</td>
+<td><a href="EXAMPLES_TLWALL.html">EXAMPLES_TLWALL.md</a></td>
+</tr>
+<tr class="even">
+<td>logging</td>
+<td><a href="EXAMPLES_LOGGING.html">EXAMPLES_LOGGING.md</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#example-1-lhc-proton-beam">Example 1: LHC Proton Beam</a></li>
+<li><a href="#example-2-electron-beam">Example 2: Electron Beam</a></li>
+<li><a href="#example-3-medical-proton-therapy">Example 3: Medical Proton Therapy</a></li>
+<li><a href="#example-4-parameter-conversion">Example 4: Parameter Conversion</a></li>
+<li><a href="#example-5-error-handling">Example 5: Error Handling</a></li>
+<li><a href="#example-6-heavy-ion-beam">Example 6: Heavy Ion Beam</a></li>
+<li><a href="#example-7-particle-comparison">Example 7: Particle Comparison</a></li>
+<li><a href="#parameter-reference">Parameter Reference</a></li>
+</ul>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>The <code>Beam</code> class handles particle beam parameters with automatic relativistic calculations. You can initialize a beam with any relativistic parameter (gamma, beta, energy, or momentum), and all other parameters are automatically computed and kept consistent.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize with any parameter</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> pytlwall.Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)    <span class="co"># From gamma</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> pytlwall.Beam(betarel<span class="op">=</span><span class="fl">0.999999</span>)    <span class="co"># From beta</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> pytlwall.Beam(Ekin_MeV<span class="op">=</span><span class="fl">7e6</span>)        <span class="co"># From kinetic energy</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> pytlwall.Beam(p_MeV_c<span class="op">=</span><span class="fl">7e6</span>)         <span class="co"># From momentum</span></span></code></pre></div>
+<hr />
+<h2 id="example-1-lhc-proton-beam">Example 1: LHC Proton Beam</h2>
+<p>LHC protons at 7 TeV kinetic energy.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># LHC: protons at 7 TeV kinetic energy</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>lhc_beam <span class="op">=</span> pytlwall.Beam(Ekin_MeV<span class="op">=</span><span class="fl">7e6</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;LHC beam parameters:&quot;</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Kinetic energy:  </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>Ekin_MeV<span class="sc">:.2e}</span><span class="ss"> MeV (</span><span class="sc">{</span>lhc_beam<span class="sc">.</span>Ekin_MeV<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.1f}</span><span class="ss"> TeV)&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Beta (v/c):      </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>betarel<span class="sc">:.12f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma:           </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>gammarel<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Momentum:        </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>p_MeV_c<span class="sc">:.2e}</span><span class="ss"> MeV/c&quot;</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Total energy:    </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>E_tot_MeV<span class="sc">:.2e}</span><span class="ss"> MeV&quot;</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Velocity:        </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>velocity_m_s<span class="sc">:.6e}</span><span class="ss"> m/s&quot;</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Rest mass:       </span><span class="sc">{</span>lhc_beam<span class="sc">.</span>mass_MeV_c2<span class="sc">:.4f}</span><span class="ss"> MeV/c²&quot;</span>)</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>LHC beam parameters:
+  Kinetic energy:  7.00e+06 MeV (7.0 TeV)
+  Beta (v/c):      0.999999991001
+  Gamma:           7461.52
+  Momentum:        7.00e+06 MeV/c
+  Total energy:    7.00e+06 MeV
+  Velocity:        2.997925e+08 m/s
+  Rest mass:       938.2720 MeV/c²</code></pre>
+<p><strong>Notes:</strong> - The beam travels at 99.9999991% of the speed of light - The energy is ~7461 times the rest energy - Default mass is proton mass (938.272 MeV/c²)</p>
+<hr />
+<h2 id="example-2-electron-beam">Example 2: Electron Beam</h2>
+<p>Electron in a linear accelerator at 1 GeV.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Electron: mass much smaller than proton</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>electron_mass <span class="op">=</span> <span class="fl">0.511</span>  <span class="co"># MeV/c²</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>electron_beam <span class="op">=</span> pytlwall.Beam(Ekin_MeV<span class="op">=</span><span class="dv">1000</span>, mass_MeV_c2<span class="op">=</span>electron_mass)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Electron parameters:&quot;</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Rest mass:       </span><span class="sc">{</span>electron_beam<span class="sc">.</span>mass_MeV_c2<span class="sc">:.3f}</span><span class="ss"> MeV/c²&quot;</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Kinetic energy:  </span><span class="sc">{</span>electron_beam<span class="sc">.</span>Ekin_MeV<span class="sc">:.2f}</span><span class="ss"> MeV (1 GeV)&quot;</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Beta (v/c):      </span><span class="sc">{</span>electron_beam<span class="sc">.</span>betarel<span class="sc">:.10f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma:           </span><span class="sc">{</span>electron_beam<span class="sc">.</span>gammarel<span class="sc">:.1f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Momentum:        </span><span class="sc">{</span>electron_beam<span class="sc">.</span>p_MeV_c<span class="sc">:.2f}</span><span class="ss"> MeV/c&quot;</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Velocity:        </span><span class="sc">{</span>electron_beam<span class="sc">.</span>velocity_m_s<span class="sc">:.6e}</span><span class="ss"> m/s&quot;</span>)</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>Electron parameters:
+  Rest mass:       0.511 MeV/c²
+  Kinetic energy:  1000.00 MeV (1 GeV)
+  Beta (v/c):      0.9999998693
+  Gamma:           1958.4
+  Momentum:        1000.26 MeV/c
+  Velocity:        2.997924e+08 m/s</code></pre>
+<p><strong>Notes:</strong> - Electrons are highly relativistic even at 1 GeV - Time dilation factor: 1958x - Gamma &gt;&gt; 1 indicates ultra-relativistic regime</p>
+<hr />
+<h2 id="example-3-medical-proton-therapy">Example 3: Medical Proton Therapy</h2>
+<p>Protons for tumor treatment at 200 MeV.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Medical protons: ~200 MeV</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>medical_beam <span class="op">=</span> pytlwall.Beam(Ekin_MeV<span class="op">=</span><span class="dv">200</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Medical beam parameters:&quot;</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Kinetic energy:  </span><span class="sc">{</span>medical_beam<span class="sc">.</span>Ekin_MeV<span class="sc">:.2f}</span><span class="ss"> MeV&quot;</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Beta (v/c):      </span><span class="sc">{</span>medical_beam<span class="sc">.</span>betarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma:           </span><span class="sc">{</span>medical_beam<span class="sc">.</span>gammarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Momentum:        </span><span class="sc">{</span>medical_beam<span class="sc">.</span>p_MeV_c<span class="sc">:.2f}</span><span class="ss"> MeV/c&quot;</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Velocity:        </span><span class="sc">{</span>medical_beam<span class="sc">.</span>velocity_m_s<span class="sc">:.3e}</span><span class="ss"> m/s&quot;</span>)</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>Medical beam parameters:
+  Kinetic energy:  200.00 MeV
+  Beta (v/c):      0.566299
+  Gamma:           1.213160
+  Momentum:        644.45 MeV/c
+  Velocity:        1.698e+08 m/s</code></pre>
+<p><strong>Notes:</strong> - Moderately relativistic (gamma ≈ 1.2) - Velocity: ~57% of the speed of light - Optimal energy for deep tissue penetration</p>
+<hr />
+<h2 id="example-4-parameter-conversion">Example 4: Parameter Conversion</h2>
+<p>Automatic conversion between relativistic parameters.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize with momentum</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Initialize with p = 1000 MeV/c:&quot;</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> pytlwall.Beam(p_MeV_c<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Beta:            </span><span class="sc">{</span>beam<span class="sc">.</span>betarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma:           </span><span class="sc">{</span>beam<span class="sc">.</span>gammarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Kinetic energy:  </span><span class="sc">{</span>beam<span class="sc">.</span>Ekin_MeV<span class="sc">:.2f}</span><span class="ss"> MeV&quot;</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Total energy:    </span><span class="sc">{</span>beam<span class="sc">.</span>E_tot_MeV<span class="sc">:.2f}</span><span class="ss"> MeV&quot;</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Update kinetic energy - all parameters recalculate</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Update to E_kin = 500 MeV:&quot;</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>beam.Ekin_MeV <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Beta:            </span><span class="sc">{</span>beam<span class="sc">.</span>betarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma:           </span><span class="sc">{</span>beam<span class="sc">.</span>gammarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Momentum:        </span><span class="sc">{</span>beam<span class="sc">.</span>p_MeV_c<span class="sc">:.2f}</span><span class="ss"> MeV/c&quot;</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Total energy:    </span><span class="sc">{</span>beam<span class="sc">.</span>E_tot_MeV<span class="sc">:.2f}</span><span class="ss"> MeV&quot;</span>)</span></code></pre></div>
+<p><strong>Key point:</strong> All parameters remain automatically consistent when you change any single parameter.</p>
+<hr />
+<h2 id="example-5-error-handling">Example 5: Error Handling</h2>
+<p>The <code>Beam</code> class validates all inputs.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Test 1: Beta &gt; 1 (physically impossible)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Test 1: Beta &gt; 1&quot;</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    beam <span class="op">=</span> pytlwall.Beam(betarel<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pytlwall.BeamValidationError <span class="im">as</span> e:</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  ✓ Error caught: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Test 2: Gamma &lt; 1 (impossible for massive particles)</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Test 2: Gamma &lt; 1&quot;</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    beam <span class="op">=</span> pytlwall.Beam(gammarel<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pytlwall.BeamValidationError <span class="im">as</span> e:</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  ✓ Error caught: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Test 3: Negative energy</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Test 3: Negative energy&quot;</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    beam <span class="op">=</span> pytlwall.Beam(Ekin_MeV<span class="op">=-</span><span class="dv">100</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pytlwall.BeamValidationError <span class="im">as</span> e:</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  ✓ Error caught: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Test 4: Non-numeric input</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Test 4: Non-numeric input&quot;</span>)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    beam <span class="op">=</span> pytlwall.Beam(betarel<span class="op">=</span><span class="st">&quot;not a number&quot;</span>)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pytlwall.BeamValidationError <span class="im">as</span> e:</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  ✓ Error caught: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p><strong>Best practice:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    beam <span class="op">=</span> pytlwall.Beam(betarel<span class="op">=</span>user_input)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pytlwall.BeamValidationError:</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Invalid input, using default&quot;</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    beam <span class="op">=</span> pytlwall.Beam()  <span class="co"># Ultra-relativistic default</span></span></code></pre></div>
+<hr />
+<h2 id="example-6-heavy-ion-beam">Example 6: Heavy Ion Beam</h2>
+<p>Carbon-12 ion beam at 100 MeV.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Carbon-12: mass much greater than proton</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>carbon_mass <span class="op">=</span> <span class="dv">12</span> <span class="op">*</span> <span class="fl">931.5</span>  <span class="co"># MeV/c² (12 atomic mass units)</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>carbon_beam <span class="op">=</span> pytlwall.Beam(Ekin_MeV<span class="op">=</span><span class="dv">100</span>, mass_MeV_c2<span class="op">=</span>carbon_mass)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Carbon ion parameters:&quot;</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Rest mass:       </span><span class="sc">{</span>carbon_beam<span class="sc">.</span>mass_MeV_c2<span class="sc">:.1f}</span><span class="ss"> MeV/c² (~12 u)&quot;</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Kinetic energy:  </span><span class="sc">{</span>carbon_beam<span class="sc">.</span>Ekin_MeV<span class="sc">:.2f}</span><span class="ss"> MeV&quot;</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Beta (v/c):      </span><span class="sc">{</span>carbon_beam<span class="sc">.</span>betarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma:           </span><span class="sc">{</span>carbon_beam<span class="sc">.</span>gammarel<span class="sc">:.6f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Momentum:        </span><span class="sc">{</span>carbon_beam<span class="sc">.</span>p_MeV_c<span class="sc">:.2f}</span><span class="ss"> MeV/c&quot;</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Velocity:        </span><span class="sc">{</span>carbon_beam<span class="sc">.</span>velocity_m_s<span class="sc">:.3e}</span><span class="ss"> m/s&quot;</span>)</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>Carbon ion parameters:
+  Rest mass:       11178.0 MeV/c² (~12 u)
+  Kinetic energy:  100.00 MeV
+  Beta (v/c):      0.004217
+  Gamma:           1.008944
+  Momentum:        1496.82 MeV/c
+  Velocity:        1.264e+06 m/s</code></pre>
+<p><strong>Notes:</strong> - Non-relativistic regime (gamma ≈ 1) - Only 0.42% of the speed of light - Heavy ions need much more energy to become relativistic</p>
+<hr />
+<h2 id="example-7-particle-comparison">Example 7: Particle Comparison</h2>
+<p>Comparing proton and electron at the same kinetic energy.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>energy <span class="op">=</span> <span class="fl">100.0</span>  <span class="co"># MeV</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>electron_mass <span class="op">=</span> <span class="fl">0.511</span>   <span class="co"># MeV/c²</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>proton_mass <span class="op">=</span> <span class="fl">938.272</span>   <span class="co"># MeV/c²</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>electron <span class="op">=</span> pytlwall.Beam(Ekin_MeV<span class="op">=</span>energy, mass_MeV_c2<span class="op">=</span>electron_mass)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>proton <span class="op">=</span> pytlwall.Beam(Ekin_MeV<span class="op">=</span>energy, mass_MeV_c2<span class="op">=</span>proton_mass)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Kinetic energy: </span><span class="sc">{</span>energy<span class="sc">}</span><span class="ss"> MeV</span><span class="ch">\n</span><span class="ss">&quot;</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;ELECTRON (m = </span><span class="sc">{</span>electron_mass<span class="sc">:.3f}</span><span class="ss"> MeV/c²):&quot;</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Beta:      </span><span class="sc">{</span>electron<span class="sc">.</span>betarel<span class="sc">:.10f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma:     </span><span class="sc">{</span>electron<span class="sc">.</span>gammarel<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Momentum:  </span><span class="sc">{</span>electron<span class="sc">.</span>p_MeV_c<span class="sc">:.2f}</span><span class="ss"> MeV/c&quot;</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Velocity:  </span><span class="sc">{</span>electron<span class="sc">.</span>velocity_m_s<span class="sc">:.6e}</span><span class="ss"> m/s&quot;</span>)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">PROTON (m = </span><span class="sc">{</span>proton_mass<span class="sc">:.3f}</span><span class="ss"> MeV/c²):&quot;</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Beta:      </span><span class="sc">{</span>proton<span class="sc">.</span>betarel<span class="sc">:.10f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma:     </span><span class="sc">{</span>proton<span class="sc">.</span>gammarel<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Momentum:  </span><span class="sc">{</span>proton<span class="sc">.</span>p_MeV_c<span class="sc">:.2f}</span><span class="ss"> MeV/c&quot;</span>)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Velocity:  </span><span class="sc">{</span>proton<span class="sc">.</span>velocity_m_s<span class="sc">:.6e}</span><span class="ss"> m/s&quot;</span>)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="ch">\n</span><span class="ss">COMPARISON:&quot;</span>)</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Mass ratio:     </span><span class="sc">{</span>proton_mass<span class="op">/</span>electron_mass<span class="sc">:.1f}</span><span class="ss">:1&quot;</span>)</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Gamma ratio:    </span><span class="sc">{</span>electron<span class="sc">.</span>gammarel<span class="op">/</span>proton<span class="sc">.</span>gammarel<span class="sc">:.2f}</span><span class="ss">:1&quot;</span>)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Velocity ratio: </span><span class="sc">{</span>electron<span class="sc">.</span>betarel<span class="op">/</span>proton<span class="sc">.</span>betarel<span class="sc">:.2f}</span><span class="ss">:1&quot;</span>)</span></code></pre></div>
+<p><strong>Key insight:</strong> At equal kinetic energy, lighter particles are much more relativistic and move faster.</p>
+<hr />
+<h2 id="parameter-reference">Parameter Reference</h2>
+<h3 id="input-parameters">Input Parameters</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Description</th>
+<th>Unit</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>gammarel</code></td>
+<td>Lorentz gamma factor</td>
+<td>-</td>
+<td>≥ 1</td>
+</tr>
+<tr class="even">
+<td><code>betarel</code></td>
+<td>Relativistic beta (v/c)</td>
+<td>-</td>
+<td>0 &lt; β &lt; 1</td>
+</tr>
+<tr class="odd">
+<td><code>Ekin_MeV</code></td>
+<td>Kinetic energy</td>
+<td>MeV</td>
+<td>&gt; 0</td>
+</tr>
+<tr class="even">
+<td><code>p_MeV_c</code></td>
+<td>Momentum</td>
+<td>MeV/c</td>
+<td>&gt; 0</td>
+</tr>
+<tr class="odd">
+<td><code>mass_MeV_c2</code></td>
+<td>Rest mass</td>
+<td>MeV/c²</td>
+<td>&gt; 0 (default: proton)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="computed-properties">Computed Properties</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Description</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>E_tot_MeV</code></td>
+<td>Total energy (E = γmc²)</td>
+<td>MeV</td>
+</tr>
+<tr class="even">
+<td><code>velocity_m_s</code></td>
+<td>Velocity</td>
+<td>m/s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="relativistic-relations">Relativistic Relations</h3>
+<p><span class="math display">\[\gamma = \frac{1}{\sqrt{1 - \beta^2}}\]</span></p>
+<p><span class="math display">\[E_{tot} = \gamma m c^2\]</span></p>
+<p><span class="math display">\[E_{kin} = (\gamma - 1) m c^2\]</span></p>
+<p><span class="math display">\[p = \gamma m v = \beta \gamma m c\]</span></p>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="API_REFERENCE_BEAM.html">API Reference - Beam</a> - Complete API documentation</li>
+<li><a href="EXAMPLES.html">Examples Main Page</a> - All module examples</li>
+</ul>
+<hr />
+<p><strong><a href="EXAMPLES.html">◀ Back to Examples</a></strong> | <strong><a href="EXAMPLES_FREQUENCIES.html">Next: frequencies ▶</a></strong></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+# MANIFEST.in - Specifies additional files to include in source distribution
+# This file is used by setuptools to determine which non-Python files to include
+
+# ============================================================================
+# Build and Configuration Files
+# ============================================================================
+include pyproject.toml
+include setup.py
+include LICENSE.txt
+include README.md
+
+# ============================================================================
+# Documentation
+# ============================================================================
+# Main documentation files
+include *.md
+
+# Documentation directory
+recursive-include docs *.md
+recursive-include docs *.rst
+recursive-include docs *.txt
+recursive-include docs/img *.png
+recursive-include docs/img *.jpg
+recursive-include docs/img *.svg
+
+# ============================================================================
+# Examples
+# ============================================================================
+recursive-include examples *.py
+recursive-include examples *.ipynb
+recursive-include examples *.cfg
+recursive-include examples *.txt
+recursive-include examples *.md
+
+# ============================================================================
+# Package Data (Yokoya factors needed at runtime)
+# ============================================================================
+# Yokoya factors data files - included in package as they are needed for calculations
+recursive-include pytlwall/yokoya_factors *.txt
+recursive-include pytlwall/yokoya_factors *.dat
+recursive-include pytlwall/yokoya_factors *.csv
+
+# ============================================================================
+# Exclusions - Files to NOT include
+# ============================================================================
+
+# Exclude tests completely
+prune tests
+
+
+# Python cache and compiled files
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude *$py.class
+global-exclude *.so
+
+# IDE and editor files
+global-exclude .DS_Store
+global-exclude .vscode
+global-exclude .idea
+global-exclude *.swp
+global-exclude *~
+
+# Version control
+global-exclude .git
+global-exclude .gitignore
+global-exclude .gitattributes
+
+# Test outputs and temporary files
+global-exclude *.log
+global-exclude *.tmp
+global-exclude .pytest_cache
+global-exclude .coverage
+global-exclude htmlcov
+
+# Distribution/build artifacts
+global-exclude build
+global-exclude dist
+global-exclude *.egg-info
+
+# Backup files
+global-exclude *~
+global-exclude *.bak
+global-exclude *.orig
+

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>API REFERENCE FREQUENCIES</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#frequencies-module-api-reference">frequencies Module API Reference</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#import">Import</a></li>
+<li><a href="#frequencies-class">Frequencies Class</a>
+<ul>
+<li><a href="#class-definition">Class Definition</a></li>
+<li><a href="#constructor">Constructor</a></li>
+</ul></li>
+<li><a href="#attributes">Attributes</a>
+<ul>
+<li><a href="#freq"><code>freq</code></a></li>
+<li><a href="#fmin"><code>fmin</code></a></li>
+<li><a href="#fmax"><code>fmax</code></a></li>
+<li><a href="#fstep"><code>fstep</code></a></li>
+</ul></li>
+<li><a href="#methods">Methods</a>
+<ul>
+<li><a href="#update_from_exponentsfmin-fmax-fstep"><code>update_from_exponents(fmin, fmax, fstep)</code></a></li>
+<li><a href="#len__"><code>__len__()</code></a></li>
+<li><a href="#repr__"><code>__repr__()</code></a></li>
+</ul></li>
+<li><a href="#constants">Constants</a></li>
+<li><a href="#usage-examples">Usage Examples</a>
+<ul>
+<li><a href="#example-1-typical-impedance-calculation-range">Example 1: Typical Impedance Calculation Range</a></li>
+<li><a href="#example-2-custom-frequency-list-for-specific-modes">Example 2: Custom Frequency List for Specific Modes</a></li>
+<li><a href="#example-3-comparing-different-resolutions">Example 3: Comparing Different Resolutions</a></li>
+<li><a href="#example-4-integration-with-pytlwall">Example 4: Integration with pytlwall</a></li>
+<li><a href="#example-5-dynamic-frequency-adjustment">Example 5: Dynamic Frequency Adjustment</a></li>
+<li><a href="#example-6-validation-and-error-handling">Example 6: Validation and Error Handling</a></li>
+<li><a href="#example-7-lhc-revolution-harmonics">Example 7: LHC Revolution Harmonics</a></li>
+<li><a href="#example-8-points-per-decade-analysis">Example 8: Points Per Decade Analysis</a></li>
+<li><a href="#example-9-optimization-strategy">Example 9: Optimization Strategy</a></li>
+</ul></li>
+<li><a href="#notes-and-conventions">Notes and Conventions</a>
+<ul>
+<li><a href="#logarithmic-spacing-algorithm">Logarithmic Spacing Algorithm</a></li>
+<li><a href="#typical-frequency-ranges">Typical Frequency Ranges</a></li>
+<li><a href="#performance-considerations">Performance Considerations</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#fstep-behavior">fstep Behavior</a></li>
+</ul></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">API REFERENCE FREQUENCIES</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="frequencies-module-api-reference">frequencies Module API Reference</h1>
+<h2 id="overview">Overview</h2>
+<p>The <code>frequencies</code> module provides the <code>Frequencies</code> class for managing frequency arrays used in impedance calculations.</p>
+<p>The <code>Frequencies</code> class handles frequency arrays in Hertz at which impedances are calculated. Frequencies can be specified explicitly as a list or generated logarithmically from exponents (base 10), providing good coverage across multiple orders of magnitude.</p>
+<p>This is essential for impedance calculations as different frequency ranges reveal different physical phenomena in accelerator components.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#import">Import</a></li>
+<li><a href="#frequencies-class">Frequencies Class</a></li>
+<li><a href="#attributes">Attributes</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#constants">Constants</a></li>
+<li><a href="#usage-examples">Usage Examples</a></li>
+<li><a href="#notes-and-conventions">Notes and Conventions</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+<hr />
+<h2 id="import">Import</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> frequencies</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span></code></pre></div>
+<hr />
+<h2 id="frequencies-class">Frequencies Class</h2>
+<h3 id="class-definition">Class Definition</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Frequencies:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Manages frequency arrays for impedance calculations.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Frequencies can be provided as an explicit list or generated </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    logarithmically from minimum and maximum exponents.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<h3 id="constructor">Constructor</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Frequencies(freq_list<span class="op">=</span><span class="va">None</span>, fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">8</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
+<h4 id="parameters">Parameters</h4>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 15%" />
+<col style="width: 23%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>freq_list</code></td>
+<td><code>array-like</code></td>
+<td><code>None</code></td>
+<td>Explicit list of frequencies in Hz. If provided, fmin/fmax/fstep are ignored</td>
+</tr>
+<tr class="even">
+<td><code>fmin</code></td>
+<td><code>float</code></td>
+<td><code>0</code></td>
+<td>Minimum frequency exponent (base 10). Default: 0 → 1 Hz</td>
+</tr>
+<tr class="odd">
+<td><code>fmax</code></td>
+<td><code>float</code></td>
+<td><code>8</code></td>
+<td>Maximum frequency exponent (base 10). Default: 8 → 100 MHz</td>
+</tr>
+<tr class="even">
+<td><code>fstep</code></td>
+<td><code>float</code></td>
+<td><code>2</code></td>
+<td>Step exponent for logarithmic spacing. <strong>Note</strong>: LARGER values = MORE points (higher resolution)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="notes">Notes</h4>
+<ul>
+<li>If <code>freq_list</code> is provided, it takes precedence over exponent-based generation</li>
+<li>Frequencies from list are automatically sorted</li>
+<li>All frequencies must be positive (&gt; 0 Hz)</li>
+<li>When using exponents, the array is generated logarithmically for better coverage</li>
+<li><strong>Important:</strong> Larger fstep = MORE points per decade (higher resolution)</li>
+</ul>
+<h4 id="examples">Examples</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1: Generate from exponents (logarithmic spacing)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">6</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Generated </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> frequency points&quot;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Range: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">0</span>]<span class="sc">:.2e}</span><span class="ss"> to </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.2e}</span><span class="ss"> Hz&quot;</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2: Provide explicit list</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>freq_list <span class="op">=</span> [<span class="fl">1e3</span>, <span class="fl">1e4</span>, <span class="fl">1e5</span>, <span class="fl">1e6</span>, <span class="fl">1e7</span>]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(freq_list<span class="op">=</span>freq_list)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Using </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> explicit frequencies&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="attributes">Attributes</h2>
+<h3 id="freq"><code>freq</code></h3>
+<p><strong>Type:</strong> <code>np.ndarray</code> (read-only)</p>
+<p><strong>Description:</strong> Array of frequencies in Hertz.</p>
+<p><strong>Notes:</strong> - This is a read-only property - Contains all frequency points at which impedance will be calculated - Always sorted in ascending order</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">5</span>, fstep<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Frequency array: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;First frequency: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">0</span>]<span class="sc">:.2e}</span><span class="ss"> Hz&quot;</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Last frequency: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.2e}</span><span class="ss"> Hz&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Number of points: </span><span class="sc">{</span><span class="bu">len</span>(freqs.freq)<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="fmin"><code>fmin</code></h3>
+<p><strong>Type:</strong> <code>float</code></p>
+<p><strong>Description:</strong> Minimum frequency or its exponent (base 10).</p>
+<p><strong>Notes:</strong> - When using exponent generation: represents the exponent (e.g., 0 → 10^0 = 1 Hz) - When using explicit list: represents the actual minimum frequency value - Setting fmin &gt; fmax will trigger a warning</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">2</span>, fmax<span class="op">=</span><span class="dv">6</span>, fstep<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Minimum exponent: </span><span class="sc">{</span>freqs<span class="sc">.</span>fmin<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Minimum frequency: </span><span class="sc">{</span><span class="dv">10</span><span class="op">**</span>freqs<span class="sc">.</span>fmin<span class="sc">}</span><span class="ss"> Hz&quot;</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Update minimum</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>freqs.fmin <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>freqs.update_from_exponents(freqs.fmin, freqs.fmax, freqs.fstep)</span></code></pre></div>
+<hr />
+<h3 id="fmax"><code>fmax</code></h3>
+<p><strong>Type:</strong> <code>float</code></p>
+<p><strong>Description:</strong> Maximum frequency or its exponent (base 10).</p>
+<p><strong>Notes:</strong> - When using exponent generation: represents the exponent (e.g., 8 → 10^8 = 100 MHz) - When using explicit list: represents the actual maximum frequency value - Setting fmax &lt; fmin will trigger a warning</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Maximum exponent: </span><span class="sc">{</span>freqs<span class="sc">.</span>fmax<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Maximum frequency: </span><span class="sc">{</span><span class="dv">10</span><span class="op">**</span>freqs<span class="sc">.</span>fmax<span class="sc">:.2e}</span><span class="ss"> Hz&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="fstep"><code>fstep</code></h3>
+<p><strong>Type:</strong> <code>float</code></p>
+<p><strong>Description:</strong> Step exponent for logarithmic spacing.</p>
+<p><strong>Notes:</strong> - Controls the density of frequency points per decade - <strong>Important behavior</strong>: LARGER fstep → MORE points per decade (higher resolution) - Example: fstep=3 produces ~10x more points than fstep=1 - Set to 0.0 when using explicit frequency list - This behavior matches the original pytlwall algorithm</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Low resolution (FEWER points) - smaller fstep</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>freqs_low <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">6</span>, fstep<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Low resolution: </span><span class="sc">{</span><span class="bu">len</span>(freqs_low)<span class="sc">}</span><span class="ss"> points&quot;</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># High resolution (MORE points) - larger fstep  </span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>freqs_high <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">6</span>, fstep<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;High resolution: </span><span class="sc">{</span><span class="bu">len</span>(freqs_high)<span class="sc">}</span><span class="ss"> points&quot;</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: fstep=3 gives MORE points than fstep=1</span></span></code></pre></div>
+<hr />
+<h2 id="methods">Methods</h2>
+<h3 id="update_from_exponentsfmin-fmax-fstep"><code>update_from_exponents(fmin, fmax, fstep)</code></h3>
+<p>Update frequency array from new exponents.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>fmin</code></td>
+<td><code>float</code></td>
+<td>New minimum frequency exponent</td>
+</tr>
+<tr class="even">
+<td><code>fmax</code></td>
+<td><code>float</code></td>
+<td>New maximum frequency exponent</td>
+</tr>
+<tr class="odd">
+<td><code>fstep</code></td>
+<td><code>float</code></td>
+<td>New step exponent</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> None (modifies object in place)</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">6</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Initial: </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> points from </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">0</span>]<span class="sc">:.1e}</span><span class="ss"> to </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.1e}</span><span class="ss"> Hz&quot;</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Update to new range</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>freqs.update_from_exponents(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Updated: </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> points from </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">0</span>]<span class="sc">:.1e}</span><span class="ss"> to </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.1e}</span><span class="ss"> Hz&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="len__"><code>__len__()</code></h3>
+<p>Get number of frequency points.</p>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>int</code></td>
+<td>Number of frequency points in the array</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">6</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>n_points <span class="op">=</span> <span class="bu">len</span>(freqs)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Calculating impedance at </span><span class="sc">{</span>n_points<span class="sc">}</span><span class="ss"> frequency points&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="repr__"><code>__repr__()</code></h3>
+<p>String representation of the Frequencies object.</p>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>str</code></td>
+<td>Formatted string showing key parameters</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>freqs1 <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">6</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(freqs1)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: Frequencies(n=500, fmin=0, fmax=6, fstep=2)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>freqs2 <span class="op">=</span> Frequencies(freq_list<span class="op">=</span>[<span class="fl">1e3</span>, <span class="fl">1e6</span>, <span class="fl">1e9</span>])</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(freqs2)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: Frequencies(n=3, range=[1.00e+03, 1.00e+09] Hz, explicit list)</span></span></code></pre></div>
+<hr />
+<h2 id="constants">Constants</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Constant</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>DEFAULT_FMIN</code></td>
+<td>0</td>
+<td>Default minimum frequency exponent (1 Hz)</td>
+</tr>
+<tr class="even">
+<td><code>DEFAULT_FMAX</code></td>
+<td>8</td>
+<td>Default maximum frequency exponent (100 MHz)</td>
+</tr>
+<tr class="odd">
+<td><code>DEFAULT_FSTEP</code></td>
+<td>2</td>
+<td>Default step exponent</td>
+</tr>
+<tr class="even">
+<td><code>DEFAULT_FREQ_UNIT</code></td>
+<td>“Hz”</td>
+<td>Default frequency unit</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="example-1-typical-impedance-calculation-range">Example 1: Typical Impedance Calculation Range</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard range for LHC impedance calculations</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 Hz to 10 GHz (10^0 to 10^10)</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">10</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Frequency range for LHC impedance:&quot;</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Points: </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Min: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">0</span>]<span class="sc">:.2e}</span><span class="ss"> Hz&quot;</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Max: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.2e}</span><span class="ss"> Hz&quot;</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Sample: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[:<span class="dv">5</span>]<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h3 id="example-2-custom-frequency-list-for-specific-modes">Example 2: Custom Frequency List for Specific Modes</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Focus on specific resonant frequencies</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>resonances <span class="op">=</span> [</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">455e3</span>,   <span class="co"># 455 kHz - Mode 1</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">1.2e6</span>,   <span class="co"># 1.2 MHz - Mode 2</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.8e6</span>,   <span class="co"># 2.8 MHz - Mode 3</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="fl">5.5e6</span>,   <span class="co"># 5.5 MHz - Mode 4</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(freq_list<span class="op">=</span>resonances)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Analyzing </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> resonant frequencies:&quot;</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, f <span class="kw">in</span> <span class="bu">enumerate</span>(freqs.freq):</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  Mode </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>f<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> MHz&quot;</span>)</span></code></pre></div>
+<h3 id="example-3-comparing-different-resolutions">Example 3: Comparing Different Resolutions</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create three frequency arrays with different resolutions</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>freqs_low <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">1</span>)   <span class="co"># Low resolution</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>freqs_med <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">2</span>)   <span class="co"># Medium resolution</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>freqs_high <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">3</span>)  <span class="co"># High resolution</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Resolution comparison:&quot;</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Low (fstep=1):  </span><span class="sc">{</span><span class="bu">len</span>(freqs_low)<span class="sc">}</span><span class="ss"> points&quot;</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Medium (fstep=2): </span><span class="sc">{</span><span class="bu">len</span>(freqs_med)<span class="sc">}</span><span class="ss"> points&quot;</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  High (fstep=3): </span><span class="sc">{</span><span class="bu">len</span>(freqs_high)<span class="sc">}</span><span class="ss"> points&quot;</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize distribution</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>plt.plot(freqs_low.freq, [<span class="dv">1</span>]<span class="op">*</span><span class="bu">len</span>(freqs_low), <span class="st">&#39;ro&#39;</span>, label<span class="op">=</span><span class="st">&#39;Low&#39;</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>plt.plot(freqs_med.freq, [<span class="dv">2</span>]<span class="op">*</span><span class="bu">len</span>(freqs_med), <span class="st">&#39;go&#39;</span>, label<span class="op">=</span><span class="st">&#39;Medium&#39;</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>plt.plot(freqs_high.freq, [<span class="dv">3</span>]<span class="op">*</span><span class="bu">len</span>(freqs_high), <span class="st">&#39;bo&#39;</span>, label<span class="op">=</span><span class="st">&#39;High&#39;</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>plt.xscale(<span class="st">&#39;log&#39;</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Frequency (Hz)&#39;</span>)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Resolution Level&#39;</span>)</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Frequency Point Distribution vs Resolution&#39;</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<h3 id="example-4-integration-with-pytlwall">Example 4: Integration with pytlwall</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> TlWall, Beam, Layer, Chamber</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define frequency range</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create beam and chamber</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gamma<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>layer <span class="op">=</span> Layer(material<span class="op">=</span><span class="st">&#39;copper&#39;</span>, thickness<span class="op">=</span><span class="fl">0.001</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(radius<span class="op">=</span><span class="fl">0.02</span>, shape<span class="op">=</span><span class="st">&#39;circular&#39;</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create TlWall object with frequencies</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> TlWall(</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    beam<span class="op">=</span>beam,</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    chamber<span class="op">=</span>chamber,</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    layers<span class="op">=</span>[layer],</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    frequencies<span class="op">=</span>freqs  <span class="co"># Pass frequencies object</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate impedances at all frequency points</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>wall.calc_ZLong()</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>wall.calc_ZTrans()</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Calculated impedance at </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> frequencies&quot;</span>)</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Frequency range: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">0</span>]<span class="sc">:.2e}</span><span class="ss"> to </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.2e}</span><span class="ss"> Hz&quot;</span>)</span></code></pre></div>
+<h3 id="example-5-dynamic-frequency-adjustment">Example 5: Dynamic Frequency Adjustment</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with broad range</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">10</span>, fstep<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Initial scan: </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> points&quot;</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify interesting region (e.g., 1 MHz to 100 MHz)</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Then zoom in with higher resolution</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>freqs.update_from_exponents(fmin<span class="op">=</span><span class="dv">6</span>, fmax<span class="op">=</span><span class="dv">8</span>, fstep<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Detailed scan: </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> points&quot;</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;New range: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">0</span>]<span class="sc">:.2e}</span><span class="ss"> to </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.2e}</span><span class="ss"> Hz&quot;</span>)</span></code></pre></div>
+<h3 id="example-6-validation-and-error-handling">Example 6: Validation and Error Handling</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Invalid frequency list</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    freqs <span class="op">=</span> Frequencies(freq_list<span class="op">=</span>[<span class="op">-</span><span class="dv">100</span>, <span class="dv">0</span>, <span class="fl">1e6</span>])  <span class="co"># Negative/zero frequencies</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Inconsistent exponents (triggers warning)</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> warnings.catch_warnings(record<span class="op">=</span><span class="va">True</span>) <span class="im">as</span> w:</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    warnings.simplefilter(<span class="st">&quot;always&quot;</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">6</span>, fmax<span class="op">=</span><span class="dv">3</span>, fstep<span class="op">=</span><span class="dv">2</span>)  <span class="co"># fmin &gt; fmax</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> w:</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Warning: </span><span class="sc">{</span>w[<span class="dv">0</span>]<span class="sc">.</span>message<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 3: Proper usage with validation</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>freq_list <span class="op">=</span> [<span class="fl">1e3</span>, <span class="fl">5e3</span>, <span class="fl">1e4</span>, <span class="fl">5e4</span>, <span class="fl">1e5</span>]</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(freq_list<span class="op">=</span>freq_list)</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Valid frequencies: </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> points from </span><span class="sc">{</span>freqs<span class="sc">.</span>fmin<span class="sc">:.2e}</span><span class="ss"> to </span><span class="sc">{</span>freqs<span class="sc">.</span>fmax<span class="sc">:.2e}</span><span class="ss"> Hz&quot;</span>)</span></code></pre></div>
+<h3 id="example-7-lhc-revolution-harmonics">Example 7: LHC Revolution Harmonics</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># LHC revolution frequency</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>f_rev <span class="op">=</span> <span class="fl">11.245e3</span>  <span class="co"># Hz</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate harmonics up to 10,000th harmonic</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>harmonics <span class="op">=</span> [f_rev <span class="op">*</span> n <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10001</span>)]</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(freq_list<span class="op">=</span>harmonics)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;LHC revolution harmonics:&quot;</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Fundamental: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">0</span>]<span class="op">/</span><span class="fl">1e3</span><span class="sc">:.3f}</span><span class="ss"> kHz&quot;</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  10th harmonic: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">9</span>]<span class="op">/</span><span class="fl">1e3</span><span class="sc">:.1f}</span><span class="ss"> kHz&quot;</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  100th harmonic: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">99</span>]<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.3f}</span><span class="ss"> MHz&quot;</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  1000th harmonic: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">999</span>]<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> MHz&quot;</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  10000th harmonic: </span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">9999</span>]<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.1f}</span><span class="ss"> MHz&quot;</span>)</span></code></pre></div>
+<h3 id="example-8-points-per-decade-analysis">Example 8: Points Per Decade Analysis</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">10</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze distribution</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Points per decade analysis:&quot;</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> decade <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">11</span>):</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    low <span class="op">=</span> <span class="dv">10</span><span class="op">**</span>decade</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    high <span class="op">=</span> <span class="dv">10</span><span class="op">**</span>(decade <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> np.<span class="bu">sum</span>((freqs.freq <span class="op">&gt;=</span> low) <span class="op">&amp;</span> (freqs.freq <span class="op">&lt;</span> high))</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;  10^</span><span class="sc">{</span>decade<span class="sc">:2d}</span><span class="ss"> - 10^</span><span class="sc">{</span>decade<span class="op">+</span><span class="dv">1</span><span class="sc">:2d}</span><span class="ss"> Hz: </span><span class="sc">{</span>count<span class="sc">:4d}</span><span class="ss"> points&quot;</span>)</span></code></pre></div>
+<h3 id="example-9-optimization-strategy">Example 9: Optimization Strategy</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.frequencies <span class="im">import</span> Frequencies</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;SCENARIO: Optimizing computation time&quot;</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Step 1: Quick broad scan&quot;</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>freqs_broad <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">10</span>, fstep<span class="op">=</span><span class="dv">1</span>)  <span class="co"># Low resolution</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Points: </span><span class="sc">{</span><span class="bu">len</span>(freqs_broad)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Purpose: Identify impedance peaks&quot;</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Step 2: Detailed scan of critical region&quot;</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>freqs_detail <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">6</span>, fmax<span class="op">=</span><span class="dv">8</span>, fstep<span class="op">=</span><span class="dv">3</span>)  <span class="co"># High resolution</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Points: </span><span class="sc">{</span><span class="bu">len</span>(freqs_detail)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Purpose: Accurate characterization&quot;</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">Benefit:&quot;</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>total_points <span class="op">=</span> <span class="bu">len</span>(freqs_broad) <span class="op">+</span> <span class="bu">len</span>(freqs_detail)</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>all_high_res <span class="op">=</span> <span class="bu">len</span>(Frequencies(fmin<span class="op">=</span><span class="dv">0</span>, fmax<span class="op">=</span><span class="dv">10</span>, fstep<span class="op">=</span><span class="dv">3</span>))</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Two-stage: </span><span class="sc">{</span>total_points<span class="sc">}</span><span class="ss"> points&quot;</span>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  All high-res: </span><span class="sc">{</span>all_high_res<span class="sc">}</span><span class="ss"> points&quot;</span>)</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;  Time saved: </span><span class="sc">{</span>(<span class="dv">1</span> <span class="op">-</span> total_points<span class="op">/</span>all_high_res)<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="notes-and-conventions">Notes and Conventions</h2>
+<h3 id="logarithmic-spacing-algorithm">Logarithmic Spacing Algorithm</h3>
+<p>The frequency array generation uses the following algorithm for exponent-based arrays:</p>
+<p>For each decade <code>p</code> from 1 to <code>(fmax - fmin)</code>:</p>
+<pre><code>v1 = (1 + 10^(1-fstep)) × 10^(fmin-1+p)
+v2 = 10^(fmin+p)
+v3 = 10^(fmin-1+p-(fstep-1))
+frequencies = arange(v1, v2 + v3, v3)</code></pre>
+<p>This creates a logarithmic distribution with finer spacing at the lower end of each decade.</p>
+<h3 id="typical-frequency-ranges">Typical Frequency Ranges</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Application</th>
+<th>fmin</th>
+<th>fmax</th>
+<th>fstep</th>
+<th>Range</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>LHC broad scan</td>
+<td>0</td>
+<td>10</td>
+<td>2</td>
+<td>1 Hz - 10 GHz</td>
+<td>~5000</td>
+</tr>
+<tr class="even">
+<td>SPS analysis</td>
+<td>3</td>
+<td>9</td>
+<td>2</td>
+<td>1 kHz - 1 GHz</td>
+<td>~3000</td>
+</tr>
+<tr class="odd">
+<td>Cavity modes</td>
+<td>6</td>
+<td>9</td>
+<td>3</td>
+<td>1 MHz - 1 GHz</td>
+<td>~3000</td>
+</tr>
+<tr class="even">
+<td>Low frequency</td>
+<td>0</td>
+<td>6</td>
+<td>1</td>
+<td>1 Hz - 1 MHz</td>
+<td>~6000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-considerations">Performance Considerations</h3>
+<ul>
+<li><strong>Memory</strong>: Each frequency point requires storage for complex impedance values</li>
+<li><strong>Computation time</strong>: Scales linearly with number of frequency points</li>
+<li><strong>Resolution trade-off</strong>: More points = better resolution but slower calculation</li>
+<li><strong>Recommendation</strong>: Start with fstep=1 or 2, refine to fstep=3 if needed</li>
+</ul>
+<h3 id="best-practices">Best Practices</h3>
+<ol type="1">
+<li><strong>Start broad</strong>: Use fstep=1 or 2 for initial scans (fewer points, faster)</li>
+<li><strong>Zoom in</strong>: Use fstep=3 with narrower range for detailed analysis (more points, accurate)</li>
+<li><strong>Check coverage</strong>: Ensure frequency range covers all phenomena of interest</li>
+<li><strong>Validate results</strong>: Compare different resolutions to ensure convergence</li>
+<li><strong>Document choice</strong>: Always document frequency range and reasoning</li>
+</ol>
+<h3 id="fstep-behavior">fstep Behavior</h3>
+<p><strong>Important:</strong> The fstep parameter behavior is counterintuitive but intentional: - <code>fstep=1</code>: <strong>Low resolution</strong> (fewer points per decade) - <code>fstep=2</code>: <strong>Medium resolution</strong> - <code>fstep=3</code>: <strong>High resolution</strong> (more points per decade)</p>
+<p>This matches the original pytlwall algorithm. Larger fstep values give finer frequency sampling.</p>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="API_REFERENCE_BEAM.html">beam Module</a> - Beam parameters that affect frequency-dependent impedance</li>
+<li><a href="API_REFERENCE_LAYER.html">layer Module</a> - Material properties vary with frequency</li>
+<li><a href="API_REFERENCE_CHAMBER.html">chamber Module</a> - Chamber geometry definitions</li>
+<li><a href="API_REFERENCE.html">Main API Reference</a> - Complete API documentation</li>
+</ul>
+<hr />
+<p><em>Last updated: December 2025</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

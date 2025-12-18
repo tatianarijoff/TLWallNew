@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>GUI VIEW IO</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#gui-saving-and-loading-views">GUI — Saving and Loading Views</a>
+<ul>
+<li><a href="#view-directory-structure">View directory structure</a></li>
+<li><a href="#save-view">Save View</a></li>
+<li><a href="#load-view">Load View</a></li>
+<li><a href="#manifest-format-advanced">Manifest format (advanced)</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">GUI VIEW IO</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="gui-saving-and-loading-views">GUI — Saving and Loading Views</h1>
+<p>A <strong>View</strong> is a complete GUI workspace snapshot saved as a directory.</p>
+<p>It includes:</p>
+<ul>
+<li>all chamber configurations (<code>*.cfg</code>)</li>
+<li>impedance results (if calculated)</li>
+<li>Data panel export (CSV)</li>
+<li>Plot panel export (PNG)</li>
+<li>a manifest file describing the saved content</li>
+</ul>
+<hr />
+<h2 id="view-directory-structure">View directory structure</h2>
+<p>A saved View directory contains:</p>
+<ul>
+<li><code>view_manifest.json</code></li>
+<li><code>*.cfg</code> (one per chamber)</li>
+<li><code>output_&lt;chamber_name&gt;/</code> directories with impedance files</li>
+<li><code>data_&lt;...&gt;.csv</code> (or a title-based CSV name)</li>
+<li><code>plot_&lt;...&gt;.png</code> (or a title-based PNG name)</li>
+</ul>
+<p>The manifest stores metadata (version, creation time, view name) and references to all saved artifacts.</p>
+<hr />
+<h2 id="save-view">Save View</h2>
+<p>From <strong>File → Save View…</strong>:</p>
+<ol type="1">
+<li>Choose a View name</li>
+<li>Choose a base directory</li>
+<li>The GUI creates a subdirectory and writes all files</li>
+</ol>
+<p>Notes:</p>
+<ul>
+<li>Chamber names and titles are sanitized to become safe filenames.</li>
+<li>Chambers without computed impedances are still saved as cfg, but may not have <code>output_*</code>.</li>
+</ul>
+<hr />
+<h2 id="load-view">Load View</h2>
+<p>From <strong>File → Load View…</strong>:</p>
+<ol type="1">
+<li>Choose the View directory</li>
+<li>The GUI reconstructs:
+<ul>
+<li>chambers and their configuration</li>
+<li>computed impedances (if present)</li>
+<li>the Data table and its settings</li>
+<li>the Plot items and their settings</li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="manifest-format-advanced">Manifest format (advanced)</h2>
+<p>The manifest is JSON and is versioned.</p>
+<p>It stores, among other fields:</p>
+<ul>
+<li><code>chambers</code>: list of <code>{id, component_name, cfg_file, impedance_dir, impedances}</code></li>
+<li><code>data_settings</code>: title, frequency column name, and column reconstruction info</li>
+<li><code>plot_settings</code>: plotted items info and plot settings</li>
+</ul>
+<p>This format is intended to be stable and forward compatible where possible.</p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

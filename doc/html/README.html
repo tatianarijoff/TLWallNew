@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>README</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#pytlwall">PyTlWall</a>
+<ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#key-features">Key Features</a></li>
+</ul></li>
+<li><a href="#authors">Authors</a>
+<ul>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+<li><a href="#installation">Installation</a>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#standard-installation">Standard Installation</a></li>
+<li><a href="#development-installation">Development Installation</a></li>
+<li><a href="#conda-environment">Conda Environment</a></li>
+<li><a href="#gui-dependencies">GUI Dependencies</a></li>
+</ul></li>
+<li><a href="#quick-start">Quick Start</a>
+<ul>
+<li><a href="#minimal-example">Minimal Example</a></li>
+<li><a href="#using-configuration-files">Using Configuration Files</a></li>
+<li><a href="#multi-chamber-lattice">Multi-Chamber Lattice</a></li>
+</ul></li>
+<li><a href="#running-pytlwall">Running PyTlWall</a>
+<ul>
+<li><a href="#command-line-interface">Command Line Interface</a></li>
+<li><a href="#launch-gui-directly">Launch GUI Directly</a></li>
+<li><a href="#python-script">Python Script</a></li>
+</ul></li>
+<li><a href="#project-structure">Project Structure</a>
+<ul>
+<li><a href="#core-modules">Core Modules</a></li>
+<li><a href="#utility-modules">Utility Modules</a></li>
+<li><a href="#gui-module">GUI Module</a></li>
+</ul></li>
+<li><a href="#documentation">Documentation</a>
+<ul>
+<li><a href="#api-reference">API Reference</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#additional-documentation">Additional Documentation</a></li>
+</ul></li>
+<li><a href="#configuration-file-format">Configuration File Format</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#common-issues">Common Issues</a></li>
+<li><a href="#getting-help">Getting Help</a></li>
+</ul></li>
+<li><a href="#license">License</a></li>
+<li><a href="#version-history">Version History</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">README</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="pytlwall">PyTlWall</h1>
+
+<p><strong>Python Transmission Line Wall Impedance Calculator</strong></p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>PyTlWall is a Python implementation of the <strong>Transmission Line Impedance Model</strong> for computing beam coupling impedances in particle accelerator vacuum chambers.</p>
+<h3 id="key-features">Key Features</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>TL Model</strong></td>
+<td>Longitudinal &amp; transverse impedance calculation</td>
+</tr>
+<tr class="even">
+<td><strong>Multilayer</strong></td>
+<td>Arbitrary number of material layers</td>
+</tr>
+<tr class="odd">
+<td><strong>Chamber Types</strong></td>
+<td>Circular, elliptical, rectangular cross-sections</td>
+</tr>
+<tr class="even">
+<td><strong>Yokoya Factors</strong></td>
+<td>Automatic geometric correction factors</td>
+</tr>
+<tr class="odd">
+<td><strong>Space Charge</strong></td>
+<td>Direct and indirect space charge impedances</td>
+</tr>
+<tr class="even">
+<td><strong>Batch Mode</strong></td>
+<td>Multi-chamber lattice processing</td>
+</tr>
+<tr class="odd">
+<td><strong>GUI</strong></td>
+<td>Qt-based configuration editor and visualizer</td>
+</tr>
+<tr class="even">
+<td><strong>Plotting</strong></td>
+<td>Automatic impedance plots</td>
+</tr>
+<tr class="odd">
+<td><strong>Export</strong></td>
+<td>Excel/CSV data export</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> - tatiana.rijoff@gmail.com</li>
+<li><strong>Carlo Zannini</strong> - carlo.zannini@cern.ch</li>
+</ul>
+<p><em>Copyright: CERN</em></p>
+<h3 id="reference">Reference</h3>
+<p><strong>Electromagnetic Simulation of CERN Accelerator Components and Experimental Applications</strong><br />
+Author: <strong>Carlo Zannini</strong></p>
+<hr />
+<h2 id="installation">Installation</h2>
+<h3 id="requirements">Requirements</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Version</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Python</td>
+<td>≥ 3.9</td>
+<td>Required</td>
+</tr>
+<tr class="even">
+<td>NumPy</td>
+<td>latest</td>
+<td>Required</td>
+</tr>
+<tr class="odd">
+<td>SciPy</td>
+<td>latest</td>
+<td>Required</td>
+</tr>
+<tr class="even">
+<td>Matplotlib</td>
+<td>latest</td>
+<td>Required for plotting</td>
+</tr>
+<tr class="odd">
+<td>openpyxl</td>
+<td>latest</td>
+<td>Required for Excel export</td>
+</tr>
+<tr class="even">
+<td>PyQt5</td>
+<td>latest</td>
+<td>Optional, for GUI</td>
+</tr>
+</tbody>
+</table>
+<h3 id="standard-installation">Standard Installation</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clone repository</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CERN/pytlwall.git</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pytlwall</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install .</span></code></pre></div>
+<h3 id="development-installation">Development Installation</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install in editable mode</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install with all dependencies</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> <span class="st">&quot;.[dev,gui]&quot;</span></span></code></pre></div>
+<h3 id="conda-environment">Conda Environment</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> pytlwall python=3.12</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate pytlwall</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install .</span></code></pre></div>
+<h3 id="gui-dependencies">GUI Dependencies</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For graphical interface</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pyqt5</span></code></pre></div>
+<hr />
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="minimal-example">Minimal Example</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Beam, Frequencies, Layer, Chamber, TlWall</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define beam parameters (LHC 7 TeV protons)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Define frequency range (1 kHz to 1 GHz)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Define chamber geometry</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Define material layer</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>copper <span class="op">=</span> Layer(</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    thick_m<span class="op">=</span><span class="fl">0.001</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    freq_Hz<span class="op">=</span>freqs.freq</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>chamber.layers <span class="op">=</span> [copper]</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Calculate impedances</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> TlWall(chamber<span class="op">=</span>chamber, beam<span class="op">=</span>beam, frequencies<span class="op">=</span>freqs)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.calc_ZLong()</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>ZTrans <span class="op">=</span> wall.calc_ZTrans()</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Calculated at </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> frequencies&quot;</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Max |ZLong|: </span><span class="sc">{</span><span class="bu">abs</span>(ZLong)<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Max |ZTrans|: </span><span class="sc">{</span><span class="bu">abs</span>(ZTrans)<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.3e}</span><span class="ss"> Ω/m&quot;</span>)</span></code></pre></div>
+<h3 id="using-configuration-files">Using Configuration Files</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> CfgIo</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load configuration and create TlWall</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo(<span class="st">&quot;chamber.cfg&quot;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> cfg.read_pytlwall()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate impedances</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.calc_ZLong()</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>ZTrans <span class="op">=</span> wall.calc_ZTrans()</span></code></pre></div>
+<h3 id="multi-chamber-lattice">Multi-Chamber Lattice</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> MultipleChamber</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mc <span class="op">=</span> MultipleChamber(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    apertype_file<span class="op">=</span><span class="st">&quot;apertype2.txt&quot;</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    geom_file<span class="op">=</span><span class="st">&quot;b_L_betax_betay.txt&quot;</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    input_dir<span class="op">=</span><span class="st">&quot;./input/&quot;</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    out_dir<span class="op">=</span><span class="st">&quot;./output/&quot;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>mc.run()</span></code></pre></div>
+<hr />
+<h2 id="running-pytlwall">Running PyTlWall</h2>
+<h3 id="command-line-interface">Command Line Interface</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run with configuration file</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pytlwall config.cfg</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch GUI</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pytlwall <span class="at">--gui</span></span></code></pre></div>
+<h3 id="launch-gui-directly">Launch GUI Directly</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the GUI module</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> QT_interface</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or with the run script</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> run_gui.py</span></code></pre></div>
+<h3 id="python-script">Python Script</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytlwall</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Access all modules</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> pytlwall.Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> pytlwall.Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ... etc</span></span></code></pre></div>
+<hr />
+<h2 id="project-structure">Project Structure</h2>
+<h3 id="core-modules">Core Modules</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>beam.py</code></td>
+<td>Particle beam parameters with relativistic calculations</td>
+</tr>
+<tr class="even">
+<td><code>frequencies.py</code></td>
+<td>Frequency array management</td>
+</tr>
+<tr class="odd">
+<td><code>layer.py</code></td>
+<td>Material layer definitions</td>
+</tr>
+<tr class="even">
+<td><code>chamber.py</code></td>
+<td>Chamber geometry and Yokoya factors</td>
+</tr>
+<tr class="odd">
+<td><code>tlwall.py</code></td>
+<td>Main impedance calculation engine</td>
+</tr>
+<tr class="even">
+<td><code>cfg_io.py</code></td>
+<td>Configuration file I/O</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utility-modules">Utility Modules</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>io_util.py</code></td>
+<td>Input/output helper functions</td>
+</tr>
+<tr class="even">
+<td><code>plot_util.py</code></td>
+<td>Plotting utilities</td>
+</tr>
+<tr class="odd">
+<td><code>logging_util.py</code></td>
+<td>Logging system</td>
+</tr>
+<tr class="even">
+<td><code>multiple_chamber.py</code></td>
+<td>Multi-element lattice processing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gui-module">GUI Module</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>QT_interface/</code></td>
+<td>Qt-based graphical interface</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="documentation">Documentation</h2>
+<h3 id="api-reference">API Reference</h3>
+<table>
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Document</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="API_REFERENCE.html">API_REFERENCE.md</a></td>
+<td>Main API overview</td>
+</tr>
+<tr class="even">
+<td><a href="API_REFERENCE_BEAM.html">API_REFERENCE_BEAM.md</a></td>
+<td>Beam module</td>
+</tr>
+<tr class="odd">
+<td><a href="API_REFERENCE_FREQUENCIES.html">API_REFERENCE_FREQUENCIES.md</a></td>
+<td>Frequencies module</td>
+</tr>
+<tr class="even">
+<td><a href="API_REFERENCE_LAYER.html">API_REFERENCE_LAYER.md</a></td>
+<td>Layer module</td>
+</tr>
+<tr class="odd">
+<td><a href="API_REFERENCE_CHAMBER.html">API_REFERENCE_CHAMBER.md</a></td>
+<td>Chamber module</td>
+</tr>
+<tr class="even">
+<td><a href="API_REFERENCE_TLWALL.html">API_REFERENCE_TLWALL.md</a></td>
+<td>TlWall module</td>
+</tr>
+<tr class="odd">
+<td><a href="API_REFERENCE_CFGIO.html">API_REFERENCE_CFGIO.md</a></td>
+<td>CfgIo module</td>
+</tr>
+<tr class="even">
+<td><a href="API_REFERENCE_MULTIPLE.html">API_REFERENCE_MULTIPLE.md</a></td>
+<td>MultipleChamber module</td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<table>
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Document</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="EXAMPLES_README.html">EXAMPLES_README.md</a></td>
+<td>Examples overview</td>
+</tr>
+<tr class="even">
+<td><a href="EXAMPLES_BEAM.html">EXAMPLES_BEAM.md</a></td>
+<td>Beam examples</td>
+</tr>
+<tr class="odd">
+<td><a href="EXAMPLES_FREQUENCIES.html">EXAMPLES_FREQUENCIES.md</a></td>
+<td>Frequencies examples</td>
+</tr>
+<tr class="even">
+<td><a href="EXAMPLES_LAYER.html">EXAMPLES_LAYER.md</a></td>
+<td>Layer examples</td>
+</tr>
+<tr class="odd">
+<td><a href="EXAMPLES_CHAMBER.html">EXAMPLES_CHAMBER.md</a></td>
+<td>Chamber examples</td>
+</tr>
+<tr class="even">
+<td><a href="EXAMPLES_TLWALL.html">EXAMPLES_TLWALL.md</a></td>
+<td>TlWall examples</td>
+</tr>
+<tr class="odd">
+<td><a href="EXAMPLES_MULTIPLE.html">EXAMPLES_MULTIPLE.md</a></td>
+<td>MultipleChamber examples</td>
+</tr>
+<tr class="even">
+<td><a href="EXAMPLES_LOGGING.html">EXAMPLES_LOGGING.md</a></td>
+<td>Logging examples</td>
+</tr>
+</tbody>
+</table>
+<h3 id="additional-documentation">Additional Documentation</h3>
+<table>
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Document</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="INSTALLATION.html">INSTALLATION.md</a></td>
+<td>Detailed installation guide</td>
+</tr>
+<tr class="even">
+<td><a href="CHAMBER_SHAPES_REFERENCE.html">CHAMBER_SHAPES_REFERENCE.md</a></td>
+<td>Chamber shape details</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="configuration-file-format">Configuration File Format</h2>
+<p>Example <code>.cfg</code> file:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[base_info]</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dt">component_name </span><span class="ot">=</span><span class="st"> arc_chamber</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_radius_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.022</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_len_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">1.0</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> CIRCULAR</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="dt">betax </span><span class="ot">=</span><span class="st"> </span><span class="fl">100.0</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="dt">betay </span><span class="ot">=</span><span class="st"> </span><span class="fl">100.0</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">[layers_info]</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="dt">nbr_layers </span><span class="ot">=</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="kw">[layer0]</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="dt">type </span><span class="ot">=</span><span class="st"> CW</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="dt">thick_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.001</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="dt">sigmaDC </span><span class="ot">=</span><span class="st"> </span><span class="fl">5.96e7</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="dt">muinf_Hz </span><span class="ot">=</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="dt">k_Hz </span><span class="ot">=</span><span class="st"> inf</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="dt">epsr </span><span class="ot">=</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="dt">tau </span><span class="ot">=</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="dt">RQ </span><span class="ot">=</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="kw">[boundary]</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="dt">type </span><span class="ot">=</span><span class="st"> PEC</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="kw">[frequency_info]</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="dt">fmin </span><span class="ot">=</span><span class="st"> </span><span class="fl">1e3</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="dt">fmax </span><span class="ot">=</span><span class="st"> </span><span class="fl">1e9</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="dt">fstep </span><span class="ot">=</span><span class="st"> </span><span class="dv">10</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="kw">[beam_info]</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="dt">gammarel </span><span class="ot">=</span><span class="st"> </span><span class="fl">7460.52</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="dt">test_beam_shift </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.001</span></span></code></pre></div>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Issue</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Import error</td>
+<td>Ensure pytlwall is installed: <code>pip install -e .</code></td>
+</tr>
+<tr class="even">
+<td>GUI not launching</td>
+<td>Install PyQt5: <code>pip install pyqt5</code></td>
+</tr>
+<tr class="odd">
+<td>Plot not showing</td>
+<td>Install Matplotlib: <code>pip install matplotlib</code></td>
+</tr>
+<tr class="even">
+<td>Excel export fails</td>
+<td>Install openpyxl: <code>pip install openpyxl</code></td>
+</tr>
+<tr class="odd">
+<td>Config file error</td>
+<td>Check INI format and section names</td>
+</tr>
+</tbody>
+</table>
+<h3 id="getting-help">Getting Help</h3>
+<ol type="1">
+<li>Check the <a href="API_REFERENCE.html">API Reference</a></li>
+<li>Review the <a href="EXAMPLES_README.html">Examples</a></li>
+<li>Contact the authors</li>
+</ol>
+<hr />
+<h2 id="license">License</h2>
+<p>Copyright CERN. All rights reserved.</p>
+<hr />
+<h2 id="version-history">Version History</h2>
+<ul>
+<li><strong>v2.0</strong> (December 2025)
+<ul>
+<li>Complete Python refactoring</li>
+<li>Modern type hints and documentation</li>
+<li>Qt-based GUI with multi-chamber support</li>
+<li>MultipleChamber for lattice processing</li>
+<li>Comprehensive test suite</li>
+</ul></li>
+<li><strong>v1.0</strong> (Original)
+<ul>
+<li>Initial Fortran/Python implementation</li>
+</ul></li>
+</ul>
+<hr />
+<p><em>Last updated: December 2025</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

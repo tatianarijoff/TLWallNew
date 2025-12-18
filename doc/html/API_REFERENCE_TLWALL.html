@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>API REFERENCE TLWALL</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#tlwall-module-api-reference">tlwall Module API Reference</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#import">Import</a></li>
+<li><a href="#tlwall-class">TlWall Class</a>
+<ul>
+<li><a href="#class-definition">Class Definition</a></li>
+<li><a href="#constructor">Constructor</a></li>
+</ul></li>
+<li><a href="#impedance-properties">Impedance Properties</a>
+<ul>
+<li><a href="#primary-impedances">Primary Impedances</a></li>
+<li><a href="#dipolar-impedances-with-yokoya-factors">Dipolar Impedances (with Yokoya Factors)</a></li>
+<li><a href="#quadrupolar-impedances">Quadrupolar Impedances</a></li>
+<li><a href="#surface-impedances">Surface Impedances</a></li>
+<li><a href="#space-charge-impedances">Space Charge Impedances</a></li>
+</ul></li>
+<li><a href="#calculation-methods">Calculation Methods</a>
+<ul>
+<li><a href="#calc_zlong"><code>calc_ZLong()</code></a></li>
+<li><a href="#calc_ztrans"><code>calc_ZTrans()</code></a></li>
+<li><a href="#calc_zdipx-calc_zdipy"><code>calc_ZDipX()</code> / <code>calc_ZDipY()</code></a></li>
+<li><a href="#calc_zquadx-calc_zquady"><code>calc_ZQuadX()</code> / <code>calc_ZQuadY()</code></a></li>
+<li><a href="#calc_zlongdsc-calc_zlongisc"><code>calc_ZLongDSC()</code> / <code>calc_ZLongISC()</code></a></li>
+<li><a href="#calc_ztransdsc-calc_ztransisc"><code>calc_ZTransDSC()</code> / <code>calc_ZTransISC()</code></a></li>
+</ul></li>
+<li><a href="#utility-methods">Utility Methods</a>
+<ul>
+<li><a href="#get_all_impedances"><code>get_all_impedances()</code></a></li>
+<li><a href="#summary"><code>summary()</code></a></li>
+</ul></li>
+<li><a href="#constants">Constants</a></li>
+<li><a href="#exceptions">Exceptions</a>
+<ul>
+<li><a href="#tlwallerror"><code>TlWallError</code></a></li>
+<li><a href="#tlwallcalculationerror"><code>TlWallCalculationError</code></a></li>
+<li><a href="#tlwallconfigurationerror"><code>TlWallConfigurationError</code></a></li>
+</ul></li>
+<li><a href="#usage-examples">Usage Examples</a>
+<ul>
+<li><a href="#example-1-basic-lhc-style-calculation">Example 1: Basic LHC-style Calculation</a></li>
+<li><a href="#example-2-elliptical-chamber-with-yokoya-factors">Example 2: Elliptical Chamber with Yokoya Factors</a></li>
+<li><a href="#example-3-multilayer-structure">Example 3: Multilayer Structure</a></li>
+<li><a href="#example-4-space-charge-calculations">Example 4: Space Charge Calculations</a></li>
+<li><a href="#example-5-export-all-impedances">Example 5: Export All Impedances</a></li>
+</ul></li>
+<li><a href="#physical-background">Physical Background</a>
+<ul>
+<li><a href="#transmission-line-method">Transmission Line Method</a></li>
+<li><a href="#impedance-types">Impedance Types</a></li>
+<li><a href="#yokoya-factors">Yokoya Factors</a></li>
+<li><a href="#space-charge">Space Charge</a></li>
+</ul></li>
+<li><a href="#see-also">See Also</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">API REFERENCE TLWALL</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="tlwall-module-api-reference">tlwall Module API Reference</h1>
+<h2 id="overview">Overview</h2>
+<p>The <code>tlwall</code> module provides the <code>TlWall</code> class for calculating beam coupling impedances using the transmission line method with multi-layer vacuum chamber walls.</p>
+<p>This is the main calculation engine of pytlwall, implementing the transmission line theory for computing longitudinal and transverse impedances including space charge effects.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#import">Import</a></li>
+<li><a href="#tlwall-class">TlWall Class</a></li>
+<li><a href="#impedance-properties">Impedance Properties</a></li>
+<li><a href="#calculation-methods">Calculation Methods</a></li>
+<li><a href="#utility-methods">Utility Methods</a></li>
+<li><a href="#constants">Constants</a></li>
+<li><a href="#exceptions">Exceptions</a></li>
+<li><a href="#usage-examples">Usage Examples</a></li>
+<li><a href="#physical-background">Physical Background</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+<hr />
+<h2 id="import">Import</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> TlWall</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.tlwall <span class="im">import</span> TlWall, TlWallError, TlWallCalculationError, TlWallConfigurationError</span></code></pre></div>
+<hr />
+<h2 id="tlwall-class">TlWall Class</h2>
+<h3 id="class-definition">Class Definition</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TlWall:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Transmission line wall impedance calculator.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    This class calculates longitudinal and transverse beam coupling</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    impedances for multi-layer vacuum chamber walls using the</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    transmission line method.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span></code></pre></div>
+<h3 id="constructor">Constructor</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>TlWall(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    chamber,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    beam,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    frequencies,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    accuracy_factor<span class="op">=</span><span class="fl">0.3</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<h4 id="parameters">Parameters</h4>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 15%" />
+<col style="width: 23%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>chamber</code></td>
+<td><code>Chamber</code></td>
+<td>required</td>
+<td>Chamber geometry with layers</td>
+</tr>
+<tr class="even">
+<td><code>beam</code></td>
+<td><code>Beam</code></td>
+<td>required</td>
+<td>Beam parameters (gamma, beta, test_beam_shift)</td>
+</tr>
+<tr class="odd">
+<td><code>frequencies</code></td>
+<td><code>Frequencies</code></td>
+<td>required</td>
+<td>Frequency array for calculations</td>
+</tr>
+<tr class="even">
+<td><code>accuracy_factor</code></td>
+<td><code>float</code></td>
+<td><code>0.3</code></td>
+<td>Accuracy factor for numerical corrections</td>
+</tr>
+</tbody>
+</table>
+<h4 id="raises">Raises</h4>
+<ul>
+<li><code>TlWallConfigurationError</code>: If chamber, beam, or frequencies are invalid</li>
+<li><code>TlWallCalculationError</code>: If calculations fail</li>
+</ul>
+<h4 id="example">Example</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> TlWall, Chamber, Beam, Frequencies, Layer</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup components</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>, chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>copper <span class="op">=</span> Layer(thick_m<span class="op">=</span><span class="fl">0.001</span>, sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, freq_Hz<span class="op">=</span>freqs.freq)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>chamber.layers <span class="op">=</span> [copper]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create TlWall</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> TlWall(chamber<span class="op">=</span>chamber, beam<span class="op">=</span>beam, frequencies<span class="op">=</span>freqs)</span></code></pre></div>
+<hr />
+<h2 id="impedance-properties">Impedance Properties</h2>
+<p>All impedance properties return complex numpy arrays with length matching the frequency array.</p>
+<h3 id="primary-impedances">Primary Impedances</h3>
+<h4 id="zlong"><code>ZLong</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm (Ω)</p>
+<p><strong>Description:</strong> Longitudinal impedance. Calculated on first access and cached.</p>
+<p><strong>Formula:</strong> ZLong = (L × KZeff) / (2π × r)</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> TlWall(chamber<span class="op">=</span>chamber, beam<span class="op">=</span>beam, frequencies<span class="op">=</span>freqs)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.ZLong</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;ZLong at 1 MHz: </span><span class="sc">{</span><span class="bu">abs</span>(ZLong[<span class="dv">0</span>])<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span></code></pre></div>
+<hr />
+<h4 id="ztrans"><code>ZTrans</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm per meter (Ω/m)</p>
+<p><strong>Description:</strong> Transverse impedance. Calculated on first access and cached.</p>
+<p><strong>Formula:</strong> ZTrans = (2 × Zlongin × bypass) / (r² × β)</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ZTrans <span class="op">=</span> wall.ZTrans</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;ZTrans at 1 GHz: </span><span class="sc">{</span><span class="bu">abs</span>(ZTrans[<span class="op">-</span><span class="dv">1</span>])<span class="sc">:.3e}</span><span class="ss"> Ω/m&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="dipolar-impedances-with-yokoya-factors">Dipolar Impedances (with Yokoya Factors)</h3>
+<h4 id="zdipx"><code>ZDipX</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm (Ω)</p>
+<p><strong>Description:</strong> Horizontal dipolar impedance with Yokoya correction.</p>
+<p><strong>Formula:</strong> ZDipX = ZTrans × βx × drivx_yokoya_factor</p>
+<hr />
+<h4 id="zdipy"><code>ZDipY</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm (Ω)</p>
+<p><strong>Description:</strong> Vertical dipolar impedance with Yokoya correction.</p>
+<p><strong>Formula:</strong> ZDipY = ZTrans × βy × drivy_yokoya_factor</p>
+<hr />
+<h3 id="quadrupolar-impedances">Quadrupolar Impedances</h3>
+<h4 id="zquadx"><code>ZQuadX</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm (Ω)</p>
+<p><strong>Description:</strong> Horizontal quadrupolar impedance with Yokoya correction.</p>
+<p><strong>Formula:</strong> ZQuadX = ZTrans × βx × detx_yokoya_factor</p>
+<hr />
+<h4 id="zquady"><code>ZQuadY</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm (Ω)</p>
+<p><strong>Description:</strong> Vertical quadrupolar impedance with Yokoya correction.</p>
+<p><strong>Formula:</strong> ZQuadY = ZTrans × βy × dety_yokoya_factor</p>
+<hr />
+<h3 id="surface-impedances">Surface Impedances</h3>
+<h4 id="zlongsurf"><code>ZLongSurf</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm (Ω)</p>
+<p><strong>Description:</strong> Longitudinal surface impedance (single-layer approximation).</p>
+<hr />
+<h4 id="ztranssurf"><code>ZTransSurf</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm per meter (Ω/m)</p>
+<p><strong>Description:</strong> Transverse surface impedance (single-layer approximation).</p>
+<hr />
+<h3 id="space-charge-impedances">Space Charge Impedances</h3>
+<h4 id="zlongdsc"><code>ZLongDSC</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm (Ω)</p>
+<p><strong>Description:</strong> Longitudinal direct space charge impedance.</p>
+<p><strong>Notes:</strong> - Requires γ &gt; 1.1 for meaningful calculation - Pure imaginary for a smooth wall</p>
+<hr />
+<h4 id="zlongisc"><code>ZLongISC</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm (Ω)</p>
+<p><strong>Description:</strong> Longitudinal indirect space charge impedance.</p>
+<hr />
+<h4 id="ztransdsc"><code>ZTransDSC</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm per meter (Ω/m)</p>
+<p><strong>Description:</strong> Transverse direct space charge impedance.</p>
+<hr />
+<h4 id="ztransisc"><code>ZTransISC</code></h4>
+<p><strong>Type:</strong> <code>np.ndarray</code> (complex)</p>
+<p><strong>Unit:</strong> Ohm per meter (Ω/m)</p>
+<p><strong>Description:</strong> Transverse indirect space charge impedance.</p>
+<hr />
+<h2 id="calculation-methods">Calculation Methods</h2>
+<h3 id="calc_zlong"><code>calc_ZLong()</code></h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ZLong(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray</span></code></pre></div>
+<p><strong>Description:</strong> Calculate longitudinal impedance.</p>
+<p><strong>Returns:</strong> Complex array of longitudinal impedance values in Ohms.</p>
+<p><strong>Notes:</strong> - Result is cached in <code>_ZLong</code> - Subsequent calls return cached value - Uses transmission line method for multi-layer structures</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.calc_ZLong()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Shape: </span><span class="sc">{</span>ZLong<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Max |ZLong|: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(np.<span class="bu">abs</span>(ZLong))<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="calc_ztrans"><code>calc_ZTrans()</code></h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ZTrans(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray</span></code></pre></div>
+<p><strong>Description:</strong> Calculate transverse impedance.</p>
+<p><strong>Returns:</strong> Complex array of transverse impedance values in Ω/m.</p>
+<p><strong>Notes:</strong> - Result is cached in <code>_ZTrans</code> - Depends on beam beta (relativistic factor)</p>
+<hr />
+<h3 id="calc_zdipx-calc_zdipy"><code>calc_ZDipX()</code> / <code>calc_ZDipY()</code></h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ZDipX(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ZDipY(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray</span></code></pre></div>
+<p><strong>Description:</strong> Calculate dipolar impedances with Yokoya factors.</p>
+<p><strong>Returns:</strong> Complex arrays in Ohms.</p>
+<hr />
+<h3 id="calc_zquadx-calc_zquady"><code>calc_ZQuadX()</code> / <code>calc_ZQuadY()</code></h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ZQuadX(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ZQuadY(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray</span></code></pre></div>
+<p><strong>Description:</strong> Calculate quadrupolar impedances with Yokoya factors.</p>
+<p><strong>Returns:</strong> Complex arrays in Ohms.</p>
+<hr />
+<h3 id="calc_zlongdsc-calc_zlongisc"><code>calc_ZLongDSC()</code> / <code>calc_ZLongISC()</code></h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ZLongDSC(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ZLongISC(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray</span></code></pre></div>
+<p><strong>Description:</strong> Calculate longitudinal space charge impedances.</p>
+<p><strong>Returns:</strong> Complex arrays in Ohms.</p>
+<hr />
+<h3 id="calc_ztransdsc-calc_ztransisc"><code>calc_ZTransDSC()</code> / <code>calc_ZTransISC()</code></h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ZTransDSC(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ZTransISC(<span class="va">self</span>) <span class="op">-&gt;</span> np.ndarray</span></code></pre></div>
+<p><strong>Description:</strong> Calculate transverse space charge impedances.</p>
+<p><strong>Returns:</strong> Complex arrays in Ω/m.</p>
+<hr />
+<h2 id="utility-methods">Utility Methods</h2>
+<h3 id="get_all_impedances"><code>get_all_impedances()</code></h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_all_impedances(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">dict</span></span></code></pre></div>
+<p><strong>Description:</strong> Calculate and return all impedances as a dictionary.</p>
+<p><strong>Returns:</strong> Dictionary with keys: - <code>'ZLong'</code>, <code>'ZTrans'</code> - <code>'ZDipX'</code>, <code>'ZDipY'</code> - <code>'ZQuadX'</code>, <code>'ZQuadY'</code> - <code>'ZLongSurf'</code>, <code>'ZTransSurf'</code> - <code>'ZLongDSC'</code>, <code>'ZLongISC'</code> - <code>'ZTransDSC'</code>, <code>'ZTransISC'</code></p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>all_Z <span class="op">=</span> wall.get_all_impedances()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, Z <span class="kw">in</span> all_Z.items():</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: max = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(np.<span class="bu">abs</span>(Z))<span class="sc">:.3e}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h3 id="summary"><code>summary()</code></h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> summary(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span></span></code></pre></div>
+<p><strong>Description:</strong> Generate a configuration summary string.</p>
+<p><strong>Returns:</strong> Multi-line string with calculation parameters.</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(wall.summary())</span></code></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>============================================================
+TlWall Configuration Summary
+============================================================
+Chamber: CIRCULAR, radius=22.0 mm, length=1.000 m
+Beam: γ=7460.52, β=0.9999999991
+Frequencies: 1000 points, 1.00e+03 to 1.00e+09 Hz
+Layers: 1 (Copper, 1.0 mm)
+Accuracy factor: 0.3
+============================================================</code></pre>
+<hr />
+<h2 id="constants">Constants</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Constant</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>DEFAULT_ACCURACY_FACTOR</code></td>
+<td>0.3</td>
+<td>Default accuracy factor</td>
+</tr>
+<tr class="even">
+<td><code>MIN_GAMMA_FOR_SC</code></td>
+<td>1.1</td>
+<td>Minimum γ for space charge calculations</td>
+</tr>
+<tr class="odd">
+<td><code>Z0</code></td>
+<td>376.73… Ω</td>
+<td>Impedance of free space</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="exceptions">Exceptions</h2>
+<h3 id="tlwallerror"><code>TlWallError</code></h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TlWallError(<span class="pp">Exception</span>):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Base exception for TlWall errors.&quot;&quot;&quot;</span></span></code></pre></div>
+<h3 id="tlwallcalculationerror"><code>TlWallCalculationError</code></h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TlWallCalculationError(TlWallError):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Raised when impedance calculation fails.&quot;&quot;&quot;</span></span></code></pre></div>
+<h3 id="tlwallconfigurationerror"><code>TlWallConfigurationError</code></h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TlWallConfigurationError(TlWallError):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Raised when TlWall configuration is invalid.&quot;&quot;&quot;</span></span></code></pre></div>
+<hr />
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="example-1-basic-lhc-style-calculation">Example 1: Basic LHC-style Calculation</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> TlWall, Chamber, Beam, Frequencies, Layer</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>freqs <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="dv">3</span>, fmax<span class="op">=</span><span class="dv">9</span>, fstep<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)  <span class="co"># LHC 7 TeV</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>,</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    pipe_len_m<span class="op">=</span><span class="fl">1.0</span>,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create copper layer</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>copper <span class="op">=</span> Layer(</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    thick_m<span class="op">=</span><span class="fl">0.001</span>,</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>,</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    freq_Hz<span class="op">=</span>freqs.freq</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>chamber.layers <span class="op">=</span> [copper]</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate impedances</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> TlWall(chamber<span class="op">=</span>chamber, beam<span class="op">=</span>beam, frequencies<span class="op">=</span>freqs)</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.calc_ZLong()</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>ZTrans <span class="op">=</span> wall.calc_ZTrans()</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Calculated at </span><span class="sc">{</span><span class="bu">len</span>(freqs)<span class="sc">}</span><span class="ss"> frequencies&quot;</span>)</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;ZLong range: </span><span class="sc">{</span><span class="bu">abs</span>(ZLong[<span class="dv">0</span>])<span class="sc">:.3e}</span><span class="ss"> to </span><span class="sc">{</span><span class="bu">abs</span>(ZLong[<span class="op">-</span><span class="dv">1</span>])<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;ZTrans range: </span><span class="sc">{</span><span class="bu">abs</span>(ZTrans[<span class="dv">0</span>])<span class="sc">:.3e}</span><span class="ss"> to </span><span class="sc">{</span><span class="bu">abs</span>(ZTrans[<span class="op">-</span><span class="dv">1</span>])<span class="sc">:.3e}</span><span class="ss"> Ω/m&quot;</span>)</span></code></pre></div>
+<h3 id="example-2-elliptical-chamber-with-yokoya-factors">Example 2: Elliptical Chamber with Yokoya Factors</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elliptical geometry</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    pipe_hor_m<span class="op">=</span><span class="fl">0.030</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    pipe_ver_m<span class="op">=</span><span class="fl">0.020</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    pipe_len_m<span class="op">=</span><span class="fl">2.0</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;ELLIPTICAL&#39;</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    betax<span class="op">=</span><span class="fl">100.0</span>,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    betay<span class="op">=</span><span class="fl">50.0</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>copper <span class="op">=</span> Layer(thick_m<span class="op">=</span><span class="fl">0.001</span>, sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, freq_Hz<span class="op">=</span>freqs.freq)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>chamber.layers <span class="op">=</span> [copper]</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> TlWall(chamber<span class="op">=</span>chamber, beam<span class="op">=</span>beam, frequencies<span class="op">=</span>freqs)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Yokoya factors are automatically applied</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Yokoya q: </span><span class="sc">{</span>chamber<span class="sc">.</span>yokoya_q<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;ZDipX max: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(np.<span class="bu">abs</span>(wall.ZDipX))<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;ZDipY max: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">max</span>(np.<span class="bu">abs</span>(wall.ZDipY))<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span></code></pre></div>
+<h3 id="example-3-multilayer-structure">Example 3: Multilayer Structure</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copper coating on stainless steel substrate</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>copper_coat <span class="op">=</span> Layer(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    thick_m<span class="op">=</span><span class="fl">50e-6</span>,  <span class="co"># 50 μm coating</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    freq_Hz<span class="op">=</span>freqs.freq</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>steel_sub <span class="op">=</span> Layer(</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    thick_m<span class="op">=</span><span class="fl">2e-3</span>,  <span class="co"># 2 mm substrate</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    sigmaDC<span class="op">=</span><span class="fl">1.45e6</span>,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    freq_Hz<span class="op">=</span>freqs.freq</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co"># PEC boundary (perfect conductor termination)</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>boundary <span class="op">=</span> Layer(layer_type<span class="op">=</span><span class="st">&#39;PEC&#39;</span>, boundary<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>chamber.layers <span class="op">=</span> [copper_coat, steel_sub, boundary]</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> TlWall(chamber<span class="op">=</span>chamber, beam<span class="op">=</span>beam, frequencies<span class="op">=</span>freqs)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.calc_ZLong()</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Multilayer ZLong: </span><span class="sc">{</span><span class="bu">abs</span>(ZLong[<span class="dv">50</span>])<span class="sc">:.3e}</span><span class="ss"> Ω at f=</span><span class="sc">{</span>freqs<span class="sc">.</span>freq[<span class="dv">50</span>]<span class="sc">:.2e}</span><span class="ss"> Hz&quot;</span>)</span></code></pre></div>
+<h3 id="example-4-space-charge-calculations">Example 4: Space Charge Calculations</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lower energy beam where space charge is significant</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>low_energy_beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">10.0</span>)  <span class="co"># Low energy</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> TlWall(</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    chamber<span class="op">=</span>chamber,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    beam<span class="op">=</span>low_energy_beam,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    frequencies<span class="op">=</span>freqs</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Space charge impedances</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>ZLongDSC <span class="op">=</span> wall.ZLongDSC</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>ZTransDSC <span class="op">=</span> wall.ZTransDSC</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Direct space charge (longitudinal): </span><span class="sc">{</span><span class="bu">abs</span>(ZLongDSC[<span class="dv">0</span>])<span class="sc">:.3e}</span><span class="ss"> Ω&quot;</span>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Direct space charge (transverse): </span><span class="sc">{</span><span class="bu">abs</span>(ZTransDSC[<span class="dv">0</span>])<span class="sc">:.3e}</span><span class="ss"> Ω/m&quot;</span>)</span></code></pre></div>
+<h3 id="example-5-export-all-impedances">Example 5: Export All Impedances</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> TlWall(chamber<span class="op">=</span>chamber, beam<span class="op">=</span>beam, frequencies<span class="op">=</span>freqs)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>all_Z <span class="op">=</span> wall.get_all_impedances()</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create DataFrame for export</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">&#39;frequency&#39;</span>: freqs.freq}</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, Z <span class="kw">in</span> all_Z.items():</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    data[<span class="ss">f&#39;</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_real&#39;</span>] <span class="op">=</span> Z.real</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    data[<span class="ss">f&#39;</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_imag&#39;</span>] <span class="op">=</span> Z.imag</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    data[<span class="ss">f&#39;</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">_abs&#39;</span>] <span class="op">=</span> np.<span class="bu">abs</span>(Z)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">&#39;impedances.csv&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Exported </span><span class="sc">{</span><span class="bu">len</span>(all_Z)<span class="sc">}</span><span class="ss"> impedance types&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="physical-background">Physical Background</h2>
+<h3 id="transmission-line-method">Transmission Line Method</h3>
+<p>The TlWall calculation uses the transmission line analogy where: - Each material layer is treated as a transmission line segment - The layers are cascaded using transfer matrices - The effective surface impedance is computed from the cascade</p>
+<h3 id="impedance-types">Impedance Types</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Longitudinal</td>
+<td>Energy loss per turn</td>
+<td>Ω</td>
+</tr>
+<tr class="even">
+<td>Transverse</td>
+<td>Deflecting kick per offset</td>
+<td>Ω/m</td>
+</tr>
+<tr class="odd">
+<td>Dipolar</td>
+<td>Coupled-bunch instabilities</td>
+<td>Ω</td>
+</tr>
+<tr class="even">
+<td>Quadrupolar</td>
+<td>Detuning with amplitude</td>
+<td>Ω</td>
+</tr>
+<tr class="odd">
+<td>Space Charge</td>
+<td>Self-field effects</td>
+<td>Ω, Ω/m</td>
+</tr>
+</tbody>
+</table>
+<h3 id="yokoya-factors">Yokoya Factors</h3>
+<p>For non-circular chambers, Yokoya factors correct the impedance: - Derived from field solutions for elliptical/rectangular geometries - Depend on chamber aspect ratio - Different factors for longitudinal, dipolar, and quadrupolar impedances</p>
+<h3 id="space-charge">Space Charge</h3>
+<p>Space charge impedances represent: - <strong>Direct SC (DSC):</strong> Self-field of the beam - <strong>Indirect SC (ISC):</strong> Image charges in the chamber wall - Significant at lower beam energies (low γ) - Generally pure imaginary for smooth walls</p>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="API_REFERENCE_BEAM.html">beam Module</a> - Beam parameters</li>
+<li><a href="API_REFERENCE_FREQUENCIES.html">frequencies Module</a> - Frequency arrays</li>
+<li><a href="API_REFERENCE_LAYER.html">layer Module</a> - Material layers</li>
+<li><a href="API_REFERENCE_CHAMBER.html">chamber Module</a> - Chamber geometry</li>
+<li><a href="API_REFERENCE_CFGIO.html">cfg_io Module</a> - Configuration file I/O</li>
+<li><a href="API_REFERENCE.html">Main API Reference</a> - Complete documentation</li>
+</ul>
+<hr />
+<h2 id="references">References</h2>
+<ol type="1">
+<li>L. Vos, “The Transverse Impedance of a Cylindrical Pipe with Arbitrary Surface Impedance”, CERN-SL-95-36 (1995)</li>
+<li>E. Métral et al., “Beam coupling impedance measurements and simulations”, CERN Yellow Reports (2020)</li>
+<li>K. Yokoya, “Resistive wall impedance of beam pipes of general cross section”, Part. Accel. 41, 221 (1993)</li>
+<li>B. Zotter and S. Kheifets, “Impedances and Wakes in High-Energy Particle Accelerators”, World Scientific (1998)</li>
+</ol>
+<hr />
+<p><em>Last updated: December 2025</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

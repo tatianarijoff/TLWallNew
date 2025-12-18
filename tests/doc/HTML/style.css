@@ -1,0 +1,445 @@
+/* PyTLWall Documentation - Clean Professional Style */
+
+/* ====== CSS VARIABLES (PALETTE) ====== */
+:root {
+    /* Brand-ish colors: neutro/blu professionale */
+    --primary: #0b5ed7;
+    --primary-dark: #084298;
+    --primary-light: #e0ecff;
+
+    --accent: #0a9396;
+    --warning: #f59e0b;
+    --error: #d7263d;
+
+    --bg-page: #f5f7fb;     /* sfondo generale chiarissimo */
+    --bg-surface: #ffffff;  /* pannelli, card, sezioni */
+    --bg-muted: #f1f5f9;    /* header sezioni, TOC, ecc. */
+    --bg-code: #111827;
+
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --text-inverse: #f9fafb;
+
+    --border-light: #e5e7eb;
+    --border-medium: #d1d5db;
+
+    --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.04);
+    --shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.08);
+    --shadow-lg: 0 10px 15px -3px rgb(15 23 42 / 0.10);
+
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+
+    --transition: all 0.2s ease;
+}
+
+/* ====== RESET & BASE ====== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-page);
+    min-height: 100vh;
+
+    /* contenitore centrale “documentazione” */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+
+    background-image: none;               /* niente gradiente viola */
+}
+
+/* Wrapper opzionale per sentire di più il “foglio” */
+body > header#title-block-header,
+body > nav#TOC,
+body > .controls,
+body > h1,
+body > h2,
+body > h3,
+body > p,
+body > table,
+body > ul,
+body > ol,
+body > div,
+body > section {
+    max-width: 100%;
+}
+
+/* ====== TIPOGRAFIA ====== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-main);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Titolo principale in stile “manuale tecnico” */
+h1 {
+    font-size: 2.1rem;
+    margin-top: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-medium);
+}
+
+/* h1 nelle pagine di test con classe .title (pandoc) */
+h1.title {
+    margin-top: 0;
+}
+
+/* Sottosezioni */
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+p {
+    margin-bottom: 0.9rem;
+    color: var(--text-main);
+}
+
+strong, b {
+    font-weight: 600;
+}
+
+em, i {
+    font-style: italic;
+}
+
+/* Liste */
+ul, ol {
+    margin: 0.4rem 0 0.9rem 1.4rem;
+}
+
+li {
+    margin: 0.15rem 0;
+}
+
+/* Link */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Separatore orizzontale */
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--border-light);
+    margin: 2rem 0;
+}
+
+/* ====== HEADER TITOLO ====== */
+#title-block-header {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+}
+
+#title-block-header h1 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0.25rem;
+}
+
+#title-block-header p {
+    margin-bottom: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ====== TABELLE ====== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.95rem;
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+thead {
+    background-color: var(--bg-muted);
+}
+
+thead th {
+    font-weight: 600;
+}
+
+th, td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+tbody tr:hover {
+    background-color: #eef2ff;
+}
+
+/* ====== CODE & PRE ====== */
+pre, code {
+    font-family: "JetBrains Mono", SFMono-Regular, Menlo, Monaco, Consolas,
+                 "Liberation Mono", "Courier New", monospace;
+}
+
+/* blocchi di codice */
+pre {
+    background-color: var(--bg-code);
+    color: var(--text-inverse);
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    font-size: 0.9rem;
+    margin: 0.8rem 0 1.2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+/* inline code */
+p code, li code, td code {
+    background-color: #e5e7eb;
+    color: #1f2933;
+    padding: 0.1rem 0.25rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.9em;
+}
+
+/* ====== TOC (nav#TOC) ====== */
+#TOC {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    margin: 1rem 0 1.75rem;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    font-size: 0.95rem;
+}
+
+#TOC ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+#TOC > ul > li {
+    margin-bottom: 0.25rem;
+}
+
+#TOC a {
+    display: inline-block;
+    padding: 0.1rem 0;
+}
+
+/* ====== COLLAPSIBLE SECTIONS ====== */
+/* wrapper creato via JS: .collapsible-section */
+.collapsible-section {
+    margin: 1.4rem 0;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    background-color: var(--bg-surface);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+/* header cliccabile */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.85rem 1.2rem;
+    background-color: var(--bg-muted);
+    cursor: pointer;
+    user-select: none;
+    transition: var(--transition);
+}
+
+.section-header:hover {
+    background-color: #e2e8f0;
+}
+
+/* h2 dentro l'header (JS lo crea) */
+.section-header h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+}
+
+/* piccolo bordo colorato a sinistra */
+.section-header h2::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 1.4rem;
+    border-radius: 999px;
+    background-color: var(--primary);
+}
+
+/* icona + / - */
+.toggle-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-medium);
+    background-color: #ffffff;
+    color: var(--primary);
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+/* contenuto collassabile */
+.section-content {
+    padding: 1.1rem 1.2rem 1.25rem;
+    background-color: var(--bg-surface);
+    max-height: 5000px;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.25s ease;
+}
+
+/* stato collassato: usato da JS (wrapper.classList.toggle('collapsed')) */
+.collapsible-section.collapsed .section-content {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* opzionale: piccola rotazione dell’icona per dare feedback */
+.collapsible-section.collapsed .toggle-icon {
+    transform: rotate(90deg);
+}
+
+/* ====== EXPAND / COLLAPSE ALL BUTTONS ====== */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.25rem 0;
+}
+
+.control-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-medium);
+    background-color: #ffffff;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.control-btn span {
+    font-size: 1rem;
+}
+
+.control-btn:hover {
+    background-color: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary-dark);
+    box-shadow: var(--shadow-md);
+}
+
+/* variante "secondary" già usata per Collapse All */
+.control-btn.secondary {
+    background-color: #eff6ff;
+    border-color: var(--border-medium);
+}
+
+/* ====== NAVIGATION LINKS “Back to …” ecc. ====== */
+/* i link “← Back to … | API Documentation” sono nel primo <p> */
+p:first-of-type a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-md);
+    background-color: #e5edff;
+    color: var(--primary-dark);
+    font-size: 0.88rem;
+    text-decoration: none;
+}
+
+p:first-of-type a:hover {
+    background-color: #d0ddff;
+    color: var(--primary-dark);
+    text-decoration: none;
+}
+
+/* ====== MISC ====== */
+blockquote {
+    margin: 0.8rem 0 1.1rem;
+    padding: 0.7rem 1rem;
+    border-left: 4px solid var(--primary-light);
+    background-color: #eef2ff;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    color: var(--text-muted);
+}
+
+/* immagini (se ci sono) */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+}
+
+/* responsivo */
+@media (max-width: 768px) {
+    body {
+        padding: 1.25rem 1rem 2rem;
+    }
+
+    #title-block-header {
+        padding: 1.1rem 1.2rem;
+    }
+
+    .section-header,
+    .section-content {
+        padding-left: 0.9rem;
+        padding-right: 0.9rem;
+    }
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>GUI SIDEBAR</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#gui-sidebar">GUI — Sidebar</a>
+<ul>
+<li><a href="#chambers-tab">Chambers Tab</a>
+<ul>
+<li><a href="#add-remove-chambers">Add / remove chambers</a></li>
+<li><a href="#chamber-tree-structure">Chamber tree structure</a></li>
+<li><a href="#drag-drop-format-advanced">Drag &amp; drop format (advanced)</a></li>
+</ul></li>
+<li><a href="#chamber-info-tab">Chamber Info Tab</a></li>
+<li><a href="#notes">Notes</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">GUI SIDEBAR</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="gui-sidebar">GUI — Sidebar</h1>
+<p>The sidebar is the left panel of the main window and provides two tabs:</p>
+<ul>
+<li><strong>Chambers</strong>: manage chambers and select outputs (impedances)</li>
+<li><strong>Chamber Info</strong>: edit the configuration parameters for the selected chamber</li>
+</ul>
+<hr />
+<h2 id="chambers-tab">Chambers Tab</h2>
+<h3 id="add-remove-chambers">Add / remove chambers</h3>
+<ul>
+<li><strong>Add chamber</strong>: creates a new chamber with default values.</li>
+<li><strong>[Remove chamber]</strong> (in the tree): removes the selected chamber and renumbers the remaining ones.</li>
+</ul>
+<h3 id="chamber-tree-structure">Chamber tree structure</h3>
+<p>Each chamber shows a subtree of impedances:</p>
+<ul>
+<li>Parent impedance (e.g. <code>ZLong</code>, <code>ZTrans</code>, <code>ZDip</code>, …)</li>
+<li>Child components:
+<ul>
+<li><code>...Re</code> (real part)</li>
+<li><code>...Im</code> (imaginary part)</li>
+</ul></li>
+</ul>
+<h4 id="mandatory-impedances">Mandatory impedances</h4>
+<p><code>ZLong</code> and <code>ZTrans</code> are mandatory and always enabled.</p>
+<h3 id="drag-drop-format-advanced">Drag &amp; drop format (advanced)</h3>
+<p>Dragging from the tree provides MIME data in the form:</p>
+<pre><code>chamber_name|impedance_name</code></pre>
+<p>Examples:</p>
+<ul>
+<li><code>Chamber 1|ZLongRe</code></li>
+<li><code>Chamber 1|ZLong</code> (means “base impedance”, used to add both components)</li>
+</ul>
+<p>This is used by the Data and Plot panels.</p>
+<hr />
+<h2 id="chamber-info-tab">Chamber Info Tab</h2>
+<p>This tab edits the same information stored in a <code>.cfg</code> file, organized in collapsible sections:</p>
+<ul>
+<li><code>[base_info]</code>
+<ul>
+<li><code>component_name</code></li>
+<li><code>chamber_shape</code> (CIRCULAR / ELLIPTICAL / RECTANGULAR)</li>
+<li>geometry parameters (radius or horizontal/vertical semi-axes, length)</li>
+<li>beta functions (<code>betax</code>, <code>betay</code>)</li>
+</ul></li>
+<li><code>[layers_info]</code> and individual <code>[layerN]</code> sections
+<ul>
+<li>add/remove layers, edit thickness and material parameters</li>
+</ul></li>
+<li><code>[boundary]</code>
+<ul>
+<li>boundary type and related parameters</li>
+</ul></li>
+<li><code>[frequency_info]</code>
+<ul>
+<li>frequency range mode (log range) or file input mode</li>
+</ul></li>
+<li><code>[beam_info]</code>
+<ul>
+<li>relativistic gamma, test beam shift, and particle mass</li>
+</ul></li>
+</ul>
+<p>The GUI updates visibility of geometry fields based on the selected chamber shape.</p>
+<hr />
+<h2 id="notes">Notes</h2>
+<ul>
+<li>The chamber selector (combo box) on top selects the active chamber.</li>
+<li>When you calculate impedances, the tree labels can display sample counts (e.g. <code>ZLong (N)</code>).</li>
+</ul>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>test beam</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#test_beam.py---beam-class-tests">test_beam.py - Beam Class Tests</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#test-classes">Test Classes</a>
+<ul>
+<li><a href="#testbeaminitialization">TestBeamInitialization</a></li>
+<li><a href="#testbeamparameterpriority">TestBeamParameterPriority</a></li>
+<li><a href="#testbeamsetters">TestBeamSetters</a></li>
+<li><a href="#testbeamphysics">TestBeamPhysics</a></li>
+<li><a href="#testbeamconstants">TestBeamConstants</a></li>
+<li><a href="#testbeamstringrepresentation">TestBeamStringRepresentation</a></li>
+<li><a href="#testbeamedgecases">TestBeamEdgeCases</a></li>
+</ul></li>
+<li><a href="#key-equations-tested">Key Equations Tested</a></li>
+<li><a href="#example-usage">Example Usage</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<h1 class="title">test beam</h1>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="test_beam.py---beam-class-tests">test_beam.py - Beam Class Tests</h1>
+<p><a href="../TESTING.html">← Back to Testing Documentation</a></p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>Tests for the <code>Beam</code> class which handles relativistic beam kinematics calculations and parameter handling.</p>
+<p><strong>Module tested</strong>: <code>pytlwall.beam</code></p>
+<p><strong>Run this test</strong>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/test_beam.py <span class="at">-v</span></span></code></pre></div>
+<hr />
+<h2 id="test-classes">Test Classes</h2>
+<h3 id="testbeaminitialization">TestBeamInitialization</h3>
+<p>Tests various beam initialization methods.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_default_initialization</code></td>
+<td>Verifies default ultra-relativistic beam (β=1, γ=∞)</td>
+</tr>
+<tr class="even">
+<td><code>test_init_with_gammarel</code></td>
+<td>Tests initialization with <code>gammarel</code> parameter</td>
+</tr>
+<tr class="odd">
+<td><code>test_init_with_gamma</code></td>
+<td>Tests initialization with <code>gamma</code> alias parameter</td>
+</tr>
+<tr class="even">
+<td><code>test_gamma_gammarel_equivalence</code></td>
+<td>Verifies <code>gamma</code> and <code>gammarel</code> produce identical results</td>
+</tr>
+<tr class="odd">
+<td><code>test_both_gamma_and_gammarel</code></td>
+<td>Tests priority when both parameters provided</td>
+</tr>
+<tr class="even">
+<td><code>test_init_with_Ekin</code></td>
+<td>Tests initialization with kinetic energy (MeV)</td>
+</tr>
+<tr class="odd">
+<td><code>test_init_with_betarel</code></td>
+<td>Tests initialization with relativistic β</td>
+</tr>
+<tr class="even">
+<td><code>test_init_with_momentum</code></td>
+<td>Tests initialization with momentum (MeV/c)</td>
+</tr>
+<tr class="odd">
+<td><code>test_custom_test_beam_shift</code></td>
+<td>Tests custom test beam shift value</td>
+</tr>
+<tr class="even">
+<td><code>test_custom_mass</code></td>
+<td>Tests custom particle mass (e.g., electron)</td>
+</tr>
+<tr class="odd">
+<td><code>test_invalid_mass</code></td>
+<td>Verifies error raised for invalid mass</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testbeamparameterpriority">TestBeamParameterPriority</h3>
+<p>Tests the priority order of initialization parameters.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_Ekin_priority_over_gamma</code></td>
+<td>Verifies Ekin_MeV takes priority over gamma</td>
+</tr>
+<tr class="even">
+<td><code>test_Ekin_priority_over_gammarel</code></td>
+<td>Verifies Ekin_MeV takes priority over gammarel</td>
+</tr>
+<tr class="odd">
+<td><code>test_p_priority_over_beta</code></td>
+<td>Verifies momentum takes priority over betarel</td>
+</tr>
+<tr class="even">
+<td><code>test_beta_priority_over_gamma</code></td>
+<td>Verifies betarel takes priority over gamma</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testbeamsetters">TestBeamSetters</h3>
+<p>Tests property setters and validation.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_set_gammarel</code></td>
+<td>Tests gammarel setter updates β correctly</td>
+</tr>
+<tr class="even">
+<td><code>test_set_betarel</code></td>
+<td>Tests betarel setter updates γ correctly</td>
+</tr>
+<tr class="odd">
+<td><code>test_set_Ekin_MeV</code></td>
+<td>Tests kinetic energy setter</td>
+</tr>
+<tr class="even">
+<td><code>test_set_p_MeV_c</code></td>
+<td>Tests momentum setter</td>
+</tr>
+<tr class="odd">
+<td><code>test_invalid_gammarel</code></td>
+<td>Tests rejection of γ &lt; 1</td>
+</tr>
+<tr class="even">
+<td><code>test_invalid_betarel</code></td>
+<td>Tests rejection of β &gt; 1</td>
+</tr>
+<tr class="odd">
+<td><code>test_invalid_Ekin</code></td>
+<td>Tests rejection of negative energy</td>
+</tr>
+<tr class="even">
+<td><code>test_invalid_momentum</code></td>
+<td>Tests rejection of negative momentum</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testbeamphysics">TestBeamPhysics</h3>
+<p>Tests relativistic physics calculations.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_ultra_relativistic_limit</code></td>
+<td>Tests β → 1 limit</td>
+</tr>
+<tr class="even">
+<td><code>test_non_relativistic</code></td>
+<td>Tests β &lt;&lt; 1 case</td>
+</tr>
+<tr class="odd">
+<td><code>test_relativistic_relations</code></td>
+<td>Verifies E = γmc², E_kin = (γ-1)mc², p = γmβc</td>
+</tr>
+<tr class="even">
+<td><code>test_velocity_calculation</code></td>
+<td>Tests velocity = βc calculation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testbeamconstants">TestBeamConstants</h3>
+<p>Tests exported physical constants.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_proton_mass_export</code></td>
+<td>Verifies m_p_MeV and M_PROTON_MEV values</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testbeamstringrepresentation">TestBeamStringRepresentation</h3>
+<p>Tests string output methods.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_repr</code></td>
+<td>Tests <code>__repr__</code> contains key info</td>
+</tr>
+<tr class="even">
+<td><code>test_str</code></td>
+<td>Tests <code>__str__</code> is human-readable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testbeamedgecases">TestBeamEdgeCases</h3>
+<p>Tests boundary conditions and extreme values.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Test Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_gamma_exactly_one</code></td>
+<td>Tests γ = 1 (particle at rest)</td>
+</tr>
+<tr class="even">
+<td><code>test_very_large_gamma</code></td>
+<td>Tests γ = 10¹² (extreme relativistic)</td>
+</tr>
+<tr class="odd">
+<td><code>test_beta_exactly_one</code></td>
+<td>Tests β = 1 (speed of light)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="key-equations-tested">Key Equations Tested</h2>
+<p>The beam class implements these relativistic relations:</p>
+<pre><code>β = v/c
+γ = 1/√(1 - β²)
+E_tot = γ m c²
+E_kin = (γ - 1) m c²
+p = γ m β c</code></pre>
+<hr />
+<h2 id="example-usage">Example Usage</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.beam <span class="im">import</span> Beam</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># LHC proton beam (7 TeV)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gamma<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;β = </span><span class="sc">{</span>beam<span class="sc">.</span>betarel<span class="sc">:.10f}</span><span class="ss">&quot;</span>)  <span class="co"># ~0.9999999991</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;E_kin = </span><span class="sc">{</span>beam<span class="sc">.</span>Ekin_MeV<span class="op">/</span><span class="fl">1e6</span><span class="sc">:.2f}</span><span class="ss"> TeV&quot;</span>)  <span class="co"># ~7 TeV</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Low energy beam</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>beam_low <span class="op">=</span> Beam(Ekin_MeV<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;γ = </span><span class="sc">{</span>beam_low<span class="sc">.</span>gammarel<span class="sc">:.2f}</span><span class="ss">&quot;</span>)  <span class="co"># ~1.107</span></span></code></pre></div>
+<hr />
+<p><a href="../TESTING.html">← Back to Testing Documentation</a></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

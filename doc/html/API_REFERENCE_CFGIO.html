@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>API REFERENCE CFGIO</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#cfgio-module-documentation">📚 CfgIo Module Documentation</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#quick-start">Quick Start</a>
+<ul>
+<li><a href="#reading-configuration">Reading Configuration</a></li>
+<li><a href="#writing-configuration">Writing Configuration</a></li>
+</ul></li>
+<li><a href="#api-reference">API Reference</a>
+<ul>
+<li><a href="#class-cfgio">Class: CfgIo</a></li>
+</ul></li>
+<li><a href="#configuration-file-format">Configuration File Format</a>
+<ul>
+<li><a href="#section-base_info">Section: base_info</a></li>
+<li><a href="#section-layers_info">Section: layers_info</a></li>
+<li><a href="#section-layern">Section: layer{N}</a></li>
+<li><a href="#section-boundary">Section: boundary</a></li>
+<li><a href="#section-beam_info">Section: beam_info</a></li>
+<li><a href="#section-frequency_info">Section: frequency_info</a></li>
+<li><a href="#section-frequency_file">Section: frequency_file</a></li>
+<li><a href="#section-output">Section: output</a></li>
+<li><a href="#section-outputn">Section: output{N}</a></li>
+<li><a href="#section-img_outputn">Section: img_output{N}</a></li>
+</ul></li>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#example-1-basic-usage">Example 1: Basic Usage</a></li>
+<li><a href="#example-2-create-configuration">Example 2: Create Configuration</a></li>
+<li><a href="#example-3-calculate-and-export">Example 3: Calculate and Export</a></li>
+<li><a href="#example-4-batch-processing">Example 4: Batch Processing</a></li>
+</ul></li>
+<li><a href="#best-practices">Best Practices</a>
+<ul>
+<li><a href="#configuration-organization">1. Configuration Organization</a></li>
+<li><a href="#error-handling">2. Error Handling</a></li>
+<li><a href="#validation">3. Validation</a></li>
+<li><a href="#modular-configuration">4. Modular Configuration</a></li>
+<li><a href="#version-control">5. Version Control</a></li>
+</ul></li>
+<li><a href="#common-issues">Common Issues</a>
+<ul>
+<li><a href="#issue-1-missing-sections">Issue 1: Missing Sections</a></li>
+<li><a href="#issue-2-invalid-layer-configuration">Issue 2: Invalid Layer Configuration</a></li>
+<li><a href="#issue-3-file-not-found">Issue 3: File Not Found</a></li>
+</ul></li>
+<li><a href="#advanced-usage">Advanced Usage</a>
+<ul>
+<li><a href="#custom-configuration-parser">Custom Configuration Parser</a></li>
+<li><a href="#programmatic-configuration">Programmatic Configuration</a></li>
+</ul></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">API REFERENCE CFGIO</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="cfgio-module-documentation">📚 CfgIo Module Documentation</h1>
+<h2 id="overview">Overview</h2>
+<p>The <code>cfgio</code> module provides configuration file I/O for pytlwall. It handles reading and writing INI-style configuration files for chamber, beam, frequency, and output specifications.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#installation">Installation</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#api-reference">API Reference</a></li>
+<li><a href="#configuration-file-format">Configuration File Format</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+</ol>
+<hr />
+<h2 id="installation">Installation</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.cfg_io <span class="im">import</span> CfgIo</span></code></pre></div>
+<hr />
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="reading-configuration">Reading Configuration</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.cfg_io <span class="im">import</span> CfgIo</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load configuration</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo(<span class="st">&#39;config.ini&#39;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Read components</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> cfg.read_chamber()</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> cfg.read_beam()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> cfg.read_freq()</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create TlWall</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> cfg.read_pytlwall()</span></code></pre></div>
+<h3 id="writing-configuration">Writing Configuration</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.cfg_io <span class="im">import</span> CfgIo</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Chamber, Beam, Frequencies, Layer</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create configuration</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create components</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(...)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gamma<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="fl">1e3</span>, fmax<span class="op">=</span><span class="fl">1e9</span>, fstep<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to config</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>cfg.save_chamber(chamber)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>cfg.save_beam(beam)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>cfg.save_freq(freq)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Write to file</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>cfg.write_cfg(<span class="st">&#39;my_config.ini&#39;</span>)</span></code></pre></div>
+<hr />
+<h2 id="api-reference">API Reference</h2>
+<h3 id="class-cfgio">Class: CfgIo</h3>
+<p>Main configuration I/O handler.</p>
+<h4 id="constructor">Constructor</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CfgIo(cfg_file<span class="op">=</span><span class="va">None</span>)</span></code></pre></div>
+<p><strong>Parameters:</strong> - <code>cfg_file</code> (str, optional): Path to configuration file</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo(<span class="st">&#39;config.ini&#39;</span>)</span></code></pre></div>
+<h4 id="core-io-methods">Core I/O Methods</h4>
+<h5 id="read_cfgcfg_file"><code>read_cfg(cfg_file)</code></h5>
+<p>Read configuration from INI file.</p>
+<p><strong>Parameters:</strong> - <code>cfg_file</code> (str): Path to configuration file</p>
+<p><strong>Raises:</strong> - <code>ConfigurationError</code>: If file doesn’t exist</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cfg.read_cfg(<span class="st">&#39;config.ini&#39;</span>)</span></code></pre></div>
+<h5 id="write_cfgfilename"><code>write_cfg(filename)</code></h5>
+<p>Write configuration to file.</p>
+<p><strong>Parameters:</strong> - <code>filename</code> (str): Output file path</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cfg.write_cfg(<span class="st">&#39;output.ini&#39;</span>)</span></code></pre></div>
+<h4 id="chamber-methods">Chamber Methods</h4>
+<h5 id="read_chambercfg_filenone"><code>read_chamber(cfg_file=None)</code></h5>
+<p>Read chamber configuration.</p>
+<p><strong>Parameters:</strong> - <code>cfg_file</code> (str, optional): Path to configuration file</p>
+<p><strong>Returns:</strong> - <code>Chamber</code> or <code>None</code>: Chamber object or None if section missing</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> cfg.read_chamber()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Shape: </span><span class="sc">{</span>chamber<span class="sc">.</span>chamber_shape<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h5 id="save_chamberchamber"><code>save_chamber(chamber)</code></h5>
+<p>Save chamber configuration.</p>
+<p><strong>Parameters:</strong> - <code>chamber</code> (Chamber): Chamber object to save</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cfg.save_chamber(chamber)</span></code></pre></div>
+<h5 id="save_layerlayers"><code>save_layer(layers)</code></h5>
+<p>Save layer configurations.</p>
+<p><strong>Parameters:</strong> - <code>layers</code> (List[Layer]): List of Layer objects</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cfg.save_layer([layer1, layer2, boundary])</span></code></pre></div>
+<h4 id="beam-methods">Beam Methods</h4>
+<h5 id="read_beamcfg_filenone"><code>read_beam(cfg_file=None)</code></h5>
+<p>Read beam configuration.</p>
+<p><strong>Parameters:</strong> - <code>cfg_file</code> (str, optional): Path to configuration file</p>
+<p><strong>Returns:</strong> - <code>Beam</code> or <code>None</code>: Beam object or None if section missing</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> cfg.read_beam()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Gamma: </span><span class="sc">{</span>beam<span class="sc">.</span>gammarel<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h5 id="save_beambeam"><code>save_beam(beam)</code></h5>
+<p>Save beam configuration.</p>
+<p><strong>Parameters:</strong> - <code>beam</code> (Beam): Beam object to save</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cfg.save_beam(beam)</span></code></pre></div>
+<h4 id="frequency-methods">Frequency Methods</h4>
+<h5 id="read_freqcfg_filenone"><code>read_freq(cfg_file=None)</code></h5>
+<p>Read frequency configuration.</p>
+<p><strong>Parameters:</strong> - <code>cfg_file</code> (str, optional): Path to configuration file</p>
+<p><strong>Returns:</strong> - <code>Frequencies</code>: Frequencies object</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> cfg.read_freq()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Points: </span><span class="sc">{</span><span class="bu">len</span>(freq)<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h5 id="save_freqfreq"><code>save_freq(freq)</code></h5>
+<p>Save frequency configuration.</p>
+<p><strong>Parameters:</strong> - <code>freq</code> (Frequencies): Frequencies object to save</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cfg.save_freq(freq)</span></code></pre></div>
+<h4 id="output-methods">Output Methods</h4>
+<h5 id="read_outputcfg_filenone"><code>read_output(cfg_file=None)</code></h5>
+<p>Read output configuration.</p>
+<p><strong>Parameters:</strong> - <code>cfg_file</code> (str, optional): Path to configuration file</p>
+<p><strong>Side Effects:</strong> - Sets <code>self.list_output</code>, <code>self.file_output</code>, <code>self.img_output</code></p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>cfg.read_output()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Impedances: </span><span class="sc">{</span>cfg<span class="sc">.</span>list_output<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h5 id="save_calclist_calc"><code>save_calc(list_calc)</code></h5>
+<p>Save calculation configuration.</p>
+<p><strong>Parameters:</strong> - <code>list_calc</code> (Dict[str, bool]): Impedance name to boolean flag mapping</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>cfg.save_calc({</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZLong&#39;</span>: <span class="va">True</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZTrans&#39;</span>: <span class="va">True</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;ZDipX&#39;</span>: <span class="va">False</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<h4 id="high-level-methods">High-Level Methods</h4>
+<h5 id="read_pytlwallcfg_filenone"><code>read_pytlwall(cfg_file=None)</code></h5>
+<p>Read complete configuration and create TlWall.</p>
+<p><strong>Parameters:</strong> - <code>cfg_file</code> (str, optional): Path to configuration file</p>
+<p><strong>Returns:</strong> - <code>TlWall</code> or <code>None</code>: TlWall object or None if incomplete</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> cfg.read_pytlwall()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.calc_ZLong()</span></code></pre></div>
+<h5 id="calc_wall"><code>calc_wall()</code></h5>
+<p>Calculate impedances based on configuration.</p>
+<p><strong>Side Effects:</strong> - Sets <code>self.mywall</code> and <code>self.myimped</code></p>
+<p><strong>Note:</strong> - Requires <code>read_output()</code> called first</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cfg.read_output()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>cfg.calc_wall()</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;ZLong shape: </span><span class="sc">{</span>cfg<span class="sc">.</span>myimped[<span class="st">&#39;ZLong&#39;</span>]<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h5 id="print_wall"><code>print_wall()</code></h5>
+<p>Write calculated impedances to files.</p>
+<p><strong>Note:</strong> - Requires <code>calc_wall()</code> called first - Output format based on file extension (.xlsx or .csv)</p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cfg.calc_wall()</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cfg.print_wall()</span></code></pre></div>
+<h5 id="plot_wall"><code>plot_wall()</code></h5>
+<p>Generate plots of calculated impedances.</p>
+<p><strong>Note:</strong> - Requires <code>calc_wall()</code> called first - Uses <code>pytlwall.plot_util</code></p>
+<p><strong>Example:</strong></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cfg.calc_wall()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>cfg.plot_wall()</span></code></pre></div>
+<hr />
+<h2 id="configuration-file-format">Configuration File Format</h2>
+<h3 id="section-base_info">Section: base_info</h3>
+<p>Chamber geometry and parameters.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[base_info]</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="dt">component_name </span><span class="ot">=</span><span class="st"> chamber_name</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_len_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">10.0</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_radius_m </span><span class="ot">=</span><span class="st"> 0.022  # For circular</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_hor_m </span><span class="ot">=</span><span class="st"> 0.030     # For elliptical/rectangular</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_ver_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.020</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> CIRCULAR  # See Chamber Shapes section below</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="dt">betax </span><span class="ot">=</span><span class="st"> </span><span class="fl">100.0</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="dt">betay </span><span class="ot">=</span><span class="st"> </span><span class="fl">50.0</span></span></code></pre></div>
+<h4 id="chamber-shape-values">Chamber Shape Values</h4>
+<p><strong>Official shapes:</strong> - <code>CIRCULAR</code> - Circular cross-section (cylindrical chamber) - <code>ELLIPTICAL</code> - Elliptical cross-section - <code>RECTANGULAR</code> - Rectangular cross-section</p>
+<p><strong>Accepted aliases:</strong> - <code>ROUND</code> → automatically normalized to <code>CIRCULAR</code> - <code>ELLIPTIC</code> → automatically normalized to <code>ELLIPTICAL</code> - <code>RECT</code> → automatically normalized to <code>RECTANGULAR</code> - <code>RECTANGLE</code> → automatically normalized to <code>RECTANGULAR</code></p>
+<p><strong>Example with aliases:</strong></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> ROUND  # Valid alias for CIRCULAR</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> ELLIPTIC  # Valid alias for ELLIPTICAL</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> RECT  # Valid alias for RECTANGULAR</span></span></code></pre></div>
+<p>See <a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes Reference</a> for complete documentation.</p>
+<h3 id="section-layers_info">Section: layers_info</h3>
+<p>Number of layers (excluding boundary).</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[layers_info]</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="dt">nbr_layers </span><span class="ot">=</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<h3 id="section-layern">Section: layer{N}</h3>
+<p>Individual layer configuration.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[layer0]</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="dt">type </span><span class="ot">=</span><span class="st"> CW</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="dt">thick_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.001</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="dt">muinf_Hz </span><span class="ot">=</span><span class="st"> </span><span class="fl">1.0</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="dt">epsr </span><span class="ot">=</span><span class="st"> </span><span class="fl">1.0</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="dt">sigmaDC </span><span class="ot">=</span><span class="st"> </span><span class="fl">5.96e7</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="dt">k_Hz </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.0</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="dt">tau </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.0</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="dt">RQ </span><span class="ot">=</span><span class="st"> </span><span class="fl">1.0</span></span></code></pre></div>
+<p>For simple materials:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[layer1]</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="dt">type </span><span class="ot">=</span><span class="st"> PEC</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="dt">thick_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.002</span></span></code></pre></div>
+<h3 id="section-boundary">Section: boundary</h3>
+<p>Boundary layer (outermost).</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[boundary]</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dt">type </span><span class="ot">=</span><span class="st"> PEC</span></span></code></pre></div>
+<h3 id="section-beam_info">Section: beam_info</h3>
+<p>Beam parameters.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[beam_info]</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="dt">test_beam_shift </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.001</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># One of:</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="dt">betarel </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.999</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="dt">gammarel </span><span class="ot">=</span><span class="st"> </span><span class="fl">7460.52</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="dt">Ekin_MeV </span><span class="ot">=</span><span class="st"> </span><span class="dv">7000000</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="dt">p_MeV_c </span><span class="ot">=</span><span class="st"> </span><span class="dv">7000000</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional:</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="dt">mass_MeV_c2 </span><span class="ot">=</span><span class="st"> </span><span class="fl">938.272</span></span></code></pre></div>
+<p><strong>Priority:</strong> betarel &gt; gammarel &gt; Ekin_MeV &gt; p_MeV_c</p>
+<h3 id="section-frequency_info">Section: frequency_info</h3>
+<p>Frequency range.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[frequency_info]</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="dt">fmin </span><span class="ot">=</span><span class="st"> </span><span class="dv">1000</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="dt">fmax </span><span class="ot">=</span><span class="st"> </span><span class="dv">1000000000</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="dt">fstep </span><span class="ot">=</span><span class="st"> </span><span class="dv">10</span></span></code></pre></div>
+<h3 id="section-frequency_file">Section: frequency_file</h3>
+<p>Frequencies from file (alternative to frequency_info).</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[frequency_file]</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="dt">filename </span><span class="ot">=</span><span class="st"> frequencies.txt</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="dt">separator </span><span class="ot">=</span><span class="st"> ,</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="dt">freq_col </span><span class="ot">=</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="dt">skip_rows </span><span class="ot">=</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<h3 id="section-output">Section: output</h3>
+<p>Impedances to calculate.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[output]</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="dt">ZLong </span><span class="ot">=</span><span class="st"> </span><span class="kw">True</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="dt">ZTrans </span><span class="ot">=</span><span class="st"> </span><span class="kw">True</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="dt">ZDipX </span><span class="ot">=</span><span class="st"> </span><span class="kw">False</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="dt">ZDipY </span><span class="ot">=</span><span class="st"> </span><span class="kw">False</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="dt">ZQuadX </span><span class="ot">=</span><span class="st"> </span><span class="kw">False</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="dt">ZQuadY </span><span class="ot">=</span><span class="st"> </span><span class="kw">False</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="dt">ZLongSurf </span><span class="ot">=</span><span class="st"> </span><span class="kw">True</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ZTransSurf </span><span class="ot">=</span><span class="st"> </span><span class="kw">False</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="dt">ZLongDSC </span><span class="ot">=</span><span class="st"> </span><span class="kw">False</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="dt">ZLongISC </span><span class="ot">=</span><span class="st"> </span><span class="kw">False</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="dt">ZTransDSC </span><span class="ot">=</span><span class="st"> </span><span class="kw">False</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="dt">ZTransISC </span><span class="ot">=</span><span class="st"> </span><span class="kw">False</span></span></code></pre></div>
+<h3 id="section-outputn">Section: output{N}</h3>
+<p>File output specification.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[output1]</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="dt">output_name </span><span class="ot">=</span><span class="st"> results.xlsx</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="dt">output_list </span><span class="ot">=</span><span class="st"> ZLong, ZTrans</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="dt">use_name_flag </span><span class="ot">=</span><span class="st"> </span><span class="kw">True</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="dt">re_im_flag </span><span class="ot">=</span><span class="st"> both  # or &#39;real&#39; or &#39;imag&#39;</span></span></code></pre></div>
+<h3 id="section-img_outputn">Section: img_output{N}</h3>
+<p>Image output specification.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[img_output1]</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="dt">img_name </span><span class="ot">=</span><span class="st"> impedance_plot.png</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="dt">imped_list </span><span class="ot">=</span><span class="st"> ZLong, ZTrans</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="dt">use_name_flag </span><span class="ot">=</span><span class="st"> </span><span class="kw">False</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="dt">re_im_flag </span><span class="ot">=</span><span class="st"> both</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="dt">title </span><span class="ot">=</span><span class="st"> Impedance vs Frequency</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="dt">xscale </span><span class="ot">=</span><span class="st"> log  # or &#39;lin&#39;</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="dt">yscale </span><span class="ot">=</span><span class="st"> log</span></span></code></pre></div>
+<hr />
+<h2 id="examples">Examples</h2>
+<h3 id="example-1-basic-usage">Example 1: Basic Usage</h3>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.cfg_io <span class="im">import</span> CfgIo</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read configuration</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo(<span class="st">&#39;config.ini&#39;</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> cfg.read_pytlwall()</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>ZLong <span class="op">=</span> wall.calc_ZLong()</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Calculated at </span><span class="sc">{</span><span class="bu">len</span>(wall.f)<span class="sc">}</span><span class="ss"> frequencies&quot;</span>)</span></code></pre></div>
+<h3 id="example-2-create-configuration">Example 2: Create Configuration</h3>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.cfg_io <span class="im">import</span> CfgIo</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Chamber, Beam, Frequencies, Layer</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo()</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup components</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    chamber_shape<span class="op">=</span><span class="st">&#39;CIRCULAR&#39;</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    layers<span class="op">=</span>[</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>        Layer(thick_m<span class="op">=</span><span class="fl">0.001</span>, sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>, boundary<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>        Layer(layer_type<span class="op">=</span><span class="st">&#39;PEC&#39;</span>, boundary<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gamma<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>freq <span class="op">=</span> Frequencies(fmin<span class="op">=</span><span class="fl">1e3</span>, fmax<span class="op">=</span><span class="fl">1e9</span>, fstep<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Save</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>cfg.save_chamber(chamber)</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>cfg.save_beam(beam)</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>cfg.save_freq(freq)</span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>cfg.write_cfg(<span class="st">&#39;my_config.ini&#39;</span>)</span></code></pre></div>
+<h3 id="example-3-calculate-and-export">Example 3: Calculate and Export</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo(<span class="st">&#39;config.ini&#39;</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup outputs</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>cfg.config.add_section(<span class="st">&#39;output&#39;</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>cfg.config.<span class="bu">set</span>(<span class="st">&#39;output&#39;</span>, <span class="st">&#39;ZLong&#39;</span>, <span class="st">&#39;True&#39;</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>cfg.config.<span class="bu">set</span>(<span class="st">&#39;output&#39;</span>, <span class="st">&#39;ZTrans&#39;</span>, <span class="st">&#39;True&#39;</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>cfg.config.add_section(<span class="st">&#39;output1&#39;</span>)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>cfg.config.<span class="bu">set</span>(<span class="st">&#39;output1&#39;</span>, <span class="st">&#39;output_name&#39;</span>, <span class="st">&#39;results.xlsx&#39;</span>)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>cfg.config.<span class="bu">set</span>(<span class="st">&#39;output1&#39;</span>, <span class="st">&#39;output_list&#39;</span>, <span class="st">&#39;ZLong, ZTrans&#39;</span>)</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and save</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>cfg.read_output()</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>cfg.calc_wall()</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>cfg.print_wall()</span></code></pre></div>
+<h3 id="example-4-batch-processing">Example 4: Batch Processing</h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>chambers <span class="op">=</span> [<span class="st">&#39;chamber1.ini&#39;</span>, <span class="st">&#39;chamber2.ini&#39;</span>, <span class="st">&#39;chamber3.ini&#39;</span>]</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cfg_file <span class="kw">in</span> chambers:</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    cfg <span class="op">=</span> CfgIo(cfg_file)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    wall <span class="op">=</span> cfg.read_pytlwall()</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    ZLong <span class="op">=</span> wall.calc_ZLong()</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Process results...</span></span></code></pre></div>
+<hr />
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="configuration-organization">1. Configuration Organization</h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Group related configurations</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>configs<span class="op">/</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  ├── chambers<span class="op">/</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  │   ├── lhc_arc.ini</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  │   └── lhc_ir.ini</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  ├── beams<span class="op">/</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  │   ├── proton_7tev.ini</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  │   └── lead_ion.ini</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  └── frequencies<span class="op">/</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>      ├── low_freq.ini</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>      └── high_freq.ini</span></code></pre></div>
+<h3 id="error-handling">2. Error Handling</h3>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.cfg_io <span class="im">import</span> CfgIo, ConfigurationError</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    cfg <span class="op">=</span> CfgIo(<span class="st">&#39;config.ini&#39;</span>)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    wall <span class="op">=</span> cfg.read_pytlwall()</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> wall <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Incomplete configuration&quot;</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> ConfigurationError <span class="im">as</span> e:</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Configuration error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h3 id="validation">3. Validation</h3>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo(<span class="st">&#39;config.ini&#39;</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate components</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> cfg.read_chamber()</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> chamber <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;Chamber configuration missing&quot;</span>)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> cfg.read_beam()</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> beam <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">&quot;Beam configuration missing&quot;</span>)</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Proceed with calculation</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>wall <span class="op">=</span> cfg.read_pytlwall()</span></code></pre></div>
+<h3 id="modular-configuration">4. Modular Configuration</h3>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base configuration</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>base_cfg <span class="op">=</span> CfgIo(<span class="st">&#39;base.ini&#39;</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> base_cfg.read_chamber()</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Override beam for different scenarios</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> gamma <span class="kw">in</span> [<span class="dv">1000</span>, <span class="dv">5000</span>, <span class="dv">10000</span>]:</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    cfg <span class="op">=</span> CfgIo()</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    cfg.save_chamber(chamber)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    cfg.save_beam(Beam(gamma<span class="op">=</span>gamma))</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    cfg.write_cfg(<span class="ss">f&#39;config_gamma</span><span class="sc">{</span>gamma<span class="sc">}</span><span class="ss">.ini&#39;</span>)</span></code></pre></div>
+<h3 id="version-control">5. Version Control</h3>
+<div class="sourceCode" id="cb41"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add metadata section</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[metadata]</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="dt">version </span><span class="ot">=</span><span class="st"> </span><span class="fl">1.0</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="dt">date </span><span class="ot">=</span><span class="st"> 2025-12-04</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="dt">author </span><span class="ot">=</span><span class="st"> Your Name</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="dt">description </span><span class="ot">=</span><span class="st"> LHC beam pipe configuration</span></span></code></pre></div>
+<hr />
+<h2 id="common-issues">Common Issues</h2>
+<h3 id="issue-1-missing-sections">Issue 1: Missing Sections</h3>
+<p><strong>Problem:</strong> <code>read_chamber()</code> returns <code>None</code></p>
+<p><strong>Solution:</strong> Ensure all required sections exist: - <code>[base_info]</code> - <code>[layers_info]</code> - <code>[boundary]</code></p>
+<h3 id="issue-2-invalid-layer-configuration">Issue 2: Invalid Layer Configuration</h3>
+<p><strong>Problem:</strong> <code>ConfigurationError</code> when reading layers</p>
+<p><strong>Solution:</strong> Check layer numbering and boundary section</p>
+<h3 id="issue-3-file-not-found">Issue 3: File Not Found</h3>
+<p><strong>Problem:</strong> <code>ConfigurationError: file does not exist</code></p>
+<p><strong>Solution:</strong> Use absolute paths or verify working directory</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>config_path <span class="op">=</span> Path(<span class="va">__file__</span>).parent <span class="op">/</span> <span class="st">&#39;config.ini&#39;</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo(<span class="bu">str</span>(config_path))</span></code></pre></div>
+<hr />
+<h2 id="advanced-usage">Advanced Usage</h2>
+<h3 id="custom-configuration-parser">Custom Configuration Parser</h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ExtendedCfgIo(CfgIo):</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Extended configuration with custom sections.&quot;&quot;&quot;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> read_custom_section(<span class="va">self</span>):</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Read custom configuration section.&quot;&quot;&quot;</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.config.has_section(<span class="st">&#39;custom&#39;</span>):</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">self</span>.config.get(<span class="st">&#39;custom&#39;</span>, <span class="st">&#39;parameter&#39;</span>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code></pre></div>
+<h3 id="programmatic-configuration">Programmatic Configuration</h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> CfgIo()</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Programmatically build configuration</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>cfg.config.add_section(<span class="st">&#39;base_info&#39;</span>)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>cfg.config.<span class="bu">set</span>(<span class="st">&#39;base_info&#39;</span>, <span class="st">&#39;pipe_radius_m&#39;</span>, <span class="st">&#39;0.022&#39;</span>)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>cfg.config.<span class="bu">set</span>(<span class="st">&#39;base_info&#39;</span>, <span class="st">&#39;chamber_shape&#39;</span>, <span class="st">&#39;CIRCULAR&#39;</span>)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Save</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>cfg.write_cfg(<span class="st">&#39;generated.ini&#39;</span>)</span></code></pre></div>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="CHAMBER.html">Chamber Documentation</a></li>
+<li><a href="BEAM.html">Beam Documentation</a></li>
+<li><a href="FREQUENCIES.html">Frequencies Documentation</a></li>
+<li><a href="TLWALL.html">TlWall Documentation</a></li>
+</ul>
+<hr />
+<p><strong>Last Updated:</strong> December 2025<br />
+<strong>Version:</strong> 2.0<br />
+<strong>Copyright:</strong> CERN</p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

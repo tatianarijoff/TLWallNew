@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>GUI MENU BAR</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#gui-menu-bar-and-actions">GUI — Menu Bar and Actions</a>
+<ul>
+<li><a href="#file-menu">File menu</a></li>
+<li><a href="#chamber-menu">Chamber menu</a></li>
+<li><a href="#help-menu">Help menu</a>
+<ul>
+<li><a href="#documentation">Documentation</a></li>
+</ul></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">GUI MENU BAR</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="gui-menu-bar-and-actions">GUI — Menu Bar and Actions</h1>
+<p>The GUI provides the following top-level menus:</p>
+<ul>
+<li><strong>File</strong></li>
+<li><strong>Chamber</strong></li>
+<li><strong>Help</strong></li>
+</ul>
+<hr />
+<h2 id="file-menu">File menu</h2>
+<p>Typical export and workspace actions:</p>
+<ul>
+<li><p><strong>Save Chamber cfg…</strong><br />
+Save the configuration of the current chamber as a <code>.cfg</code> file.</p></li>
+<li><p><strong>Save Chamber impedance…</strong><br />
+Save impedance results (text files) for the current chamber.</p></li>
+<li><p><strong>Save Chamber Complete…</strong><br />
+Save configuration + impedance files + plots for the current chamber.</p></li>
+<li><p><strong>Save All cfg…</strong><br />
+Save <code>.cfg</code> files for all chambers.</p></li>
+<li><p><strong>Save All impedances…</strong><br />
+Save impedance files for all chambers with computed data.</p></li>
+<li><p><strong>Save All Complete…</strong><br />
+Save cfg + impedance files + plots for all chambers.</p></li>
+<li><p><strong>Save Data…</strong><br />
+Export the Data table.</p></li>
+<li><p><strong>Save Plot…</strong><br />
+Export the current plot as an image.</p></li>
+<li><p><strong>Save View…</strong><br />
+Save a complete workspace (“View”): chambers, computed impedances, data table, and plot.</p></li>
+<li><p><strong>Load View…</strong><br />
+Restore a workspace previously saved as a View.</p></li>
+<li><p><strong>Exit</strong></p></li>
+</ul>
+<hr />
+<h2 id="chamber-menu">Chamber menu</h2>
+<ul>
+<li><p><strong>New Chamber</strong><br />
+Add a new default chamber.</p></li>
+<li><p><strong>New Chamber with config…</strong><br />
+Create a chamber from an existing <code>.cfg</code> file.</p></li>
+<li><p><strong>Select All</strong> / <strong>Deselect All</strong><br />
+Enable/disable impedance outputs for the current chamber (mandatory ones remain enabled).</p></li>
+<li><p><strong>Calculate</strong><br />
+Run impedance computation for the selected chamber and selected outputs.</p></li>
+</ul>
+<hr />
+<h2 id="help-menu">Help menu</h2>
+<h3 id="documentation">Documentation</h3>
+<p>The Help menu opens the generated HTML documentation from <code>doc/html/</code>.</p>
+<p>Expected workflow:</p>
+<ol type="1">
+<li>Write/update Markdown sources</li>
+<li>Run <code>build_doc</code></li>
+<li>Open pages from <strong>Help → Documentation</strong></li>
+</ol>
+<p>See also: <a href="GUI.html">GUI Documentation</a></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

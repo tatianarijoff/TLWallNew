@@ -1,0 +1,600 @@
+/* ============================================================================
+   PyTLWall Documentation - Collapsible Sidebar Style
+   Authors: Tatiana Rijoff, Carlo Zannini
+   Copyright: CERN
+   ============================================================================ */
+
+/* ====== CSS VARIABLES ====== */
+:root {
+    /* Primary palette */
+    --primary: #1e40af;
+    --primary-dark: #1e3a8a;
+    --primary-light: #dbeafe;
+    --primary-lighter: #eff6ff;
+
+    /* Accent */
+    --accent: #0d9488;
+    --accent-light: #ccfbf1;
+
+    /* Backgrounds */
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-muted: #f1f5f9;
+    --bg-sidebar: #0f172a;
+    --bg-sidebar-hover: #1e293b;
+    --bg-code: #1e293b;
+
+    /* Text */
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --text-inverse: #f8fafc;
+    --text-sidebar: #cbd5e1;
+    --text-sidebar-muted: #64748b;
+    --text-sidebar-hover: #ffffff;
+
+    /* Borders */
+    --border-light: #e2e8f0;
+    --border-medium: #cbd5e1;
+    --border-sidebar: #334155;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+    /* Layout */
+    --sidebar-width: 260px;
+    
+    /* Border radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+
+    /* Typography */
+    --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s ease;
+}
+
+/* ====== RESET ====== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background: var(--bg-page);
+}
+
+/* ====== LAYOUT ====== */
+.layout-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ====== SIDEBAR ====== */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-sidebar);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid var(--border-sidebar);
+}
+
+.sidebar-logo-link {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-inverse);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.sidebar-logo-link:hover {
+    color: var(--accent);
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 0.75rem 0;
+    overflow-y: auto;
+}
+
+/* ====== NAVIGATION SECTIONS ====== */
+.nav-section {
+    margin-bottom: 0.25rem;
+}
+
+.nav-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 1rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background var(--transition-fast);
+}
+
+.nav-section-header:hover {
+    background: var(--bg-sidebar-hover);
+}
+
+.nav-section-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-sidebar);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-toggle-icon {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    opacity: 0.5;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.nav-toggle-icon::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid transparent;
+    border-top: 5px solid var(--text-sidebar);
+    margin-top: 2px;
+}
+
+.nav-section-header:hover .nav-toggle-icon {
+    opacity: 1;
+}
+
+/* Collapsed state */
+.nav-section.collapsed .nav-toggle-icon {
+    transform: rotate(-90deg);
+}
+
+.nav-section.collapsed .nav-section-content {
+    display: none;
+}
+
+/* Section content */
+.nav-section-content {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0.5rem 0;
+}
+
+.nav-section-content li {
+    margin: 0;
+}
+
+.nav-section-content a {
+    display: block;
+    padding: 0.4rem 1rem 0.4rem 1.5rem;
+    color: var(--text-sidebar-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all var(--transition-fast);
+    border-left: 2px solid transparent;
+}
+
+.nav-section-content a:hover {
+    color: var(--text-sidebar-hover);
+    background: var(--bg-sidebar-hover);
+    border-left-color: var(--accent);
+}
+
+.nav-section-content a.active {
+    color: var(--text-inverse);
+    background: var(--bg-sidebar-hover);
+    border-left-color: var(--primary-light);
+    font-weight: 500;
+}
+
+/* TOC content (nested structure from pandoc) */
+.toc-content {
+    padding: 0 0 0.5rem 0;
+}
+
+.toc-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toc-content > ul > li > a {
+    display: block;
+    padding: 0.4rem 1rem 0.4rem 1.5rem;
+    color: var(--text-sidebar-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all var(--transition-fast);
+    border-left: 2px solid transparent;
+}
+
+.toc-content > ul > li > a:hover {
+    color: var(--text-sidebar-hover);
+    background: var(--bg-sidebar-hover);
+    border-left-color: var(--accent);
+}
+
+/* Nested TOC levels */
+.toc-content ul ul {
+    margin-left: 0.75rem;
+    border-left: 1px solid var(--border-sidebar);
+}
+
+.toc-content ul ul a {
+    display: block;
+    padding: 0.3rem 0.75rem;
+    color: var(--text-sidebar-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all var(--transition-fast);
+}
+
+.toc-content ul ul a:hover {
+    color: var(--text-sidebar-hover);
+}
+
+/* ====== MAIN CONTENT ====== */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 2rem 3rem 4rem;
+    max-width: calc(100% - var(--sidebar-width));
+    min-height: 100vh;
+}
+
+/* ====== HEADER BLOCK ====== */
+#title-block-header {
+    background: linear-gradient(135deg, var(--bg-surface) 0%, var(--primary-lighter) 100%);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--shadow-md);
+    position: relative;
+}
+
+#title-block-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.title-with-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.title-with-logo h1.title {
+    margin: 0;
+    padding: 0;
+    border: none;
+    flex: 1;
+}
+
+.header-logo {
+    width: 280px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+}
+
+#title-block-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+    border: none;
+}
+
+#title-block-header p {
+    margin: 0.25rem 0 0;
+    color: var(--text-muted);
+}
+
+#title-block-header .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+#title-block-header .author {
+    font-size: 0.9rem;
+}
+
+/* ====== TYPOGRAPHY ====== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--primary);
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+h3 {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+strong, b {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ====== LINKS ====== */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ====== LISTS ====== */
+ul, ol {
+    margin: 0.5rem 0 1.25rem 1.5rem;
+    color: var(--text-secondary);
+}
+
+li {
+    margin: 0.25rem 0;
+}
+
+li::marker {
+    color: var(--primary);
+}
+
+/* ====== TABLES ====== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+}
+
+thead {
+    background: var(--bg-muted);
+}
+
+th {
+    font-weight: 600;
+    text-align: left;
+    padding: 0.875rem 1rem;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-medium);
+}
+
+td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-secondary);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+    background: var(--bg-muted);
+}
+
+tbody tr:hover {
+    background: var(--primary-lighter);
+}
+
+/* ====== CODE ====== */
+pre, code {
+    font-family: var(--font-mono);
+}
+
+:not(pre) > code {
+    background: var(--bg-muted);
+    color: var(--primary-dark);
+    padding: 0.15rem 0.4rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875em;
+    border: 1px solid var(--border-light);
+}
+
+pre {
+    background: var(--bg-code);
+    color: var(--text-inverse);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 1.25rem 0;
+    box-shadow: var(--shadow-md);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+}
+
+/* ====== BLOCKQUOTES ====== */
+blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    background: var(--primary-lighter);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    color: var(--text-secondary);
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* ====== HR ====== */
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-medium), transparent);
+    margin: 3rem 0;
+}
+
+/* ====== WELCOME SECTION ====== */
+.welcome-section {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.welcome-section h2 {
+    margin-top: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* ====== FOOTER ====== */
+footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-light);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 220px;
+    }
+    
+    .main-content {
+        padding: 1.5rem 2rem 3rem;
+    }
+    
+    .header-logo {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .layout-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-height: 50vh;
+        border-bottom: 1px solid var(--border-sidebar);
+    }
+    
+    .main-content {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .title-with-logo {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .header-logo {
+        width: 180px;
+        order: -1;
+    }
+    
+    #title-block-header {
+        padding: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ====== PRINT ====== */
+@media print {
+    .sidebar {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    #title-block-header {
+        box-shadow: none;
+    }
+}

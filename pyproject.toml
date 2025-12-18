@@ -1,0 +1,179 @@
+[build-system]
+requires = [
+    "setuptools>=65.0.0",
+    "wheel>=0.40.0",
+    "numpy>=1.20.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytlwall"
+version = "1.0.0"
+description = "Transmission line impedance calculation engine"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Tatiana Rijoff", email = "tatiana.rijoff@cern.ch"},
+    {name = "Carlo Zannini"},
+]
+maintainers = [
+    {name = "Tatiana Rijoff", email = "tatiana.rijoff@cern.ch"},
+]
+keywords = ["impedance", "transmission line", "accelerator physics", "CERN", "beam dynamics"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Natural Language :: English",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=1.20.0",
+    "scipy>=1.7.0",
+    "matplotlib>=3.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=3.0",
+    "black>=22.0",
+    "flake8>=4.0",
+    "mypy>=0.950",
+    "ruff>=0.1.0",
+]
+docs = [
+    "sphinx>=4.0",
+    "sphinx-rtd-theme>=1.0",
+    "myst-parser>=0.18",
+]
+test = [
+    "pytest>=7.0",
+    "pytest-cov>=3.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/CERN/pytlwall"
+Documentation = "https://github.com/CERN/pytlwall/blob/main/README.md"
+Repository = "https://github.com/CERN/pytlwall"
+Issues = "https://github.com/CERN/pytlwall/issues"
+Changelog = "https://github.com/CERN/pytlwall/blob/main/CHANGELOG.md"
+
+[project.scripts]
+# Uncomment if you want a CLI command
+# pytlwall = "exec_pytlwall:main"
+
+[tool.setuptools]
+zip-safe = false
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pytlwall*"]
+exclude = ["tests*", "examples*", "docs*"]
+
+[tool.setuptools.package-data]
+pytlwall = [
+    "yokoya_factors/*.txt",
+    "yokoya_factors/*.dat",
+    "yokoya_factors/*.csv",
+]
+
+# ============================================================================
+# Development tools configuration
+# ============================================================================
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--cov=pytlwall",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310", "py311", "py312"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | \.eggs
+  | \.tox
+  | build
+  | dist
+  | __pycache__
+)/
+'''
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+]
+ignore = [
+    "E501",  # line too long (handled by black)
+]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]  # Allow unused imports in __init__.py
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = true
+disallow_untyped_decorators = false
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+follow_imports = "normal"
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["pytlwall"]
+omit = [
+    "*/tests/*",
+    "*/examples/*",
+    "*/__pycache__/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]

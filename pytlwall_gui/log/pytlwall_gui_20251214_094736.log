@@ -1,0 +1,8 @@
+2025-12-14 09:47:36,197 - pytlwall_interface - INFO - setup_interface_logging:177 - Log file: /home/tatij/CERN/pytlwall/pytlwall-master/pytlwall_gui/log/pytlwall_gui_20251214_094736.log
+2025-12-14 09:47:36,197 - pytlwall_interface - INFO - setup_interface_logging:179 - pytlwall_interface logging initialized
+2025-12-14 09:47:42,660 - pytlwall_interface - INFO - _on_load_accelerator:1521 - Starting Load Accelerator
+2025-12-14 09:47:56,765 - pytlwall_interface - INFO - _on_load_accelerator:1521 - Starting Load Accelerator
+2025-12-14 09:48:01,381 - pytlwall_interface - INFO - _on_load_accelerator:1584 - MultipleChamber loaded 211 elements
+2025-12-14 09:48:01,453 - pytlwall_interface - INFO - _on_load_accelerator:1673 - Loaded 211 chamber(s) from accelerator data.
+2025-12-14 09:48:57,422 - pytlwall_interface - INFO - _on_calculate_accelerator:1738 - Starting MultipleChamber calculation for 211 elements
+2025-12-14 09:48:57,966 - pytlwall_interface - ERROR - _on_calculate_accelerator:1760 - Calculation failed: module 'pytlwall.io_util' has no attribute 'save_impedances_to_excel'

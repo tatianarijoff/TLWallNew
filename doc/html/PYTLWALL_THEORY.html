@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>PYTLWALL THEORY</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#pytlwall-theory">PyTlWall theory</a>
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#multilayer-wall-as-a-recursive-transmission-line">Multilayer wall as a recursive transmission line</a>
+<ul>
+<li><a href="#physical-model">Physical model</a></li>
+<li><a href="#equivalent-surface-impedance">Equivalent surface impedance</a></li>
+</ul></li>
+<li><a href="#applicability-and-tlwall-hypothesis">Applicability and TLwall hypothesis</a></li>
+<li><a href="#transverse-impedance-and-the-inductive-bypass-vos">Transverse impedance and the inductive bypass (Vos)</a></li>
+<li><a href="#benchmarks-and-reference-solutions">Benchmarks and reference solutions</a></li>
+<li><a href="#when-tlwall-is-convenient">When TLwall is convenient</a></li>
+<li><a href="#references-mentioned-in-the-slides">References mentioned in the slides</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">PYTLWALL THEORY</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="pytlwall-theory">PyTlWall theory</h1>
+<p>This page summarizes the theoretical model implemented in <strong>PyTlWall/TLwall</strong> for computing resistive-wall beam coupling impedance in <strong>multilayer</strong> vacuum chambers, and collects the key assumptions and validity limits discussed in the original TLwall internal presentation (HSC, 2021). fileciteturn1file0</p>
+<h2 id="background">Background</h2>
+<p>The TLwall approach builds on the <strong>transmission-line (TL)</strong> analogy for layered media (planar case), extended to circular chambers through a controlled approximation, and on the <strong>inductive bypass</strong> concept introduced by <strong>L. Vos</strong> for the transverse impedance in the resistive-wall problem.</p>
+<p>A main goal is to provide a <strong>fast and robust</strong> way to compute: - longitudinal impedance, - transverse (dipolar / quadrupolar) impedance, - equivalent multilayer <strong>surface impedance</strong>,</p>
+<p>for <strong>PEC / vacuum / material</strong> boundary conditions, with optional extension to non-ultrarelativistic beams.</p>
+<h2 id="multilayer-wall-as-a-recursive-transmission-line">Multilayer wall as a recursive transmission line</h2>
+<h3 id="physical-model">Physical model</h3>
+<p>A round chamber of radius <em>b</em> is loaded by a stack of layers (conductors/dielectrics) and terminated by a boundary condition (PEC, vacuum, or material half-space). Each layer is represented by a TL segment with its own propagation constant and characteristic impedance.</p>
+<p>The TL equations can be applied <strong>recursively</strong> to any number of layers to obtain the <strong>equivalent surface impedance</strong> seen at the vacuum–wall interface.</p>
+<blockquote>
+<p>Practical note: in PyTlWall the same equivalent surface impedance can then be mapped to non-circular cross-sections using <strong>Yokoya form factors</strong> (rectangular/elliptical approximations).</p>
+</blockquote>
+<h3 id="equivalent-surface-impedance">Equivalent surface impedance</h3>
+<p>The computation returns an equivalent surface impedance (Z_s()) of the full multilayer stack. This is then used through the <strong>Leontovich boundary condition</strong> to relate tangential electric and magnetic fields at the interface, and to compute the beam coupling impedance.</p>
+<h2 id="applicability-and-tlwall-hypothesis">Applicability and TLwall hypothesis</h2>
+<p>Transmission-line equations are exact for <strong>planar geometries</strong>. In circular structures they remain usable when the <strong>attenuation of cylindrical waves</strong> inside the wall can be neglected, so that the equivalent surface impedance is effectively independent of the incident-wave direction.</p>
+<p>A commonly used sufficient condition is:</p>
+<ul>
+<li><strong>skin depth</strong> (b)</li>
+</ul>
+<p>The TLwall implementation also estimates a <strong>maximum frequency</strong> up to which the TL approximation is expected to remain accurate for a given configuration.</p>
+<h2 id="transverse-impedance-and-the-inductive-bypass-vos">Transverse impedance and the inductive bypass (Vos)</h2>
+<p>For the transverse impedance, TLwall uses the <strong>inductive bypass</strong> concept (Vos formalism), which introduces an additional inductive contribution (often denoted (L_1)) to capture the transverse coupling consistently within the TL approach.</p>
+<p>In the ultrarelativistic limit, a common constant appearing in the formalism is:</p>
+<p>[ L_1 = rac{_0}{4} ]</p>
+<p>The method is extended in the code to cover the <strong>non-ultrarelativistic</strong> regime with improved approximations for the field radial dependence and related corrections.</p>
+<h2 id="benchmarks-and-reference-solutions">Benchmarks and reference solutions</h2>
+<p>TLwall has been benchmarked against <strong>ReWall</strong> and <strong>IW2D</strong>.</p>
+<ul>
+<li><strong>IW2D</strong> should be regarded as the reference when the highest fidelity is needed, because it solves Maxwell equations without the TL approximation.</li>
+<li>TLwall typically agrees well in practical cases; for some parameter sets, the validity is restricted to a limited frequency range (as per the TLwall hypothesis).</li>
+</ul>
+<h2 id="when-tlwall-is-convenient">When TLwall is convenient</h2>
+<p>Typical cases where TLwall is particularly attractive:</p>
+<ul>
+<li>building an impedance model from an aperture model (many elements → many evaluations),</li>
+<li>very large number of layers (e.g. metamaterial-like stacks),</li>
+<li>avoiding numerical difficulties that can arise in other methods,</li>
+<li>simulating ideal boundary conditions or very low resistivity,</li>
+<li>using the computed surface impedance as an input to more complex calculations,</li>
+<li>including roughness effects through simple surface-impedance modifications (basic Hammerstad model included in the referenced slides).</li>
+</ul>
+</details>
+<h2 id="references-mentioned-in-the-slides">References mentioned in the slides</h2>
+<ul>
+<li>L. Vos, resistive wall impedance calculations (CERN-AB-2003-093).</li>
+<li>IW2D (field-matching technique) as reference solver.</li>
+<li>“Resistive wall impedance in elliptical multilayer vacuum chambers”, <em>Phys. Rev. Accel. Beams</em> 22, 121001 (2019).</li>
+</ul>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

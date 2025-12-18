@@ -1,0 +1,76 @@
+2025-12-17 11:01:08 [INFO] ================================================================================
+2025-12-17 11:01:08 [INFO] PYTLWALL DEEP TEST: RoundChamber
+2025-12-17 11:01:08 [INFO] ================================================================================
+2025-12-17 11:01:08 [INFO] Timestamp: 2025-12-17 11:01:08
+2025-12-17 11:01:08 [INFO] Log file: tests/deep_test/RoundChamber/logs/deep_test_RoundChamber_20251217_110108.log
+2025-12-17 11:01:08 [INFO] 
+2025-12-17 11:01:08 [INFO] ================================================================================
+2025-12-17 11:01:08 [INFO] Running test: RoundChamber
+2025-12-17 11:01:08 [INFO] ================================================================================
+2025-12-17 11:01:08 [INFO] Configuration: tests/deep_test/RoundChamber/RoundChamberIWake2D.cfg
+2025-12-17 11:01:08 [INFO] Output directory: tests/deep_test/RoundChamber/output
+2025-12-17 11:01:08 [INFO] Image directory: tests/deep_test/RoundChamber/img
+2025-12-17 11:01:08 [INFO] Wake2D directory: tests/deep_test/RoundChamber/Wake2D
+2025-12-17 11:01:08 [INFO] 
+2025-12-17 11:01:08 [INFO] Loading configuration...
+2025-12-17 11:01:08 [INFO]   Boundary type: CW
+2025-12-17 11:01:08 [INFO]   Configuration loaded successfully
+2025-12-17 11:01:08 [INFO]   Chamber: CIRCULAR
+2025-12-17 11:01:08 [INFO]   Frequencies: 91 points
+2025-12-17 11:01:08 [INFO]   Frequency range: 1.00e+03 - 1.00e+13 Hz
+2025-12-17 11:01:08 [INFO] 
+2025-12-17 11:01:08 [INFO] Config file: RoundChamberIWake2D.cfg
+2025-12-17 11:01:08 [INFO]   Will compare with Wake2D: True
+2025-12-17 11:01:08 [INFO]   Will compare with OldTLWall: False
+2025-12-17 11:01:08 [INFO] 
+2025-12-17 11:01:08 [INFO] Computing and comparing impedances...
+2025-12-17 11:01:08 [INFO] 
+  Processing ZLong (Longitudinal Impedance)...
+2025-12-17 11:01:08 [INFO]     Saved output: ZLong.txt
+2025-12-17 11:01:09 [INFO]     Saved plot: ZLong.png
+2025-12-17 11:01:09 [INFO]     Wake2D reference: ZlongWLHC_1layers2.00mm_test_coll_round.dat
+2025-12-17 11:01:09 [INFO]   Saved Excel: NewTLWallvsWake2DLong.xlsx
+2025-12-17 11:01:10 [INFO]     Saved plot: WakeVsNew_ZLong.png
+2025-12-17 11:01:10 [INFO] 
+  Processing ZTrans (Transverse Impedance)...
+2025-12-17 11:01:10 [INFO]     Saved output: ZTrans.txt
+2025-12-17 11:01:10 [INFO]     Saved plot: ZTrans.png
+2025-12-17 11:01:10 [WARNING]     No Wake2D reference file found: ZtransW*.dat
+2025-12-17 11:01:10 [INFO] 
+  Processing ZDip (Transverse Dipolar Impedance)...
+2025-12-17 11:01:10 [INFO]     Saved output: ZDip.txt
+2025-12-17 11:01:11 [INFO]     Saved plot: ZDip.png
+2025-12-17 11:01:11 [WARNING]     No Wake2D reference file found: ZtransdipW*.dat
+2025-12-17 11:01:11 [INFO] 
+  Processing ZQuad (Transverse Quadrupolar Impedance)...
+2025-12-17 11:01:11 [INFO]     Saved output: ZQuad.txt
+2025-12-17 11:01:11 [INFO]     Saved plot: ZQuad.png
+2025-12-17 11:01:11 [WARNING]     No Wake2D reference file found: ZtransquadW*.dat
+2025-12-17 11:01:11 [INFO] 
+  Computing space charge impedances...
+2025-12-17 11:01:11 [INFO]     Processing ZLongDSC...
+2025-12-17 11:01:11 [INFO]       Saved: ZLongDSC.txt
+2025-12-17 11:01:11 [INFO]     Saved plot: ZLongDSC.png
+2025-12-17 11:01:11 [INFO]     Processing ZLongISC...
+2025-12-17 11:01:11 [INFO]       Saved: ZLongISC.txt
+2025-12-17 11:01:12 [INFO]     Saved plot: ZLongISC.png
+2025-12-17 11:01:12 [INFO]     Processing ZTransDSC...
+2025-12-17 11:01:12 [INFO]       Saved: ZTransDSC.txt
+2025-12-17 11:01:12 [INFO]     Saved plot: ZTransDSC.png
+2025-12-17 11:01:12 [INFO]     Processing ZTransISC...
+2025-12-17 11:01:12 [INFO]       Saved: ZTransISC.txt
+2025-12-17 11:01:12 [INFO]     Saved plot: ZTransISC.png
+2025-12-17 11:01:12 [INFO]     Processing ZDipDSC...
+2025-12-17 11:01:12 [INFO]       Saved: ZDipDSC.txt
+2025-12-17 11:01:13 [INFO]     Saved plot: ZDipDSC.png
+2025-12-17 11:01:13 [INFO]     Processing ZDipISC...
+2025-12-17 11:01:13 [INFO]       Saved: ZDipISC.txt
+2025-12-17 11:01:13 [INFO]     Saved plot: ZDipISC.png
+2025-12-17 11:01:13 [INFO] 
+✓ Test RoundChamber completed successfully
+2025-12-17 11:01:13 [INFO] 
+================================================================================
+2025-12-17 11:01:13 [INFO] TEST RoundChamber: PASSED ✓
+2025-12-17 11:01:13 [INFO] ================================================================================
+2025-12-17 11:01:13 [INFO] Log saved to: tests/deep_test/RoundChamber/logs/deep_test_RoundChamber_20251217_110108.log
+
