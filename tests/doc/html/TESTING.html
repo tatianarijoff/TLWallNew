@@ -89,6 +89,15 @@
         </div>
         <nav class="sidebar-nav">
             
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="RUN_TESTS_DEEP_README.html">Deep Test Runner</a></li>
+            </ul>
+        </div>
             
         <div class="nav-section" data-section="toc">
             <div class="nav-section-header">
@@ -97,8 +106,9 @@
             </div>
             <div class="nav-section-content toc-content">
                 <ul>
-<li><a href="#pytlwall-testing-documentation">PyTLWall Testing Documentation</a>
+<li><a href="#pytlwall-testing-documentation">PyTlWall Testing Documentation</a>
 <ul>
+<li><a href="#authors">Authors</a></li>
 <li><a href="#table-of-contents">Table of Contents</a></li>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#test-structure">Test Structure</a></li>
@@ -109,6 +119,13 @@
 <li><a href="#deep-test-suite">Deep Test Suite</a></li>
 </ul></li>
 <li><a href="#test-modules">Test Modules</a></li>
+<li><a href="#impedance-types-tested">Impedance Types Tested</a>
+<ul>
+<li><a href="#base-impedances-wall-contribution">Base Impedances (Wall Contribution)</a></li>
+<li><a href="#total-impedances-wall-space-charge">Total Impedances (Wall + Space Charge)</a></li>
+<li><a href="#surface-impedances">Surface Impedances</a></li>
+<li><a href="#space-charge-impedances">Space Charge Impedances</a></li>
+</ul></li>
 <li><a href="#writing-new-tests">Writing New Tests</a>
 <ul>
 <li><a href="#basic-test-structure">Basic Test Structure</a></li>
@@ -120,6 +137,7 @@
 <li><a href="#input-files">Input Files</a></li>
 <li><a href="#exit-codes">Exit Codes</a></li>
 </ul></li>
+<li><a href="#see-also">See Also</a></li>
 </ul></li>
 </ul>
             </div>
@@ -129,12 +147,20 @@
     <main class="main-content">
         
 <header id="title-block-header">
-<h1 class="title">TESTING</h1>
+<div class="title-with-logo"><h1 class="title">TESTING</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
 <p class="author">Tatiana Rijoff</p>
 <p class="author">Carlo Zannini</p>
 </header>
 
-<h1 id="pytlwall-testing-documentation">PyTLWall Testing Documentation</h1>
+<h1 id="pytlwall-testing-documentation">PyTlWall Testing Documentation</h1>
+<p><strong>Comprehensive test suite documentation</strong></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> — tatiana.rijoff@gmail.com<br />
+</li>
+<li><strong>Carlo Zannini</strong> — carlo.zannini@cern.ch</li>
+</ul>
+<hr />
 <p><a href="../README.html">← Back to README</a> | <a href="API.html">API Documentation</a></p>
 <hr />
 <h2 id="table-of-contents">Table of Contents</h2>
@@ -144,8 +170,8 @@
 <li><a href="#running-tests">Running Tests</a>
 <ul>
 <li><a href="#single-module-tests">Single Module Tests</a></li>
-<li><a href="#base-test-suite">Base Test Suite (run_tests_base.py)</a></li>
-<li><a href="#deep-test-suite">Deep Test Suite (run_tests_deep.py)</a></li>
+<li><a href="#base-test-suite">Base Test Suite</a></li>
+<li><a href="#deep-test-suite">Deep Test Suite</a></li>
 </ul></li>
 <li><a href="#test-modules">Test Modules</a></li>
 <li><a href="#writing-new-tests">Writing New Tests</a></li>
@@ -153,7 +179,7 @@
 </ol>
 <hr />
 <h2 id="overview">Overview</h2>
-<p>PyTLWall uses Python’s <code>unittest</code> framework for automated testing. The test suite is organized in two levels:</p>
+<p>PyTlWall uses Python’s <code>unittest</code> framework for automated testing. The test suite is organized in two levels:</p>
 <table>
 <colgroup>
 <col style="width: 30%" />
@@ -178,7 +204,7 @@
 </tr>
 <tr class="even">
 <td><strong>Deep Tests</strong></td>
-<td>Comparison with Wake2D/OldTLWall references</td>
+<td>Comparison with Wake2D/IW2D references</td>
 <td>Slow (~minutes)</td>
 <td>Manual analysis required</td>
 </tr>
@@ -188,6 +214,7 @@
 <hr />
 <h2 id="test-structure">Test Structure</h2>
 <pre><code>tests/
+├── README.md                  # Tests overview
 ├── run_tests_base.py          # Base test runner (fast unit tests)
 ├── run_tests_deep.py          # Deep test runner (reference comparison)
 ├── input/                     # Test input files (.cfg, .dat, .txt)
@@ -273,176 +300,162 @@ OK</code></pre>
 <span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">--modules</span> test_beam.py test_chamber.py <span class="dt">\</span></span>
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">--verbosity</span> 3 <span class="dt">\</span></span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">--logdir</span> ./detailed_logs/</span></code></pre></div>
-<h4 id="method-3-modify-testconfig-class">Method 3: Modify TestConfig Class</h4>
-<p>Edit <code>run_tests_base.py</code> directly:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestConfig:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    TEST_DIR: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;./tests/&quot;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    LOG_DIR: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;./tests/logs/&quot;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    LOG_BASENAME: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;tlwall_test&quot;</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    PATTERN: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;test*.py&quot;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    VERBOSITY: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Run only specific modules:</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    SELECTED_MODULES <span class="op">=</span> [<span class="st">&quot;test_beam.py&quot;</span>, <span class="st">&quot;test_layer.py&quot;</span>]</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Or run all tests (default):</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># SELECTED_MODULES = None</span></span></code></pre></div>
-<h4 id="method-4-programmatic-use">Method 4: Programmatic Use</h4>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tests.run_tests_base <span class="im">import</span> run_selected_unittests_with_log, TestConfig</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use default configuration</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>TestConfig.VERBOSITY <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>TestConfig.SELECTED_MODULES <span class="op">=</span> [<span class="st">&quot;test_beam.py&quot;</span>]</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>success <span class="op">=</span> run_selected_unittests_with_log(</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    test_dir<span class="op">=</span>TestConfig.TEST_DIR,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    logdir<span class="op">=</span>TestConfig.LOG_DIR,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    logfile<span class="op">=</span>TestConfig.LOG_BASENAME,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    pattern<span class="op">=</span>TestConfig.PATTERN,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span>TestConfig.VERBOSITY,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    selected_modules<span class="op">=</span>TestConfig.SELECTED_MODULES,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Tests </span><span class="sc">{</span><span class="st">&#39;passed&#39;</span> <span class="cf">if</span> success <span class="cf">else</span> <span class="st">&#39;failed&#39;</span><span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p>See <a href="RUN_TESTS_BASE.html">RUN_TESTS_BASE.md</a> for complete documentation.</p>
 <hr />
 <h3 id="deep-test-suite">Deep Test Suite</h3>
-<p>The <code>run_tests_deep.py</code> script generates output files for <strong>manual analysis</strong> comparing PyTLWall results with Wake2D and OldTLWall references.</p>
+<p>The <code>run_tests_deep.py</code> script generates output files for <strong>manual analysis</strong> comparing PyTlWall results with Wake2D and IW2D references.</p>
 <blockquote>
 <p>⚠️ <strong>Important</strong>: Deep tests do NOT perform automatic pass/fail validation. Percentage differences can be misleading for very small values. Results require expert analysis.</p>
 </blockquote>
 <h4 id="generated-outputs">Generated Outputs</h4>
 <p>For each test case, the script generates: - <strong>Text files</strong>: <code>ZLong.txt</code>, <code>ZDip.txt</code>, <code>ZQuad.txt</code> - <strong>Excel comparisons</strong>: <code>NewTLWallvsWake2D*.xlsx</code> - <strong>Plots</strong>: <code>*.png</code> comparison plots - <strong>Logs</strong>: Detailed execution logs</p>
-<h4 id="method-1-direct-execution">Method 1: Direct Execution</h4>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all deep tests</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py</span></code></pre></div>
-<h4 id="method-2-command-line-arguments-1">Method 2: Command-Line Arguments</h4>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run specific subdirectories</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--subdirs</span> newCV newPEC</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use specific config file pattern</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--cfg-pattern</span> <span class="st">&quot;*Wake2D.cfg&quot;</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare with OldTLWall instead</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--cfg-pattern</span> <span class="st">&quot;*OldTLWall.cfg&quot;</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Skip space charge calculations</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--no-space-charge</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Change verbosity</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--verbosity</span> 3</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom base directory</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--base-dir</span> ./my_tests/deep_test/</span></code></pre></div>
-<h4 id="method-3-modify-deeptestconfig-class">Method 3: Modify DeepTestConfig Class</h4>
-<p>Edit <code>run_tests_deep.py</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DeepTestConfig:</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    DEEP_TEST_DIR: Path <span class="op">=</span> Path(<span class="st">&quot;tests/deep_test&quot;</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    TEST_SUBDIRS: Optional[List[<span class="bu">str</span>]] <span class="op">=</span> [<span class="st">&quot;newCV&quot;</span>]  <span class="co"># None = all</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    CFG_PATTERN: Optional[<span class="bu">str</span>] <span class="op">=</span> <span class="st">&quot;*Wake2D.cfg&quot;</span>     <span class="co"># None = first .cfg</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    VERBOSITY: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span></code></pre></div>
-<h4 id="method-4-programmatic-use-1">Method 4: Programmatic Use</h4>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tests.run_tests_deep <span class="im">import</span> run_deep_tests</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>success <span class="op">=</span> run_deep_tests(</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    base_dir<span class="op">=</span><span class="st">&quot;tests/deep_test&quot;</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    subdirs<span class="op">=</span>[<span class="st">&quot;newCV&quot;</span>],</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    cfg_pattern<span class="op">=</span><span class="st">&quot;*Wake2D.cfg&quot;</span>,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    compute_space_charge<span class="op">=</span><span class="va">True</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<h4 id="running-deep-tests">Running Deep Tests</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all deep tests</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run specific subdirectories</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--subdirs</span> newCV newPEC</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use specific config file pattern</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--cfg-pattern</span> <span class="st">&quot;*Wake2D.cfg&quot;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Skip space charge calculations</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--no-space-charge</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Change verbosity</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--verbosity</span> 3</span></code></pre></div>
+<h4 id="validation-notes">Validation Notes</h4>
+<p>Based on IW2D comparisons: - <strong>Consistent with IW2D</strong>: ZLong, ZTrans, ZLongTotal, ZDipX, ZDipY, ZQuadX, ZQuadY - <strong>May show discrepancies</strong>: ZTransTotal, ZDipXTotal, ZDipYTotal, ZQuadXTotal, ZQuadYTotal</p>
 <hr />
 <h2 id="test-modules">Test Modules</h2>
-<p>Each test module covers a specific PyTLWall component:</p>
+<p>Each test module covers a specific PyTlWall component:</p>
 <table>
 <colgroup>
-<col style="width: 34%" />
-<col style="width: 65%" />
+<col style="width: 26%" />
+<col style="width: 50%" />
+<col style="width: 23%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th>Module</th>
 <th>Documentation</th>
+<th>Tests</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>test_beam.py</code></td>
-<td><a href="testing/test_beam.html">→ test_beam documentation</a></td>
+<td><a href="testing/test_beam.html">→ test_beam.md</a></td>
+<td>Relativistic kinematics</td>
 </tr>
 <tr class="even">
 <td><code>test_chamber.py</code></td>
-<td><a href="testing/test_chamber.html">→ test_chamber documentation</a></td>
+<td>—</td>
+<td>Chamber geometry, Yokoya factors</td>
 </tr>
 <tr class="odd">
 <td><code>test_layer.py</code></td>
-<td><a href="testing/test_layer.html">→ test_layer documentation</a></td>
+<td><a href="testing/test_layer.html">→ test_layer.md</a></td>
+<td>Material properties, skin depth</td>
 </tr>
 <tr class="even">
 <td><code>test_freq.py</code></td>
-<td><a href="testing/test_freq.html">→ test_freq documentation</a></td>
+<td><a href="testing/test_freq.html">→ test_freq.md</a></td>
+<td>Frequency array generation</td>
 </tr>
 <tr class="odd">
 <td><code>test_tlwall.py</code></td>
-<td><a href="testing/test_tlwall.html">→ test_tlwall documentation</a></td>
+<td><a href="testing/test_tlwall.html">→ test_tlwall.md</a></td>
+<td>Core impedance calculations</td>
 </tr>
 <tr class="even">
 <td><code>test_cfg.py</code></td>
-<td><a href="testing/test_cfg.html">→ test_cfg documentation</a></td>
+<td><a href="testing/test_cfg.html">→ test_cfg.md</a></td>
+<td>Configuration file I/O</td>
 </tr>
 <tr class="odd">
 <td><code>test_cfgio_realistic.py</code></td>
-<td><a href="testing/test_cfgio_realistic.html">→ test_cfgio_realistic documentation</a></td>
+<td><a href="testing/test_cfgio_realistic.html">→ test_cfgio_realistic.md</a></td>
+<td>Real .cfg file tests</td>
 </tr>
 <tr class="even">
 <td><code>test_cfgio_special_cases.py</code></td>
-<td><a href="testing/test_cfgio_special_cases.html">→ test_cfgio_special_cases documentation</a></td>
+<td><a href="testing/test_cfgio_special_cases.html">→ test_cfgio_special_cases.md</a></td>
+<td>Edge cases (inf thickness)</td>
 </tr>
 <tr class="odd">
 <td><code>test_io_util.py</code></td>
-<td><a href="testing/test_io_util.html">→ test_io_util documentation</a></td>
+<td><a href="testing/test_io_util.html">→ test_io_util.md</a></td>
+<td>File I/O utilities</td>
 </tr>
 <tr class="even">
 <td><code>test_plot.py</code></td>
-<td><a href="testing/test_plot.html">→ test_plot documentation</a></td>
+<td><a href="testing/test_plot.html">→ test_plot.md</a></td>
+<td>Plotting functions</td>
 </tr>
 </tbody>
 </table>
 <hr />
+<h2 id="impedance-types-tested">Impedance Types Tested</h2>
+<p>The test suite validates all impedance types:</p>
+<h3 id="base-impedances-wall-contribution">Base Impedances (Wall Contribution)</h3>
+<ul>
+<li><code>ZLong</code> — Longitudinal impedance</li>
+<li><code>ZTrans</code> — Transverse impedance</li>
+<li><code>ZDipX</code>, <code>ZDipY</code> — Dipolar impedances</li>
+<li><code>ZQuadX</code>, <code>ZQuadY</code> — Quadrupolar impedances</li>
+</ul>
+<h3 id="total-impedances-wall-space-charge">Total Impedances (Wall + Space Charge)</h3>
+<ul>
+<li><code>ZLongTotal</code>, <code>ZTransTotal</code></li>
+<li><code>ZDipXTotal</code>, <code>ZDipYTotal</code></li>
+<li><code>ZQuadXTotal</code>, <code>ZQuadYTotal</code></li>
+</ul>
+<h3 id="surface-impedances">Surface Impedances</h3>
+<ul>
+<li><code>ZLongSurf</code>, <code>ZTransSurf</code></li>
+</ul>
+<h3 id="space-charge-impedances">Space Charge Impedances</h3>
+<ul>
+<li><code>ZLongDSC</code>, <code>ZLongISC</code> — Direct/Indirect longitudinal</li>
+<li><code>ZTransDSC</code>, <code>ZTransISC</code> — Direct/Indirect transverse</li>
+</ul>
+<hr />
 <h2 id="writing-new-tests">Writing New Tests</h2>
 <h3 id="basic-test-structure">Basic Test Structure</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">Unit tests for MyModule class.</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add parent directory to path</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>sys.path.insert(<span class="dv">0</span>, os.path.dirname(os.path.dirname(os.path.abspath(<span class="va">__file__</span>))))</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.mymodule <span class="im">import</span> MyClass</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestMyClassInitialization(unittest.TestCase):</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Test MyClass initialization.&quot;&quot;&quot;</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> setUp(<span class="va">self</span>):</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Set up test fixtures.&quot;&quot;&quot;</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.instance <span class="op">=</span> MyClass()</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_default_values(<span class="va">self</span>):</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Test that default values are correct.&quot;&quot;&quot;</span></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(<span class="va">self</span>.instance.value, expected_value)</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_invalid_input_raises_error(<span class="va">self</span>):</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Test that invalid input raises appropriate error.&quot;&quot;&quot;</span></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="va">self</span>.assertRaises(<span class="pp">ValueError</span>):</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>            MyClass(invalid_param<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    unittest.main(verbosity<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">Unit tests for MyModule class.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add parent directory to path</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>sys.path.insert(<span class="dv">0</span>, os.path.dirname(os.path.dirname(os.path.abspath(<span class="va">__file__</span>))))</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall.mymodule <span class="im">import</span> MyClass</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestMyClassInitialization(unittest.TestCase):</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Test MyClass initialization.&quot;&quot;&quot;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> setUp(<span class="va">self</span>):</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Set up test fixtures.&quot;&quot;&quot;</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.instance <span class="op">=</span> MyClass()</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_default_values(<span class="va">self</span>):</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Test that default values are correct.&quot;&quot;&quot;</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(<span class="va">self</span>.instance.value, expected_value)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_invalid_input_raises_error(<span class="va">self</span>):</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Test that invalid input raises appropriate error.&quot;&quot;&quot;</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="va">self</span>.assertRaises(<span class="pp">ValueError</span>):</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>            MyClass(invalid_param<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    unittest.main(verbosity<span class="op">=</span><span class="dv">2</span>)</span></code></pre></div>
 <h3 id="naming-conventions">Naming Conventions</h3>
 <ul>
 <li>Test files: <code>test_&lt;module_name&gt;.py</code></li>
@@ -455,8 +468,8 @@ OK</code></pre>
 <h3 id="log-files">Log Files</h3>
 <p>Logs are saved to <code>tests/logs/</code> with timestamps:</p>
 <pre><code>tests/logs/
-├── tlwall_test_20250106_143025.log
-├── deep_test_newCV_20250106_150312.log
+├── tlwall_test_20251218_143025.log
+├── deep_test_newCV_20251218_150312.log
 └── ...</code></pre>
 <h3 id="input-files">Input Files</h3>
 <p>Test configuration files are in <code>tests/input/</code>:</p>
@@ -470,7 +483,14 @@ OK</code></pre>
 <h3 id="exit-codes">Exit Codes</h3>
 <p>Both test runners return appropriate exit codes: - <code>0</code>: All tests passed - <code>1</code>: One or more tests failed</p>
 <hr />
-<p><a href="../README.html">← Back to README</a> | <a href="API.html">API Documentation</a></p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../README.html">README.md</a> — Main project documentation</li>
+<li><a href="RUN_TESTS_BASE.html">RUN_TESTS_BASE.md</a> — Base test runner documentation</li>
+<li><a href="../tests/README.html">tests/README.md</a> — Tests directory overview</li>
+</ul>
+<hr />
+<p><em>Last updated: December 2025</em></p>
 
     </main>
 </div>

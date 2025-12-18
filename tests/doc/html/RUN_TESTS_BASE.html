@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>RUN TESTS BASE</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="RUN_TESTS_DEEP_README.html">Deep Test Runner</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#run_tests_base.html">RUN_TESTS_BASE.md</a>
+<ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#command-line-arguments">Command-Line Arguments</a>
+<ul>
+<li><a href="#examples">Examples</a></li>
+</ul></li>
+<li><a href="#configuration-class">Configuration Class</a>
+<ul>
+<li><a href="#modifying-defaults">Modifying Defaults</a></li>
+</ul></li>
+<li><a href="#programmatic-usage">Programmatic Usage</a></li>
+<li><a href="#log-files">Log Files</a>
+<ul>
+<li><a href="#log-location">Log Location</a></li>
+<li><a href="#log-format">Log Format</a></li>
+<li><a href="#verbosity-levels">Verbosity Levels</a></li>
+</ul></li>
+<li><a href="#test-discovery">Test Discovery</a>
+<ul>
+<li><a href="#discovery-examples">Discovery Examples</a></li>
+</ul></li>
+<li><a href="#exit-codes">Exit Codes</a>
+<ul>
+<li><a href="#using-exit-codes-in-scripts">Using Exit Codes in Scripts</a></li>
+</ul></li>
+<li><a href="#test-modules-reference">Test Modules Reference</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#import-errors">Import Errors</a></li>
+<li><a href="#permission-errors">Permission Errors</a></li>
+<li><a href="#test-discovery-issues">Test Discovery Issues</a></li>
+</ul></li>
+<li><a href="#integration-with-cicd">Integration with CI/CD</a>
+<ul>
+<li><a href="#github-actions-example">GitHub Actions Example</a></li>
+<li><a href="#gitlab-ci-example">GitLab CI Example</a></li>
+</ul></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">RUN TESTS BASE</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="run_tests_base.md">RUN_TESTS_BASE.md</h1>
+<p><strong>Base Test Runner Documentation</strong></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> — tatiana.rijoff@gmail.com<br />
+</li>
+<li><strong>Carlo Zannini</strong> — carlo.zannini@cern.ch</li>
+</ul>
+<hr />
+<h2 id="overview">Overview</h2>
+<p><code>run_tests_base.py</code> is the main test runner for PyTlWall unit tests. It discovers and executes test files, provides logging, and reports results.</p>
+<p><strong>Location:</strong> <code>tests/run_tests_base.py</code></p>
+<hr />
+<h2 id="quick-start">Quick Start</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all tests with default settings</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run specific modules</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py <span class="at">--modules</span> test_beam.py test_layer.py</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verbose output</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py <span class="at">--verbosity</span> 3</span></code></pre></div>
+<hr />
+<h2 id="command-line-arguments">Command-Line Arguments</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Argument</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--modules</code></td>
+<td>Specific test modules to run</td>
+<td>All <code>test*.py</code></td>
+</tr>
+<tr class="even">
+<td><code>--test_dir</code></td>
+<td>Directory containing tests</td>
+<td><code>./tests/</code></td>
+</tr>
+<tr class="odd">
+<td><code>--logdir</code></td>
+<td>Directory for log files</td>
+<td><code>./tests/logs/</code></td>
+</tr>
+<tr class="even">
+<td><code>--logfile</code></td>
+<td>Base name for log file</td>
+<td><code>tlwall_test</code></td>
+</tr>
+<tr class="odd">
+<td><code>--pattern</code></td>
+<td>Pattern for test discovery</td>
+<td><code>test*.py</code></td>
+</tr>
+<tr class="even">
+<td><code>--verbosity</code></td>
+<td>Output verbosity (1-3)</td>
+<td><code>2</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run only beam and layer tests</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py <span class="at">--modules</span> test_beam.py test_layer.py</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum verbosity</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py <span class="at">--verbosity</span> 3</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom log location</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py <span class="at">--logdir</span> ./my_logs/ <span class="at">--logfile</span> my_test_run</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests matching pattern</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py <span class="at">--pattern</span> <span class="st">&quot;test_cfg*.py&quot;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Combined options</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py <span class="dt">\</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">--modules</span> test_beam.py test_tlwall.py <span class="dt">\</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">--verbosity</span> 3 <span class="dt">\</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">--logdir</span> ./detailed_logs/</span></code></pre></div>
+<hr />
+<h2 id="configuration-class">Configuration Class</h2>
+<p>The <code>TestConfig</code> class in <code>run_tests_base.py</code> provides default settings:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestConfig:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;Configuration for test execution.&quot;&quot;&quot;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Directory containing test files</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    TEST_DIR: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;./tests/&quot;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Directory for log files</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    LOG_DIR: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;./tests/logs/&quot;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Base name for log files (timestamp added automatically)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    LOG_BASENAME: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;tlwall_test&quot;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Pattern for test file discovery</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    PATTERN: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;test*.py&quot;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Output verbosity: 1=</span><span class="al">WARNING</span><span class="co">, 2=INFO, 3=DEBUG</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    VERBOSITY: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Specific modules to run (None = all matching pattern)</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    SELECTED_MODULES: Optional[List[<span class="bu">str</span>]] <span class="op">=</span> <span class="va">None</span></span></code></pre></div>
+<h3 id="modifying-defaults">Modifying Defaults</h3>
+<p>Edit <code>run_tests_base.py</code> to change defaults:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestConfig:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    TEST_DIR: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;./tests/&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    LOG_DIR: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;./tests/logs/&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    LOG_BASENAME: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;tlwall_test&quot;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    PATTERN: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;test*.py&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    VERBOSITY: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Run only specific modules by default</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    SELECTED_MODULES <span class="op">=</span> [<span class="st">&quot;test_beam.py&quot;</span>, <span class="st">&quot;test_layer.py&quot;</span>, <span class="st">&quot;test_tlwall.py&quot;</span>]</span></code></pre></div>
+<hr />
+<h2 id="programmatic-usage">Programmatic Usage</h2>
+<p>Use the test runner from Python code:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tests.run_tests_base <span class="im">import</span> run_selected_unittests_with_log, TestConfig</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 1: Use TestConfig defaults</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>success <span class="op">=</span> run_selected_unittests_with_log(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    test_dir<span class="op">=</span>TestConfig.TEST_DIR,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    logdir<span class="op">=</span>TestConfig.LOG_DIR,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    logfile<span class="op">=</span>TestConfig.LOG_BASENAME,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    pattern<span class="op">=</span>TestConfig.PATTERN,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span>TestConfig.VERBOSITY,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    selected_modules<span class="op">=</span>TestConfig.SELECTED_MODULES,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Method 2: Custom parameters</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>success <span class="op">=</span> run_selected_unittests_with_log(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    test_dir<span class="op">=</span><span class="st">&quot;./tests/&quot;</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    logdir<span class="op">=</span><span class="st">&quot;./custom_logs/&quot;</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    logfile<span class="op">=</span><span class="st">&quot;my_tests&quot;</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    pattern<span class="op">=</span><span class="st">&quot;test_cfg*.py&quot;</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    selected_modules<span class="op">=</span>[<span class="st">&quot;test_cfg.py&quot;</span>, <span class="st">&quot;test_cfgio_realistic.py&quot;</span>],</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Tests </span><span class="sc">{</span><span class="st">&#39;passed&#39;</span> <span class="cf">if</span> success <span class="cf">else</span> <span class="st">&#39;failed&#39;</span><span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="log-files">Log Files</h2>
+<h3 id="log-location">Log Location</h3>
+<p>Logs are saved to <code>tests/logs/</code> with automatic timestamps:</p>
+<pre><code>tests/logs/
+├── tlwall_test_20251218_143025.log
+├── tlwall_test_20251218_150312.log
+└── ...</code></pre>
+<h3 id="log-format">Log Format</h3>
+<pre><code>2025-12-18 14:30:25 - INFO - Starting test run
+2025-12-18 14:30:25 - INFO - Test directory: ./tests/
+2025-12-18 14:30:25 - INFO - Modules: test_beam.py, test_layer.py
+2025-12-18 14:30:25 - INFO - Running: test_beam.TestBeamInitialization.test_default_initialization
+2025-12-18 14:30:25 - INFO - PASS: test_default_initialization
+...
+2025-12-18 14:30:28 - INFO - Tests run: 125, Failures: 0, Errors: 0
+2025-12-18 14:30:28 - INFO - Test run completed: PASSED</code></pre>
+<h3 id="verbosity-levels">Verbosity Levels</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Description</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>1</code></td>
+<td>WARNING</td>
+<td>Only failures and errors</td>
+</tr>
+<tr class="even">
+<td><code>2</code></td>
+<td>INFO</td>
+<td>Test names and results</td>
+</tr>
+<tr class="odd">
+<td><code>3</code></td>
+<td>DEBUG</td>
+<td>Detailed execution trace</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="test-discovery">Test Discovery</h2>
+<p>The runner uses Python’s <code>unittest</code> discovery mechanism:</p>
+<ol type="1">
+<li>Scans <code>test_dir</code> for files matching <code>pattern</code></li>
+<li>If <code>selected_modules</code> is set, filters to those modules</li>
+<li>Loads test cases from each module</li>
+<li>Executes tests and collects results</li>
+</ol>
+<h3 id="discovery-examples">Discovery Examples</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Discover all test*.py files</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="st">&quot;test*.py&quot;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Discover only cfg-related tests</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="st">&quot;test_cfg*.py&quot;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Discover tests starting with specific prefix</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>pattern <span class="op">=</span> <span class="st">&quot;test_beam*.py&quot;</span></span></code></pre></div>
+<hr />
+<h2 id="exit-codes">Exit Codes</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>0</code></td>
+<td>All tests passed</td>
+</tr>
+<tr class="even">
+<td><code>1</code></td>
+<td>One or more tests failed or errored</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-exit-codes-in-scripts">Using Exit Codes in Scripts</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests and check result</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$?</span> <span class="ot">-eq</span> 0 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;All tests passed!&quot;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;Some tests failed!&quot;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div>
+<hr />
+<h2 id="test-modules-reference">Test Modules Reference</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Tests</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_beam.py</code></td>
+<td>~25</td>
+<td>Beam class and relativistic kinematics</td>
+</tr>
+<tr class="even">
+<td><code>test_chamber.py</code></td>
+<td>~20</td>
+<td>Chamber geometry and Yokoya factors</td>
+</tr>
+<tr class="odd">
+<td><code>test_layer.py</code></td>
+<td>~40</td>
+<td>Layer material properties</td>
+</tr>
+<tr class="even">
+<td><code>test_freq.py</code></td>
+<td>~30</td>
+<td>Frequency array generation</td>
+</tr>
+<tr class="odd">
+<td><code>test_tlwall.py</code></td>
+<td>~50</td>
+<td>Core impedance calculations</td>
+</tr>
+<tr class="even">
+<td><code>test_cfg.py</code></td>
+<td>~25</td>
+<td>Configuration file I/O</td>
+</tr>
+<tr class="odd">
+<td><code>test_cfgio_realistic.py</code></td>
+<td>~20</td>
+<td>Real .cfg file tests</td>
+</tr>
+<tr class="even">
+<td><code>test_cfgio_special_cases.py</code></td>
+<td>~10</td>
+<td>Edge cases</td>
+</tr>
+<tr class="odd">
+<td><code>test_io_util.py</code></td>
+<td>~30</td>
+<td>I/O utilities</td>
+</tr>
+<tr class="even">
+<td><code>test_plot.py</code></td>
+<td>~5</td>
+<td>Plotting functions</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="import-errors">Import Errors</h3>
+<p>If tests fail with import errors:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure pytlwall is installed</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> .</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or add to PYTHONPATH</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYTHONPATH</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${PYTHONPATH}</span><span class="st">:</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">&quot;</span></span></code></pre></div>
+<h3 id="permission-errors">Permission Errors</h3>
+<p>If logs can’t be written:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create log directory</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> tests/logs</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check permissions</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 tests/logs</span></code></pre></div>
+<h3 id="test-discovery-issues">Test Discovery Issues</h3>
+<p>If tests aren’t found:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify test files exist</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> tests/test<span class="pp">*</span>.py</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check pattern matches</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">&quot;import glob; print(glob.glob(&#39;tests/test*.py&#39;))&quot;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run discovery manually</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> unittest discover <span class="at">-s</span> tests/ <span class="at">-p</span> <span class="st">&quot;test*.py&quot;</span> <span class="at">-v</span></span></code></pre></div>
+<hr />
+<h2 id="integration-with-cicd">Integration with CI/CD</h2>
+<h3 id="github-actions-example">GitHub Actions Example</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Tests</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">push</span><span class="kw">,</span><span class="at"> pull_request</span><span class="kw">]</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">test</span><span class="kw">:</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v3</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/setup-python@v4</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">python-version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;3.11&#39;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> pip install -e .</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">run</span><span class="kw">:</span><span class="at"> python tests/run_tests_base.py</span></span></code></pre></div>
+<h3 id="gitlab-ci-example">GitLab CI Example</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test</span><span class="kw">:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">stage</span><span class="kw">:</span><span class="at"> test</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">script</span><span class="kw">:</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> pip install -e .</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> python tests/run_tests_base.py</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">artifacts</span><span class="kw">:</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">paths</span><span class="kw">:</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> tests/logs/</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">when</span><span class="kw">:</span><span class="at"> always</span></span></code></pre></div>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../tests/README.html">README.md</a> — Tests overview</li>
+<li><a href="TESTING.html">TESTING.md</a> — Full testing documentation</li>
+<li><a href="../tests/run_tests_deep.py">run_tests_deep.py</a> — Deep test runner</li>
+</ul>
+<hr />
+<p><em>Last updated: December 2025</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

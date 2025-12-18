@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>tests README</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="RUN_TESTS_DEEP_README.html">Deep Test Runner</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#pytlwall-tests">PyTlWall Tests</a>
+<ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#test-structure">Test Structure</a></li>
+<li><a href="#test-levels">Test Levels</a>
+<ul>
+<li><a href="#unit-tests">Unit Tests</a></li>
+<li><a href="#deep-tests">Deep Tests</a></li>
+</ul></li>
+<li><a href="#test-modules">Test Modules</a></li>
+<li><a href="#running-individual-tests">Running Individual Tests</a></li>
+<li><a href="#test-configuration-files">Test Configuration Files</a></li>
+<li><a href="#output-and-logs">Output and Logs</a></li>
+<li><a href="#exit-codes">Exit Codes</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">tests README</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="pytlwall-tests">PyTlWall Tests</h1>
+<p><strong>Test suite for the PyTlWall transmission-line wall impedance calculator</strong></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> — tatiana.rijoff@gmail.com<br />
+</li>
+<li><strong>Carlo Zannini</strong> — carlo.zannini@cern.ch</li>
+</ul>
+<hr />
+<h2 id="quick-start">Quick Start</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all unit tests</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run specific test module</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/test_beam.py <span class="at">-v</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run deep comparison tests (generates output for manual analysis)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py</span></code></pre></div>
+<hr />
+<h2 id="test-structure">Test Structure</h2>
+<pre><code>tests/
+├── README.md                  # This file
+├── run_tests_base.py          # Base test runner (fast unit tests)
+├── run_tests_deep.py          # Deep test runner (reference comparison)
+│
+├── input/                     # Test input files (.cfg, .dat, .txt)
+├── output/                    # Generated test outputs
+├── logs/                      # Test execution logs
+├── deep_test/                 # Deep test configurations and references
+│
+├── test_beam.py               # Beam class tests
+├── test_chamber.py            # Chamber class tests
+├── test_layer.py              # Layer class tests
+├── test_freq.py               # Frequencies class tests
+├── test_tlwall.py             # TlWall (impedance calc) tests
+├── test_cfg.py                # CfgIo class tests
+├── test_cfgio_realistic.py    # CfgIo tests with real .cfg files
+├── test_cfgio_special_cases.py # CfgIo edge cases
+├── test_io_util.py            # I/O utilities tests
+└── test_plot.py               # Plotting utilities tests</code></pre>
+<hr />
+<h2 id="test-levels">Test Levels</h2>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 25%" />
+<col style="width: 29%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Script</th>
+<th>Purpose</th>
+<th>Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Unit Tests</strong></td>
+<td><code>run_tests_base.py</code></td>
+<td>Automated pass/fail validation</td>
+<td>Fast (~seconds)</td>
+</tr>
+<tr class="even">
+<td><strong>Deep Tests</strong></td>
+<td><code>run_tests_deep.py</code></td>
+<td>Comparison with Wake2D/IW2D references</td>
+<td>Slow (~minutes)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="unit-tests">Unit Tests</h3>
+<p>Unit tests verify individual components work correctly:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all unit tests with logging</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run specific modules</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py <span class="at">--modules</span> test_beam.py test_layer.py</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verbose output</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_base.py <span class="at">--verbosity</span> 3</span></code></pre></div>
+<h3 id="deep-tests">Deep Tests</h3>
+<p>Deep tests compare PyTlWall output against reference solvers (Wake2D, IW2D):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all deep tests</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run specific test cases</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--subdirs</span> newCV</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare with specific reference</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--cfg-pattern</span> <span class="st">&quot;*Wake2D.cfg&quot;</span></span></code></pre></div>
+<blockquote>
+<p><strong>Note:</strong> Deep tests generate output files for manual analysis. Percentage differences can be misleading for very small values.</p>
+</blockquote>
+<hr />
+<h2 id="test-modules">Test Modules</h2>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 36%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Description</th>
+<th>Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>test_beam.py</code></td>
+<td>Relativistic beam kinematics</td>
+<td><a href="doc/testing/test_beam.html">test_beam.md</a></td>
+</tr>
+<tr class="even">
+<td><code>test_chamber.py</code></td>
+<td>Chamber geometry and Yokoya factors</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><code>test_layer.py</code></td>
+<td>Material properties and surface impedance</td>
+<td><a href="doc/testing/test_layer.html">test_layer.md</a></td>
+</tr>
+<tr class="even">
+<td><code>test_freq.py</code></td>
+<td>Frequency array generation</td>
+<td><a href="doc/testing/test_freq.html">test_freq.md</a></td>
+</tr>
+<tr class="odd">
+<td><code>test_tlwall.py</code></td>
+<td>Core impedance calculations</td>
+<td><a href="doc/testing/test_tlwall.html">test_tlwall.md</a></td>
+</tr>
+<tr class="even">
+<td><code>test_cfg.py</code></td>
+<td>Configuration file I/O</td>
+<td><a href="doc/testing/test_cfg.html">test_cfg.md</a></td>
+</tr>
+<tr class="odd">
+<td><code>test_cfgio_realistic.py</code></td>
+<td>Real .cfg file tests</td>
+<td><a href="doc/testing/test_cfgio_realistic.html">test_cfgio_realistic.md</a></td>
+</tr>
+<tr class="even">
+<td><code>test_cfgio_special_cases.py</code></td>
+<td>Edge cases (inf thickness, etc.)</td>
+<td><a href="doc/testing/test_cfgio_special_cases.html">test_cfgio_special_cases.md</a></td>
+</tr>
+<tr class="odd">
+<td><code>test_io_util.py</code></td>
+<td>File I/O utilities</td>
+<td><a href="doc/testing/test_io_util.html">test_io_util.md</a></td>
+</tr>
+<tr class="even">
+<td><code>test_plot.py</code></td>
+<td>Plotting functions</td>
+<td><a href="doc/testing/test_plot.html">test_plot.md</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="running-individual-tests">Running Individual Tests</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run single test file</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/test_beam.py <span class="at">-v</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run specific test class</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> unittest tests.test_beam.TestBeamInitialization</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run specific test method</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> unittest tests.test_beam.TestBeamInitialization.test_default_initialization</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Discover and run tests matching pattern</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> unittest discover <span class="at">-s</span> tests/ <span class="at">-p</span> <span class="st">&quot;test_cfg*.py&quot;</span></span></code></pre></div>
+<hr />
+<h2 id="test-configuration-files">Test Configuration Files</h2>
+<p>Test input files are in <code>tests/input/</code>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>one_layer.cfg</code></td>
+<td>Single layer elliptical chamber</td>
+</tr>
+<tr class="even">
+<td><code>two_layers.cfg</code></td>
+<td>Multi-layer structure</td>
+</tr>
+<tr class="odd">
+<td><code>rectangular_chamber.cfg</code></td>
+<td>Rectangular chamber</td>
+</tr>
+<tr class="even">
+<td><code>test_round.cfg</code></td>
+<td>Circular chamber with <code>:</code> delimiter</td>
+</tr>
+<tr class="odd">
+<td><code>test001.cfg</code></td>
+<td>Basic test configuration</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="output-and-logs">Output and Logs</h2>
+<ul>
+<li><strong>Logs:</strong> <code>tests/logs/tlwall_test_YYYYMMDD_HHMMSS.log</code></li>
+<li><strong>Unit test output:</strong> <code>tests/output/</code></li>
+<li><strong>Deep test output:</strong> <code>tests/deep_test/&lt;case&gt;/output/</code></li>
+</ul>
+<hr />
+<h2 id="exit-codes">Exit Codes</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>0</code></td>
+<td>All tests passed</td>
+</tr>
+<tr class="even">
+<td><code>1</code></td>
+<td>One or more tests failed</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="../doc/TESTING.html">TESTING.md</a> — Full testing documentation</li>
+<li><a href="../doc/RUN_TESTS_BASE.html">RUN_TESTS_BASE.md</a> — Base test runner documentation</li>
+<li><a href="../README.html">README.md</a> — Main project documentation</li>
+</ul>
+<hr />
+<p><em>Last updated: December 2025</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

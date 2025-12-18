@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>RUN TESTS DEEP README</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="RUN_TESTS_DEEP_README.html">Deep Test Runner</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#run-tests-deep---documentation">Run Tests Deep - Documentation</a>
+<ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#installation">Installation</a>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+</ul></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#command-line-usage">Command Line Usage</a>
+<ul>
+<li><a href="#options">Options</a></li>
+<li><a href="#pattern-matching">Pattern Matching</a></li>
+</ul></li>
+<li><a href="#directory-structure">Directory Structure</a>
+<ul>
+<li><a href="#test-directories">Test Directories</a></li>
+<li><a href="#test-directory-layout">Test Directory Layout</a></li>
+<li><a href="#reference-data-directories">Reference Data Directories</a></li>
+</ul></li>
+<li><a href="#configuration-files">Configuration Files</a>
+<ul>
+<li><a href="#wake2d-configuration-wake2d.cfg">Wake2D Configuration (<code>*Wake2D.cfg</code>)</a></li>
+<li><a href="#oldtlwall-configuration-oldtlwall.cfg">OldTLWall Configuration (<code>*OldTLWall.cfg</code>)</a></li>
+<li><a href="#example-configuration">Example Configuration</a></li>
+</ul></li>
+<li><a href="#output-files">Output Files</a>
+<ul>
+<li><a href="#generated-impedance-files">Generated Impedance Files</a></li>
+<li><a href="#comparison-excel-files">Comparison Excel Files</a></li>
+<li><a href="#plot-files">Plot Files</a></li>
+</ul></li>
+<li><a href="#impedance-types">Impedance Types</a>
+<ul>
+<li><a href="#base-impedances-wall-contribution-1">Base Impedances (Wall Contribution)</a></li>
+<li><a href="#total-impedances-wall-space-charge-1">Total Impedances (Wall + Space Charge)</a></li>
+<li><a href="#surface-impedances-1">Surface Impedances</a></li>
+<li><a href="#space-charge-impedances-1">Space Charge Impedances</a></li>
+<li><a href="#iw2d-validation-notes">IW2D Validation Notes</a></li>
+</ul></li>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#example-1-run-all-tests">Example 1: Run All Tests</a></li>
+<li><a href="#example-2-wake2diw2d-comparison">Example 2: Wake2D/IW2D Comparison</a></li>
+<li><a href="#example-3-single-directory-test">Example 3: Single Directory Test</a></li>
+<li><a href="#example-4-multiple-directories">Example 4: Multiple Directories</a></li>
+<li><a href="#example-5-fast-test-no-space-charge">Example 5: Fast Test (No Space Charge)</a></li>
+<li><a href="#example-6-verbose-mode">Example 6: Verbose Mode</a></li>
+<li><a href="#example-7-oldtlwall-comparison">Example 7: OldTLWall Comparison</a></li>
+</ul></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#common-errors">Common Errors</a></li>
+<li><a href="#debugging-tips">Debugging Tips</a></li>
+</ul></li>
+<li><a href="#programmatic-usage">Programmatic Usage</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">RUN TESTS DEEP README</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="run-tests-deep---documentation">Run Tests Deep - Documentation</h1>
+<p><strong>Deep Test Runner for PyTlWall</strong></p>
+<p>Comprehensive testing tool that compares PyTlWall impedance calculations against reference data from Wake2D/IW2D and OldTLWall.</p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> — tatiana.rijoff@gmail.com</li>
+<li><strong>Carlo Zannini</strong> — carlo.zannini@cern.ch</li>
+</ul>
+<p><em>Copyright: CERN</em></p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#command-line-usage">Command Line Usage</a></li>
+<li><a href="#directory-structure">Directory Structure</a></li>
+<li><a href="#configuration-files">Configuration Files</a></li>
+<li><a href="#output-files">Output Files</a></li>
+<li><a href="#impedance-types">Impedance Types</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+<hr />
+<h2 id="overview">Overview</h2>
+<p><code>run_tests_deep.py</code> is a validation tool that:</p>
+<ol type="1">
+<li><strong>Reads</strong> configuration files (<code>.cfg</code>) for test cases</li>
+<li><strong>Computes</strong> impedances using PyTlWall</li>
+<li><strong>Compares</strong> results with reference data (Wake2D/IW2D or OldTLWall)</li>
+<li><strong>Generates</strong> comparison reports (Excel files and plots)</li>
+</ol>
+<p>This tool is essential for validating PyTlWall against established impedance calculation codes.</p>
+<blockquote>
+<p><strong>Note:</strong> Deep tests do NOT perform automatic pass/fail validation. Percentage differences can be misleading for very small values. Results require expert analysis.</p>
+</blockquote>
+<hr />
+<h2 id="installation">Installation</h2>
+<p>The script is located in the <code>tests/</code> directory of PyTlWall:</p>
+<pre><code>pytlwall/
+├── pytlwall/                # Main package
+├── tests/
+│   ├── run_tests_deep.py    # ← This script
+│   └── deep_test/           # Test data directories
+│       ├── NewCV/
+│       ├── RoundChamber/
+│       ├── RoundChamberLowBeta/
+│       └── Ti_Cer_Cu_Vac/
+└── doc/</code></pre>
+<h3 id="requirements">Requirements</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install numpy matplotlib pandas openpyxl</span></code></pre></div>
+<hr />
+<h2 id="quick-start">Quick Start</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate to pytlwall directory</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pytlwall</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all deep tests</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests comparing with Wake2D/IW2D</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--cfg-pattern</span> <span class="st">&quot;*Wake2D.cfg&quot;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Run tests comparing with OldTLWall</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--cfg-pattern</span> <span class="st">&quot;*OldTLWall.cfg&quot;</span></span></code></pre></div>
+<hr />
+<h2 id="command-line-usage">Command Line Usage</h2>
+<pre><code>python run_tests_deep.py [OPTIONS]</code></pre>
+<h3 id="options">Options</h3>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 25%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Short</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--base-dir</code></td>
+<td></td>
+<td>Base directory for deep tests (default: <code>tests/deep_test</code>)</td>
+</tr>
+<tr class="even">
+<td><code>--subdirs</code></td>
+<td></td>
+<td>Specific subdirectories to test (space-separated)</td>
+</tr>
+<tr class="odd">
+<td><code>--cfg-pattern</code></td>
+<td></td>
+<td>Glob pattern for config files (e.g., <code>*Wake2D.cfg</code>)</td>
+</tr>
+<tr class="even">
+<td><code>--no-space-charge</code></td>
+<td></td>
+<td>Skip space charge impedance calculations</td>
+</tr>
+<tr class="odd">
+<td><code>--verbosity</code></td>
+<td><code>-v</code></td>
+<td>Verbosity level (1=WARNING, 2=INFO, 3=DEBUG)</td>
+</tr>
+<tr class="even">
+<td><code>--help</code></td>
+<td><code>-h</code></td>
+<td>Show help message</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pattern-matching">Pattern Matching</h3>
+<p>The <code>--cfg-pattern</code> option uses glob patterns:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Pattern</th>
+<th>Matches</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>*Wake2D.cfg</code></td>
+<td>Any file ending with <code>Wake2D.cfg</code></td>
+</tr>
+<tr class="even">
+<td><code>*OldTLWall.cfg</code></td>
+<td>Any file ending with <code>OldTLWall.cfg</code></td>
+</tr>
+<tr class="odd">
+<td><code>*.cfg</code></td>
+<td>All <code>.cfg</code> files</td>
+</tr>
+<tr class="even">
+<td><code>LHC*.cfg</code></td>
+<td>Files starting with <code>LHC</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="directory-structure">Directory Structure</h2>
+<h3 id="test-directories">Test Directories</h3>
+<p>The following test cases are available:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Directory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>NewCV/</code></td>
+<td>New CV (Constant Voltage) test case</td>
+</tr>
+<tr class="even">
+<td><code>RoundChamber/</code></td>
+<td>Circular chamber test</td>
+</tr>
+<tr class="odd">
+<td><code>RoundChamberLowBeta/</code></td>
+<td>Circular chamber with low beta</td>
+</tr>
+<tr class="even">
+<td><code>Ti_Cer_Cu_Vac/</code></td>
+<td>Titanium-Ceramic-Copper-Vacuum multilayer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-directory-layout">Test Directory Layout</h3>
+<pre><code>tests/deep_test/
+├── NewCV/                        # Test case directory
+│   ├── *_Wake2D.cfg              # Config for Wake2D/IW2D comparison
+│   ├── *_OldTLWall.cfg           # Config for OldTLWall comparison
+│   ├── Wake2D/                   # Wake2D/IW2D reference data
+│   │   ├── ZlongW*.dat
+│   │   ├── ZtransW*.dat
+│   │   ├── ZxdipW*.dat
+│   │   └── ZxquadW*.dat
+│   ├── OldTLWall/                # OldTLWall reference data
+│   │   ├── ZLong.txt
+│   │   ├── ZTrans.txt
+│   │   ├── ZDip.txt
+│   │   └── ZQuad.txt
+│   ├── output/                   # Generated output (created by script)
+│   │   ├── ZLong.txt
+│   │   ├── ZTrans.txt
+│   │   ├── NewTLWallvsWake2D_ZLong.xlsx
+│   │   └── ...
+│   └── img/                      # Generated plots (created by script)
+│       ├── ZLong.png
+│       ├── WakeVsNew_ZLong.png
+│       └── OldVsNew_ZLong.png
+├── RoundChamber/
+│   └── ...
+├── RoundChamberLowBeta/
+│   └── ...
+└── Ti_Cer_Cu_Vac/
+    └── ...</code></pre>
+<h3 id="reference-data-directories">Reference Data Directories</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Directory</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Wake2D/</code></td>
+<td>Reference data from Wake2D/IW2D code</td>
+</tr>
+<tr class="even">
+<td><code>OldTLWall/</code></td>
+<td>Reference data from original TLWall</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="configuration-files">Configuration Files</h2>
+<p>Configuration files (<code>.cfg</code>) define the test parameters. Two types are typically used:</p>
+<h3 id="wake2d-configuration-wake2d.cfg">Wake2D Configuration (<code>*Wake2D.cfg</code>)</h3>
+<p>Used when comparing against Wake2D/IW2D reference data. The configuration should match the Wake2D simulation parameters.</p>
+<h3 id="oldtlwall-configuration-oldtlwall.cfg">OldTLWall Configuration (<code>*OldTLWall.cfg</code>)</h3>
+<p>Used when comparing against the original TLWall code output.</p>
+<h3 id="example-configuration">Example Configuration</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[path_info]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">main_path </span><span class="ot">=</span><span class="st"> tests/deep_test/NewCV</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">[frequency_file]</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="dt">filename </span><span class="ot">=</span><span class="st"> frequencies.dat</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="dt">separator </span><span class="ot">=</span><span class="st"> whitespace</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="dt">freq_col </span><span class="ot">=</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="dt">skip_rows </span><span class="ot">=</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="kw">[base_info]</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="dt">component_name </span><span class="ot">=</span><span class="st"> TestChamber</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="dt">chamber_shape </span><span class="ot">=</span><span class="st"> CIRCULAR</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_radius_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.025</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="dt">pipe_len_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">1.0</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="dt">betax </span><span class="ot">=</span><span class="st"> </span><span class="fl">100.0</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="dt">betay </span><span class="ot">=</span><span class="st"> </span><span class="fl">100.0</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="kw">[beam_info]</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="dt">gammarel </span><span class="ot">=</span><span class="st"> </span><span class="fl">2.5</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="dt">test_beam_shift </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.001</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="kw">[layers_info]</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="dt">nbr_layers </span><span class="ot">=</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="kw">[layer0]</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="dt">type </span><span class="ot">=</span><span class="st"> CW</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="dt">thick_m </span><span class="ot">=</span><span class="st"> </span><span class="fl">0.002</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="dt">sigmaDC </span><span class="ot">=</span><span class="st"> </span><span class="fl">1.4e6</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="dt">epsr </span><span class="ot">=</span><span class="st"> </span><span class="fl">1.0</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="kw">[layer1]</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="dt">type </span><span class="ot">=</span><span class="st"> CW</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="dt">thick_m </span><span class="ot">=</span><span class="st"> inf</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="dt">sigmaDC </span><span class="ot">=</span><span class="st"> </span><span class="fl">1.0e6</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="kw">[boundary]</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="dt">type </span><span class="ot">=</span><span class="st"> PEC</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="kw">[test_config]</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="dt">ref_long_file </span><span class="ot">=</span><span class="st"> Wake2D/ZlongW.dat</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="dt">ref_long_skip_rows </span><span class="ot">=</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<hr />
+<h2 id="output-files">Output Files</h2>
+<h3 id="generated-impedance-files">Generated Impedance Files</h3>
+<p>Located in <code>output/</code> subdirectory:</p>
+<h4 id="base-impedances-wall-contribution">Base Impedances (Wall Contribution)</h4>
+<table>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ZLong.txt</code></td>
+<td>Longitudinal impedance</td>
+<td>Ω</td>
+</tr>
+<tr class="even">
+<td><code>ZTrans.txt</code></td>
+<td>Transverse impedance</td>
+<td>Ω/m</td>
+</tr>
+<tr class="odd">
+<td><code>ZDipX.txt</code></td>
+<td>Horizontal dipolar impedance</td>
+<td>Ω/m</td>
+</tr>
+<tr class="even">
+<td><code>ZDipY.txt</code></td>
+<td>Vertical dipolar impedance</td>
+<td>Ω/m</td>
+</tr>
+<tr class="odd">
+<td><code>ZQuadX.txt</code></td>
+<td>Horizontal quadrupolar impedance</td>
+<td>Ω/m</td>
+</tr>
+<tr class="even">
+<td><code>ZQuadY.txt</code></td>
+<td>Vertical quadrupolar impedance</td>
+<td>Ω/m</td>
+</tr>
+</tbody>
+</table>
+<h4 id="total-impedances-wall-space-charge">Total Impedances (Wall + Space Charge)</h4>
+<table>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ZLongTotal.txt</code></td>
+<td>Total longitudinal impedance</td>
+<td>Ω</td>
+</tr>
+<tr class="even">
+<td><code>ZTransTotal.txt</code></td>
+<td>Total transverse impedance</td>
+<td>Ω/m</td>
+</tr>
+<tr class="odd">
+<td><code>ZDipXTotal.txt</code></td>
+<td>Total horizontal dipolar</td>
+<td>Ω/m</td>
+</tr>
+<tr class="even">
+<td><code>ZDipYTotal.txt</code></td>
+<td>Total vertical dipolar</td>
+<td>Ω/m</td>
+</tr>
+<tr class="odd">
+<td><code>ZQuadXTotal.txt</code></td>
+<td>Total horizontal quadrupolar</td>
+<td>Ω/m</td>
+</tr>
+<tr class="even">
+<td><code>ZQuadYTotal.txt</code></td>
+<td>Total vertical quadrupolar</td>
+<td>Ω/m</td>
+</tr>
+</tbody>
+</table>
+<h4 id="surface-impedances">Surface Impedances</h4>
+<table>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ZLongSurf.txt</code></td>
+<td>Longitudinal surface impedance</td>
+<td>Ω</td>
+</tr>
+<tr class="even">
+<td><code>ZTransSurf.txt</code></td>
+<td>Transverse surface impedance</td>
+<td>Ω/m</td>
+</tr>
+</tbody>
+</table>
+<h4 id="space-charge-impedances">Space Charge Impedances</h4>
+<table>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Description</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ZLongDSC.txt</code></td>
+<td>Longitudinal direct space charge</td>
+<td>Ω</td>
+</tr>
+<tr class="even">
+<td><code>ZLongISC.txt</code></td>
+<td>Longitudinal indirect space charge</td>
+<td>Ω</td>
+</tr>
+<tr class="odd">
+<td><code>ZTransDSC.txt</code></td>
+<td>Transverse direct space charge</td>
+<td>Ω/m</td>
+</tr>
+<tr class="even">
+<td><code>ZTransISC.txt</code></td>
+<td>Transverse indirect space charge</td>
+<td>Ω/m</td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparison-excel-files">Comparison Excel Files</h3>
+<table>
+<thead>
+<tr class="header">
+<th>File Pattern</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>NewTLWallvsWake2D_*.xlsx</code></td>
+<td>Comparison with Wake2D/IW2D</td>
+</tr>
+<tr class="even">
+<td><code>NewTLWallvsOld_*.xlsx</code></td>
+<td>Comparison with OldTLWall</td>
+</tr>
+</tbody>
+</table>
+<p>Each Excel file contains: - Frequency column - PyTlWall real/imaginary values - Reference real/imaginary values - Absolute differences - Percentage differences - README sheet with analysis notes</p>
+<h3 id="plot-files">Plot Files</h3>
+<p>Located in <code>img/</code> subdirectory:</p>
+<table>
+<thead>
+<tr class="header">
+<th>File Pattern</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ZLong.png</code>, <code>ZTrans.png</code>, …</td>
+<td>Single impedance plots</td>
+</tr>
+<tr class="even">
+<td><code>WakeVsNew_ZLong.png</code>, …</td>
+<td>Comparison with Wake2D/IW2D</td>
+</tr>
+<tr class="odd">
+<td><code>OldVsNew_ZLong.png</code>, …</td>
+<td>Comparison with OldTLWall</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="impedance-types">Impedance Types</h2>
+<h3 id="base-impedances-wall-contribution-1">Base Impedances (Wall Contribution)</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ZLong</td>
+<td><code>ZLong</code></td>
+<td>Longitudinal wall impedance</td>
+</tr>
+<tr class="even">
+<td>ZTrans</td>
+<td><code>ZTrans</code></td>
+<td>Transverse wall impedance</td>
+</tr>
+<tr class="odd">
+<td>ZDipX</td>
+<td><code>ZDipX</code></td>
+<td>Horizontal dipolar impedance</td>
+</tr>
+<tr class="even">
+<td>ZDipY</td>
+<td><code>ZDipY</code></td>
+<td>Vertical dipolar impedance</td>
+</tr>
+<tr class="odd">
+<td>ZQuadX</td>
+<td><code>ZQuadX</code></td>
+<td>Horizontal quadrupolar impedance</td>
+</tr>
+<tr class="even">
+<td>ZQuadY</td>
+<td><code>ZQuadY</code></td>
+<td>Vertical quadrupolar impedance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="total-impedances-wall-space-charge-1">Total Impedances (Wall + Space Charge)</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ZLongTotal</td>
+<td><code>ZLongTotal</code></td>
+<td>Total longitudinal (wall + SC)</td>
+</tr>
+<tr class="even">
+<td>ZTransTotal</td>
+<td><code>ZTransTotal</code></td>
+<td>Total transverse (wall + SC)</td>
+</tr>
+<tr class="odd">
+<td>ZDipXTotal</td>
+<td><code>ZDipXTotal</code></td>
+<td>Total horizontal dipolar</td>
+</tr>
+<tr class="even">
+<td>ZDipYTotal</td>
+<td><code>ZDipYTotal</code></td>
+<td>Total vertical dipolar</td>
+</tr>
+<tr class="odd">
+<td>ZQuadXTotal</td>
+<td><code>ZQuadXTotal</code></td>
+<td>Total horizontal quadrupolar</td>
+</tr>
+<tr class="even">
+<td>ZQuadYTotal</td>
+<td><code>ZQuadYTotal</code></td>
+<td>Total vertical quadrupolar</td>
+</tr>
+</tbody>
+</table>
+<h3 id="surface-impedances-1">Surface Impedances</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ZLongSurf</td>
+<td><code>ZLongSurf</code></td>
+<td>Longitudinal surface impedance</td>
+</tr>
+<tr class="even">
+<td>ZTransSurf</td>
+<td><code>ZTransSurf</code></td>
+<td>Transverse surface impedance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="space-charge-impedances-1">Space Charge Impedances</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ZLongDSC</td>
+<td><code>ZLongDSC</code></td>
+<td>Longitudinal direct space charge</td>
+</tr>
+<tr class="even">
+<td>ZLongISC</td>
+<td><code>ZLongISC</code></td>
+<td>Longitudinal indirect space charge</td>
+</tr>
+<tr class="odd">
+<td>ZTransDSC</td>
+<td><code>ZTransDSC</code></td>
+<td>Transverse direct space charge</td>
+</tr>
+<tr class="even">
+<td>ZTransISC</td>
+<td><code>ZTransISC</code></td>
+<td>Transverse indirect space charge</td>
+</tr>
+</tbody>
+</table>
+<h3 id="iw2d-validation-notes">IW2D Validation Notes</h3>
+<p>Based on comparisons with IW2D:</p>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Impedances</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>✓ Consistent</td>
+<td>ZLong, ZTrans, ZLongTotal, ZDipX, ZDipY, ZQuadX, ZQuadY</td>
+</tr>
+<tr class="even">
+<td>⚠ May vary</td>
+<td>ZTransTotal, ZDipXTotal, ZDipYTotal, ZQuadXTotal, ZQuadYTotal</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="examples">Examples</h2>
+<h3 id="example-1-run-all-tests">Example 1: Run All Tests</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all deep tests with default settings</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py</span></code></pre></div>
+<h3 id="example-2-wake2diw2d-comparison">Example 2: Wake2D/IW2D Comparison</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run all tests with Wake2D/IW2D reference</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--cfg-pattern</span> <span class="st">&quot;*Wake2D.cfg&quot;</span></span></code></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>============================================================
+ PyTlWall Deep Test Runner
+============================================================
+
+Found 4 test directories.
+
+Processing: NewCV
+  Config: PSB2layers_Wake2D.cfg
+  
+  Processing ZLong (Longitudinal Impedance)...
+    Saved output: ZLong.txt
+    Saved plot: ZLong.png
+    Wake2D reference: ZlongW_PSB.dat
+    Saved comparison: NewTLWallvsWake2D_ZLong.xlsx
+    Saved plot: WakeVsNew_ZLong.png
+    
+  Processing ZTrans (Transverse Impedance)...
+    ...
+
+✓ Test NewCV completed successfully
+
+Processing: RoundChamber
+  ...
+
+============================================================
+ SUMMARY
+============================================================
+  ✓ Passed: 4
+  ✗ Failed: 0</code></pre>
+<h3 id="example-3-single-directory-test">Example 3: Single Directory Test</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test only NewCV directory</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--subdirs</span> NewCV <span class="at">--cfg-pattern</span> <span class="st">&quot;*Wake2D.cfg&quot;</span></span></code></pre></div>
+<h3 id="example-4-multiple-directories">Example 4: Multiple Directories</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test specific directories</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--subdirs</span> NewCV RoundChamber <span class="at">--cfg-pattern</span> <span class="st">&quot;*Wake2D.cfg&quot;</span></span></code></pre></div>
+<h3 id="example-5-fast-test-no-space-charge">Example 5: Fast Test (No Space Charge)</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Skip space charge calculations for faster testing</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--subdirs</span> NewCV <span class="at">--no-space-charge</span></span></code></pre></div>
+<h3 id="example-6-verbose-mode">Example 6: Verbose Mode</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Detailed output for debugging</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--subdirs</span> NewCV <span class="at">--verbosity</span> 3</span></code></pre></div>
+<h3 id="example-7-oldtlwall-comparison">Example 7: OldTLWall Comparison</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare with original TLWall</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> tests/run_tests_deep.py <span class="at">--cfg-pattern</span> <span class="st">&quot;*OldTLWall.cfg&quot;</span></span></code></pre></div>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-errors">Common Errors</h3>
+<h4 id="configuration-file-not-found">1. Configuration File Not Found</h4>
+<pre><code>ERROR: No configuration files found matching pattern &#39;*Wake2D.cfg&#39;</code></pre>
+<p><strong>Solution:</strong> Check that the config file exists in the test directory with the correct naming pattern.</p>
+<h4 id="frequency-file-not-found">2. Frequency File Not Found</h4>
+<pre><code>ConfigurationError: Frequency file not found: frequencies.dat</code></pre>
+<p><strong>Solution:</strong> The frequency file path in the config is relative to <code>main_path</code>. Ensure the file exists or the path is correct.</p>
+<h4 id="reference-data-missing">3. Reference Data Missing</h4>
+<pre><code>WARNING: No Wake2D reference file found: ZlongW*.dat</code></pre>
+<p><strong>Solution:</strong> This is a warning, not an error. The test will continue but won’t generate comparison files for this impedance type.</p>
+<h4 id="layer-configuration-issue">4. Layer Configuration Issue</h4>
+<pre><code>WARNING: Config has &#39;layer1&#39; section!
+         This might be incorrect - check if it should be &#39;boundary&#39;</code></pre>
+<p><strong>Solution:</strong> For PEC (Perfect Electric Conductor) boundaries, use <code>[boundary]</code> section instead of an extra layer.</p>
+<h3 id="debugging-tips">Debugging Tips</h3>
+<ol type="1">
+<li><strong>Use verbose mode</strong> (<code>--verbosity 3</code>) to see detailed output</li>
+<li><strong>Check the config file</strong> paths are correct</li>
+<li><strong>Verify reference data</strong> exists in Wake2D/ or OldTLWall/ directories</li>
+<li><strong>Compare frequency counts</strong> — mismatches may indicate wrong reference files</li>
+<li><strong>Check log files</strong> in <code>tests/logs/</code> for detailed error messages</li>
+</ol>
+<hr />
+<h2 id="programmatic-usage">Programmatic Usage</h2>
+<p>You can also use the test runner from Python code:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tests.run_tests_deep <span class="im">import</span> run_deep_tests</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run specific tests</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>success <span class="op">=</span> run_deep_tests(</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    base_dir<span class="op">=</span><span class="st">&quot;tests/deep_test&quot;</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    subdirs<span class="op">=</span>[<span class="st">&quot;NewCV&quot;</span>, <span class="st">&quot;RoundChamber&quot;</span>],</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    cfg_pattern<span class="op">=</span><span class="st">&quot;*Wake2D.cfg&quot;</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    compute_space_charge<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> success:</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;All tests passed!&quot;</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;Some tests failed - check outputs for details&quot;</span>)</span></code></pre></div>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="TESTING.html">TESTING.md</a> — Full testing documentation</li>
+<li><a href="RUN_TESTS_BASE.html">RUN_TESTS_BASE.md</a> — Base test runner documentation</li>
+<li><a href="../tests/README.html">tests/README.md</a> — Tests overview</li>
+</ul>
+<hr />
+<p><em>Last updated: December 2025</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

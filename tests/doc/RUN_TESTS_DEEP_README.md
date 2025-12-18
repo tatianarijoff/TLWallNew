@@ -2,12 +2,12 @@
 
 **Deep Test Runner for PyTlWall**
 
-Comprehensive testing tool that compares PyTlWall impedance calculations against reference data from Wake2D and OldTLWall.
+Comprehensive testing tool that compares PyTlWall impedance calculations against reference data from Wake2D/IW2D and OldTLWall.
 
 ## Authors
 
-- **Tatiana Rijoff** - tatiana.rijoff@gmail.com
-- **Carlo Zannini** - carlo.zannini@cern.ch
+- **Tatiana Rijoff** — tatiana.rijoff@gmail.com
+- **Carlo Zannini** — carlo.zannini@cern.ch
 
 *Copyright: CERN*
 
@@ -34,10 +34,12 @@ Comprehensive testing tool that compares PyTlWall impedance calculations against
 
 1. **Reads** configuration files (`.cfg`) for test cases
 2. **Computes** impedances using PyTlWall
-3. **Compares** results with reference data (Wake2D or OldTLWall)
+3. **Compares** results with reference data (Wake2D/IW2D or OldTLWall)
 4. **Generates** comparison reports (Excel files and plots)
 
 This tool is essential for validating PyTlWall against established impedance calculation codes.
+
+> **Note:** Deep tests do NOT perform automatic pass/fail validation. Percentage differences can be misleading for very small values. Results require expert analysis.
 
 ---
 
@@ -47,10 +49,14 @@ The script is located in the `tests/` directory of PyTlWall:
 
 ```
 pytlwall/
-├── pytlwall/           # Main package
+├── pytlwall/                # Main package
 ├── tests/
 │   ├── run_tests_deep.py    # ← This script
 │   └── deep_test/           # Test data directories
+│       ├── NewCV/
+│       ├── RoundChamber/
+│       ├── RoundChamberLowBeta/
+│       └── Ti_Cer_Cu_Vac/
 └── doc/
 ```
 
@@ -68,7 +74,10 @@ pip install numpy matplotlib pandas openpyxl
 # Navigate to pytlwall directory
 cd pytlwall
 
-# Run tests comparing with Wake2D
+# Run all deep tests
+python tests/run_tests_deep.py
+
+# Run tests comparing with Wake2D/IW2D
 python tests/run_tests_deep.py --cfg-pattern "*Wake2D.cfg"
 
 # Run tests comparing with OldTLWall
@@ -87,10 +96,11 @@ python run_tests_deep.py [OPTIONS]
 
 | Option | Short | Description |
 |--------|-------|-------------|
+| `--base-dir` | | Base directory for deep tests (default: `tests/deep_test`) |
 | `--subdirs` | | Specific subdirectories to test (space-separated) |
 | `--cfg-pattern` | | Glob pattern for config files (e.g., `*Wake2D.cfg`) |
 | `--no-space-charge` | | Skip space charge impedance calculations |
-| `--verbose` | `-v` | Verbose output with detailed logging |
+| `--verbosity` | `-v` | Verbosity level (1=WARNING, 2=INFO, 3=DEBUG) |
 | `--help` | `-h` | Show help message |
 
 ### Pattern Matching
@@ -102,41 +112,54 @@ The `--cfg-pattern` option uses glob patterns:
 | `*Wake2D.cfg` | Any file ending with `Wake2D.cfg` |
 | `*OldTLWall.cfg` | Any file ending with `OldTLWall.cfg` |
 | `*.cfg` | All `.cfg` files |
-| `PSB*.cfg` | Files starting with `PSB` |
+| `LHC*.cfg` | Files starting with `LHC` |
 
 ---
 
 ## Directory Structure
 
+### Test Directories
+
+The following test cases are available:
+
+| Directory | Description |
+|-----------|-------------|
+| `NewCV/` | New CV (Constant Voltage) test case |
+| `RoundChamber/` | Circular chamber test |
+| `RoundChamberLowBeta/` | Circular chamber with low beta |
+| `Ti_Cer_Cu_Vac/` | Titanium-Ceramic-Copper-Vacuum multilayer |
+
 ### Test Directory Layout
 
 ```
 tests/deep_test/
-├── newCV/                      # Test case directory
-│   ├── PSB2layers_Wake2D.cfg   # Config for Wake2D comparison
-│   ├── PSB2layers_OldTLWall.cfg # Config for OldTLWall comparison
-│   ├── Wake2D/                 # Wake2D reference data
+├── NewCV/                        # Test case directory
+│   ├── *_Wake2D.cfg              # Config for Wake2D/IW2D comparison
+│   ├── *_OldTLWall.cfg           # Config for OldTLWall comparison
+│   ├── Wake2D/                   # Wake2D/IW2D reference data
 │   │   ├── ZlongW*.dat
 │   │   ├── ZtransW*.dat
 │   │   ├── ZxdipW*.dat
 │   │   └── ZxquadW*.dat
-│   ├── OldTLWall/              # OldTLWall reference data
+│   ├── OldTLWall/                # OldTLWall reference data
 │   │   ├── ZLong.txt
 │   │   ├── ZTrans.txt
 │   │   ├── ZDip.txt
 │   │   └── ZQuad.txt
-│   ├── output/                 # Generated output (created by script)
+│   ├── output/                   # Generated output (created by script)
 │   │   ├── ZLong.txt
 │   │   ├── ZTrans.txt
 │   │   ├── NewTLWallvsWake2D_ZLong.xlsx
 │   │   └── ...
-│   └── img/                    # Generated plots (created by script)
+│   └── img/                      # Generated plots (created by script)
 │       ├── ZLong.png
 │       ├── WakeVsNew_ZLong.png
 │       └── OldVsNew_ZLong.png
-├── newlowbeta/                 # Another test case
+├── RoundChamber/
 │   └── ...
-└── another_test/
+├── RoundChamberLowBeta/
+│   └── ...
+└── Ti_Cer_Cu_Vac/
     └── ...
 ```
 
@@ -144,7 +167,7 @@ tests/deep_test/
 
 | Directory | Description |
 |-----------|-------------|
-| `Wake2D/` | Reference data from Wake2D code |
+| `Wake2D/` | Reference data from Wake2D/IW2D code |
 | `OldTLWall/` | Reference data from original TLWall |
 
 ---
@@ -155,7 +178,7 @@ Configuration files (`.cfg`) define the test parameters. Two types are typically
 
 ### Wake2D Configuration (`*Wake2D.cfg`)
 
-Used when comparing against Wake2D reference data. The configuration should match the Wake2D simulation parameters.
+Used when comparing against Wake2D/IW2D reference data. The configuration should match the Wake2D simulation parameters.
 
 ### OldTLWall Configuration (`*OldTLWall.cfg`)
 
@@ -165,27 +188,46 @@ Used when comparing against the original TLWall code output.
 
 ```ini
 [path_info]
-main_path = tests/deep_test/newCV
+main_path = tests/deep_test/NewCV
 
 [frequency_file]
-filename = ZLong.txt
+filename = frequencies.dat
+separator = whitespace
+freq_col = 0
+skip_rows = 1
 
-[beam]
-gammarel = 2.5
-
-[chamber]
+[base_info]
+component_name = TestChamber
 chamber_shape = CIRCULAR
-pipe_rad_m = 0.025
-betax = 1.0
-betay = 1.0
+pipe_radius_m = 0.025
+pipe_len_m = 1.0
+betax = 100.0
+betay = 100.0
+
+[beam_info]
+gammarel = 2.5
+test_beam_shift = 0.001
+
+[layers_info]
+nbr_layers = 2
+
+[layer0]
+type = CW
+thick_m = 0.002
+sigmaDC = 1.4e6
+epsr = 1.0
+
+[layer1]
+type = CW
+thick_m = inf
+sigmaDC = 1.0e6
 
 [boundary]
 type = PEC
 
-[layer1]
-thick_m = 0.002
-sigmaDC = 1.4e6
-type = CW
+[test_config]
+ref_long_file = Wake2D/ZlongW.dat
+ref_long_skip_rows = 1
 ```
 
 ---
@@ -196,24 +238,49 @@ type = CW
 
 Located in `output/` subdirectory:
 
+#### Base Impedances (Wall Contribution)
+
 | File | Description | Unit |
 |------|-------------|------|
 | `ZLong.txt` | Longitudinal impedance | Ω |
 | `ZTrans.txt` | Transverse impedance | Ω/m |
-| `ZDip.txt` | Dipolar impedance | Ω |
-| `ZQuad.txt` | Quadrupolar impedance | Ω |
+| `ZDipX.txt` | Horizontal dipolar impedance | Ω/m |
+| `ZDipY.txt` | Vertical dipolar impedance | Ω/m |
+| `ZQuadX.txt` | Horizontal quadrupolar impedance | Ω/m |
+| `ZQuadY.txt` | Vertical quadrupolar impedance | Ω/m |
+
+#### Total Impedances (Wall + Space Charge)
+
+| File | Description | Unit |
+|------|-------------|------|
+| `ZLongTotal.txt` | Total longitudinal impedance | Ω |
+| `ZTransTotal.txt` | Total transverse impedance | Ω/m |
+| `ZDipXTotal.txt` | Total horizontal dipolar | Ω/m |
+| `ZDipYTotal.txt` | Total vertical dipolar | Ω/m |
+| `ZQuadXTotal.txt` | Total horizontal quadrupolar | Ω/m |
+| `ZQuadYTotal.txt` | Total vertical quadrupolar | Ω/m |
+
+#### Surface Impedances
+
+| File | Description | Unit |
+|------|-------------|------|
+| `ZLongSurf.txt` | Longitudinal surface impedance | Ω |
+| `ZTransSurf.txt` | Transverse surface impedance | Ω/m |
+
+#### Space Charge Impedances
+
+| File | Description | Unit |
+|------|-------------|------|
 | `ZLongDSC.txt` | Longitudinal direct space charge | Ω |
 | `ZLongISC.txt` | Longitudinal indirect space charge | Ω |
 | `ZTransDSC.txt` | Transverse direct space charge | Ω/m |
 | `ZTransISC.txt` | Transverse indirect space charge | Ω/m |
-| `ZDipDSC.txt` | Dipolar direct space charge | Ω/m |
-| `ZDipISC.txt` | Dipolar indirect space charge | Ω/m |
 
 ### Comparison Excel Files
 
 | File Pattern | Description |
 |--------------|-------------|
-| `NewTLWallvsWake2D_*.xlsx` | Comparison with Wake2D |
+| `NewTLWallvsWake2D_*.xlsx` | Comparison with Wake2D/IW2D |
 | `NewTLWallvsOld_*.xlsx` | Comparison with OldTLWall |
 
 Each Excel file contains:
@@ -231,41 +298,75 @@ Located in `img/` subdirectory:
 | File Pattern | Description |
 |--------------|-------------|
 | `ZLong.png`, `ZTrans.png`, ... | Single impedance plots |
-| `WakeVsNew_ZLong.png`, ... | Comparison with Wake2D |
+| `WakeVsNew_ZLong.png`, ... | Comparison with Wake2D/IW2D |
 | `OldVsNew_ZLong.png`, ... | Comparison with OldTLWall |
 
 ---
 
 ## Impedance Types
 
-### Standard Impedances
+### Base Impedances (Wall Contribution)
 
-| Name | Property | Method | Description |
-|------|----------|--------|-------------|
-| ZLong | `ZLong` | `calc_ZLong()` | Longitudinal wall impedance |
-| ZTrans | `ZTrans` | `calc_ZTrans()` | Transverse wall impedance |
-| ZDip | `ZDipX` | `calc_ZTrans()` | Dipolar (driving) impedance |
-| ZQuad | `ZQuadX` | `calc_ZTrans()` | Quadrupolar (detuning) impedance |
+| Name | Property | Description |
+|------|----------|-------------|
+| ZLong | `ZLong` | Longitudinal wall impedance |
+| ZTrans | `ZTrans` | Transverse wall impedance |
+| ZDipX | `ZDipX` | Horizontal dipolar impedance |
+| ZDipY | `ZDipY` | Vertical dipolar impedance |
+| ZQuadX | `ZQuadX` | Horizontal quadrupolar impedance |
+| ZQuadY | `ZQuadY` | Vertical quadrupolar impedance |
+
+### Total Impedances (Wall + Space Charge)
+
+| Name | Property | Description |
+|------|----------|-------------|
+| ZLongTotal | `ZLongTotal` | Total longitudinal (wall + SC) |
+| ZTransTotal | `ZTransTotal` | Total transverse (wall + SC) |
+| ZDipXTotal | `ZDipXTotal` | Total horizontal dipolar |
+| ZDipYTotal | `ZDipYTotal` | Total vertical dipolar |
+| ZQuadXTotal | `ZQuadXTotal` | Total horizontal quadrupolar |
+| ZQuadYTotal | `ZQuadYTotal` | Total vertical quadrupolar |
+
+### Surface Impedances
+
+| Name | Property | Description |
+|------|----------|-------------|
+| ZLongSurf | `ZLongSurf` | Longitudinal surface impedance |
+| ZTransSurf | `ZTransSurf` | Transverse surface impedance |
 
 ### Space Charge Impedances
 
-| Name | Property | Method | Description |
-|------|----------|--------|-------------|
-| ZLongDSC | `ZLongDSC` | `calc_ZLongDSC()` | Longitudinal direct space charge |
-| ZLongISC | `ZLongISC` | `calc_ZLongISC()` | Longitudinal indirect space charge |
-| ZTransDSC | `ZTransDSC` | `calc_ZTransDSC()` | Transverse direct space charge |
-| ZTransISC | `ZTransISC` | `calc_ZTransISC()` | Transverse indirect space charge |
-| ZDipDSC | `ZDipDSC` | `calc_ZTransDSC()` | Dipolar direct space charge |
-| ZDipISC | `ZDipISC` | `calc_ZTransISC()` | Dipolar indirect space charge |
+| Name | Property | Description |
+|------|----------|-------------|
+| ZLongDSC | `ZLongDSC` | Longitudinal direct space charge |
+| ZLongISC | `ZLongISC` | Longitudinal indirect space charge |
+| ZTransDSC | `ZTransDSC` | Transverse direct space charge |
+| ZTransISC | `ZTransISC` | Transverse indirect space charge |
+
+### IW2D Validation Notes
+
+Based on comparisons with IW2D:
+
+| Status | Impedances |
+|--------|------------|
+| ✓ Consistent | ZLong, ZTrans, ZLongTotal, ZDipX, ZDipY, ZQuadX, ZQuadY |
+| ⚠ May vary | ZTransTotal, ZDipXTotal, ZDipYTotal, ZQuadXTotal, ZQuadYTotal |
 
 ---
 
 ## Examples
 
-### Example 1: Full Wake2D Comparison
+### Example 1: Run All Tests
 
 ```bash
-# Run all tests with Wake2D reference
+# Run all deep tests with default settings
+python tests/run_tests_deep.py
+```
+
+### Example 2: Wake2D/IW2D Comparison
+
+```bash
+# Run all tests with Wake2D/IW2D reference
 python tests/run_tests_deep.py --cfg-pattern "*Wake2D.cfg"
 ```
 
@@ -275,55 +376,66 @@ python tests/run_tests_deep.py --cfg-pattern "*Wake2D.cfg"
  PyTlWall Deep Test Runner
 ============================================================
 
-Found 3 test directories.
+Found 4 test directories.
 
-Processing: newCV
+Processing: NewCV
   Config: PSB2layers_Wake2D.cfg
   
   Processing ZLong (Longitudinal Impedance)...
     Saved output: ZLong.txt
     Saved plot: ZLong.png
     Wake2D reference: ZlongW_PSB.dat
+    Saved comparison: NewTLWallvsWake2D_ZLong.xlsx
     Saved plot: WakeVsNew_ZLong.png
     
   Processing ZTrans (Transverse Impedance)...
     ...
 
-✓ Test newCV completed successfully
+✓ Test NewCV completed successfully
+
+Processing: RoundChamber
+  ...
 
 ============================================================
  SUMMARY
 ============================================================
-  ✓ Passed: 3
+  ✓ Passed: 4
   ✗ Failed: 0
 ```
 
-### Example 2: Single Directory Test
+### Example 3: Single Directory Test
 
 ```bash
-# Test only newCV directory with OldTLWall
-python tests/run_tests_deep.py --subdirs newCV --cfg-pattern "*OldTLWall.cfg"
+# Test only NewCV directory
+python tests/run_tests_deep.py --subdirs NewCV --cfg-pattern "*Wake2D.cfg"
 ```
 
-### Example 3: Multiple Directories
+### Example 4: Multiple Directories
 
 ```bash
 # Test specific directories
-python tests/run_tests_deep.py --subdirs newCV newlowbeta --cfg-pattern "*Wake2D.cfg"
+python tests/run_tests_deep.py --subdirs NewCV RoundChamber --cfg-pattern "*Wake2D.cfg"
 ```
 
-### Example 4: Fast Test (No Space Charge)
+### Example 5: Fast Test (No Space Charge)
 
 ```bash
 # Skip space charge calculations for faster testing
-python tests/run_tests_deep.py --subdirs newCV --cfg-pattern "*Wake2D.cfg" --no-space-charge
+python tests/run_tests_deep.py --subdirs NewCV --no-space-charge
 ```
 
-### Example 5: Verbose Mode
+### Example 6: Verbose Mode
 
 ```bash
 # Detailed output for debugging
-python tests/run_tests_deep.py --subdirs newCV --cfg-pattern "*Wake2D.cfg" -v
+python tests/run_tests_deep.py --subdirs NewCV --verbosity 3
+```
+
+### Example 7: OldTLWall Comparison
+
+```bash
+# Compare with original TLWall
+python tests/run_tests_deep.py --cfg-pattern "*OldTLWall.cfg"
 ```
 
 ---
@@ -343,7 +455,7 @@ ERROR: No configuration files found matching pattern '*Wake2D.cfg'
 #### 2. Frequency File Not Found
 
 ```
-ConfigurationError: Frequency file not found: ZLong.txt
+ConfigurationError: Frequency file not found: frequencies.dat
 ```
 
 **Solution:** The frequency file path in the config is relative to `main_path`. Ensure the file exists or the path is correct.
@@ -363,28 +475,30 @@ WARNING: Config has 'layer1' section!
          This might be incorrect - check if it should be 'boundary'
 ```
 
-**Solution:** For PEC (Perfect Electric Conductor) boundaries, use `[boundary]` section instead of `[layer1]`.
+**Solution:** For PEC (Perfect Electric Conductor) boundaries, use `[boundary]` section instead of an extra layer.
 
 ### Debugging Tips
 
-1. **Use verbose mode** (`-v`) to see detailed output
+1. **Use verbose mode** (`--verbosity 3`) to see detailed output
 2. **Check the config file** paths are correct
 3. **Verify reference data** exists in Wake2D/ or OldTLWall/ directories
-4. **Compare frequency counts** - mismatches may indicate wrong reference files
+4. **Compare frequency counts** — mismatches may indicate wrong reference files
+5. **Check log files** in `tests/logs/` for detailed error messages
 
 ---
 
-## API Usage
+## Programmatic Usage
 
-You can also use the test runner programmatically:
+You can also use the test runner from Python code:
 
 ```python
-from run_tests_deep import run_deep_tests
+from tests.run_tests_deep import run_deep_tests
 
-# Run all tests
+# Run specific tests
 success = run_deep_tests(
-    subdirs=['newCV', 'newlowbeta'],
-    cfg_pattern='*Wake2D.cfg',
+    base_dir="tests/deep_test",
+    subdirs=["NewCV", "RoundChamber"],
+    cfg_pattern="*Wake2D.cfg",
     compute_space_charge=True,
     verbosity=2
 )
@@ -392,16 +506,16 @@ success = run_deep_tests(
 if success:
     print("All tests passed!")
 else:
-    print("Some tests failed!")
+    print("Some tests failed - check outputs for details")
 ```
 
 ---
 
-## Version History
+## See Also
 
-- **v1.0** - Initial release
-- **v1.1** - Added space charge impedances
-- **v2.0** - Added ZDipDSC, ZDipISC; improved output organization
+- [TESTING.md](TESTING.md) — Full testing documentation
+- [RUN_TESTS_BASE.md](RUN_TESTS_BASE.md) — Base test runner documentation
+- [tests/README.md](../tests/README.md) — Tests overview
 
 ---
 
