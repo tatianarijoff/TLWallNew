@@ -6,10 +6,12 @@ Main package initialization.
 
 from .beam import Beam, BeamValidationError, M_PROTON_MEV
 from .frequencies import Frequencies
+from .times import Times
 from .layer import Layer
 from .chamber import Chamber
 from .cfg_io import CfgIo
 from .tlwall import TlWall
+from .tlwall_wake import TLWallWake
 from .multiple_chamber import MultipleChamber
 
 # I/O utilities
@@ -20,16 +22,18 @@ from . import logging_util
 
 __all__ = [
     'Beam',
-    'BeamValidationError', 
+    'BeamValidationError',
     'M_PROTON_MEV',
-    'Frequencies', 
+    'Frequencies',
+    'Times',
     'Layer',
     'Chamber',
     'TlWall',
+    'TLWallWake',
     'CfgIo',
     'io_util',
     'logging_util',
-    'MultipleChamber'
+    'MultipleChamber',
 ]
 
 __version__ = '1.0.0'

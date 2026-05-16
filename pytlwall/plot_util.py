@@ -34,6 +34,14 @@ IMPEDANCE_UNITS = {
     'S': r'$\Omega$ m',          # Surface [Ohm·m]
 }
 
+# Wake function units by type (time domain).
+# Generic placeholders matching the codebase conventions; users can override
+# the label via the `ylabel` argument of the plotting functions.
+WAKE_UNITS = {
+    'WL': r'V$\,$C$^{-1}\,$m$^{-1}$',   # Longitudinal wake
+    'WT': r'V$\,$C$^{-1}\,$m$^{-2}$',   # Transverse wake
+}
+
 # Default plot style
 DEFAULT_PLOT_STYLE = {
     'linewidth': 5,
@@ -596,6 +604,275 @@ def plot_impedance_magnitude_phase(
     _save_figure(fig, savedir, savename)
     
     return fig
+
+
+# =============================================================================
+# Time-Domain Wake Plotting Functions
+# =============================================================================
+#
+# These helpers mirror the frequency-domain plotting functions but accept a
+# time array (in seconds) and a real-valued wake array. They are the
+# counterpart used by :class:`pytlwall.tlwall_wake.TLWallWake`.
+
+
+def _get_wake_unit(wake_type: str) -> str:
+    """
+    Return a LaTeX-formatted unit string for a wake plot.
+
+    Args:
+        wake_type: 'WL' for longitudinal wake or 'WT' for transverse wake.
+
+    Returns:
+        LaTeX-formatted unit string.
+    """
+    return WAKE_UNITS.get(wake_type, r'V$\,$C$^{-1}\,$m$^{-1}$')
+
+
+def _filter_nan_real(t: np.ndarray, W: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Drop NaN samples from a (time, real-wake) pair.
+
+    Args:
+        t: Time array.
+        W: Real-valued wake array.
+
+    Returns:
+        Tuple of cleaned (t, W) arrays.
+    """
+    W = np.asarray(W, dtype=float)
+    mask = np.isfinite(W)
+    return np.asarray(t, dtype=float)[mask], W[mask]
+
+
+def plot_W_vs_t_simple(
+    t: np.ndarray,
+    W: np.ndarray,
+    wake_type: str = 'WL',
+    title: Optional[str] = None,
+    savedir: Optional[str] = None,
+    savename: Optional[str] = None,
+    xscale: str = 'log',
+    yscale: str = 'log',
+    figsize: Tuple[float, float] = (10, 6),
+    color: str = 'tab:blue',
+    label: Optional[str] = None,
+    ylabel: Optional[str] = None,
+) -> Optional[Figure]:
+    """
+    Plot a single real-valued wake function versus time.
+
+    Args:
+        t: Time array [s].
+        W: Real-valued wake array (same length as ``t``).
+        wake_type: 'WL' (longitudinal) or 'WT' (transverse); selects the
+            default y-axis unit label.
+        title: Optional plot title.
+        savedir: Output directory for saving the figure.
+        savename: Output filename (extension determines format).
+        xscale: X-axis scale: 'lin', 'log' (default), or 'symlog'.
+        yscale: Y-axis scale: 'lin', 'log' (default), or 'symlog'.
+        figsize: Figure size in inches.
+        color: Line color.
+        label: Optional legend label for the curve.
+        ylabel: Override the default y-axis label.
+
+    Returns:
+        The matplotlib :class:`Figure`, or ``None`` if there is no
+        finite data to plot.
+
+    Example
+    -------
+    >>> fig = plot_W_vs_t_simple(times.time_s, wake.WLong, 'WL',
+    ...                          xscale='log', yscale='log')
+    """
+    t_clean, W_clean = _filter_nan_real(t, W)
+
+    if len(t_clean) == 0:
+        logger.warning("No valid data to plot")
+        return None
+
+    if savename:
+        logger.info(f"Creating wake plot: {savename}")
+
+    W_unit = _get_wake_unit(wake_type)
+
+    fig, ax = plt.subplots(figsize=figsize)
+
+    if title is not None:
+        ax.set_title(title, fontsize=DEFAULT_PLOT_STYLE['title_fontsize'])
+
+    ax.plot(
+        t_clean, W_clean,
+        linewidth=DEFAULT_PLOT_STYLE['linewidth'],
+        label=label, color=color,
+    )
+
+    default_ylabel = f'W [{W_unit}]'
+    ax.set_ylabel(ylabel if ylabel is not None else default_ylabel,
+                  fontsize=DEFAULT_PLOT_STYLE['label_fontsize'])
+    ax.set_xlabel('t [s]', fontsize=DEFAULT_PLOT_STYLE['label_fontsize'])
+
+    _apply_scale(ax, xscale, yscale)
+    ax.tick_params(labelsize=DEFAULT_PLOT_STYLE['tick_fontsize'])
+
+    if DEFAULT_PLOT_STYLE['grid']:
+        ax.grid(True, which='both', alpha=0.3)
+
+    if label is not None:
+        ax.legend(loc='best', fontsize=DEFAULT_PLOT_STYLE['legend_fontsize'])
+
+    fig.tight_layout()
+    _save_figure(fig, savedir, savename)
+    return fig
+
+
+def plot_list_W_vs_t(
+    t: np.ndarray,
+    list_W: List[np.ndarray],
+    list_label: List[str],
+    wake_type: str = 'WL',
+    title: Optional[str] = None,
+    savedir: Optional[str] = None,
+    savename: Optional[str] = None,
+    xscale: str = 'log',
+    yscale: str = 'log',
+    figsize: Tuple[float, float] = (10, 6),
+    colors: Optional[List[str]] = None,
+    linestyles: Optional[List[str]] = None,
+    ylabel: Optional[str] = None,
+) -> Optional[Figure]:
+    """
+    Plot several wake curves versus a common time axis.
+
+    Intended primarily for comparing the calculator output against the
+    Thick-/Thin-wall analytical reference wakes on the same axes.
+
+    Args:
+        t: Common time array [s].
+        list_W: List of real-valued wake arrays. All must have the same
+            length as ``t``.
+        list_label: List of legend labels (must match ``list_W`` in length).
+        wake_type: 'WL' or 'WT' — selects the default y-axis label unit.
+        title: Optional plot title.
+        savedir: Output directory for saving the figure.
+        savename: Output filename.
+        xscale: X-axis scale: 'lin', 'log' (default), or 'symlog'.
+        yscale: Y-axis scale: 'lin', 'log' (default), or 'symlog'.
+        figsize: Figure size in inches.
+        colors: Optional list of matplotlib color specs, one per curve.
+        linestyles: Optional list of matplotlib linestyles, one per curve.
+        ylabel: Override the default y-axis label.
+
+    Returns:
+        The matplotlib :class:`Figure`, or ``None`` if all inputs were
+        empty.
+
+    Example
+    -------
+    >>> fig = plot_list_W_vs_t(
+    ...     t,
+    ...     [wake.WLong, wake.WLongThick, wake.WLongThin],
+    ...     ['Calc', 'Thick limit', 'Thin limit'],
+    ...     wake_type='WL', xscale='log', yscale='log',
+    ... )
+    """
+    if not list_W or not list_label:
+        logger.warning("Empty input lists")
+        return None
+
+    if len(list_W) != len(list_label):
+        logger.error("list_W and list_label must have the same length")
+        raise ValueError("list_W and list_label must have the same length")
+
+    W_unit = _get_wake_unit(wake_type)
+
+    fig, ax = plt.subplots(figsize=figsize)
+
+    if title is not None:
+        ax.set_title(title, fontsize=DEFAULT_PLOT_STYLE['title_fontsize'])
+
+    num_curves = len(list_label)
+    for i, (W, label) in enumerate(zip(list_W, list_label)):
+        t_clean, W_clean = _filter_nan_real(t, W)
+        if len(t_clean) == 0:
+            logger.warning(f"No valid data for '{label}'")
+            continue
+
+        # Decreasing linewidth so overlaid curves remain visible.
+        linewidth = max(2, num_curves * 3 - 2 * i)
+        color = colors[i] if (colors is not None and i < len(colors)) else None
+        ls = linestyles[i] if (linestyles is not None and i < len(linestyles)) else '-'
+
+        ax.plot(t_clean, W_clean, linewidth=linewidth, label=label,
+                color=color, linestyle=ls)
+
+    default_ylabel = f'W [{W_unit}]'
+    ax.set_ylabel(ylabel if ylabel is not None else default_ylabel,
+                  fontsize=DEFAULT_PLOT_STYLE['label_fontsize'])
+    ax.set_xlabel('t [s]', fontsize=DEFAULT_PLOT_STYLE['label_fontsize'])
+
+    _apply_scale(ax, xscale, yscale)
+    ax.tick_params(labelsize=DEFAULT_PLOT_STYLE['tick_fontsize'])
+
+    if DEFAULT_PLOT_STYLE['grid']:
+        ax.grid(True, which='both', alpha=0.3)
+
+    ax.legend(loc='best', fontsize=DEFAULT_PLOT_STYLE['legend_fontsize'])
+
+    fig.tight_layout()
+    _save_figure(fig, savedir, savename)
+    return fig
+
+
+def plot_wake_vs_limits(
+    t: np.ndarray,
+    W_calc: np.ndarray,
+    W_thick: np.ndarray,
+    W_thin: np.ndarray,
+    wake_type: str = 'WL',
+    title: Optional[str] = None,
+    savedir: Optional[str] = None,
+    savename: Optional[str] = None,
+    calc_label: str = 'TLWallWake (full)',
+    thick_label: str = 'Thick-wall limit',
+    thin_label: str = 'Thin-wall limit',
+    figsize: Tuple[float, float] = (10, 6),
+) -> Optional[Figure]:
+    """
+    Plot a computed wake against its Thick-wall and Thin-wall analytical limits.
+
+    Convenience wrapper around :func:`plot_list_W_vs_t` with a fixed colour
+    and linestyle scheme suitable for visually validating the calculator
+    against the two asymptotic regimes.
+
+    Args:
+        t: Time array [s].
+        W_calc: Wake from :class:`TLWallWake` (full calculation).
+        W_thick: Thick-wall (resistive) analytical limit.
+        W_thin: Thin-wall (inductive) analytical limit.
+        wake_type: 'WL' or 'WT'.
+        title: Optional plot title.
+        savedir, savename: Output directory and filename.
+        calc_label, thick_label, thin_label: Override the legend labels.
+        figsize: Figure size in inches.
+
+    Returns:
+        The matplotlib :class:`Figure`, or ``None`` if all inputs were empty.
+    """
+    return plot_list_W_vs_t(
+        t=t,
+        list_W=[W_calc, W_thick, W_thin],
+        list_label=[calc_label, thick_label, thin_label],
+        wake_type=wake_type,
+        title=title,
+        savedir=savedir,
+        savename=savename,
+        xscale='log',
+        yscale='log',
+        figsize=figsize,
+        colors=['tab:blue', 'tab:red', 'tab:green'],
+        linestyles=['-', '--', ':'],
+    )
 
 
 # =============================================================================
