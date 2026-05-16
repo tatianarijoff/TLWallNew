@@ -59,8 +59,8 @@ def make_default_chamber(with_pec_boundary: bool = False) -> Chamber:
 
 
 def make_default_times(n: int = 401) -> Times:
-    """Build a default logspace time grid 1 ps → 100 ms."""
-    return Times(tmin_exp=-12, tmax_exp=-1, n_points=n)
+    """Build a default logspace time grid 1 fs → 100 s."""
+    return Times(tmin_exp=-15, tmax_exp=2, n_points=n)
 
 
 # ---------------------------------------------------------------------------
@@ -149,8 +149,16 @@ class TestTLWallWakeWakes(unittest.TestCase):
                 self.assertTrue(np.all(np.isfinite(getattr(self.wake, name))))
 
     def test_WLong_real_part_positive(self):
-        """Test WLong (built on Re ζ) is non-negative everywhere."""
-        self.assertTrue(np.all(self.wake.WLong >= 0))
+        """Test WLong (built on Re ζ) is non-negative up to round-off."""
+        # WLong is built on Re{ζ_eff}, which is >= 0 for a passive wall.
+        # At very long times Re{ζ_eff} collapses to ~0 for a non-conducting
+        # boundary, and the recursive complex arithmetic can leave a
+        # vanishingly small negative residue (round-off, ~1e-29 of the
+        # signal). Allow a tolerance scaled by the wake's own magnitude;
+        # a genuine sign error would be order-1 relative and still caught.
+        w = self.wake.WLong
+        tol = 1e-9 * np.abs(w).max()
+        self.assertTrue(np.all(w >= -tol))
 
     def test_caching_returns_same_object(self):
         """Test that wake properties cache the result."""
@@ -343,7 +351,7 @@ class TestTLWallWakePlots(unittest.TestCase):
         os.makedirs(cls.savedir, exist_ok=True)
 
         cls.beam = create_beam_lhc()
-        cls.times = Times(tmin_exp=-12, tmax_exp=-1, n_points=401)
+        cls.times = Times(tmin_exp=-15, tmax_exp=2, n_points=401)
 
         # Three configurations sharing a common 2 mm copper inner layer,
         # differing only in the boundary type.
