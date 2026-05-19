@@ -17,8 +17,20 @@ import configparser
 from pytlwall.chamber import Chamber
 from pytlwall.beam import Beam
 from pytlwall.frequencies import Frequencies
+from pytlwall.times import Times
 from pytlwall.layer import Layer
 from pytlwall.tlwall import TlWall
+from pytlwall.tlwall_wake import TLWallWake
+
+
+# Allowed values for the CalcWake flag.
+# - 'impedance': calculate only the impedance (frequency-domain). Default.
+# - 'wake':      calculate only the wake (time-domain).
+# - 'both':      calculate both impedance and wake.
+CALC_IMPEDANCE = 'impedance'
+CALC_WAKE = 'wake'
+CALC_BOTH = 'both'
+_VALID_CALC_FLAGS = (CALC_IMPEDANCE, CALC_WAKE, CALC_BOTH)
 
 
 class ConfigurationError(Exception):
@@ -522,6 +534,155 @@ class CfgIo:
             return freq
     
     # =========================================================================
+    # Calculation Flag Reading
+    # =========================================================================
+    
+    def read_calc_flag(self, cfg_file: Optional[str] = None) -> str:
+        """
+        Read the CalcWake calculation flag from the configuration.
+        
+        The flag selects which quantities have to be computed:
+        
+        * ``impedance`` -- compute only the (frequency-domain) impedance.
+          This is the default when the option is absent.
+        * ``wake`` -- compute only the (time-domain) wake.
+        * ``both`` -- compute both impedance and wake.
+        
+        The flag is looked up, in order of priority, in:
+        
+        1. section ``[calc_info]``, option ``CalcWake``
+        2. section ``[base_info]``, option ``CalcWake``
+        
+        Args:
+            cfg_file: Path to configuration file (optional if already loaded)
+        
+        Returns:
+            One of ``'impedance'``, ``'wake'`` or ``'both'`` (lowercased).
+        
+        Raises:
+            ConfigurationError: If the option is present but its value is not
+                a recognised flag.
+        
+        Example:
+            >>> cfg = CfgIo('config.cfg')
+            >>> cfg.read_calc_flag()
+            'impedance'
+        """
+        if cfg_file is not None:
+            self.read_cfg(cfg_file)
+        
+        raw = None
+        if self.config.has_option('calc_info', 'CalcWake'):
+            raw = self.config.get('calc_info', 'CalcWake')
+        elif self.config.has_option('base_info', 'CalcWake'):
+            raw = self.config.get('base_info', 'CalcWake')
+        
+        # Absence of the parameter -> default to impedance calculation.
+        if raw is None:
+            return CALC_IMPEDANCE
+        
+        flag = raw.strip().lower()
+        if flag not in _VALID_CALC_FLAGS:
+            raise ConfigurationError(
+                f"Invalid CalcWake value '{raw}'. "
+                f"Allowed values are: {', '.join(_VALID_CALC_FLAGS)}."
+            )
+        
+        return flag
+    
+    # =========================================================================
+    # Times Reading
+    # =========================================================================
+    
+    def read_times(self, cfg_file: Optional[str] = None) -> Times:
+        """
+        Read time configuration from file.
+        
+        This is the time-domain counterpart of :meth:`read_freq`. It builds a
+        :class:`pytlwall.times.Times` object used by the wake calculation.
+        
+        Args:
+            cfg_file: Path to configuration file (optional if already loaded)
+        
+        Returns:
+            Times object.
+        
+        Example:
+            >>> cfg = CfgIo('config.cfg')
+            >>> times = cfg.read_times()
+            >>> print(f"Times: {len(times)} points")
+        
+        Note:
+            Supports two modes:
+            1. [time_info]: tmin_exp, tmax_exp, n_points (generates a
+               logarithmic range via numpy.logspace)
+            2. [time_file]: reads an explicit time array from an external file
+            
+            For time_file mode, if filename is relative, it is resolved
+            relative to main_path (from [path_info] section) if available.
+        """
+        if cfg_file is not None:
+            self.read_cfg(cfg_file)
+        
+        # Priority 1: time_file section (read from file)
+        if self.config.has_section('time_file'):
+            import numpy as np
+            
+            filename = self.config.get('time_file', 'filename')
+            
+            # Handle separator
+            sep = self.config.get('time_file', 'separator', fallback='')
+            if sep == '' or sep.lower() == 'whitespace':
+                sep = None  # Use whitespace delimiter
+            
+            time_col = self.config.getint('time_file', 'time_col', fallback=0)
+            skip_rows = self.config.getint('time_file', 'skip_rows', fallback=0)
+            
+            # Resolve file path - use main_path if filename is relative
+            file_path = self.resolve_path(filename)
+            
+            if not file_path.exists():
+                raise ConfigurationError(f"Time file not found: {filename}")
+            
+            # Load data
+            if sep is None:
+                data = np.loadtxt(file_path, skiprows=skip_rows)
+            else:
+                data = np.loadtxt(file_path, skiprows=skip_rows, delimiter=sep)
+            
+            # Extract time column
+            if data.ndim == 1:
+                time_array = data
+            else:
+                time_array = data[:, time_col]
+            
+            # Create Times object from the explicit array
+            times = Times(time_list=time_array)
+            
+            # Store metadata for potential saving
+            times.filename = filename
+            times.time_column = time_col
+            times.skipped_rows = skip_rows
+            
+            return times
+        
+        # Priority 2: time_info section (generate logarithmic range)
+        elif self.config.has_section('time_info'):
+            tmin_exp = self.config.getfloat('time_info', 'tmin_exp')
+            tmax_exp = self.config.getfloat('time_info', 'tmax_exp')
+            n_points = self.config.getint('time_info', 'n_points')
+            times = Times(
+                tmin_exp=tmin_exp,
+                tmax_exp=tmax_exp,
+                n_points=n_points,
+            )
+            return times
+        
+        # Default: return default Times
+        else:
+            return Times()
+    
+    # =========================================================================
     # Chamber Writing
     # =========================================================================
     
@@ -648,6 +809,54 @@ class CfgIo:
             self.config.set('frequency_info', 'fmin', str(int(freq.fmin)))
             self.config.set('frequency_info', 'fmax', str(int(freq.fmax)))
             self.config.set('frequency_info', 'fstep', str(int(freq.fstep)))
+    
+    # =========================================================================
+    # Times Writing
+    # =========================================================================
+    
+    def save_times(self, times: Times) -> None:
+        """
+        Save time configuration to config object.
+        
+        Args:
+            times: Times object to save
+        """
+        # Times read from a file expose a 'filename' attribute.
+        if hasattr(times, 'filename'):
+            if not self.config.has_section('time_file'):
+                self.config.add_section('time_file')
+            self.config.set('time_file', 'filename', times.filename)
+            self.config.set('time_file', 'time_col',
+                            str(getattr(times, 'time_column', 0)))
+            self.config.set('time_file', 'skip_rows',
+                            str(getattr(times, 'skipped_rows', 0)))
+        else:
+            if not self.config.has_section('time_info'):
+                self.config.add_section('time_info')
+            self.config.set('time_info', 'tmin_exp', str(times.tmin_exp))
+            self.config.set('time_info', 'tmax_exp', str(times.tmax_exp))
+            self.config.set('time_info', 'n_points', str(int(times.n_points)))
+    
+    def save_calc_flag(self, flag: str) -> None:
+        """
+        Save the CalcWake calculation flag to the config object.
+        
+        Args:
+            flag: One of ``'impedance'``, ``'wake'`` or ``'both'``.
+        
+        Raises:
+            ConfigurationError: If ``flag`` is not a recognised value.
+        """
+        flag = flag.strip().lower()
+        if flag not in _VALID_CALC_FLAGS:
+            raise ConfigurationError(
+                f"Invalid CalcWake value '{flag}'. "
+                f"Allowed values are: {', '.join(_VALID_CALC_FLAGS)}."
+            )
+        
+        if not self.config.has_section('calc_info'):
+            self.config.add_section('calc_info')
+        self.config.set('calc_info', 'CalcWake', flag)
     
     # =========================================================================
     # Output Configuration
@@ -818,7 +1027,19 @@ class CfgIo:
     
     def read_pytlwall(self, cfg_file: Optional[str] = None) -> Optional[TlWall]:
         """
-        Read complete pytlwall configuration and create TlWall object.
+        Read complete pytlwall configuration and create a TlWall object.
+        
+        This method is kept for backward compatibility: it always returns a
+        :class:`TlWall` (frequency-domain) object. The frequency grid is read
+        according to the ``CalcWake`` flag:
+        
+        * ``impedance`` / ``both``: the frequency parameters are read normally.
+        * ``wake``: no frequency section is required; a default
+          :class:`Frequencies` grid is used so that a usable ``TlWall`` can
+          still be returned.
+        
+        To obtain the wake calculator (or both objects) based on the
+        ``CalcWake`` flag, use :meth:`read_wall_and_wake` instead.
         
         Args:
             cfg_file: Path to configuration file (optional if already loaded)
@@ -842,6 +1063,84 @@ class CfgIo:
             return TlWall(chamber, beam, freq)
         
         return None
+    
+    def read_wall_and_wake(
+        self, cfg_file: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """
+        Read the configuration and build the requested calculators.
+        
+        The behaviour is driven by the ``CalcWake`` flag (see
+        :meth:`read_calc_flag`):
+        
+        * ``impedance`` (default, also when the flag is absent):
+          the frequency parameters are read and a :class:`TlWall` object is
+          built. The time parameters are ignored.
+        * ``wake``:
+          the time parameters are read and a :class:`TLWallWake` object is
+          built. The frequency parameters are ignored.
+        * ``both``:
+          both frequency and time parameters are read, and both a
+          :class:`TlWall` and a :class:`TLWallWake` object are built.
+        
+        Args:
+            cfg_file: Path to configuration file (optional if already loaded)
+        
+        Returns:
+            A dictionary with the following keys:
+            
+            * ``'calc_flag'``: the resolved flag ('impedance', 'wake', 'both').
+            * ``'wall'``: a :class:`TlWall` object, or ``None`` if not requested.
+            * ``'wake'``: a :class:`TLWallWake` object, or ``None`` if not
+              requested.
+        
+        Raises:
+            ConfigurationError: If mandatory components (chamber, beam) are
+                missing, or if the ``CalcWake`` value is invalid.
+        
+        Example:
+            >>> cfg = CfgIo('config.cfg')
+            >>> result = cfg.read_wall_and_wake()
+            >>> if result['wall'] is not None:
+            ...     ZLong = result['wall'].ZLong
+            >>> if result['wake'] is not None:
+            ...     WLong = result['wake'].WLong
+        """
+        if cfg_file is not None:
+            self.read_cfg(cfg_file)
+        
+        calc_flag = self.read_calc_flag()
+        
+        chamber = self.read_chamber()
+        beam = self.read_beam()
+        
+        if chamber is None:
+            raise ConfigurationError(
+                "Cannot build calculators: 'base_info' (chamber) section "
+                "is missing."
+            )
+        if beam is None:
+            raise ConfigurationError(
+                "Cannot build calculators: 'beam_info' section is missing."
+            )
+        
+        result: Dict[str, Any] = {
+            'calc_flag': calc_flag,
+            'wall': None,
+            'wake': None,
+        }
+        
+        # Impedance (frequency-domain): needed for 'impedance' and 'both'.
+        if calc_flag in (CALC_IMPEDANCE, CALC_BOTH):
+            freq = self.read_freq()
+            result['wall'] = TlWall(chamber, beam, freq)
+        
+        # Wake (time-domain): needed for 'wake' and 'both'.
+        if calc_flag in (CALC_WAKE, CALC_BOTH):
+            times = self.read_times()
+            result['wake'] = TLWallWake(chamber, beam, times)
+        
+        return result
     
     # =========================================================================
     # Utility Methods
