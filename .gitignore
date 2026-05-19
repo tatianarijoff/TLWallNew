@@ -1,0 +1,29 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Test / coverage artifacts
+.pytest_cache/
+.coverage
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Generated test artifacts (rigenerati lanciando i test)
+tests/logs/
+tests/**/logs/
+tests/**/output/
+tests/**/img/
+tests/output/
+tests/wake/
+
