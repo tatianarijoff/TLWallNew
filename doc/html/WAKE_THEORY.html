@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>WAKE THEORY</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#time-domain-wake-theory">Time-Domain Wake — Theory</a>
+<ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#scope">Scope</a></li>
+<li><a href="#frequency-domain-vs-time-domain">Frequency Domain vs Time Domain</a></li>
+<li><a href="#the-transmission-line-model">The Transmission-Line Model</a>
+<ul>
+<li><a href="#surface-impedance-of-a-layer">Surface impedance of a layer</a></li>
+<li><a href="#recursive-transport">Recursive transport</a></li>
+</ul></li>
+<li><a href="#boundary-treatment">Boundary Treatment</a></li>
+<li><a href="#bessel-form-factors">Bessel Form Factors</a></li>
+<li><a href="#the-wake-functions">The Wake Functions</a>
+<ul>
+<li><a href="#longitudinal-wake-resistive-part">Longitudinal wake (resistive part)</a></li>
+<li><a href="#longitudinal-base-wake-reactive-part">Longitudinal base wake (reactive part)</a></li>
+<li><a href="#transverse-base-wake">Transverse base wake</a></li>
+<li><a href="#transverse-wake-with-inductive-bypass">Transverse wake with inductive bypass</a></li>
+</ul></li>
+<li><a href="#the-inductive-bypass">The Inductive Bypass</a></li>
+<li><a href="#analytical-limits">Analytical Limits</a>
+<ul>
+<li><a href="#thick-wall-regime">Thick-wall regime</a></li>
+<li><a href="#thin-wall-regime">Thin-wall regime</a></li>
+<li><a href="#power-law-slopes">Power-law slopes</a></li>
+</ul></li>
+<li><a href="#asymptotic-matching">Asymptotic Matching</a>
+<ul>
+<li><a href="#which-wake-matches-the-limits">Which wake matches the limits</a></li>
+</ul></li>
+<li><a href="#notation">Notation</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">WAKE THEORY</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="time-domain-wake-theory">Time-Domain Wake — Theory</h1>
+<p><strong>Physical model behind <code>TLWallWake</code></strong></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> — tatiana.rijoff@gmail.com</li>
+<li><strong>Carlo Zannini</strong> — carlo.zannini@cern.ch</li>
+</ul>
+<p><em>Copyright: CERN</em></p>
+<hr />
+<p><a href="WAKE.html">← Back to Wake Module</a> | <a href="testing/test_tlwall_wake.html">Tests</a></p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#scope">Scope</a></li>
+<li><a href="#frequency-domain-vs-time-domain">Frequency Domain vs Time Domain</a></li>
+<li><a href="#the-transmission-line-model">The Transmission-Line Model</a></li>
+<li><a href="#boundary-treatment">Boundary Treatment</a></li>
+<li><a href="#bessel-form-factors">Bessel Form Factors</a></li>
+<li><a href="#the-wake-functions">The Wake Functions</a></li>
+<li><a href="#the-inductive-bypass">The Inductive Bypass</a></li>
+<li><a href="#analytical-limits">Analytical Limits</a></li>
+<li><a href="#asymptotic-matching">Asymptotic Matching</a></li>
+<li><a href="#notation">Notation</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+<hr />
+<h2 id="scope">Scope</h2>
+<p>This document describes the physical model implemented by the <code>TLWallWake</code> class (<code>pytlwall/tlwall_wake.py</code>). It explains how the real-valued wake functions are obtained on a time grid, and why the calculated wakes are expected to reproduce two well-known analytical limits — the <strong>thick-wall</strong> and <strong>thin-wall</strong> regimes.</p>
+<p>For the practical interface (class API, how to run the calculator) see the companion document <a href="WAKE.html">WAKE.md</a>.</p>
+<hr />
+<h2 id="frequency-domain-vs-time-domain">Frequency Domain vs Time Domain</h2>
+<p>The <code>TlWall</code> class evaluates beam-coupling <strong>impedances</strong> <code>Z(f)</code> on a frequency grid. The wake function <code>W(t)</code> is the time-domain description of the same physics, formally the inverse Fourier transform of the impedance.</p>
+<p><code>TLWallWake</code> does <strong>not</strong> compute the wake by transforming a previously computed impedance. Instead it evaluates the wake <strong>directly</strong> on a time grid: the surface impedance ζ is built with time-domain material properties and transported through the layer stack with the same transmission-line recursion used in the frequency domain, after which the wake formulas are applied. This avoids the numerical cost and the truncation/windowing artefacts of a discrete inverse transform.</p>
+<hr />
+<h2 id="the-transmission-line-model">The Transmission-Line Model</h2>
+<p>The chamber wall is modelled as a stack of layers. Each layer is a section of transmission line with its own characteristic surface impedance, and the multilayer wall is collapsed into a single <strong>effective surface impedance</strong> <code>ζ_eff</code> by transporting ζ recursively from the outermost layer inwards.</p>
+<h3 id="surface-impedance-of-a-layer">Surface impedance of a layer</h3>
+<p>For a conducting (<code>CW</code>) layer the intrinsic surface impedance is</p>
+<pre><code>ζ_layer = (1 + j) / (σ_PM(t) · δ_M(t))</code></pre>
+<p>where <code>σ_PM(t)</code> is the time-domain conductivity and <code>δ_M(t)</code> the time-domain skin depth of the layer. The propagation constant inside the layer is</p>
+<pre><code>k_prop(t) = (1 - j) / δ_M(t)</code></pre>
+<p>A vacuum (<code>V</code>) layer is treated as free space, <code>ζ_layer = Z₀</code> with <code>k_prop = (2π/t)/c</code>. A <code>PEC</code> layer is a perfect short.</p>
+<h3 id="recursive-transport">Recursive transport</h3>
+<p>Given the effective impedance accumulated so far, <code>ζ_eff</code>, transporting it through a layer of thickness <code>d</code> uses the standard transmission-line transport formula</p>
+<pre><code>                    ζ_eff + j · ζ_layer · tan(k_prop · d)
+ζ_eff_new = ζ_layer · -------------------------------------
+                    ζ_layer + j · ζ_eff · tan(k_prop · d)</code></pre>
+<p>The recursion is initialised at the boundary (see below) and walked inward, layer by layer, down to the innermost layer facing the beam. A <code>PEC</code> layer encountered along the way forces <code>ζ_eff = 0</code>.</p>
+<p>This is the <strong>same recursion</strong> used by <code>TlWall</code> for the impedance; the only difference is that every quantity is evaluated with time-domain material properties instead of frequency-domain ones.</p>
+<hr />
+<h2 id="boundary-treatment">Boundary Treatment</h2>
+<p>The recursion starts from the outermost (“boundary”) layer:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Boundary type</th>
+<th>Initial <code>ζ_bound</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PEC</code></td>
+<td><code>0</code> (perfect short)</td>
+</tr>
+<tr class="even">
+<td><code>V</code> (vacuum)</td>
+<td>conductive form with σ → displacement current only</td>
+</tr>
+<tr class="odd">
+<td><code>CW</code></td>
+<td>conductive form with the layer’s own conductivity</td>
+</tr>
+</tbody>
+</table>
+<p>For a non-PEC boundary the initial impedance is</p>
+<pre><code>ζ_bound = (1 + j) / (σ_PM(t) · δ_M_boundary(t)) · (1 - Scil_W)</code></pre>
+<p>The factor <code>(1 - Scil_W)</code> is the <strong>cylindrical-wave correction</strong> at the boundary, with</p>
+<pre><code>Scil_W = 1 / I₀(k_bess · r)</code></pre>
+<p>where <code>I₀</code> is the modified Bessel function of the first kind, <code>r</code> the pipe radius and <code>k_bess</code> the Bessel argument scale defined below. The correction accounts for the curvature of the chamber wall; in the flat-wall limit <code>Scil_W → 0</code>.</p>
+<hr />
+<h2 id="bessel-form-factors">Bessel Form Factors</h2>
+<p>The Bessel argument scale in the time domain is</p>
+<pre><code>k_bess(t) = 2π / (c · β · t)</code></pre>
+<p>The wake formulas use a <strong>beam form factor</strong> evaluated at a rescaled argument,</p>
+<pre><code>F_beam(t) = I₀( k_bess · r / (γ · β) )</code></pre>
+<p>which carries the dependence on the beam’s relativistic factor γ. In the ultra-relativistic limit (γ → ∞) the argument tends to zero and <code>F_beam → 1</code>; for finite γ it accounts for the finite transverse extent of the beam field.</p>
+<hr />
+<h2 id="the-wake-functions">The Wake Functions</h2>
+<p>From the effective surface impedance <code>ζ_eff</code> and the form factor the module builds four wakes. <code>L₁</code> is the chamber length and <code>r</code> the pipe radius.</p>
+<h3 id="longitudinal-wake-resistive-part">Longitudinal wake (resistive part)</h3>
+<pre><code>WLong(t) = L₁ · Re{ζ_eff} / ( 2π·r · √(2π) · F_beam · t )</code></pre>
+<h3 id="longitudinal-base-wake-reactive-part">Longitudinal base wake (reactive part)</h3>
+<pre><code>WLong_base(t) = L₁ · Im{ζ_eff} / ( 4π²·r · F_beam² · t )</code></pre>
+<p><code>WLong</code> and <code>WLong_base</code> are built from the real and the imaginary part of ζ respectively and use <strong>different normalisations</strong> (a <code>√(2π)</code> factor and <code>F_beam</code> versus <code>F_beam²</code>). They are therefore distinct quantities, not two ways of writing the same wake.</p>
+<h3 id="transverse-base-wake">Transverse base wake</h3>
+<pre><code>WTrans_base(t) = 4 · WLong_base(t) · t · c / r²</code></pre>
+<h3 id="transverse-wake-with-inductive-bypass">Transverse wake with inductive bypass</h3>
+<pre><code>WTrans_Bypass(t) = (4·c / r²) · F_b1</code></pre>
+<p>with the bypass factor described in the next section.</p>
+<hr />
+<h2 id="the-inductive-bypass">The Inductive Bypass</h2>
+<p>The inductive bypass models a parallel inductive path of the chamber. With</p>
+<pre><code>L_b1 = μ₀ / (4π)
+Y₁   = (2π / t) · L_b1 · L₁ / Z₀
+Y₂   = WLong_base(t) · t
+F_b1 = (Y₁ · Y₂) / (Y₁ + Y₂)</code></pre>
+<p><code>F_b1</code> is the parallel (“bypass”) combination of <code>Y₁</code> and <code>Y₂</code>. At short times <code>Y₁ ≫ Y₂</code>, so <code>F_b1 → Y₂</code> and <code>WTrans_Bypass → WTrans_base</code>. At long times <code>Y₁</code> and <code>Y₂</code> are comparable, the parallel combination is genuine, and <code>WTrans_Bypass</code> departs from <code>WTrans_base</code>. The bypass is therefore an <strong>intentional modification of the long-time behaviour</strong> — it is not expected to reproduce the thin-wall limit.</p>
+<hr />
+<h2 id="analytical-limits">Analytical Limits</h2>
+<p>Two regimes of the resistive-wall wake have closed-form expressions. They are used as benchmarks for the full transmission-line result. <code>σ_eff</code> is the effective conductivity (<code>sigma_eff</code>) and <code>d_eff</code> the effective conductor thickness (<code>thick_eff</code>).</p>
+<h3 id="thick-wall-regime">Thick-wall regime</h3>
+<p>When the skin depth is much smaller than the conductor thickness (<code>δ ≪ d</code>), the field does not reach the back of the conductor: the wall behaves as if infinitely thick. This is the <strong>short-time</strong> / deep skin-effect regime.</p>
+<pre><code>WLongThick(t)  = L₁ / (4π·r)  · √( Z₀ / (π·c·σ_eff) ) · t^(-3/2)
+WTransThick(t) = L₁ / (π·r³)  · √( c·Z₀ / (π·σ_eff) ) · t^(-1/2)</code></pre>
+<h3 id="thin-wall-regime">Thin-wall regime</h3>
+<p>When the skin depth is much larger than the conductor thickness (<code>δ ≫ d</code>), the field penetrates the conductor entirely and the response is inductive. This is the <strong>long-time</strong> regime.</p>
+<pre><code>WLongThin(t)  = L₁ / (2π·r) · μ₀ · d_eff / t²
+WTransThin(t) = 4 · WLongThin(t) · t · c / r²</code></pre>
+<h3 id="power-law-slopes">Power-law slopes</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Limit</th>
+<th>Slope on a log-log plot</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>WLongThick</code></td>
+<td><code>-3/2</code></td>
+</tr>
+<tr class="even">
+<td><code>WTransThick</code></td>
+<td><code>-1/2</code></td>
+</tr>
+<tr class="odd">
+<td><code>WLongThin</code></td>
+<td><code>-2</code></td>
+</tr>
+<tr class="even">
+<td><code>WTransThin</code></td>
+<td><code>-1</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="asymptotic-matching">Asymptotic Matching</h2>
+<p>The calculated transmission-line wake interpolates between the two limits:</p>
+<ul>
+<li><strong>Short times</strong> — the transport factor <code>tan(k_prop·d)</code> saturates and <code>ζ_eff → ζ_layer</code> (the intrinsic impedance of the conductor). The wake follows the <strong>thick-wall</strong> limit.</li>
+<li><strong>Long times</strong> — <code>tan(k_prop·d) → k_prop·d</code> and <code>ζ_eff</code> reduces to an inductive form proportional to the conductor thickness. The wake follows the <strong>thin-wall</strong> limit.</li>
+</ul>
+<p>This matching is the central physical check of the module: a correct calculation must overlap <code>WLongThick</code> / <code>WTransThick</code> at short times and <code>WLongThin</code> / <code>WTransThin</code> at long times.</p>
+<h3 id="which-wake-matches-the-limits">Which wake matches the limits</h3>
+<p>The matching holds for <strong><code>WLong_base</code></strong> and <strong><code>WTrans_base</code></strong>.</p>
+<p><code>WLong</code> is built on the <strong>resistive</strong> part of ζ with a <code>√(2π)</code> normalisation: in the thick-wall regime <code>Re{ζ} = Im{ζ}</code>, so <code>WLong</code> and <code>WLong_base</code> differ by the constant factor <code>√(2π) ≈ 2.507</code>. Consequently <code>WLong</code> runs parallel to — but offset from — <code>WLongThick</code> and does not overlap it. <code>WTrans_Bypass</code> includes the inductive bypass and, as explained above, deliberately departs from the thin limit at long times. The limit-overlap benchmark must therefore use <code>WLong_base</code> and <code>WTrans_base</code>.</p>
+<hr />
+<h2 id="notation">Notation</h2>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 26%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ζ_eff</td>
+<td><code>Zeta_eff</code></td>
+<td>Effective surface impedance through the stack</td>
+</tr>
+<tr class="even">
+<td>ζ_layer</td>
+<td>—</td>
+<td>Intrinsic surface impedance of one layer</td>
+</tr>
+<tr class="odd">
+<td>ζ_bound</td>
+<td>—</td>
+<td>Boundary-layer surface impedance</td>
+</tr>
+<tr class="even">
+<td>σ_PM(t)</td>
+<td><code>sigmaPM_time</code></td>
+<td>Time-domain conductivity</td>
+</tr>
+<tr class="odd">
+<td>δ_M(t)</td>
+<td><code>deltaM_time</code></td>
+<td>Time-domain skin depth (internal layer)</td>
+</tr>
+<tr class="even">
+<td>δ_M,bound(t)</td>
+<td><code>deltaM_time_boundary</code></td>
+<td>Time-domain skin depth (boundary)</td>
+</tr>
+<tr class="odd">
+<td>k_prop(t)</td>
+<td><code>kprop_time</code></td>
+<td>In-layer propagation constant</td>
+</tr>
+<tr class="even">
+<td>k_bess(t)</td>
+<td><code>kbess_time</code></td>
+<td>Bessel argument scale, <code>2π/(c·β·t)</code></td>
+</tr>
+<tr class="odd">
+<td>F_beam</td>
+<td>—</td>
+<td>Beam Bessel form factor <code>I₀(k_bess·r/(γβ))</code></td>
+</tr>
+<tr class="even">
+<td>Scil_W</td>
+<td>—</td>
+<td>Cylindrical-wave boundary correction</td>
+</tr>
+<tr class="odd">
+<td>L₁</td>
+<td><code>pipe_len_m</code></td>
+<td>Chamber length</td>
+</tr>
+<tr class="even">
+<td>r</td>
+<td><code>pipe_rad_m</code></td>
+<td>Pipe radius</td>
+</tr>
+<tr class="odd">
+<td>σ_eff</td>
+<td><code>sigma_eff</code></td>
+<td>Effective conductivity (thick limit)</td>
+</tr>
+<tr class="even">
+<td>d_eff</td>
+<td><code>thick_eff</code></td>
+<td>Effective conductor thickness (thin limit)</td>
+</tr>
+<tr class="odd">
+<td>Z₀</td>
+<td><code>Z0</code></td>
+<td>Characteristic impedance of vacuum</td>
+</tr>
+<tr class="even">
+<td>L_b1</td>
+<td>—</td>
+<td>Chamber bypass inductance per unit length, <code>μ₀/(4π)</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="references">References</h2>
+<p>The transmission-line wall model and the time-domain wake formulation are internal PyTlWall developments. The current implementation was ported from a MATLAB prototype (<code>testwake_SPSwakemodel.m</code>) used for the SPS wake model; the Python module reproduces that prototype’s formulas and adds the thick/thin analytical-limit benchmarks.</p>
+<p>No external publications are referenced at this time. This section will be updated when associated notes or papers become available.</p>
+<p><em>Internal reference: T. Rijoff, C. Zannini — CERN.</em></p>
+<hr />
+<p><em>Last updated: May 2026</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tatiana Rijoff" />
+  <meta name="author" content="Carlo Zannini" />
+  <title>WAKE</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div class="layout-wrapper">
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo-link">PyTlWall</a>
+        </div>
+        <nav class="sidebar-nav">
+            
+        <div class="nav-section" data-section="core">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📚 Core Modules</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="API_REFERENCE.html">API Reference</a></li>
+                <li><a href="API_REFERENCE_BEAM.html">beam</a></li>
+                <li><a href="API_REFERENCE_FREQUENCIES.html">frequencies</a></li>
+                <li><a href="API_REFERENCE_LAYER.html">layer</a></li>
+                <li><a href="API_REFERENCE_CHAMBER.html">chamber</a></li>
+                <li><a href="API_REFERENCE_TLWALL.html">tlwall</a></li>
+                <li><a href="API_REFERENCE_CFGIO.html">cfg_io</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="gui">
+            <div class="nav-section-header">
+                <span class="nav-section-title">🖥️ Pytlwall Graphical Interface</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="GUI.html">Pytlwall interface</a></li>
+                <li><a href="GUI_MENU_BAR.html">Gui menu bar</a></li>
+                <li><a href="GUI_SIDEBAR.html">Gui sidebar</a></li>
+                <li><a href="GUI_DATA_PANEL.html">Gui data panel</a></li>
+                <li><a href="GUI_PLOT_PANEL.html">Gui plot panel</a></li>
+                <li><a href="GUI_VIEW_IO.html">Gui view IO</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="examples">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📝 Examples</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="EXAMPLES.html">Examples Overview</a></li>
+                <li><a href="EXAMPLES_BEAM.html">beam examples</a></li>
+                <li><a href="EXAMPLES_FREQUENCIES.html">frequencies examples</a></li>
+                <li><a href="EXAMPLES_LAYER.html">layer examples</a></li>
+                <li><a href="EXAMPLES_CHAMBER.html">chamber examples</a></li>
+                <li><a href="EXAMPLES_TLWALL.html">tlwall examples</a></li>
+                <li><a href="EXAMPLES_LOGGING.html">logging examples</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section collapsed" data-section="other">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📄 Other Docs</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <ul class="nav-section-content">
+                <li><a href="PYTLWALL_THEORY.html">PyTlWall theory</a></li>
+                <li><a href="CHAMBER_SHAPES_REFERENCE.html">Chamber Shapes</a></li>
+            </ul>
+        </div>
+            
+        <div class="nav-section" data-section="toc">
+            <div class="nav-section-header">
+                <span class="nav-section-title">📑 On This Page</span>
+                <span class="nav-toggle-icon"></span>
+            </div>
+            <div class="nav-section-content toc-content">
+                <ul>
+<li><a href="#time-domain-wake-module">Time-Domain Wake Module</a>
+<ul>
+<li><a href="#authors">Authors</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#the-wake-functions">The Wake Functions</a>
+<ul>
+<li><a href="#computed-wakes">Computed wakes</a></li>
+<li><a href="#analytical-reference-limits">Analytical reference limits</a></li>
+</ul></li>
+<li><a href="#inputs">Inputs</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#class-reference">Class Reference</a>
+<ul>
+<li><a href="#constructor">Constructor</a></li>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#exceptions">Exceptions</a></li>
+</ul></li>
+<li><a href="#analytical-limits">Analytical Limits</a></li>
+<li><a href="#validation">Validation</a></li>
+<li><a href="#running-the-calculator">Running the Calculator</a>
+<ul>
+<li><a href="#programmatic-use-available">Programmatic Use (available)</a></li>
+<li><a href="#from-the-shell-planned">From the Shell (Planned)</a></li>
+<li><a href="#with-a-configuration-file-planned">With a Configuration File (Planned)</a></li>
+<li><a href="#from-the-graphical-interface-planned">From the Graphical Interface (Planned)</a></li>
+</ul></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#tlwallwakeconfigurationerror-on-construction"><code>TLWallWakeConfigurationError</code> on construction</a></li>
+<li><a href="#all-wakes-are-zero">All wakes are zero</a></li>
+<li><a href="#limit-wakes-are-zero">Limit wakes are zero</a></li>
+<li><a href="#the-calculated-wake-does-not-overlap-the-limits">The calculated wake does not overlap the limits</a></li>
+</ul></li>
+<li><a href="#see-also">See Also</a></li>
+</ul></li>
+</ul>
+            </div>
+        </div>
+        </nav>
+    </aside>
+    <main class="main-content">
+        
+<header id="title-block-header">
+<div class="title-with-logo"><h1 class="title">WAKE</h1><img src="logo005.png" alt="PyTlWall" class="header-logo"></div>
+<p class="author">Tatiana Rijoff</p>
+<p class="author">Carlo Zannini</p>
+</header>
+
+<h1 id="time-domain-wake-module">Time-Domain Wake Module</h1>
+<p><strong>PyTlWall Wake Function Calculator (<code>TLWallWake</code>)</strong></p>
+<h2 id="authors">Authors</h2>
+<ul>
+<li><strong>Tatiana Rijoff</strong> — tatiana.rijoff@gmail.com</li>
+<li><strong>Carlo Zannini</strong> — carlo.zannini@cern.ch</li>
+</ul>
+<p><em>Copyright: CERN</em></p>
+<hr />
+<p><a href="../README.html">← Back to README</a> | <a href="WAKE_THEORY.html">Theory</a> | <a href="testing/test_tlwall_wake.html">Tests</a> | <a href="TESTING.html">TESTING.md</a></p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol type="1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#the-wake-functions">The Wake Functions</a></li>
+<li><a href="#inputs">Inputs</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#class-reference">Class Reference</a></li>
+<li><a href="#analytical-limits">Analytical Limits</a></li>
+<li><a href="#validation">Validation</a></li>
+<li><a href="#running-the-calculator">Running the Calculator</a>
+<ul>
+<li><a href="#programmatic-use-available">Programmatic Use</a></li>
+<li><a href="#from-the-shell-planned">From the Shell</a></li>
+<li><a href="#with-a-configuration-file-planned">With a Configuration File</a></li>
+<li><a href="#from-the-graphical-interface-planned">From the Graphical Interface</a></li>
+</ul></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ol>
+<hr />
+<h2 id="overview">Overview</h2>
+<p><code>TLWallWake</code> is the <strong>time-domain</strong> counterpart of the <code>TlWall</code> impedance calculator. While <code>TlWall</code> evaluates beam-coupling impedances on a <strong>frequency</strong> grid, <code>TLWallWake</code> evaluates the real-valued <strong>wake functions</strong> on a <strong>time</strong> grid.</p>
+<p>The calculation transports a surface impedance ζ recursively through the chamber’s layer stack and combines the result with Bessel-function form factors. The physical background — the transmission-line model, the recursive transport, the Bessel form factors and the thick/thin analytical limits — is described in the companion document <a href="WAKE_THEORY.html">WAKE_THEORY.md</a>.</p>
+<p><strong>Module location:</strong> <code>pytlwall/tlwall_wake.py</code></p>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 43%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th><code>TlWall</code> (impedance)</th>
+<th><code>TLWallWake</code> (wake)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Domain</td>
+<td>Frequency</td>
+<td>Time</td>
+</tr>
+<tr class="even">
+<td>Grid input</td>
+<td><code>Frequencies</code></td>
+<td><code>Times</code></td>
+</tr>
+<tr class="odd">
+<td>Main outputs</td>
+<td><code>ZLong</code>, <code>ZTrans</code>, …</td>
+<td><code>WLong</code>, <code>WLong_base</code>, <code>WTrans_base</code>, <code>WTrans_Bypass</code></td>
+</tr>
+<tr class="even">
+<td>Reference checks</td>
+<td>Wake2D / IW2D / OldTLWall</td>
+<td>Thick-wall &amp; Thin-wall analytical limits</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-wake-functions">The Wake Functions</h2>
+<p><code>TLWallWake</code> exposes eight quantities — four computed wakes and four analytical reference limits.</p>
+<h3 id="computed-wakes">Computed wakes</h3>
+<table>
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 37%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Description</th>
+<th>Built from</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>WLong</code></td>
+<td>Longitudinal wake from the resistive part of ζ</td>
+<td><code>Re{ζ_eff}</code></td>
+</tr>
+<tr class="even">
+<td><code>WLong_base</code></td>
+<td>Longitudinal “base” wake from the reactive part of ζ</td>
+<td><code>Im{ζ_eff}</code></td>
+</tr>
+<tr class="odd">
+<td><code>WTrans_base</code></td>
+<td>Transverse “base” wake</td>
+<td><code>WLong_base</code></td>
+</tr>
+<tr class="even">
+<td><code>WTrans_Bypass</code></td>
+<td>Transverse wake including the inductive bypass</td>
+<td><code>WLong_base</code> + bypass</td>
+</tr>
+</tbody>
+</table>
+<h3 id="analytical-reference-limits">Analytical reference limits</h3>
+<table>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 38%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Description</th>
+<th>Power law</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>WLongThick</code></td>
+<td>Longitudinal thick-wall (deep skin-effect) limit</td>
+<td><code>t^(-3/2)</code></td>
+</tr>
+<tr class="even">
+<td><code>WTransThick</code></td>
+<td>Transverse thick-wall limit</td>
+<td><code>t^(-1/2)</code></td>
+</tr>
+<tr class="odd">
+<td><code>WLongThin</code></td>
+<td>Longitudinal thin-wall (inductive) limit</td>
+<td><code>t^(-2)</code></td>
+</tr>
+<tr class="even">
+<td><code>WTransThin</code></td>
+<td>Transverse thin-wall limit</td>
+<td><code>t^(-1)</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note — which wake to compare against the limits.</strong> The wakes that physically reproduce the analytical limits are <strong><code>WLong_base</code></strong> and <strong><code>WTrans_base</code></strong>: they overlap the <em>thick</em> limit at short times and the <em>thin</em> limit at long times. <code>WLong</code> (resistive part, different normalisation) and <code>WTrans_Bypass</code> (inductive bypass, which deliberately modifies the long-time behaviour) are normalisation variants and are <strong>not</strong> expected to overlap the limits. See <a href="#validation">Validation</a> and <a href="WAKE_THEORY.html">WAKE_THEORY.md</a>.</p>
+</blockquote>
+<hr />
+<h2 id="inputs">Inputs</h2>
+<p><code>TLWallWake</code> is duck-typed and accepts the standard PyTlWall objects.</p>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 14%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Argument</th>
+<th>Type</th>
+<th>Must expose</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>chamber</code></td>
+<td><code>Chamber</code></td>
+<td><code>layers</code>, <code>pipe_len_m</code>, <code>pipe_rad_m</code></td>
+<td>Chamber geometry and layer stack</td>
+</tr>
+<tr class="even">
+<td><code>beam</code></td>
+<td><code>Beam</code></td>
+<td><code>gammarel</code>, <code>betarel</code></td>
+<td>Relativistic beam</td>
+</tr>
+<tr class="odd">
+<td><code>times</code></td>
+<td><code>Times</code></td>
+<td><code>time_s</code></td>
+<td>Time grid</td>
+</tr>
+<tr class="even">
+<td><code>accuracy_factor</code></td>
+<td><code>float</code></td>
+<td>—</td>
+<td>Reserved for future use (default <code>0.3</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>On construction the <code>time_s</code> array is pushed onto every layer of the chamber — the same mechanism <code>TlWall</code> uses with <code>freq_Hz</code> — which activates the time-domain layer properties.</p>
+<hr />
+<h2 id="quick-start">Quick Start</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pytlwall <span class="im">import</span> Chamber, Beam, Times, Layer, TLWallWake</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Chamber: 2 mm copper inner layer + vacuum boundary</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>chamber <span class="op">=</span> Chamber(pipe_rad_m<span class="op">=</span><span class="fl">0.022</span>, pipe_len_m<span class="op">=</span><span class="fl">1.0</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                  chamber_shape<span class="op">=</span><span class="st">&quot;CIRCULAR&quot;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>chamber.layers <span class="op">=</span> [</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    Layer(layer_type<span class="op">=</span><span class="st">&#39;CW&#39;</span>, thick_m<span class="op">=</span><span class="fl">2e-3</span>, sigmaDC<span class="op">=</span><span class="fl">5.96e7</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    Layer(boundary<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Beam and time grid</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>beam <span class="op">=</span> Beam(gammarel<span class="op">=</span><span class="fl">7460.52</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>times <span class="op">=</span> Times(tmin_exp<span class="op">=-</span><span class="dv">12</span>, tmax_exp<span class="op">=-</span><span class="dv">1</span>, n_points<span class="op">=</span><span class="dv">1401</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the calculator</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>wake <span class="op">=</span> TLWallWake(chamber, beam, times)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the wakes (cached on first access)</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>w_long <span class="op">=</span> wake.WLong_base</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>w_trans <span class="op">=</span> wake.WTrans_base</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Or get everything at once</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>all_wakes <span class="op">=</span> wake.get_all_wakes()   <span class="co"># dict with all 8 quantities</span></span></code></pre></div>
+<hr />
+<h2 id="class-reference">Class Reference</h2>
+<h3 id="constructor">Constructor</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>TLWallWake(chamber, beam, times, accuracy_factor<span class="op">=</span><span class="fl">0.3</span>)</span></code></pre></div>
+<p>Raises <code>TLWallWakeConfigurationError</code> if an input is missing a required attribute, if the chamber has no layers, or if the time grid is empty.</p>
+<h3 id="properties">Properties</h3>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 28%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Property</th>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>chamber</code>, <code>beam</code>, <code>times</code></td>
+<td>object</td>
+<td>The inputs (read-only)</td>
+</tr>
+<tr class="even">
+<td><code>accuracy_factor</code></td>
+<td><code>float</code></td>
+<td>Accuracy selector (read/write, reserved)</td>
+</tr>
+<tr class="odd">
+<td><code>time_s</code></td>
+<td><code>np.ndarray</code></td>
+<td>Shortcut to <code>times.time_s</code></td>
+</tr>
+<tr class="even">
+<td><code>kbess_time</code></td>
+<td><code>np.ndarray</code></td>
+<td>Bessel argument scale, <code>2π/(c·β·t)</code></td>
+</tr>
+<tr class="odd">
+<td><code>Zeta_eff</code></td>
+<td><code>np.ndarray</code> (complex)</td>
+<td>Effective surface impedance ζ transported through the stack</td>
+</tr>
+<tr class="even">
+<td><code>WLong</code>, <code>WLong_base</code>, <code>WTrans_base</code>, <code>WTrans_Bypass</code></td>
+<td><code>np.ndarray</code> (real)</td>
+<td>Computed wakes (cached)</td>
+</tr>
+<tr class="odd">
+<td><code>WLongThick</code>, <code>WTransThick</code>, <code>WLongThin</code>, <code>WTransThin</code></td>
+<td><code>np.ndarray</code> (real)</td>
+<td>Analytical limits</td>
+</tr>
+<tr class="even">
+<td><code>sigma_eff</code></td>
+<td><code>float</code></td>
+<td>Effective conductivity used by the thick limit</td>
+</tr>
+<tr class="odd">
+<td><code>thick_eff</code></td>
+<td><code>float</code></td>
+<td>Effective conductor thickness used by the thin limit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="methods">Methods</h3>
+<table>
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>calc_WLong()</code>, <code>calc_WLong_base()</code>, …</td>
+<td>Force (re)computation of a wake</td>
+</tr>
+<tr class="even">
+<td><code>calc_WLongThick()</code>, <code>calc_WLongThin()</code>, …</td>
+<td>Force (re)computation of a limit</td>
+</tr>
+<tr class="odd">
+<td><code>get_all_wakes()</code></td>
+<td>Return all 8 wakes as a <code>dict</code></td>
+</tr>
+<tr class="even">
+<td><code>summary()</code></td>
+<td>Human-readable configuration summary</td>
+</tr>
+<tr class="odd">
+<td><code>__repr__</code>, <code>__str__</code></td>
+<td>String representations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exceptions">Exceptions</h3>
+<table>
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Exception</th>
+<th>Raised when</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>TLWallWakeError</code></td>
+<td>Base class for all module errors</td>
+</tr>
+<tr class="even">
+<td><code>TLWallWakeConfigurationError</code></td>
+<td>The calculator is built with invalid inputs</td>
+</tr>
+<tr class="odd">
+<td><code>TLWallWakeCalculationError</code></td>
+<td>A wake calculation fails</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analytical-limits">Analytical Limits</h2>
+<p>The four limit wakes are closed-form references used to benchmark the full transmission-line result. They depend only on the geometry and on two single-number aggregates derived from the layer stack:</p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 23%" />
+<col style="width: 28%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aggregate</th>
+<th>Property</th>
+<th>Definition</th>
+<th>Used by</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Effective conductivity</td>
+<td><code>sigma_eff</code></td>
+<td><code>max(sigmaDC)</code> over all <code>CW</code> layers</td>
+<td>Thick limit</td>
+</tr>
+<tr class="even">
+<td>Effective thickness</td>
+<td><code>thick_eff</code></td>
+<td><code>Σ thick_m</code> over all <code>CW</code> layers</td>
+<td>Thin limit</td>
+</tr>
+</tbody>
+</table>
+<p>Layers of type <code>V</code> (vacuum) and <code>PEC</code> do not contribute to either aggregate. When the chamber has no <code>CW</code> layer both aggregates are <code>0.0</code> and the limit wakes degenerate to zero.</p>
+<p>The formulas are given in <a href="WAKE_THEORY.html#analytical-limits">WAKE_THEORY.md</a>.</p>
+<hr />
+<h2 id="validation">Validation</h2>
+<p>The expected physical behaviour is:</p>
+<ul>
+<li>at <strong>short times</strong> (deep skin effect) the calculated wake overlaps the <strong>thick-wall</strong> limit;</li>
+<li>at <strong>long times</strong> (field fully penetrating a thin conductor) it overlaps the <strong>thin-wall</strong> limit.</li>
+</ul>
+<p>This overlap holds for <strong><code>WLong_base</code></strong> and <strong><code>WTrans_base</code></strong>. The unit test module <code>test_tlwall_wake.py</code> exercises this comparison and produces log-log plots for visual inspection (see <a href="testing/test_tlwall_wake.html">test_tlwall_wake.md</a>).</p>
+<hr />
+<h2 id="running-the-calculator">Running the Calculator</h2>
+<h3 id="programmatic-use-available">Programmatic Use (available)</h3>
+<p>The programmatic interface shown in <a href="#quick-start">Quick Start</a> is the <strong>only interface available today</strong>. <code>TLWallWake</code> is built from <code>Chamber</code>, <code>Beam</code> and <code>Times</code> objects and the wakes are read as properties.</p>
+<p>The three interfaces below are <strong>planned</strong>. They mirror the interfaces already provided for the impedance calculation (<code>run_tests_deep.py</code>, the <code>.cfg</code> configuration files handled by <code>CfgIo</code>, and the graphical front-end). They are documented here so the design is fixed in advance; the sections will be completed when the corresponding code is merged.</p>
+<h3 id="from-the-shell-planned">From the Shell (Planned)</h3>
+<blockquote>
+<p>🚧 <strong>Planned feature — not yet implemented.</strong> The commands below describe the intended interface and do not work yet.</p>
+</blockquote>
+<p>Two equivalent entry points are planned, consistent with the rest of PyTlWall:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dedicated runner script (mirrors run_tests_deep.py)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> run_wake.py [OPTIONS]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Module execution entry point</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pytlwall.tlwall_wake [OPTIONS]</span></code></pre></div>
+<p>The intended options (final names to be confirmed on implementation):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>--config</code></td>
+<td>Path to a <code>.cfg</code> configuration file</td>
+</tr>
+<tr class="even">
+<td><code>--tmin</code> / <code>--tmax</code></td>
+<td>Time-grid exponents (powers of 10)</td>
+</tr>
+<tr class="odd">
+<td><code>--n-points</code></td>
+<td>Number of time samples</td>
+</tr>
+<tr class="even">
+<td><code>--output</code></td>
+<td>Directory for generated wake files and plots</td>
+</tr>
+<tr class="odd">
+<td><code>--verbosity</code></td>
+<td>Verbosity level (1=WARNING, 2=INFO, 3=DEBUG)</td>
+</tr>
+</tbody>
+</table>
+<p>This section will be expanded with concrete examples and sample output once <code>run_wake.py</code> and the <code>__main__</code> entry point are merged.</p>
+<h3 id="with-a-configuration-file-planned">With a Configuration File (Planned)</h3>
+<blockquote>
+<p>🚧 <strong>Planned feature — not yet implemented.</strong></p>
+</blockquote>
+<p>Wake runs are planned to reuse the existing INI-style <code>.cfg</code> format read by <code>CfgIo</code>, extended with time-domain sections. The intended additions are a <code>[time_info]</code> section (time grid) and a <code>[wake_output]</code> section (which wakes to export), alongside the existing <code>[base_info]</code>, <code>[layers_info]</code>, <code>[layer*]</code>, <code>[boundary]</code> and <code>[beam_info]</code> sections already used for impedance. The exact section and key names will be documented here once the <code>CfgIo</code> extension is implemented.</p>
+<h3 id="from-the-graphical-interface-planned">From the Graphical Interface (Planned)</h3>
+<blockquote>
+<p>🚧 <strong>Planned feature — not yet implemented.</strong></p>
+</blockquote>
+<p>A graphical front-end for wake runs is planned, mirroring the existing impedance interface: load a configuration, choose the time grid, select the wakes to compute, run, and inspect the resulting plots. This section will be completed when the GUI support for the wake module is available.</p>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="tlwallwakeconfigurationerror-on-construction"><code>TLWallWakeConfigurationError</code> on construction</h3>
+<p>The <code>chamber</code>, <code>beam</code> or <code>times</code> object is missing a required attribute, the chamber has no layers, or the time grid is empty. Check that <code>chamber</code> exposes <code>layers</code>, <code>pipe_len_m</code> and <code>pipe_rad_m</code>, that <code>beam</code> exposes <code>gammarel</code> and <code>betarel</code>, and that <code>times.time_s</code> is non-empty.</p>
+<h3 id="all-wakes-are-zero">All wakes are zero</h3>
+<p>A chamber whose only layer is <code>PEC</code> produces zero wakes by construction (a perfect conductor short-circuits the boundary). Add a <code>CW</code> layer to obtain a non-trivial result.</p>
+<h3 id="limit-wakes-are-zero">Limit wakes are zero</h3>
+<p><code>WLongThick</code>, <code>WTransThick</code>, <code>WLongThin</code> and <code>WTransThin</code> are zero when the chamber contains no <code>CW</code> layer (<code>sigma_eff == 0</code> and <code>thick_eff == 0</code>).</p>
+<h3 id="the-calculated-wake-does-not-overlap-the-limits">The calculated wake does not overlap the limits</h3>
+<p>Make sure you are comparing <code>WLong_base</code> / <code>WTrans_base</code> — not <code>WLong</code> / <code>WTrans_Bypass</code> — against the analytical limits. See <a href="#validation">Validation</a>.</p>
+<hr />
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="WAKE_THEORY.html">WAKE_THEORY.md</a> — Physical model and derivations</li>
+<li><a href="testing/test_tlwall_wake.html">test_tlwall_wake.md</a> — Wake module test suite</li>
+<li><a href="TESTING.html">TESTING.md</a> — Full testing documentation</li>
+<li><a href="RUN_TESTS_DEEP_README.html">RUN_TESTS_DEEP_README.md</a> — Impedance deep test runner (interface reference for the planned wake runner)</li>
+<li><a href="../README.html">README.md</a> — Main project documentation</li>
+</ul>
+<hr />
+<p><em>Last updated: May 2026</em></p>
+
+    </main>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>
