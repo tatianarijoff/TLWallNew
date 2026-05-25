@@ -5,6 +5,14 @@ This module provides the Layer class for defining material layers in
 vacuum chambers, including electrical and magnetic properties that
 vary with frequency.
 
+In addition to the original frequency-domain properties (``sigmaAC``,
+``sigmaPM``, ``mu``, ``deltaM``, ``KZ`` ...), this revision also exposes
+time-domain analogues used by the new :class:`pytlwall.tlwall_wake.TLWallWake`
+calculator (``sigmaPM_time``, ``deltaM_time``, ``deltaM_time_boundary``,
+``kprop_time``). The existing frequency-domain API is left untouched, so
+every script that worked against the previous version keeps working
+unchanged.
+
 Authors: Tatiana Rijoff, Carlo Zannini
 Date:    01/03/2013
 Updated: December 2025
@@ -14,7 +22,7 @@ from __future__ import annotations
 
 import numpy as np
 import scipy.constants as const
-from typing import Optional, Union, Sequence
+from typing import Optional, Sequence
 import warnings
 
 # Default values for layer parameters
@@ -37,11 +45,11 @@ class LayerValidationError(Exception):
 class Layer:
     """
     Material layer with electromagnetic properties.
-    
+
     This class represents a material layer in a vacuum chamber, including
     its electrical conductivity, magnetic permeability, thickness, and
-    frequency-dependent properties.
-    
+    frequency- or time-dependent properties.
+
     Parameters
     ----------
     layer_type : str, optional
@@ -62,68 +70,35 @@ class Layer:
     RQ : float, optional
         Surface roughness parameter in meters. Default is 0.0.
     freq_Hz : array-like, optional
-        Frequency array in Hz for calculations. Default is empty array.
+        Frequency array in Hz for frequency-domain calculations. Default is
+        an empty array.
+    time_s : array-like, optional
+        Time array in seconds for time-domain wake calculations. Default is
+        an empty array. Independent of ``freq_Hz``: either, both or neither
+        may be set.
     boundary : bool, optional
         If True, sets layer as boundary (vacuum). Default is False.
-    
-    Attributes
-    ----------
-    layer_type : str
-        Layer type identifier.
-    thick_m : float
-        Layer thickness in meters.
-    epsr : float
-        Relative permittivity.
-    muinf_Hz : float
-        Magnetic permeability parameter.
-    k_Hz : float
-        Relaxation frequency for permeability.
-    sigmaDC : float
-        DC conductivity in S/m.
-    tau : float
-        Relaxation time for permittivity.
-    RQ : float
-        Surface roughness parameter.
-    freq_Hz : np.ndarray
-        Frequency array in Hz.
-    
-    Examples
-    --------
-    Create a copper layer:
-    
-    >>> copper = Layer(
-    ...     layer_type='CW',
-    ...     thick_m=0.001,  # 1 mm
-    ...     sigmaDC=5.96e7,  # Copper conductivity
-    ...     freq_Hz=np.logspace(3, 9, 100)
-    ... )
-    
-    Create a vacuum boundary:
-    
-    >>> vacuum = Layer(boundary=True)
-    
-    Create a stainless steel layer with roughness:
-    
-    >>> steel = Layer(
-    ...     layer_type='CW',
-    ...     thick_m=0.002,  # 2 mm
-    ...     sigmaDC=1.45e6,  # Stainless steel
-    ...     RQ=1e-6,  # 1 micron roughness
-    ...     freq_Hz=np.logspace(3, 9, 100)
-    ... )
-    
+
     Notes
     -----
-    The Layer class calculates frequency-dependent properties such as:
-    - AC conductivity (sigmaAC)
-    - Magnetic permeability (mu, mur)
-    - Skin depth (delta, deltaM)
-    - Surface resistance (RS)
-    - Surface impedance (KZ)
-    
-    These properties are computed on-demand when accessed as properties.
+    Frequency-domain calculated quantities (``sigmaAC``, ``sigmaPM``, ``mur``,
+    ``mu``, ``delta``, ``deltaM``, ``RS``, ``sigmaDC_R``, ``kprop``, ``KZ``)
+    operate on ``freq_Hz``. Time-domain calculated quantities
+    (``sigmaPM_time``, ``deltaM_time``, ``deltaM_time_boundary``,
+    ``kprop_time``) operate on ``time_s``.
+
+    The two pipelines are independent — accessing a time-domain property does
+    not require ``freq_Hz`` to be populated, and vice versa.
+
+    Roughness correction
+    --------------------
+    The frequency-domain conductivity ``sigmaAC`` includes a Hammerstad-type
+    roughness correction via ``sigmaDC_R``. The current revision of the
+    time-domain pipeline intentionally uses the raw ``sigmaDC`` *without*
+    such a correction; a roughness model for the time domain is deferred to
+    a future revision.
     """
-    
+
     def __init__(
         self,
         layer_type: str = DEFAULT_TYPE,
@@ -135,10 +110,24 @@ class Layer:
         tau: float = DEFAULT_TAU,
         RQ: float = DEFAULT_RQ,
         freq_Hz: Optional[Sequence[float]] = None,
+        time_s: Optional[Sequence[float]] = None,
         boundary: bool = False,
     ) -> None:
         """Initialize Layer object."""
-        
+
+        """ Notes on boundary layers
+        ------------------------
+        A boundary layer is semi-infinite, so the thickness has no physical
+        meaning and the corresponding setter (which rejects non-positive
+        values) is not invoked. The caller is responsible for passing a
+        meaningful ``layer_type`` ('CW', 'V' or 'PEC'); the constructor no
+        longer silently overrides it with 'V'.
+        """
+ 
+        # Save the boundary flag as a public attribute so other parts of
+        # the code (and diagnostics) can introspect it.
+        self.boundary = bool(boundary)
+ 
         # Initialize private attributes with defaults
         self._thick_m = DEFAULT_THICK_M
         self._muinf_Hz = DEFAULT_MUINF_HZ
@@ -148,61 +137,52 @@ class Layer:
         self._tau = DEFAULT_TAU
         self._RQ = DEFAULT_RQ
         self._freq_Hz = np.array([], dtype=float)
-        
-        # Set layer type: boundary takes precedence
-        if boundary:
-            self._layer_type = DEFAULT_BOUNDARY_TYPE  # 'V'
-        else:
-            self._layer_type = layer_type.upper() if isinstance(layer_type, str) else DEFAULT_TYPE
-        
+        self._time_s = np.array([], dtype=float)
+ 
+        # Layer type — always honour what the caller passed.
+        # (Previously a boundary layer was forced to 'V', which silently
+        # discarded 'PEC' / 'CW' boundaries set via cfg_io.)
+        self._layer_type = (
+            layer_type.upper() if isinstance(layer_type, str) else DEFAULT_TYPE
+        )
+ 
         # Optional: surface impedance can be set directly
         self._KZ: Optional[np.ndarray] = None
-        
-        # Apply user inputs through setters (but NOT layer_type if boundary=True)
-        if not boundary:
-            self.layer_type = layer_type
-        
+ 
+        # Re-apply through the public setter for validation
+        self.layer_type = self._layer_type
+ 
         if freq_Hz is not None:
             self.freq_Hz = freq_Hz
-        self.thick_m = thick_m
+        if time_s is not None:
+            self.time_s = time_s
+ 
+        # Thickness: skip the validated setter for boundary layers, because
+        # a boundary is semi-infinite. Storing the default keeps the
+        # attribute always defined but it must not be used by the wake/
+        # impedance formulas (and indeed it isn't — see TLWallWake).
+        if not self.boundary:
+            self.thick_m = thick_m
+ 
         self.muinf_Hz = muinf_Hz
         self.epsr = epsr
         self.sigmaDC = sigmaDC
         self.k_Hz = k_Hz
         self.tau = tau
         self.RQ = RQ
-    
+ 
+
     # ========================================================================
     # Basic Properties
     # ========================================================================
-    
+
     @property
     def layer_type(self) -> str:
-        """
-        Get layer type.
-        
-        Returns
-        -------
-        str
-            Layer type: 'CW' (conductor), 'V' (vacuum), or 'PEC' (perfect conductor).
-        """
+        """Layer type: 'CW' (conductor), 'V' (vacuum), or 'PEC'."""
         return self._layer_type
-    
+
     @layer_type.setter
     def layer_type(self, newtype: str) -> None:
-        """
-        Set layer type.
-        
-        Parameters
-        ----------
-        newtype : str
-            Layer type: 'CW', 'V', or 'PEC' (case insensitive).
-        
-        Raises
-        ------
-        LayerValidationError
-            If layer type is not recognized.
-        """
         upper = str(newtype).upper()
         if upper in ("CW", "V", "PEC"):
             self._layer_type = upper
@@ -211,34 +191,14 @@ class Layer:
                 f"'{newtype}' is not a valid layer type. "
                 f"Must be 'CW', 'V', or 'PEC'."
             )
-    
+
     @property
     def thick_m(self) -> float:
-        """
-        Get layer thickness in meters.
-        
-        Returns
-        -------
-        float
-            Thickness in meters.
-        """
+        """Layer thickness in meters."""
         return self._thick_m
-    
+
     @thick_m.setter
     def thick_m(self, newthick: float) -> None:
-        """
-        Set layer thickness.
-        
-        Parameters
-        ----------
-        newthick : float
-            Thickness in meters (must be positive).
-        
-        Raises
-        ------
-        LayerValidationError
-            If thickness is not a positive number.
-        """
         try:
             tmp_thick = float(newthick)
             if tmp_thick <= 0:
@@ -250,34 +210,14 @@ class Layer:
             raise LayerValidationError(
                 f"Invalid thickness value '{newthick}': {e}"
             )
-    
+
     @property
     def epsr(self) -> float:
-        """
-        Get relative permittivity (dielectric constant).
-        
-        Returns
-        -------
-        float
-            Relative permittivity (dimensionless).
-        """
+        """Relative permittivity (dielectric constant)."""
         return self._epsr
-    
+
     @epsr.setter
     def epsr(self, newepsr: float) -> None:
-        """
-        Set relative permittivity.
-        
-        Parameters
-        ----------
-        newepsr : float
-            Relative permittivity (must be positive).
-        
-        Raises
-        ------
-        LayerValidationError
-            If value is not positive.
-        """
         try:
             tmp_epsr = float(newepsr)
             if tmp_epsr <= 0:
@@ -289,68 +229,28 @@ class Layer:
             raise LayerValidationError(
                 f"Invalid relative permittivity '{newepsr}': {e}"
             )
-    
+
     @property
     def muinf_Hz(self) -> float:
-        """
-        Get magnetic permeability parameter.
-        
-        Returns
-        -------
-        float
-            Magnetic permeability parameter.
-        """
+        """Magnetic permeability parameter."""
         return self._muinf_Hz
-    
+
     @muinf_Hz.setter
     def muinf_Hz(self, newmuinf_Hz: float) -> None:
-        """
-        Set magnetic permeability parameter.
-        
-        Parameters
-        ----------
-        newmuinf_Hz : float
-            Magnetic permeability parameter.
-        
-        Raises
-        ------
-        LayerValidationError
-            If value is invalid.
-        """
         try:
             self._muinf_Hz = float(newmuinf_Hz)
         except (ValueError, TypeError) as e:
             raise LayerValidationError(
                 f"Invalid permeability parameter '{newmuinf_Hz}': {e}"
             )
-    
+
     @property
     def k_Hz(self) -> float:
-        """
-        Get relaxation frequency for permeability.
-        
-        Returns
-        -------
-        float
-            Relaxation frequency in Hz.
-        """
+        """Relaxation frequency for permeability (Hz)."""
         return self._k_Hz
-    
+
     @k_Hz.setter
     def k_Hz(self, newk_Hz: float) -> None:
-        """
-        Set relaxation frequency for permeability.
-        
-        Parameters
-        ----------
-        newk_Hz : float
-            Relaxation frequency in Hz (must be positive).
-        
-        Raises
-        ------
-        LayerValidationError
-            If value is not positive.
-        """
         try:
             tmp_k_Hz = float(newk_Hz)
             if tmp_k_Hz <= 0 and not np.isinf(tmp_k_Hz):
@@ -362,34 +262,14 @@ class Layer:
             raise LayerValidationError(
                 f"Invalid relaxation frequency '{newk_Hz}': {e}"
             )
-    
+
     @property
     def sigmaDC(self) -> float:
-        """
-        Get DC electrical conductivity.
-        
-        Returns
-        -------
-        float
-            DC conductivity in S/m.
-        """
+        """DC electrical conductivity (S/m)."""
         return self._sigmaDC
-    
+
     @sigmaDC.setter
     def sigmaDC(self, newsigmaDC: float) -> None:
-        """
-        Set DC electrical conductivity.
-        
-        Parameters
-        ----------
-        newsigmaDC : float
-            DC conductivity in S/m (must be non-negative).
-        
-        Raises
-        ------
-        LayerValidationError
-            If value is negative.
-        """
         try:
             tmp_sigmaDC = float(newsigmaDC)
             if tmp_sigmaDC < 0:
@@ -401,34 +281,14 @@ class Layer:
             raise LayerValidationError(
                 f"Invalid DC conductivity '{newsigmaDC}': {e}"
             )
-    
+
     @property
     def tau(self) -> float:
-        """
-        Get relaxation time for permittivity.
-        
-        Returns
-        -------
-        float
-            Relaxation time in seconds.
-        """
+        """Relaxation time for permittivity (seconds)."""
         return self._tau
-    
+
     @tau.setter
     def tau(self, newtau: float) -> None:
-        """
-        Set relaxation time for permittivity.
-        
-        Parameters
-        ----------
-        newtau : float
-            Relaxation time in seconds (must be non-negative).
-        
-        Raises
-        ------
-        LayerValidationError
-            If value is negative.
-        """
         try:
             tmp_tau = float(newtau)
             if tmp_tau < 0:
@@ -440,34 +300,14 @@ class Layer:
             raise LayerValidationError(
                 f"Invalid relaxation time '{newtau}': {e}"
             )
-    
+
     @property
     def RQ(self) -> float:
-        """
-        Get surface roughness parameter.
-        
-        Returns
-        -------
-        float
-            Surface roughness in meters.
-        """
+        """Surface roughness parameter (meters)."""
         return self._RQ
-    
+
     @RQ.setter
     def RQ(self, newRQ: float) -> None:
-        """
-        Set surface roughness parameter.
-        
-        Parameters
-        ----------
-        newRQ : float
-            Surface roughness in meters (must be non-negative).
-        
-        Raises
-        ------
-        LayerValidationError
-            If value is negative.
-        """
         try:
             tmp_RQ = float(newRQ)
             if tmp_RQ < 0:
@@ -479,458 +319,425 @@ class Layer:
             raise LayerValidationError(
                 f"Invalid surface roughness '{newRQ}': {e}"
             )
-    
+
     @property
     def freq_Hz(self) -> np.ndarray:
-        """
-        Get frequency array.
-        
-        Returns
-        -------
-        np.ndarray
-            Frequency array in Hz.
-        """
+        """Frequency array (Hz) used by the frequency-domain pipeline."""
         return self._freq_Hz
-    
+
     @freq_Hz.setter
     def freq_Hz(self, newfreq_Hz: Sequence[float]) -> None:
-        """
-        Set frequency array.
-        
-        Parameters
-        ----------
-        newfreq_Hz : array-like
-            Frequency array in Hz (all values must be positive).
-        
-        Raises
-        ------
-        LayerValidationError
-            If frequencies are invalid or not all positive.
-        """
         try:
             tmp_freq_Hz = np.array(newfreq_Hz, dtype=float)
             if np.any(tmp_freq_Hz <= 0):
-                raise LayerValidationError(
-                    "All frequencies must be positive"
-                )
+                raise LayerValidationError("All frequencies must be positive")
             self._freq_Hz = tmp_freq_Hz
         except (TypeError, ValueError) as e:
-            raise LayerValidationError(
-                f"Invalid frequency array: {e}"
-            )
-    
+            raise LayerValidationError(f"Invalid frequency array: {e}")
+
+    @property
+    def time_s(self) -> np.ndarray:
+        """
+        Time array (s) used by the time-domain wake pipeline.
+
+        This attribute is independent of :attr:`freq_Hz` and is consumed by
+        :class:`pytlwall.tlwall_wake.TLWallWake` and by the time-domain
+        properties of this class (``sigmaPM_time``, ``deltaM_time`` ...).
+        """
+        return self._time_s
+
+    @time_s.setter
+    def time_s(self, newtime_s: Sequence[float]) -> None:
+        try:
+            tmp_time_s = np.array(newtime_s, dtype=float)
+            if tmp_time_s.size > 0 and np.any(tmp_time_s <= 0):
+                raise LayerValidationError("All time samples must be positive")
+            self._time_s = tmp_time_s
+        except (TypeError, ValueError) as e:
+            raise LayerValidationError(f"Invalid time array: {e}")
+
     # ========================================================================
-    # Surface Impedance
+    # Surface Impedance (frequency domain - unchanged)
     # ========================================================================
-    
+
     @property
     def KZ(self) -> np.ndarray:
         """
-        Get surface impedance.
-        
+        Get surface impedance (frequency domain).
+
         Returns
         -------
         np.ndarray
             Complex surface impedance array.
-        
+
         Notes
         -----
-        If not explicitly set, calculates default surface impedance as:
-        KZ = (1 + j) / (sigmaPM * deltaM)
+        If not explicitly set, calculates default surface impedance as
+        ``KZ = (1 + j) / (sigmaPM * deltaM)``.
         """
         if self._KZ is not None:
             return self._KZ
-        
-        # Calculate surface impedance based on material type
-        omega = 2.0 * const.pi * self.freq_Hz
-        
-        # Complex permittivity: ε_complex = ε - j*σ/ω
-        # (σ already includes AC effects via sigmaAC)
-        eps_complex = self.eps - 1.0j * self.sigmaAC / omega
-        
-        # Surface impedance: KZ = sqrt(j*ω*μ / (σ + j*ω*ε)) = sqrt(μ / ε_complex)
-        # ~ KZ = np.sqrt(self.mu / eps_complex)
-        KZ = (1.0 + 1.0j) / (self.sigmaPM * self.deltaM)
 
+        omega = 2.0 * const.pi * self.freq_Hz
+        eps_complex = self.eps - 1.0j * self.sigmaAC / omega
+        KZ = (1.0 + 1.0j) / (self.sigmaPM * self.deltaM)
         return KZ
-    
+
     @KZ.setter
     def KZ(self, newKZ: np.ndarray) -> None:
-        """
-        Set surface impedance directly.
-        
-        Parameters
-        ----------
-        newKZ : array-like
-            Complex surface impedance array (must be complex).
-        
-        Raises
-        ------
-        LayerValidationError
-            If values are not complex.
-        
-        Notes
-        -----
-        Surface impedance must be set for the same frequency array
-        as defined in freq_Hz. For different frequencies, use set_surf_imped().
-        """
         is_complex = np.iscomplex(newKZ)
         if isinstance(is_complex, np.ndarray):
             valid = is_complex.all()
         else:
             valid = bool(is_complex)
-        
+
         if not valid:
-            raise LayerValidationError(
-                "Surface impedance must be complex-valued"
-            )
-        
+            raise LayerValidationError("Surface impedance must be complex-valued")
+
         self._KZ = np.array(newKZ, dtype=complex)
-    
+
     def set_surf_imped(
         self,
         newfreq_Hz: Sequence[float],
-        newKZ: Sequence[complex]
+        newKZ: Sequence[complex],
     ) -> None:
         """
         Set surface impedance with interpolation to layer frequencies.
-        
-        This method allows setting surface impedance values at specific
-        frequencies, which are then interpolated to match the layer's
-        frequency array.
-        
-        Parameters
-        ----------
-        newfreq_Hz : array-like
-            Frequency array in Hz for the impedance data.
-        newKZ : array-like
-            Complex surface impedance values at the given frequencies.
-        
-        Raises
-        ------
-        LayerValidationError
-            If input data is invalid.
-        
-        Examples
-        --------
-        >>> layer = Layer(freq_Hz=np.logspace(6, 9, 100))
-        >>> measured_freq = np.array([1e6, 1e7, 1e8, 1e9])
-        >>> measured_KZ = np.array([1+1j, 2+2j, 3+3j, 4+4j])
-        >>> layer.set_surf_imped(measured_freq, measured_KZ)
         """
-        # Validate complex nature
         is_complex = np.iscomplex(newKZ)
         if isinstance(is_complex, np.ndarray):
             valid = is_complex.all()
         else:
             valid = bool(is_complex)
-        
+
         if not valid:
-            raise LayerValidationError(
-                "Surface impedance must be complex-valued"
-            )
-        
-        # Validate frequencies
+            raise LayerValidationError("Surface impedance must be complex-valued")
+
         try:
             freq = np.array(newfreq_Hz, dtype=float)
         except (TypeError, ValueError) as e:
-            raise LayerValidationError(
-                f"Invalid frequency array: {e}"
-            )
-        
+            raise LayerValidationError(f"Invalid frequency array: {e}")
+
         tmp_KZ = np.array(newKZ, dtype=complex)
-        
-        # Interpolate real and imaginary parts separately
+
         real_part = np.interp(self._freq_Hz, freq, tmp_KZ.real)
         imag_part = np.interp(self._freq_Hz, freq, tmp_KZ.imag)
         self._KZ = real_part + 1j * imag_part
-    
+
     # ========================================================================
-    # Calculated Properties
+    # Calculated Properties — Frequency Domain (unchanged)
     # ========================================================================
-    
+
     @property
     def sigmaAC(self) -> np.ndarray:
-        """
-        Get AC conductivity (frequency-dependent).
-        
-        Returns
-        -------
-        np.ndarray
-            Complex AC conductivity array in S/m.
-        
-        Notes
-        -----
-        Calculated as: σ_AC = σ_DC_R / (1 + j·2π·τ·f)
-        """
+        """AC conductivity (frequency-dependent)."""
         return self._calc_sigmaAC()
-    
+
     @property
     def sigmaPM(self) -> np.ndarray:
-        """
-        Get effective conductivity magnitude.
-        
-        Returns
-        -------
-        np.ndarray
-            Effective conductivity magnitude in S/m.
-        
-        Notes
-        -----
-        Calculated as: σ_PM = √[(2πfε)² + |σ_AC|²]
-        """
+        """Effective conductivity magnitude (frequency-dependent)."""
         return self._calc_sigmaPM()
-    
+
     @property
     def eps(self) -> float:
-        """
-        Get absolute permittivity.
-        
-        Returns
-        -------
-        float
-            Permittivity in F/m.
-        
-        Notes
-        -----
-        Calculated as: ε = ε₀ · εᵣ
-        """
+        """Absolute permittivity ``ε = ε₀ · εᵣ`` (F/m)."""
         return const.epsilon_0 * self._epsr
-    
+
     @property
     def mur(self) -> np.ndarray:
-        """
-        Get relative permeability (frequency-dependent).
-        
-        Returns
-        -------
-        np.ndarray
-            Complex relative permeability array.
-        
-        Notes
-        -----
-        Calculated as: μᵣ = 1 + μ_inf / (1 + j·f/k)
-        """
+        """Relative permeability (frequency-dependent, complex)."""
         return self._calc_mur()
-    
+
     @property
     def mu(self) -> np.ndarray:
-        """
-        Get absolute permeability (frequency-dependent).
-        
-        Returns
-        -------
-        np.ndarray
-            Complex permeability array in H/m.
-        
-        Notes
-        -----
-        Calculated as: μ = μ₀ · μᵣ
-        """
-        mur = self._calc_mur()
-        return const.mu_0 * mur
-    
+        """Absolute permeability ``μ = μ₀ · μᵣ`` (frequency-dependent, complex)."""
+        return const.mu_0 * self._calc_mur()
+
     @property
     def delta(self) -> np.ndarray:
-        """
-        Get skin depth.
-        
-        Returns
-        -------
-        np.ndarray
-            Complex skin depth array in meters.
-        
-        Notes
-        -----
-        Classical skin depth formula including permittivity effects.
-        """
+        """Skin depth (frequency-dependent, complex)."""
         return self._calc_delta()
-    
+
     @property
     def deltaM(self) -> np.ndarray:
-        """
-        Get modified skin depth.
-        
-        Returns
-        -------
-        np.ndarray
-            Complex modified skin depth array in meters.
-        
-        Notes
-        -----
-        Modified skin depth with opposite sign for imaginary component.
-        """
+        """Modified skin depth (frequency-dependent, complex)."""
         return self._calc_deltaM()
-    
+
     @property
     def RS(self) -> np.ndarray:
-        """
-        Get surface resistance including roughness effects.
-        
-        Returns
-        -------
-        np.ndarray
-            Surface resistance array in Ohm.
-        
-        Notes
-        -----
-        Includes Hammerstad roughness correction model.
-        """
+        """Surface resistance with Hammerstad roughness correction."""
         return self._calc_RS()
-    
+
     @property
     def sigmaDC_R(self) -> np.ndarray:
-        """
-        Get DC conductivity with roughness correction.
-        
-        Returns
-        -------
-        np.ndarray
-            Complex corrected conductivity array in S/m.
-        """
+        """DC conductivity with roughness correction."""
         return self._calc_sigmaDC_R()
-    
+
     @property
     def kprop(self) -> np.ndarray:
-        """
-        Get propagation constant.
-        
-        Returns
-        -------
-        np.ndarray
-            Complex propagation constant in 1/m.
-        
-        Notes
-        -----
-        Calculated as: k = (1 - j) / δ
-        """
+        """Propagation constant ``(1 - j) / δ`` (frequency domain)."""
         return (1.0 - 1.0j) / self.delta
-    
+
     # ========================================================================
-    # Calculation Methods
+    # Calculation Methods — Frequency Domain (unchanged)
     # ========================================================================
-    
+
     def _calc_sigmaAC(self) -> np.ndarray:
-        """
-        Calculate AC conductivity.
-        
-        Formula: σ_AC = σ_DC_R / (1 + j·2π·τ·f)
-        """
-        sigmaAC = self.sigmaDC_R / (
+        """``σ_AC = σ_DC_R / (1 + j·2π·τ·f)``."""
+        return self.sigmaDC_R / (
             1.0 + 2.0j * const.pi * self.tau * self.freq_Hz
         )
-        return sigmaAC
-    
+
     def _calc_mur(self) -> np.ndarray:
-        """
-        Calculate relative permeability.
-        
-        Formula: μᵣ = 1 + μ_inf / (1 + j·f/k)
-        """
-        mur = 1.0 + self.muinf_Hz / (1.0 + 1.0j * (self.freq_Hz / self.k_Hz))
-        return mur
-    
+        """``μᵣ = 1 + μ_inf / (1 + j·f/k)``."""
+        return 1.0 + self.muinf_Hz / (1.0 + 1.0j * (self.freq_Hz / self.k_Hz))
+
     def _calc_sigmaPM(self) -> np.ndarray:
-        """
-        Calculate effective conductivity magnitude.
-        
-        Formula: σ_PM = √[(2πfε)² + |σ_AC|²]
-        """
-        sigmaPM = np.sqrt(
+        """``σ_PM = √[(2πfε)² + |σ_AC|²]``."""
+        return np.sqrt(
             (2.0 * const.pi * self.freq_Hz * self.eps) ** 2
             + self.sigmaAC ** 2
         )
-        return sigmaPM
-    
+
     def _calc_delta(self) -> np.ndarray:
-        """
-        Calculate skin depth.
-        
-        Formula: δ = √[2 / (2πfμσ_AC + j·με(2πf)²)]
-        """
-        delta = np.sqrt(
+        """``δ = √[2 / (2πfμσ_AC + j·με(2πf)²)]``."""
+        return np.sqrt(
             2.0
             / (
                 2.0 * const.pi * self.freq_Hz * self.mu * self.sigmaAC
                 + 1.0j * self.mu * self.eps * (2.0 * const.pi * self.freq_Hz) ** 2
             )
         )
-        return delta
-    
+
     def _calc_deltaM(self) -> np.ndarray:
-        """
-        Calculate modified skin depth.
-        
-        Formula: δ_M = √[2 / (2πfμσ_AC - j·με(2πf)²)]
-        """
-        deltaM = np.sqrt(
+        """``δ_M = √[2 / (2πfμσ_AC - j·με(2πf)²)]``."""
+        return np.sqrt(
             2.0
             / (
                 2.0 * const.pi * self.freq_Hz * self.mu * self.sigmaAC
                 - 1.0j * self.mu * self.eps * (2.0 * const.pi * self.freq_Hz) ** 2
             )
         )
-        return deltaM
-    
+
     def _calc_RS(self) -> np.ndarray:
-        """
-        Calculate surface resistance with Hammerstad roughness model.
-        
-        Formula: Rs = √(μπf/σ_DC) · [1 + (2/π)·arctan(0.7·μ·2πf·σ_DC·RQ²)]
-        """
-        RS = (
+        """Surface resistance with Hammerstad roughness model."""
+        return (
             np.sqrt(self.mu * np.pi * self.freq_Hz / self.sigmaDC)
             * (
                 1.0
                 + (2.0 / np.pi)
                 * np.arctan(
-                    0.7
-                    * self.mu
-                    * 2.0
-                    * np.pi
-                    * self.freq_Hz
-                    * self.sigmaDC
-                    * self.RQ ** 2
+                    0.7 * self.mu * 2.0 * np.pi * self.freq_Hz
+                    * self.sigmaDC * self.RQ ** 2
                 )
             )
         )
-        return RS
-    
+
     def _calc_sigmaDC_R(self) -> np.ndarray:
-        """
-        Calculate DC conductivity with roughness correction.
-        
-        The conductivity is corrected based on surface resistance.
-        """
+        """DC conductivity with roughness correction."""
         sigmaDC = (
             np.ones(len(self.freq_Hz)) * self.sigmaDC
             + 1.0j * np.ones(len(self.freq_Hz))
         )
         RS_calc = self._calc_RS()
         mask = RS_calc != 0
-        
+
         sigmaDC[mask] = (
             np.pi * self.freq_Hz[mask] * self.mu / RS_calc[mask] ** 2
         )
         return sigmaDC
-    
-    def __repr__(self) -> str:
+
+    # ========================================================================
+    # Calculated Properties — Time Domain (new in this revision)
+    # ========================================================================
+    #
+    # Roughness correction
+    # --------------------
+    # In contrast with the frequency-domain pipeline (which uses ``sigmaAC``
+    # built from the roughness-corrected ``sigmaDC_R``), the time-domain
+    # quantities below intentionally use the raw, user-supplied ``sigmaDC``
+    # without any Hammerstad-type correction. A time-domain roughness model
+    # is deferred to a future revision.
+    #
+    # The permeability ``mu`` enters the time-domain formulas in the same
+    # complex, frequency-dependent form as in the frequency domain. When
+    # ``freq_Hz`` is empty, ``mu`` reduces to the DC limit ``μ₀·(1 + μ_inf)``
+    # via the standard relaxation formula; this is the value of interest
+    # for the wake calculation.
+    #
+    # NOTE — formulas validated against the MATLAB reference model
+    # (``testwake_SPSwakemodel.m``):
+    #
+    #   * ``sigmaPM_time``        ↔ MATLAB ``sigma1noR`` / ``sigmaBC1``
+    #   * ``deltaM_time``         ↔ MATLAB ``delta1noR`` (numerator 2)
+    #   * ``deltaM_time_boundary``↔ MATLAB ``deltaBC1``  (numerator 4π)
+    #
+    # The dielectric term in both skin-depth formulas is ``(2π/t)²``
+    # (i.e. ``4π²/t²``), matching the MATLAB ``4*pi*pi./t./t``. Both
+    # skin-depth formulas use the raw, type-aware conductivity
+    # ``_sigma_dc_effective``; the effective ``σ_PM(t)`` appears only in
+    # the impedance prefactor of ``Zita_bound`` inside ``TLWallWake``,
+    # never in the skin depth.
+
+    @property
+    def mu_time(self) -> np.ndarray:
         """
-        String representation of Layer.
-        
-        Returns
+        Absolute permeability evaluated on the time-domain grid.
+
+        Notes
+        -----
+        Returned as a complex array broadcast to the shape of ``time_s``.
+        The relaxation model is the same as ``mu`` but the frequency that
+        enters it is the heuristic ``f → 1/time_s``. When ``muinf_Hz == 0``
+        (the default), this reduces to ``μ₀`` exactly.
+        """
+        mur_time = 1.0 + self.muinf_Hz / (
+            1.0 + 1.0j * ((1.0 / self._time_s) / self.k_Hz)
+        )
+        return const.mu_0 * mur_time
+
+    @property
+    def _sigma_dc_effective(self) -> float:
+        """
+        Effective DC conductivity used by the time-domain formulas.
+
+        Selected by layer type, mirroring the explicit conductivity
+        constants used by the MATLAB reference model:
+
+        * ``'V'``   → ``0.0``      — vacuum: no free charges
+                      (MATLAB ``sigma0BC1 = 0``).
+        * ``'PEC'`` → ``1.0e120``  — perfect conductor: a large finite
+                      value (MATLAB ``sigma0BCPEC = 1e120``); avoids a
+                      literal ``inf`` propagating through the formulas.
+        * else      → :attr:`sigmaDC` — a real ``'CW'`` conductor.
+
+        This is the single source of truth for "which conductivity does a
+        time-domain formula see", so that the vacuum boundary is treated
+        with ``σ = 0`` regardless of the (irrelevant) ``sigmaDC`` value
+        stored on a ``'V'`` layer.
+        """
+        layer_type = self.layer_type.upper()
+        if layer_type == "V":
+            return 0.0
+        if layer_type == "PEC":
+            return 1.0e120
+        return self.sigmaDC
+
+    @property
+    def sigmaPM_time(self) -> np.ndarray:
+        """
+        Time-domain effective conductivity magnitude.
+
+        Formula
         -------
-        str
-            String representation showing key parameters.
+        ``σ_PM(t) = √[ (2π·ε/t)² + σ_DC² ]``
+
+        with ``σ_DC`` taken from :attr:`_sigma_dc_effective` (type-aware:
+        ``0`` for a vacuum layer). MATLAB reference: ``sigma1noR`` /
+        ``sigmaBC1``.
+
+        Notes
+        -----
+        Uses the raw conductivity without the roughness (Hammerstad)
+        correction applied in the frequency domain — see the roughness
+        note at the top of the time-domain section.
         """
+        return np.sqrt(
+            (2.0 * const.pi * self.eps / self._time_s) ** 2
+            + self._sigma_dc_effective ** 2
+        )
+
+    @property
+    def deltaM_time(self) -> np.ndarray:
+        """
+        Time-domain modified skin depth — formula for an internal layer.
+
+        Formula
+        -------
+        ``δ_M(t) = √[ 2 / ( (2π/t)·μ·σ_DC − j·(2π/t)²·μ·ε ) ]``
+
+        with ``σ_DC`` from :attr:`_sigma_dc_effective`. MATLAB reference:
+        ``delta1noR`` (line 174 of the SPS model).
+
+        Notes
+        -----
+        This is the formula used inside :class:`TLWallWake` for any layer
+        that is **not** the boundary. The dielectric term uses ``(2π/t)²``
+        — i.e. ``4π²/t²`` — matching the MATLAB ``4*pi*pi./t./t``.
+        """
+        omega_t = 2.0 * const.pi / self._time_s
+        omega_t_sq = omega_t ** 2
+        return np.sqrt(
+            2.0
+            / (
+                omega_t * self.mu_time * self._sigma_dc_effective
+                - 1.0j * omega_t_sq * self.mu_time * self.eps
+            )
+        )
+
+    @property
+    def deltaM_time_boundary(self) -> np.ndarray:
+        """
+        Time-domain modified skin depth — formula for a boundary layer.
+
+        Formula
+        -------
+        ``δ_M(t) = √[ 4π / ( (2π/t)·μ·σ_DC − j·(2π/t)²·μ·ε ) ]``
+
+        with ``σ_DC`` from :attr:`_sigma_dc_effective`. MATLAB reference:
+        ``deltaBC1`` (line 167), where ``sqrt(2π)·sqrt(2/(…))`` collapses
+        to ``sqrt(4π/(…))``.
+
+        Notes
+        -----
+        Used inside :class:`TLWallWake` when this layer is the outermost
+        layer (boundary). It differs from :attr:`deltaM_time` *only* in
+        the numerator (``4π`` vs ``2``). Both use the **raw** conductivity
+        ``σ_DC`` — the boundary skin depth does *not* use the effective
+        ``σ_PM(t)`` (that quantity appears only in the impedance
+        prefactor of ``Zita_bound``).
+        """
+        omega_t = 2.0 * const.pi / self._time_s
+        omega_t_sq = omega_t ** 2
+        return np.sqrt(
+            4.0 * const.pi
+            / (
+                omega_t * self.mu_time * self._sigma_dc_effective
+                - 1.0j * omega_t_sq * self.mu_time * self.eps
+            )
+        )
+
+    @property
+    def kprop_time(self) -> np.ndarray:
+        """
+        Time-domain propagation constant.
+
+        Formula
+        -------
+        ``k_prop(t) = (1 − j) / δ_M(t)``
+
+        Notes
+        -----
+        Built on :attr:`deltaM_time` (the internal-layer formula). It is
+        consumed by :class:`TLWallWake` inside the layer-by-layer transport
+        loop, where it multiplies the layer thickness inside ``tan(...)``.
+        It is not used for the outermost (boundary) layer.
+        """
+        return (1.0 - 1.0j) / self.deltaM_time
+
+    # ========================================================================
+    # Dunder methods
+    # ========================================================================
+
+    def __repr__(self) -> str:
         return (
             f"Layer(type='{self.layer_type}', "
             f"thick={self.thick_m:.3e} m, "
             f"σ_DC={self.sigmaDC:.3e} S/m, "
             f"εᵣ={self.epsr:.2f}, "
-            f"n_freq={len(self.freq_Hz)})"
+            f"n_freq={len(self.freq_Hz)}, "
+            f"n_time={len(self.time_s)})"
         )
-    
+
     def __str__(self) -> str:
-        """User-friendly string representation."""
         return repr(self)

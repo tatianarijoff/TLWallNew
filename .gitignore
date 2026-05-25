@@ -1,0 +1,38 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Test / coverage artifacts
+.pytest_cache/
+.coverage
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+
+# PyTLWall test outputs (auto-generated, not tracked)
+tests/compareWake2D/*/output/
+tests/compareWake2D/*/img/
+tests/compareWake2D/*/logs/
+tests/wake/*/output/
+tests/wake/*/img/
+tests/wake/*/logs/
+tests/wake/*/*/output/
+tests/wake/*/*/img/
+tests/wake/*/*/logs/
+tests/logs/
+tests/output/
+pytlwall_gui/log/
+
+# Plot artefacts from test_tlwall_wake (saved directly in tests/wake/)
+tests/wake/*.png

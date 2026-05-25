@@ -36,11 +36,27 @@ class TestLayerInitialization(unittest.TestCase):
         self.assertEqual(len(layer.freq_Hz), 0)
     
     def test_boundary_initialization(self):
-        """Test boundary (vacuum) layer initialization."""
-        layer = Layer(boundary=True)
-        
-        # Boundary should set type to 'V'
-        self.assertEqual(layer.layer_type, "V")
+        """Test boundary layer initialization.
+
+        After the Layer.__init__ fix, the constructor honours the
+        `layer_type` argument always (no silent override) and stores
+        `self.boundary` as a public attribute.
+        """
+        # Explicit V boundary: user asks for vacuum, gets vacuum.
+        v_boundary = Layer(layer_type='V', boundary=True)
+        self.assertEqual(v_boundary.layer_type, 'V')
+        self.assertTrue(v_boundary.boundary)
+
+        # Default boundary (layer_type not specified) keeps the
+        # default type 'CW' — the constructor no longer overrides it.
+        default_boundary = Layer(boundary=True)
+        self.assertEqual(default_boundary.layer_type, 'CW')
+        self.assertTrue(default_boundary.boundary)
+
+        # PEC boundary: explicit type must be honoured.
+        pec_boundary = Layer(layer_type='PEC', boundary=True)
+        self.assertEqual(pec_boundary.layer_type, 'PEC')
+        self.assertTrue(pec_boundary.boundary)
     
     def test_custom_initialization(self):
         """Test initialization with custom parameters."""
@@ -441,10 +457,16 @@ class TestMaterialExamples(unittest.TestCase):
         self.assertEqual(steel.RQ, 1e-6)
     
     def test_vacuum_layer(self):
-        """Test vacuum boundary layer."""
-        vacuum = Layer(boundary=True)
-        
+        """Test vacuum boundary layer.
+
+        Constructed with explicit layer_type='V'. Before the
+        Layer.__init__ fix, `Layer(boundary=True)` was sufficient
+        (the constructor silently forced 'V'); after the fix the
+        user must pass the type explicitly.
+        """
+        vacuum = Layer(layer_type='V', boundary=True)
         self.assertEqual(vacuum.layer_type, 'V')
+        self.assertTrue(vacuum.boundary)
     
     def test_perfect_conductor(self):
         """Test perfect electrical conductor."""

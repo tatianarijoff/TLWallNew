@@ -273,6 +273,14 @@ freqs = pytlwall.Frequencies(fmin=3, fmax=9, fstep=2)
 | [EXAMPLES_MULTIPLE.md](doc/EXAMPLES_MULTIPLE.md) | MultipleChamber examples |
 | [EXAMPLES_LOGGING.md](doc/EXAMPLES_LOGGING.md) | Logging examples |
 
+### Time-Domain Wake
+
+| Document | Description |
+|----------|-------------|
+| [WAKE.md](doc/WAKE.md) | Time-domain wake module (`TLWallWake`) overview and usage |
+| [WAKE_THEORY.md](doc/WAKE_THEORY.md) | Physical model: transmission-line wake and thick/thin limits |
+| [test_tlwall_wake.md](doc/testing/test_tlwall_wake.md) | Wake module test suite |
+
 ### Additional Documentation
 
 | Document | Description |

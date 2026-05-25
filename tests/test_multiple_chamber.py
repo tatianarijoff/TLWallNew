@@ -2,7 +2,7 @@
 """
 Unit tests for MultipleChamber class.
 
-Uses real test files from tests/multiple/input/ directory.
+Uses real test files from tests/input/multiple/ directory.
 """
 
 import os
@@ -27,7 +27,7 @@ class TestMultipleChamberInit(unittest.TestCase):
         """Set up test fixtures using real input files."""
         # Use the real test input directory
         cls.test_dir = Path(__file__).parent / "multiple"
-        cls.input_dir = cls.test_dir / "input"
+        cls.input_dir = Path(__file__).parent / "input" / "multiple"
         cls.output_dir = cls.test_dir / "output"
         
         # Check if test files exist
@@ -95,7 +95,7 @@ class TestMultipleChamberDataLoading(unittest.TestCase):
     def setUpClass(cls):
         """Set up test fixtures."""
         cls.test_dir = Path(__file__).parent / "multiple"
-        cls.input_dir = cls.test_dir / "input"
+        cls.input_dir = Path(__file__).parent / "input" / "multiple"
         cls.output_dir = cls.test_dir / "output"
         
         if not cls.input_dir.exists():
@@ -159,7 +159,7 @@ class TestMultipleChamberCfgHandling(unittest.TestCase):
     def setUpClass(cls):
         """Set up test fixtures."""
         cls.test_dir = Path(__file__).parent / "multiple"
-        cls.input_dir = cls.test_dir / "input"
+        cls.input_dir = Path(__file__).parent / "input" / "multiple"
         cls.output_dir = cls.test_dir / "output"
         
         if not cls.input_dir.exists():
@@ -206,7 +206,7 @@ class TestMultipleChamberCalculation(unittest.TestCase):
     def setUpClass(cls):
         """Set up test fixtures."""
         cls.test_dir = Path(__file__).parent / "multiple"
-        cls.input_dir = cls.test_dir / "input"
+        cls.input_dir = Path(__file__).parent / "input" / "multiple"
         # Use temp directory for output to not pollute test dir
         cls.output_dir = Path(tempfile.mkdtemp())
     
@@ -253,7 +253,7 @@ class TestMultipleChamberIntegration(unittest.TestCase):
     def setUpClass(cls):
         """Set up test fixtures."""
         cls.test_dir = Path(__file__).parent / "multiple"
-        cls.input_dir = cls.test_dir / "input"
+        cls.input_dir = Path(__file__).parent / "input" / "multiple"
         cls.output_dir = Path(tempfile.mkdtemp())
         
         if not cls.input_dir.exists():
