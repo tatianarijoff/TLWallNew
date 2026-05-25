@@ -32,3 +32,4 @@ tests/wake/*/*/img/
 tests/wake/*/*/logs/
 tests/logs/
 tests/output/
+pytlwall_gui/log/
