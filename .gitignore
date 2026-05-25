@@ -19,11 +19,16 @@ dist/
 venv/
 env/
 
-# Generated test artifacts (rigenerati lanciando i test)
-tests/logs/
-tests/**/logs/
-tests/**/output/
-tests/**/img/
-tests/output/
-tests/wake/
 
+# PyTLWall test outputs (auto-generated, not tracked)
+tests/compareWake2D/*/output/
+tests/compareWake2D/*/img/
+tests/compareWake2D/*/logs/
+tests/wake/*/output/
+tests/wake/*/img/
+tests/wake/*/logs/
+tests/wake/*/*/output/
+tests/wake/*/*/img/
+tests/wake/*/*/logs/
+tests/logs/
+tests/output/
