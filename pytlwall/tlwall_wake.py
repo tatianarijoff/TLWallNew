@@ -591,9 +591,22 @@ class TLWallWake:
     # aggregate.
 
     def _cw_layers(self) -> list:
-        """Return the list of CW (resistive) layers in the chamber."""
+        """Return the list of CW (resistive) non-boundary layers in the chamber.
+
+        Boundary layers are excluded even when their `layer_type` is
+        'CW': a boundary is semi-infinite by definition, so its
+        `thick_m` is a placeholder with no physical meaning, and its
+        inclusion in `thick_eff` would contaminate the Thin-wall limit.
+
+        Before the Layer.__init__ fix this exclusion was implicit (the
+        old bug forced every boundary to type='V', which already
+        filtered it out via the layer_type check). Now that the fix
+        lets boundary layers keep their declared type, the exclusion
+        must be explicit.
+        """
         return [l for l in self._chamber.layers
-                if l.layer_type.upper() == "CW"]
+                if l.layer_type.upper() == "CW"
+                and not getattr(l, "boundary", False)]
 
     @property
     def sigma_eff(self) -> float:
@@ -618,14 +631,14 @@ class TLWallWake:
         return sum(l.thick_m for l in self._cw_layers())
 
     def calc_WLongThick(self) -> np.ndarray:
-        """
-        Longitudinal wake — Thick-wall (resistive, deep skin-effect) limit.
+        r"""
+        Longitudinal wake - Thick-wall (resistive, deep skin-effect) limit.
 
-        Formula
-        -------
-        ``W_long_thick(t) = L_1 / (4π·r) · √( Z_0 / (π·c·σ_eff) ) · t^{-3/2}``
+        Formula::
 
-        with ``σ_eff = max_layer(sigmaDC)`` (see :attr:`sigma_eff`).
+            W_long_thick(t) = L_1 / (4 pi r) * sqrt( Z_0 / (pi c sigma_eff) ) * t^(-3/2)
+
+        with ``sigma_eff = max_layer(sigmaDC)`` (see :attr:`sigma_eff`).
 
         Returns
         -------
@@ -650,17 +663,17 @@ class TLWallWake:
         return self.calc_WLongThick()
 
     def calc_WTransThick(self) -> np.ndarray:
-        """
-        Transverse wake — Thick-wall (resistive) limit.
+        r"""
+        Transverse wake - Thick-wall (resistive) limit.
 
-        Formula
-        -------
-        ``W_trans_thick(t) = L_1 / (π·r³) · √( c·Z_0 / (π·σ_eff) ) · t^{-1/2}``
+        Formula::
+
+            W_trans_thick(t) = L_1 / (pi r^3) * sqrt( c Z_0 / (pi sigma_eff) ) * t^(-1/2)
 
         MATLAB reference: ``WY1theory`` (line 260). Equivalently this is
-        ``W_long_thick(t) · 4·c·t / r²``. Note that ``c`` sits in the
-        **numerator** inside the square root (``c·Z_0/(π·σ)``), unlike the
-        longitudinal thick-wall limit which has ``Z_0/(π·c·σ)``.
+        ``W_long_thick(t) * 4 c t / r^2``. Note that ``c`` sits in the
+        **numerator** inside the square root (``c Z_0/(pi sigma)``), unlike
+        the longitudinal thick-wall limit which has ``Z_0/(pi c sigma)``.
 
         Returns
         -------
@@ -684,14 +697,14 @@ class TLWallWake:
         return self.calc_WTransThick()
 
     def calc_WLongThin(self) -> np.ndarray:
-        """
-        Longitudinal wake — Thin-wall (inductive) limit.
+        r"""
+        Longitudinal wake - Thin-wall (inductive) limit.
 
-        Formula
-        -------
-        ``W_long_thin(t) = L_1 / (2π·r) · μ_0 · d_eff / t²``
+        Formula::
 
-        with ``d_eff = Σ_layer thick_m`` taken over CW layers
+            W_long_thin(t) = L_1 / (2 pi r) * mu_0 * d_eff / t^2
+
+        with ``d_eff = sum_layer thick_m`` taken over CW layers
         (see :attr:`thick_eff`).
 
         Returns
@@ -714,12 +727,12 @@ class TLWallWake:
         return self.calc_WLongThin()
 
     def calc_WTransThin(self) -> np.ndarray:
-        """
-        Transverse wake — Thin-wall (inductive) limit.
+        r"""
+        Transverse wake - Thin-wall (inductive) limit.
 
-        Formula
-        -------
-        ``W_trans_thin(t) = 4 · W_long_thin(t) · t · c / r²``
+        Formula::
+
+            W_trans_thin(t) = 4 * W_long_thin(t) * t * c / r^2
 
         Returns
         -------
@@ -745,7 +758,7 @@ class TLWallWake:
         Returns
         -------
         dict
-            Mapping ``{name → np.ndarray}`` containing every wake provided
+            Mapping ``{name -> np.ndarray}`` containing every wake provided
             by this class: ``WLong``, ``WLong_base``, ``WTrans_base``,
             ``WTrans_Bypass``, plus the analytical reference wakes
             ``WLongThick``, ``WTransThick``, ``WLongThin``, ``WTransThin``.

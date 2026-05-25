@@ -15,6 +15,20 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pytlwall import io_util
 
+# ---- Optional dependency: pandas --------------------------------------
+# Some tests exercise xlsx/csv export which depend on pandas (+ openpyxl).
+# In CI environments without these extras, skip those tests gracefully
+# instead of failing.
+try:
+    import pandas as _pd  # noqa: F401
+    HAS_PANDAS = True
+except ImportError:
+    HAS_PANDAS = False
+
+SKIP_NO_PANDAS = unittest.skipUnless(
+    HAS_PANDAS, "pandas is not installed; skipping pandas-dependent tests"
+)
+
 
 class TestReadFrequencyTxt(unittest.TestCase):
     """Test read_frequency_txt function."""
@@ -264,6 +278,7 @@ class TestLoadGeometryFunctions(unittest.TestCase):
 class TestPrintImpedanceOutput(unittest.TestCase):
     """Test print_impedance_output function."""
     
+    @SKIP_NO_PANDAS
     def test_print_single_impedance_csv(self):
         """Test exporting single impedance to CSV."""
         freqs = np.array([1e3, 1e4, 1e5])
@@ -324,6 +339,7 @@ class TestPrintImpedanceOutput(unittest.TestCase):
             # Should have header + 3 data lines
             self.assertEqual(len(lines), 4)
     
+    @SKIP_NO_PANDAS
     def test_print_multiple_impedances(self):
         """Test exporting multiple impedances."""
         freqs = np.array([1e3, 1e4, 1e5])
@@ -347,6 +363,7 @@ class TestPrintImpedanceOutput(unittest.TestCase):
             # Should have freq + 2 real + 2 imag columns
             self.assertGreaterEqual(len(df.columns), 5)
     
+    @SKIP_NO_PANDAS
     def test_print_with_standard_labels(self):
         """Test exporting with standard labels."""
         freqs = np.array([1e3, 1e4, 1e5])
@@ -486,6 +503,7 @@ class TestValidation(unittest.TestCase):
 class TestFallbackBehavior(unittest.TestCase):
     """Test fallback behavior when dependencies are missing."""
     
+    @SKIP_NO_PANDAS
     def test_xlsx_fallback_to_txt(self):
         """Test that xlsx falls back to txt when openpyxl is missing."""
         freqs = np.array([1e3, 1e4, 1e5])
