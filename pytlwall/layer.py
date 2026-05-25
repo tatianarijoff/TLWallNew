@@ -115,6 +115,19 @@ class Layer:
     ) -> None:
         """Initialize Layer object."""
 
+        """ Notes on boundary layers
+        ------------------------
+        A boundary layer is semi-infinite, so the thickness has no physical
+        meaning and the corresponding setter (which rejects non-positive
+        values) is not invoked. The caller is responsible for passing a
+        meaningful ``layer_type`` ('CW', 'V' or 'PEC'); the constructor no
+        longer silently overrides it with 'V'.
+        """
+ 
+        # Save the boundary flag as a public attribute so other parts of
+        # the code (and diagnostics) can introspect it.
+        self.boundary = bool(boundary)
+ 
         # Initialize private attributes with defaults
         self._thick_m = DEFAULT_THICK_M
         self._muinf_Hz = DEFAULT_MUINF_HZ
@@ -125,31 +138,39 @@ class Layer:
         self._RQ = DEFAULT_RQ
         self._freq_Hz = np.array([], dtype=float)
         self._time_s = np.array([], dtype=float)
-
-        # Set layer type: boundary takes precedence
-        if boundary:
-            self._layer_type = DEFAULT_BOUNDARY_TYPE  # 'V'
-        else:
-            self._layer_type = layer_type.upper() if isinstance(layer_type, str) else DEFAULT_TYPE
-
+ 
+        # Layer type — always honour what the caller passed.
+        # (Previously a boundary layer was forced to 'V', which silently
+        # discarded 'PEC' / 'CW' boundaries set via cfg_io.)
+        self._layer_type = (
+            layer_type.upper() if isinstance(layer_type, str) else DEFAULT_TYPE
+        )
+ 
         # Optional: surface impedance can be set directly
         self._KZ: Optional[np.ndarray] = None
-
-        # Apply user inputs through setters (but NOT layer_type if boundary=True)
-        if not boundary:
-            self.layer_type = layer_type
-
+ 
+        # Re-apply through the public setter for validation
+        self.layer_type = self._layer_type
+ 
         if freq_Hz is not None:
             self.freq_Hz = freq_Hz
         if time_s is not None:
             self.time_s = time_s
-        self.thick_m = thick_m
+ 
+        # Thickness: skip the validated setter for boundary layers, because
+        # a boundary is semi-infinite. Storing the default keeps the
+        # attribute always defined but it must not be used by the wake/
+        # impedance formulas (and indeed it isn't — see TLWallWake).
+        if not self.boundary:
+            self.thick_m = thick_m
+ 
         self.muinf_Hz = muinf_Hz
         self.epsr = epsr
         self.sigmaDC = sigmaDC
         self.k_Hz = k_Hz
         self.tau = tau
         self.RQ = RQ
+ 
 
     # ========================================================================
     # Basic Properties
