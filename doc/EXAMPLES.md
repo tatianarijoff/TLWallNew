@@ -19,6 +19,7 @@
 - [Module Examples](#module-examples)
 - [Complete Workflows](#complete-workflows)
 - [Configuration Files](#configuration-files)
+- [Running the Examples](#running-the-examples)
 
 ---
 
@@ -49,6 +50,31 @@ ZTrans = wall.ZTrans
 
 print(f"Max |ZLong|: {abs(ZLong).max():.3e} Ω")
 print(f"Max |ZTrans|: {abs(ZTrans).max():.3e} Ω/m")
+```
+
+### Minimal Wake Calculation
+
+```python
+from pytlwall import Beam, Times, Layer, Chamber, TLWallWake
+
+# 1. Define time grid (1 ps to 100 ms, 1401 log-spaced points)
+times = Times()
+
+# 2. Define beam
+beam = Beam(gammarel=7460.52)
+
+# 3. Define layers and chamber
+copper = Layer(layer_type="CW", thick_m=2e-3, sigmaDC=5.96e7)
+boundary = Layer(layer_type="V", boundary=True)
+chamber = Chamber(
+    pipe_rad_m=0.022, pipe_len_m=1.0, chamber_shape="CIRCULAR",
+    betax=1.0, betay=1.0, layers=[copper, boundary],
+)
+
+# 4. Calculate wakes
+wake = TLWallWake(chamber, beam, times)
+WLong = wake.WLong              # full longitudinal wake (V/C)
+WLong_base = wake.WLong_base    # reactive part only
 ```
 
 ### Using Configuration File
@@ -176,7 +202,7 @@ print(f"Yokoya q = {chamber.yokoya_q:.4f}")
 
 ### TlWall Module
 
-**Purpose:** Main impedance calculation engine.
+**Purpose:** Main impedance calculation engine (frequency domain).
 
 | Example | Description |
 |---------|-------------|
@@ -202,6 +228,49 @@ all_Z = wall.get_all_impedances()
 - `ZLongISC`, `ZTransISC` (indirect space charge)
 
 **[→ Full TlWall Examples](EXAMPLES_TLWALL.md)**
+
+---
+
+### TLWallWake Module
+
+**Purpose:** Main wake calculation engine (time domain).
+
+| Example | Description |
+|---------|-------------|
+| Minimal usage | Cu pipe + V boundary |
+| All wake quantities | Full and reactive wakes |
+| Reactive vs analytical limits | Thick / Thin reference |
+| Boundary comparison | V vs PEC |
+| Wall thickness scan | Effect of layer thickness |
+| Full vs reactive | Resistive contribution |
+| Custom time grid | Zoom into a region |
+
+**Quick Example:**
+```python
+from pytlwall import TLWallWake, Times
+
+times = Times()  # 10^-12 to 10^-1 s, 1401 points
+wake = TLWallWake(chamber=chamber, beam=beam, times=times)
+
+# Full wakes (use for beam dynamics)
+WLong = wake.WLong              # V/C
+WTrans = wake.WTrans_Bypass     # V/(C·m)
+
+# Reactive base wakes (match the analytical limits)
+WLong_base = wake.WLong_base
+WTrans_base = wake.WTrans_base
+
+# Analytical references
+WLong_thick = wake.WLongThick   # thick-wall limit
+WLong_thin = wake.WLongThin     # thin-wall limit
+```
+
+**Wake Quantities:**
+- Full: `WLong`, `WTrans_Bypass`
+- Reactive part only: `WLong_base`, `WTrans_base`
+- Analytical limits: `WLongThick/Thin`, `WTransThick/Thin`
+
+**[→ Full TLWallWake Examples](EXAMPLES_WAKE.md)**
 
 ---
 
@@ -354,6 +423,25 @@ fstep = 10
 gammarel = 7460.52
 ```
 
+### Wake-mode Configuration
+
+To run a time-domain wake calculation instead of an impedance one, replace
+the `[frequency_info]` section with a `[time_info]` section and set the
+`CalcWake` flag:
+
+```ini
+[calc_info]
+CalcWake = wake
+
+[time_info]
+tmin_exp = -12
+tmax_exp = -1
+n_points = 1401
+```
+
+Then load with `CfgIo.read_wall_and_wake()`, which returns a dict with
+keys `'calc_flag'`, `'wall'`, and `'wake'`.
+
 ### Supported Chamber Shapes
 
 | Shape | Aliases | Parameters |
@@ -361,6 +449,35 @@ gammarel = 7460.52
 | CIRCULAR | ROUND | pipe_radius_m |
 | ELLIPTICAL | ELLIPTIC | pipe_hor_m, pipe_ver_m |
 | RECTANGULAR | RECT, RECTANGLE | pipe_hor_m, pipe_ver_m |
+
+---
+
+## Running the Examples
+
+Each example module can be run directly from the repository root:
+
+```bash
+# Impedance examples
+python examples/example_beam_usage.py
+python examples/example_frequencies_usage.py
+python examples/example_layer_usage.py
+python examples/example_chamber_usage.py
+python examples/example_tlwall_usage.py
+
+# Wake examples (time-domain)
+python examples/example_wake_usage.py
+python examples/ex_wake.py
+
+# Lattice-level impedance
+python examples/example_multiple_chamber_usage.py
+
+# Logging
+python examples/example_logging_usage.py
+```
+
+Each script is self-contained: it prints to stdout, saves any generated
+files under `examples/<case>/output/` and `examples/<case>/img/`, and
+exits cleanly. Output directories are auto-created and ignored by git.
 
 ---
 
@@ -372,4 +489,4 @@ gammarel = 7460.52
 
 ---
 
-*Last updated: December 2025*
+*Last updated: May 2026*

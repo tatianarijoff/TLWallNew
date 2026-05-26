@@ -24,6 +24,8 @@
 | **layer** | *You are here* |
 | chamber | [EXAMPLES_CHAMBER.md](EXAMPLES_CHAMBER.md) |
 | tlwall | [EXAMPLES_TLWALL.md](EXAMPLES_TLWALL.md) |
+| tlwall_wake | [EXAMPLES_WAKE.md](EXAMPLES_WAKE.md) |
+| multiple | [EXAMPLES_MULTIPLE.md](EXAMPLES_MULTIPLE.md) |
 | logging | [EXAMPLES_LOGGING.md](EXAMPLES_LOGGING.md) |
 
 ---

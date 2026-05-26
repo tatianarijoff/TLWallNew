@@ -24,6 +24,8 @@
 | layer | [EXAMPLES_LAYER.md](EXAMPLES_LAYER.md) |
 | chamber | [EXAMPLES_CHAMBER.md](EXAMPLES_CHAMBER.md) |
 | tlwall | [EXAMPLES_TLWALL.md](EXAMPLES_TLWALL.md) |
+| tlwall_wake | [EXAMPLES_WAKE.md](EXAMPLES_WAKE.md) |
+| multiple | [EXAMPLES_MULTIPLE.md](EXAMPLES_MULTIPLE.md) |
 | **logging** | *You are here* |
 
 ---
@@ -446,4 +448,4 @@ logging_util.log_section_header(logger, "CALCULATION COMPLETED")
 
 ---
 
-**[◀ Back to Examples](EXAMPLES.md)** | **[◀ Previous: tlwall](EXAMPLES_TLWALL.md)**
+**[◀ Back to Examples](EXAMPLES.md)** | **[◀ Previous: multiple](EXAMPLES_MULTIPLE.md)**
