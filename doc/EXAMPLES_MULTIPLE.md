@@ -24,8 +24,9 @@
 | layer | [EXAMPLES_LAYER.md](EXAMPLES_LAYER.md) |
 | chamber | [EXAMPLES_CHAMBER.md](EXAMPLES_CHAMBER.md) |
 | tlwall | [EXAMPLES_TLWALL.md](EXAMPLES_TLWALL.md) |
-| logging | [EXAMPLES_LOGGING.md](EXAMPLES_LOGGING.md) |
+| tlwall_wake | [EXAMPLES_WAKE.md](EXAMPLES_WAKE.md) |
 | **multiple** | *You are here* |
+| logging | [EXAMPLES_LOGGING.md](EXAMPLES_LOGGING.md) |
 
 ---
 
@@ -402,4 +403,4 @@ This ensures:
 
 ---
 
-**[◀ Back to Examples](EXAMPLES.md)**
+**[◀ Back to Examples](EXAMPLES.md)** | **[◀ Previous: tlwall_wake](EXAMPLES_WAKE.md)** | **[Next: logging ▶](EXAMPLES_LOGGING.md)**

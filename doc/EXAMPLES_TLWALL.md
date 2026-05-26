@@ -24,6 +24,8 @@
 | layer | [EXAMPLES_LAYER.md](EXAMPLES_LAYER.md) |
 | chamber | [EXAMPLES_CHAMBER.md](EXAMPLES_CHAMBER.md) |
 | **tlwall** | *You are here* |
+| tlwall_wake | [EXAMPLES_WAKE.md](EXAMPLES_WAKE.md) |
+| multiple | [EXAMPLES_MULTIPLE.md](EXAMPLES_MULTIPLE.md) |
 | logging | [EXAMPLES_LOGGING.md](EXAMPLES_LOGGING.md) |
 
 ---
@@ -415,8 +417,9 @@ print(f"Peak ZLong: {abs(ZLong[idx_max]):.3e} Ω at {freqs.freq[idx_max]:.2e} Hz
 ## See Also
 
 - [API Reference - TlWall](API_REFERENCE_TLWALL.md) - Complete API documentation
+- [TLWallWake Examples](EXAMPLES_WAKE.md) - Time-domain wake counterpart
 - [Examples Main Page](EXAMPLES.md) - All module examples
 
 ---
 
-**[◀ Back to Examples](EXAMPLES.md)** | **[◀ Previous: chamber](EXAMPLES_CHAMBER.md)** | **[Next: logging ▶](EXAMPLES_LOGGING.md)**
+**[◀ Back to Examples](EXAMPLES.md)** | **[◀ Previous: chamber](EXAMPLES_CHAMBER.md)** | **[Next: tlwall_wake ▶](EXAMPLES_WAKE.md)**
